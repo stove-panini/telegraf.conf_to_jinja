@@ -64,7 +64,7 @@
   {{ '#' if telegraf_outputs_influxdb_http_proxy is not defined else '' }}http_proxy = "{{ telegraf_outputs_influxdb_http_proxy|d() }}"
 
   ## Additional HTTP headers
-  {{ '#' if telegraf_outputs_influxdb_http_headers is not defined else '' }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_influxdb_http_headers is not defined else '' }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## HTTP Content-Encoding for write request body, can be set to "gzip" to
   ## compress body or "identity" to apply no encoding.

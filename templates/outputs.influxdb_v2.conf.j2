@@ -27,7 +27,7 @@
   {{ '#' if telegraf_outputs_influxdb_v2_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_influxdb_v2_timeout|d() }}"
 
   ## Additional HTTP headers
-  {{ '#' if telegraf_outputs_influxdb_v2_http_headers is not defined else '' }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_v2_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_influxdb_v2_http_headers is not defined else '' }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_v2_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## HTTP Proxy override, if unset values the standard proxy environment
   ## variables are consulted to determine which proxy, if any, should be used.

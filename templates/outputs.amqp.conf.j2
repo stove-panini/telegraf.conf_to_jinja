@@ -27,8 +27,8 @@
   {{ '#' if telegraf_outputs_amqp_exchange_durability is not defined else '' }}exchange_durability = "{{ telegraf_outputs_amqp_exchange_durability|d() }}"
 
   ## Additional exchange arguments.
-  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## Authentication credentials for the PLAIN auth_method.
   {{ '#' if telegraf_outputs_amqp_username is not defined else '' }}username = "{{ telegraf_outputs_amqp_username|d() }}"
@@ -61,8 +61,8 @@
   {{ '#' if telegraf_outputs_amqp_retention_policy is not defined else '' }}retention_policy = "{{ telegraf_outputs_amqp_retention_policy|d() }}"
 
   ## Static headers added to each published message.
-  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## Connection timeout.  If not provided, will default to 5s.  0s means no
   ## timeout (not recommended).

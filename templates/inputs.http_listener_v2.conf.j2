@@ -38,7 +38,7 @@
   ## Optional setting to map http headers into tags
   ## If the http header is not present on the request, no corresponding tag will be added
   ## If multiple instances of the http header are present, only the first value will be used
-  {{ '#' if telegraf_inputs_http_listener_v2_http_header_tags is not defined else '' }}http_header_tags = { {% for k, v in (telegraf_inputs_http_listener_v2_http_header_tags|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_http_listener_v2_http_header_tags is not defined else '' }}http_header_tags = { {% for k, v in (telegraf_inputs_http_listener_v2_http_header_tags|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

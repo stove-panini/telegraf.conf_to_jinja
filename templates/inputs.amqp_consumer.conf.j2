@@ -26,8 +26,8 @@
   {{ '#' if telegraf_inputs_amqp_consumer_exchange_durability is not defined else '' }}exchange_durability = "{{ telegraf_inputs_amqp_consumer_exchange_durability|d() }}"
 
   ## Additional exchange arguments.
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## AMQP queue name.
   queue = "{{ telegraf_inputs_amqp_consumer_queue|d() }}"

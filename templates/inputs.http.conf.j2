@@ -9,7 +9,7 @@
   {{ '#' if telegraf_inputs_http_method is not defined else '' }}method = "{{ telegraf_inputs_http_method|d() }}"
 
   ## Optional HTTP headers
-  {{ '#' if telegraf_inputs_http_headers is not defined else '' }}headers = { {% for k, v in (telegraf_inputs_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_http_headers is not defined else '' }}headers = { {% for k, v in (telegraf_inputs_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last else '' }}{% endfor %} }
 
   ## Optional file with Bearer token
   ## file content is added as an Authorization header

@@ -5,15 +5,10 @@ BEGIN {
 }
 
 {
-    trimmed_front = substr($2, 5)
-    trimmed_len = length(trimmed_front) - 2
-    filename = substr(trimmed_front, 0, trimmed_len) ".conf"
+    TrimmedFront = substr($2, 5)
+    TrimmedLen = length(TrimmedFront) - 2
+    Filename = substr(TrimmedFront, 0, TrimmedLen) ".conf"
 
-    # Remove comments. Records in AWK's paragraph mode are treated as one long
-    # string with newline characters.
-    #gsub(/^# /, "")
-    #gsub(/\n# /,"\n")
-
-    print "Writing " filename
-    print > "./telegraf.d/" filename
+    print "Writing " Filename
+    print > "./telegraf.d/" Filename
 }

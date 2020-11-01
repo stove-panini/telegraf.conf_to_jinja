@@ -1,0 +1,53 @@
+# Perform string processing on tags, fields, and measurements
+[[processors.strings]]
+  ## Convert a tag value to uppercase
+  # [[processors.strings.uppercase]]
+  {{ '#' if telegraf_processors_strings_tag is not defined }}tag = "{{ telegraf_processors_strings_tag|d() }}"
+
+  ## Convert a field value to lowercase and store in a new field
+  # [[processors.strings.lowercase]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_dest is not defined }}dest = "{{ telegraf_processors_strings_dest|d() }}"
+
+  ## Convert a field value to titlecase
+  # [[processors.strings.titlecase]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+
+  ## Trim leading and trailing whitespace using the default cutset
+  # [[processors.strings.trim]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+
+  ## Trim leading characters in cutset
+  # [[processors.strings.trim_left]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_cutset is not defined }}cutset = "{{ telegraf_processors_strings_cutset|d() }}"
+
+  ## Trim trailing characters in cutset
+  # [[processors.strings.trim_right]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_cutset is not defined }}cutset = "{{ telegraf_processors_strings_cutset|d() }}"
+
+  ## Trim the given prefix from the field
+  # [[processors.strings.trim_prefix]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_prefix is not defined }}prefix = "{{ telegraf_processors_strings_prefix|d() }}"
+
+  ## Trim the given suffix from the field
+  # [[processors.strings.trim_suffix]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_suffix is not defined }}suffix = "{{ telegraf_processors_strings_suffix|d() }}"
+
+  ## Replace all non-overlapping instances of old with new
+  # [[processors.strings.replace]]
+  {{ '#' if telegraf_processors_strings_measurement is not defined }}measurement = "{{ telegraf_processors_strings_measurement|d() }}"
+  {{ '#' if telegraf_processors_strings_old is not defined }}old = "{{ telegraf_processors_strings_old|d() }}"
+  {{ '#' if telegraf_processors_strings_new is not defined }}new = "{{ telegraf_processors_strings_new|d() }}"
+
+  ## Trims strings based on width
+  # [[processors.strings.left]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"
+  {{ '#' if telegraf_processors_strings_width is not defined }}width = {{ telegraf_processors_strings_width|d() }}
+
+  ## Decode a base64 encoded utf-8 string
+  # [[processors.strings.base64decode]]
+  {{ '#' if telegraf_processors_strings_field is not defined }}field = "{{ telegraf_processors_strings_field|d() }}"

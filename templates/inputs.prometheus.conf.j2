@@ -1,0 +1,53 @@
+# Read metrics from one or many prometheus clients
+[[inputs.prometheus]]
+  ## An array of urls to scrape metrics from.
+  urls = [ {% for i in telegraf_inputs_prometheus_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Metric version controls the mapping from Prometheus metrics into
+  ## Telegraf metrics.  When using the prometheus_client output, use the same
+  ## value in both plugins to ensure metrics are round-tripped without
+  ## modification.
+  ##
+  ##   example: metric_version = 1; deprecated in 1.13
+  ##            metric_version = 2; recommended version
+  {{ '#' if telegraf_inputs_prometheus_metric_version is not defined }}metric_version = {{ telegraf_inputs_prometheus_metric_version|d() }}
+
+  ## Url tag name (tag containing scrapped url. optional, default is "url")
+  {{ '#' if telegraf_inputs_prometheus_url_tag is not defined }}url_tag = "{{ telegraf_inputs_prometheus_url_tag|d() }}"
+
+  ## An array of Kubernetes services to scrape metrics from.
+  {{ '#' if telegraf_inputs_prometheus_kubernetes_services is not defined }}kubernetes_services = [ {% for i in telegraf_inputs_prometheus_kubernetes_services|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Kubernetes config file to create client from.
+  {{ '#' if telegraf_inputs_prometheus_kube_config is not defined }}kube_config = "{{ telegraf_inputs_prometheus_kube_config|d() }}"
+
+  ## Scrape Kubernetes pods for the following prometheus annotations:
+  ## - prometheus.io/scrape: Enable scraping for this pod
+  ## - prometheus.io/scheme: If the metrics endpoint is secured then you will need to
+  ##     set this to 'https' & most likely set the tls config.
+  ## - prometheus.io/path: If the metrics path is not /metrics, define it with this annotation.
+  ## - prometheus.io/port: If port is not 9102 use this annotation
+  {{ '#' if telegraf_inputs_prometheus_monitor_kubernetes_pods is not defined }}monitor_kubernetes_pods = {{ telegraf_inputs_prometheus_monitor_kubernetes_pods|d()|bool|lower }}
+  ## Restricts Kubernetes monitoring to a single namespace
+  ##   ex: monitor_kubernetes_pods_namespace = "default"
+  {{ '#' if telegraf_inputs_prometheus_monitor_kubernetes_pods_namespace is not defined }}monitor_kubernetes_pods_namespace = "{{ telegraf_inputs_prometheus_monitor_kubernetes_pods_namespace|d() }}"
+  # label selector to target pods which have the label
+  {{ '#' if telegraf_inputs_prometheus_kubernetes_label_selector is not defined }}kubernetes_label_selector = "{{ telegraf_inputs_prometheus_kubernetes_label_selector|d() }}"
+  # field selector to target pods
+  # eg. To scrape pods on a specific node
+  {{ '#' if telegraf_inputs_prometheus_kubernetes_field_selector is not defined }}kubernetes_field_selector = "{{ telegraf_inputs_prometheus_kubernetes_field_selector|d() }}"
+
+  ## Use bearer token for authorization. ('bearer_token' takes priority)
+  {{ '#' if telegraf_inputs_prometheus_bearer_token is not defined }}bearer_token = "{{ telegraf_inputs_prometheus_bearer_token|d() }}"
+  ## OR
+  {{ '#' if telegraf_inputs_prometheus_bearer_token_string is not defined }}bearer_token_string = "{{ telegraf_inputs_prometheus_bearer_token_string|d() }}"
+
+  ## HTTP Basic Authentication username and password. ('bearer_token' and
+  ## 'bearer_token_string' take priority)
+  {{ '#' if telegraf_inputs_prometheus_username is not defined }}username = "{{ telegraf_inputs_prometheus_username|d() }}"
+  {{ '#' if telegraf_inputs_prometheus_password is not defined }}password = "{{ telegraf_inputs_prometheus_password|d() }}"
+
+  ## Specify timeout duration for slower prometheus clients (default is 3s)
+  {{ '#' if telegraf_inputs_prometheus_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_prometheus_response_timeout|d() }}"
+
+  ## Optional TLS Config

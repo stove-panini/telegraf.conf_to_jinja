@@ -1,0 +1,13 @@
+telegraf_inputs_snmp_agents: ["udp://127.0.0.1:161"]
+#telegraf_inputs_snmp_timeout: "5s"
+#telegraf_inputs_snmp_version: 2
+#telegraf_inputs_snmp_community: "public"
+#telegraf_inputs_snmp_retries: 3
+#telegraf_inputs_snmp_max_repetitions: 10
+#telegraf_inputs_snmp_sec_name: "myuser"
+#telegraf_inputs_snmp_auth_protocol: "MD5"
+#telegraf_inputs_snmp_auth_password: "pass"
+#telegraf_inputs_snmp_sec_level: "authNoPriv"
+#telegraf_inputs_snmp_context_name: ""
+#telegraf_inputs_snmp_priv_protocol: ""
+#telegraf_inputs_snmp_priv_password: ""

@@ -1,0 +1,8 @@
+#telegraf_inputs_tomcat_url: "http://127.0.0.1:8080/manager/status/all?XML=true"
+#telegraf_inputs_tomcat_username: "tomcat"
+#telegraf_inputs_tomcat_password: "s3cret"
+#telegraf_inputs_tomcat_timeout: "5s"
+#telegraf_inputs_tomcat_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_tomcat_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_tomcat_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_tomcat_insecure_skip_verify: no

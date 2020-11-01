@@ -1,0 +1,21 @@
+# Read CPU, Fans, Powersupply and Voltage metrics of hardware server through redfish APIs
+[[inputs.redfish]]
+  ## Server url
+  address = "{{ telegraf_inputs_redfish_address|d() }}"
+
+  ## Username, Password for hardware server
+  username = "{{ telegraf_inputs_redfish_username|d() }}"
+  password = "{{ telegraf_inputs_redfish_password|d() }}"
+
+  ## ComputerSystemId
+  computer_system_id="2M220100SL"
+
+  ## Amount of time allowed to complete the HTTP request
+  {{ '#' if telegraf_inputs_redfish_timeout is not defined }}timeout = "{{ telegraf_inputs_redfish_timeout|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_redfish_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_redfish_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_redfish_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_redfish_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_redfish_tls_key is not defined }}tls_key = "{{ telegraf_inputs_redfish_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_redfish_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_redfish_insecure_skip_verify|d()|bool|lower }}

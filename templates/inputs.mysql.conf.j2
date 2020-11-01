@@ -1,0 +1,85 @@
+# Read metrics from one or many mysql servers
+[[inputs.mysql]]
+  ## specify servers via a url matching:
+  ##  [username[:password]@][protocol[(address)]]/[?tls=[true|false|skip-verify|custom]]
+  ##  see https://github.com/go-sql-driver/mysql#dsn-data-source-name
+  ##  e.g.
+  ##    servers = ["user:passwd@tcp(127.0.0.1:3306)/?tls=false"]
+  ##    servers = ["user@tcp(127.0.0.1:3306)/?tls=false"]
+  #
+  ## If no servers are specified, then localhost is used as the host.
+  servers = [ {% for i in telegraf_inputs_mysql_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Selects the metric output format.
+  ##
+  ## This option exists to maintain backwards compatibility, if you have
+  ## existing metrics do not set or change this value until you are ready to
+  ## migrate to the new format.
+  ##
+  ## If you do not have existing metrics from this plugin set to the latest
+  ## version.
+  ##
+  ## Telegraf >=1.6: metric_version = 2
+  ##           <1.6: metric_version = 1 (or unset)
+  metric_version = {{ telegraf_inputs_mysql_metric_version|d() }}
+
+  ## if the list is empty, then metrics are gathered from all database tables
+  {{ '#' if telegraf_inputs_mysql_table_schema_databases is not defined }}table_schema_databases = [ {% for i in telegraf_inputs_mysql_table_schema_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## gather metrics from INFORMATION_SCHEMA.TABLES for databases provided above list
+  {{ '#' if telegraf_inputs_mysql_gather_table_schema is not defined }}gather_table_schema = {{ telegraf_inputs_mysql_gather_table_schema|d()|bool|lower }}
+
+  ## gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST
+  {{ '#' if telegraf_inputs_mysql_gather_process_list is not defined }}gather_process_list = {{ telegraf_inputs_mysql_gather_process_list|d()|bool|lower }}
+
+  ## gather user statistics from INFORMATION_SCHEMA.USER_STATISTICS
+  {{ '#' if telegraf_inputs_mysql_gather_user_statistics is not defined }}gather_user_statistics = {{ telegraf_inputs_mysql_gather_user_statistics|d()|bool|lower }}
+
+  ## gather auto_increment columns and max values from information schema
+  {{ '#' if telegraf_inputs_mysql_gather_info_schema_auto_inc is not defined }}gather_info_schema_auto_inc = {{ telegraf_inputs_mysql_gather_info_schema_auto_inc|d()|bool|lower }}
+
+  ## gather metrics from INFORMATION_SCHEMA.INNODB_METRICS
+  {{ '#' if telegraf_inputs_mysql_gather_innodb_metrics is not defined }}gather_innodb_metrics = {{ telegraf_inputs_mysql_gather_innodb_metrics|d()|bool|lower }}
+
+  ## gather metrics from SHOW SLAVE STATUS command output
+  {{ '#' if telegraf_inputs_mysql_gather_slave_status is not defined }}gather_slave_status = {{ telegraf_inputs_mysql_gather_slave_status|d()|bool|lower }}
+
+  ## gather metrics from SHOW BINARY LOGS command output
+  {{ '#' if telegraf_inputs_mysql_gather_binary_logs is not defined }}gather_binary_logs = {{ telegraf_inputs_mysql_gather_binary_logs|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.GLOBAL_VARIABLES
+  {{ '#' if telegraf_inputs_mysql_gather_global_variables is not defined }}gather_global_variables = {{ telegraf_inputs_mysql_gather_global_variables|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE
+  {{ '#' if telegraf_inputs_mysql_gather_table_io_waits is not defined }}gather_table_io_waits = {{ telegraf_inputs_mysql_gather_table_io_waits|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS
+  {{ '#' if telegraf_inputs_mysql_gather_table_lock_waits is not defined }}gather_table_lock_waits = {{ telegraf_inputs_mysql_gather_table_lock_waits|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE
+  {{ '#' if telegraf_inputs_mysql_gather_index_io_waits is not defined }}gather_index_io_waits = {{ telegraf_inputs_mysql_gather_index_io_waits|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS
+  {{ '#' if telegraf_inputs_mysql_gather_event_waits is not defined }}gather_event_waits = {{ telegraf_inputs_mysql_gather_event_waits|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME
+  {{ '#' if telegraf_inputs_mysql_gather_file_events_stats is not defined }}gather_file_events_stats = {{ telegraf_inputs_mysql_gather_file_events_stats|d()|bool|lower }}
+
+  ## gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST
+  {{ '#' if telegraf_inputs_mysql_gather_perf_events_statements is not defined }}gather_perf_events_statements = {{ telegraf_inputs_mysql_gather_perf_events_statements|d()|bool|lower }}
+
+  ## the limits for metrics form perf_events_statements
+  {{ '#' if telegraf_inputs_mysql_perf_events_statements_digest_text_limit is not defined }}perf_events_statements_digest_text_limit = {{ telegraf_inputs_mysql_perf_events_statements_digest_text_limit|d() }}
+  {{ '#' if telegraf_inputs_mysql_perf_events_statements_limit is not defined }}perf_events_statements_limit = {{ telegraf_inputs_mysql_perf_events_statements_limit|d() }}
+  {{ '#' if telegraf_inputs_mysql_perf_events_statements_time_limit is not defined }}perf_events_statements_time_limit = {{ telegraf_inputs_mysql_perf_events_statements_time_limit|d() }}
+
+  ## Some queries we may want to run less often (such as SHOW GLOBAL VARIABLES)
+  ##   example: interval_slow = "30m"
+  {{ '#' if telegraf_inputs_mysql_interval_slow is not defined }}interval_slow = "{{ telegraf_inputs_mysql_interval_slow|d() }}"
+
+  ## Optional TLS Config (will be used if tls=custom parameter specified in server uri)
+  {{ '#' if telegraf_inputs_mysql_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_mysql_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_mysql_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_mysql_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_mysql_tls_key is not defined }}tls_key = "{{ telegraf_inputs_mysql_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_mysql_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_mysql_insecure_skip_verify|d()|bool|lower }}

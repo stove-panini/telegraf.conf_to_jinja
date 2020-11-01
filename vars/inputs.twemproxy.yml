@@ -1,0 +1,2 @@
+telegraf_inputs_twemproxy_addr: "localhost:22222"
+telegraf_inputs_twemproxy_pools: ["redis_pool", "mc_pool"]

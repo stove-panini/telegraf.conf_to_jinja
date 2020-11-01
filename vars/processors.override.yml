@@ -1,0 +1,4 @@
+#telegraf_processors_override_name_override: "new_name"
+#telegraf_processors_override_name_prefix: "new_name_prefix"
+#telegraf_processors_override_name_suffix: "new_name_suffix"
+#telegraf_processors_override_tags_additional_tag: "tag_value"

@@ -1,0 +1,10 @@
+# Configuration for DataDog API to send metrics to.
+[[outputs.datadog]]
+  ## Datadog API key
+  apikey = "{{ telegraf_outputs_datadog_apikey|d() }}"
+
+  ## Connection timeout.
+  {{ '#' if telegraf_outputs_datadog_timeout is not defined }}timeout = "{{ telegraf_outputs_datadog_timeout|d() }}"
+
+  ## Write URL override; useful for debugging.
+  {{ '#' if telegraf_outputs_datadog_url is not defined }}url = "{{ telegraf_outputs_datadog_url|d() }}"

@@ -1,0 +1,2 @@
+#telegraf_inputs_nvidia_smi_bin_path: "/usr/bin/nvidia-smi"
+#telegraf_inputs_nvidia_smi_timeout: "5s"

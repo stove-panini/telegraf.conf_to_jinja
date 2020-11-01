@@ -1,0 +1,13 @@
+telegraf_inputs_kube_inventory_url: "https://127.0.0.1"
+#telegraf_inputs_kube_inventory_namespace: "default"
+#telegraf_inputs_kube_inventory_bearer_token: "/path/to/bearer/token"
+#telegraf_inputs_kube_inventory_bearer_token_string: "abc_123"
+#telegraf_inputs_kube_inventory_response_timeout: "5s"
+#telegraf_inputs_kube_inventory_resource_exclude: [ "deployments", "nodes", "statefulsets" ]
+#telegraf_inputs_kube_inventory_resource_include: [ "deployments", "nodes", "statefulsets" ]
+#telegraf_inputs_kube_inventory_selector_include: []
+#telegraf_inputs_kube_inventory_selector_exclude: ["*"]
+#telegraf_inputs_kube_inventory_tls_ca: "/path/to/cafile"
+#telegraf_inputs_kube_inventory_tls_cert: "/path/to/certfile"
+#telegraf_inputs_kube_inventory_tls_key: "/path/to/keyfile"
+#telegraf_inputs_kube_inventory_insecure_skip_verify: no

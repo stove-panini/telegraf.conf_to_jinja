@@ -1,0 +1,14 @@
+telegraf_inputs_jenkins_url: "http://my-jenkins-instance:8080"
+#telegraf_inputs_jenkins_username: "admin"
+#telegraf_inputs_jenkins_password: "admin"
+telegraf_inputs_jenkins_response_timeout: "5s"
+#telegraf_inputs_jenkins_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_jenkins_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_jenkins_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_jenkins_insecure_skip_verify: no
+#telegraf_inputs_jenkins_max_build_age: "1h"
+#telegraf_inputs_jenkins_max_subjob_depth: 0
+#telegraf_inputs_jenkins_max_subjob_per_layer: 10
+#telegraf_inputs_jenkins_job_exclude: [ "job1", "job2/subjob1/subjob2", "job3/*"]
+#telegraf_inputs_jenkins_node_exclude: [ "node1", "node2" ]
+#telegraf_inputs_jenkins_max_connections: 5

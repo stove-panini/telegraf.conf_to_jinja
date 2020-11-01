@@ -1,0 +1,13 @@
+# Configuration for sending metrics to an Instrumental project
+[[outputs.instrumental]]
+  ## Project API Token (required)
+  api_token = "{{ telegraf_outputs_instrumental_api_token|d() }}"
+  ## Prefix the metrics with a given name
+  prefix = "{{ telegraf_outputs_instrumental_prefix|d() }}"
+  ## Stats output template (Graphite formatting)
+  ## see https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#graphite
+  template = "{{ telegraf_outputs_instrumental_template|d() }}"
+  ## Timeout in seconds to connect
+  timeout = "{{ telegraf_outputs_instrumental_timeout|d() }}"
+  ## Display Communication to Instrumental
+  debug = {{ telegraf_outputs_instrumental_debug|d()|bool|lower }}

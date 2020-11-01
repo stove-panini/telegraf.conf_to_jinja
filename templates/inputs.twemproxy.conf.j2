@@ -1,0 +1,6 @@
+# Read Twemproxy stats data
+[[inputs.twemproxy]]
+  ## Twemproxy stats address and port (no scheme)
+  addr = "{{ telegraf_inputs_twemproxy_addr|d() }}"
+  ## Monitor pool name
+  pools = [ {% for i in telegraf_inputs_twemproxy_pools|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

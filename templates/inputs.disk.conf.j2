@@ -1,0 +1,8 @@
+# Read metrics about disk usage by mount point
+[[inputs.disk]]
+  ## By default stats will be gathered for all mount points.
+  ## Set mount_points will restrict the stats to only the specified mount points.
+  {{ '#' if telegraf_inputs_disk_mount_points is not defined }}mount_points = [ {% for i in telegraf_inputs_disk_mount_points|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Ignore mount points by filesystem type.
+  ignore_fs = [ {% for i in telegraf_inputs_disk_ignore_fs|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

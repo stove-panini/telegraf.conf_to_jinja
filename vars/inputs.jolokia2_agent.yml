@@ -1,0 +1,14 @@
+#telegraf_inputs_jolokia2_agent_default_tag_prefix     : ""
+#telegraf_inputs_jolokia2_agent_default_field_prefix   : ""
+#telegraf_inputs_jolokia2_agent_default_field_separator: "."
+telegraf_inputs_jolokia2_agent_urls: ["http://localhost:8080/jolokia"]
+#telegraf_inputs_jolokia2_agent_username: ""
+#telegraf_inputs_jolokia2_agent_password: ""
+#telegraf_inputs_jolokia2_agent_response_timeout: "5s"
+#telegraf_inputs_jolokia2_agent_tls_ca  : "/var/private/ca.pem"
+#telegraf_inputs_jolokia2_agent_tls_cert: "/var/private/client.pem"
+#telegraf_inputs_jolokia2_agent_tls_key : "/var/private/client-key.pem"
+#telegraf_inputs_jolokia2_agent_insecure_skip_verify: no
+telegraf_inputs_jolokia2_agent_name : "java_runtime"
+telegraf_inputs_jolokia2_agent_mbean: "java.lang:type=Runtime"
+telegraf_inputs_jolokia2_agent_paths: ["Uptime"]

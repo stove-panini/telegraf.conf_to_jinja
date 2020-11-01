@@ -1,0 +1,11 @@
+# Read NSQ topic and channel statistics.
+[[inputs.nsq]]
+  ## An array of NSQD HTTP API endpoints
+  endpoints  = [ {% for i in telegraf_inputs_nsq_endpoints |d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_nsq_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_nsq_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_nsq_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_nsq_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_nsq_tls_key is not defined }}tls_key = "{{ telegraf_inputs_nsq_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_nsq_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_nsq_insecure_skip_verify|d()|bool|lower }}

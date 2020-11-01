@@ -1,0 +1,2 @@
+telegraf_inputs_nats_server: "http://localhost:8222"
+#telegraf_inputs_nats_response_timeout: "5s"

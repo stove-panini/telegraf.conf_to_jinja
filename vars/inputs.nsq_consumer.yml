@@ -1,0 +1,8 @@
+#telegraf_inputs_nsq_consumer_server: "localhost:4150"
+telegraf_inputs_nsq_consumer_nsqd: ["localhost:4150"]
+telegraf_inputs_nsq_consumer_nsqlookupd: ["localhost:4161"]
+telegraf_inputs_nsq_consumer_topic: "telegraf"
+telegraf_inputs_nsq_consumer_channel: "consumer"
+telegraf_inputs_nsq_consumer_max_in_flight: 100
+#telegraf_inputs_nsq_consumer_max_undelivered_messages: 1000
+telegraf_inputs_nsq_consumer_data_format: "influx"

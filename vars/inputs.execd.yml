@@ -1,0 +1,4 @@
+telegraf_inputs_execd_command: ["telegraf-smartctl", "-d", "/dev/sda"]
+telegraf_inputs_execd_signal: "none"
+telegraf_inputs_execd_restart_delay: "10s"
+telegraf_inputs_execd_data_format: "influx"

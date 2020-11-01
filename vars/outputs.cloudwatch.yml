@@ -1,0 +1,11 @@
+telegraf_outputs_cloudwatch_region: "us-east-1"
+telegraf_outputs_cloudwatch_access_key: ""
+telegraf_outputs_cloudwatch_secret_key: ""
+telegraf_outputs_cloudwatch_token: ""
+telegraf_outputs_cloudwatch_role_arn: ""
+telegraf_outputs_cloudwatch_profile: ""
+telegraf_outputs_cloudwatch_shared_credential_file: ""
+#telegraf_outputs_cloudwatch_endpoint_url: ""
+telegraf_outputs_cloudwatch_namespace: "InfluxData/Telegraf"
+#telegraf_outputs_cloudwatch_write_statistics: no
+#telegraf_outputs_cloudwatch_high_resolution_metrics: no

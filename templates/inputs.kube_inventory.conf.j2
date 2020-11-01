@@ -1,0 +1,40 @@
+# Read metrics from the Kubernetes api
+[[inputs.kube_inventory]]
+  ## URL for the Kubernetes API
+  url = "{{ telegraf_inputs_kube_inventory_url|d() }}"
+
+  ## Namespace to use. Set to "" to use all namespaces.
+  {{ '#' if telegraf_inputs_kube_inventory_namespace is not defined }}namespace = "{{ telegraf_inputs_kube_inventory_namespace|d() }}"
+
+  ## Use bearer token for authorization. ('bearer_token' takes priority)
+  ## If both of these are empty, we'll use the default serviceaccount:
+  ## at: /run/secrets/kubernetes.io/serviceaccount/token
+  {{ '#' if telegraf_inputs_kube_inventory_bearer_token is not defined }}bearer_token = "{{ telegraf_inputs_kube_inventory_bearer_token|d() }}"
+  ## OR
+  {{ '#' if telegraf_inputs_kube_inventory_bearer_token_string is not defined }}bearer_token_string = "{{ telegraf_inputs_kube_inventory_bearer_token_string|d() }}"
+
+  ## Set response_timeout (default 5 seconds)
+  {{ '#' if telegraf_inputs_kube_inventory_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_kube_inventory_response_timeout|d() }}"
+
+  ## Optional Resources to exclude from gathering
+  ## Leave them with blank with try to gather everything available.
+  ## Values can be - "daemonsets", deployments", "endpoints", "ingress", "nodes",
+  ## "persistentvolumes", "persistentvolumeclaims", "pods", "services", "statefulsets"
+  {{ '#' if telegraf_inputs_kube_inventory_resource_exclude is not defined }}resource_exclude = [ {% for i in telegraf_inputs_kube_inventory_resource_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional Resources to include when gathering
+  ## Overrides resource_exclude if both set.
+  {{ '#' if telegraf_inputs_kube_inventory_resource_include is not defined }}resource_include = [ {% for i in telegraf_inputs_kube_inventory_resource_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## selectors to include and exclude as tags.  Globs accepted.
+  ## Note that an empty array for both will include all selectors as tags
+  ## selector_exclude overrides selector_include if both set.
+  {{ '#' if telegraf_inputs_kube_inventory_selector_include is not defined }}selector_include = [ {% for i in telegraf_inputs_kube_inventory_selector_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_kube_inventory_selector_exclude is not defined }}selector_exclude = [ {% for i in telegraf_inputs_kube_inventory_selector_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_kube_inventory_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_kube_inventory_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_kube_inventory_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_kube_inventory_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_kube_inventory_tls_key is not defined }}tls_key = "{{ telegraf_inputs_kube_inventory_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_kube_inventory_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_kube_inventory_insecure_skip_verify|d()|bool|lower }}

@@ -1,0 +1,8 @@
+#telegraf_inputs_ecs_endpoint_url: ""
+#telegraf_inputs_ecs_container_name_include: []
+#telegraf_inputs_ecs_container_name_exclude: []
+#telegraf_inputs_ecs_container_status_include: []
+#telegraf_inputs_ecs_container_status_exclude: []
+telegraf_inputs_ecs_ecs_label_include: [ "com.amazonaws.ecs.*" ]
+telegraf_inputs_ecs_ecs_label_exclude: []
+#telegraf_inputs_ecs_timeout: "5s"

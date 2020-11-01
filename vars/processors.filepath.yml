@@ -1,0 +1,8 @@
+#telegraf_processors_filepath_tag: "path"
+#telegraf_processors_filepath_dest: "basepath"
+#telegraf_processors_filepath_field: "path"
+#telegraf_processors_filepath_tag: "path"
+#telegraf_processors_filepath_tag: "path"
+#telegraf_processors_filepath_tag: "path"
+#telegraf_processors_filepath_base_path: "/var/log"
+#telegraf_processors_filepath_tag: "path"

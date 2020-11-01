@@ -1,0 +1,6 @@
+telegraf_outputs_stackdriver_project: "erudite-bloom-151019"
+telegraf_outputs_stackdriver_namespace: "telegraf"
+#telegraf_outputs_stackdriver_resource_type: "generic_node"
+#telegraf_outputs_stackdriver_resource_labels_node_id: "$HOSTNAME"
+#telegraf_outputs_stackdriver_resource_labels_namespace: "myapp"
+#telegraf_outputs_stackdriver_resource_labels_location: "eu-north0"

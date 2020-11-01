@@ -1,0 +1,12 @@
+telegraf_inputs_cloud_pubsub_project: "my-project"
+telegraf_inputs_cloud_pubsub_subscription: "my-subscription"
+telegraf_inputs_cloud_pubsub_data_format: "influx"
+#telegraf_inputs_cloud_pubsub_credentials_file: "path/to/my/creds.json"
+#telegraf_inputs_cloud_pubsub_retry_delay_seconds: 5
+#telegraf_inputs_cloud_pubsub_max_message_len: 1000000
+#telegraf_inputs_cloud_pubsub_max_undelivered_messages: 1000
+#telegraf_inputs_cloud_pubsub_max_extension: 0
+#telegraf_inputs_cloud_pubsub_max_outstanding_messages: 0
+#telegraf_inputs_cloud_pubsub_max_outstanding_bytes: 0
+#telegraf_inputs_cloud_pubsub_max_receiver_go_routines: 0
+#telegraf_inputs_cloud_pubsub_base64_data: no

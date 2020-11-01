@@ -1,0 +1,9 @@
+telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_servers: ["mongodb://127.0.0.1:27017"]
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_cluster_status: yes
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_perdb_stats: no
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_col_stats: no
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_col_stats_dbs: ["local"]
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_insecure_skip_verify: no

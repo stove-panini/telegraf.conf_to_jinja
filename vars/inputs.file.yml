@@ -1,0 +1,4 @@
+telegraf_inputs_file_files: ["/tmp/metrics.out"]
+#telegraf_inputs_file_file_tag: ""
+#telegraf_inputs_file_character_encoding: ""
+telegraf_inputs_file_data_format: "influx"

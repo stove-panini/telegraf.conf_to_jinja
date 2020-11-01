@@ -1,0 +1,14 @@
+telegraf_inputs_http_listener_v2_service_address: ":8080"
+#telegraf_inputs_http_listener_v2_path: "/telegraf"
+#telegraf_inputs_http_listener_v2_methods: ["POST", "PUT"]
+#telegraf_inputs_http_listener_v2_read_timeout: "10s"
+#telegraf_inputs_http_listener_v2_write_timeout: "10s"
+#telegraf_inputs_http_listener_v2_max_body_size: "500MB"
+#telegraf_inputs_http_listener_v2_data_source: "body"
+#telegraf_inputs_http_listener_v2_tls_allowed_cacerts: ["/etc/telegraf/clientca.pem"]
+#telegraf_inputs_http_listener_v2_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_http_listener_v2_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_http_listener_v2_basic_username: "foobar"
+#telegraf_inputs_http_listener_v2_basic_password: "barfoo"
+#telegraf_inputs_http_listener_v2_http_header_tags: {HTTP_HEADER: TAG_NAME}
+telegraf_inputs_http_listener_v2_data_format: "influx"

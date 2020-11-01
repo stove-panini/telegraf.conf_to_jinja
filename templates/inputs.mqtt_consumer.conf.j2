@@ -1,0 +1,68 @@
+# Read metrics from MQTT topic(s)
+[[inputs.mqtt_consumer]]
+  ## Broker URLs for the MQTT server or cluster.  To connect to multiple
+  ## clusters or standalone servers, use a seperate plugin instance.
+  ##   example: servers = ["tcp://localhost:1883"]
+  ##            servers = ["ssl://localhost:1883"]
+  ##            servers = ["ws://localhost:1883"]
+  servers = [ {% for i in telegraf_inputs_mqtt_consumer_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Topics that will be subscribed to.
+  topics = [ {% for i in telegraf_inputs_mqtt_consumer_topics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    "telegraf/host01/cpu",
+    "telegraf/+/mem",
+    "sensors/#",
+  ]
+
+  ## The message topic will be stored in a tag specified by this value.  If set
+  ## to the empty string no topic tag will be created.
+  {{ '#' if telegraf_inputs_mqtt_consumer_topic_tag is not defined }}topic_tag = "{{ telegraf_inputs_mqtt_consumer_topic_tag|d() }}"
+
+  ## QoS policy for messages
+  ##   0 = at most once
+  ##   1 = at least once
+  ##   2 = exactly once
+  ##
+  ## When using a QoS of 1 or 2, you should enable persistent_session to allow
+  ## resuming unacknowledged messages.
+  {{ '#' if telegraf_inputs_mqtt_consumer_qos is not defined }}qos = {{ telegraf_inputs_mqtt_consumer_qos|d() }}
+
+  ## Connection timeout for initial connection in seconds
+  {{ '#' if telegraf_inputs_mqtt_consumer_connection_timeout is not defined }}connection_timeout = "{{ telegraf_inputs_mqtt_consumer_connection_timeout|d() }}"
+
+  ## Maximum messages to read from the broker that have not been written by an
+  ## output.  For best throughput set based on the number of metrics within
+  ## each message and the size of the output's metric_batch_size.
+  ##
+  ## For example, if each message from the queue contains 10 metrics and the
+  ## output metric_batch_size is 1000, setting this to 100 will ensure that a
+  ## full batch is collected and the write is triggered immediately without
+  ## waiting until the next flush_interval.
+  {{ '#' if telegraf_inputs_mqtt_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_mqtt_consumer_max_undelivered_messages|d() }}
+
+  ## Persistent session disables clearing of the client session on connection.
+  ## In order for this option to work you must also set client_id to identify
+  ## the client.  To receive messages that arrived while the client is offline,
+  ## also set the qos option to 1 or 2 and don't forget to also set the QoS when
+  ## publishing.
+  {{ '#' if telegraf_inputs_mqtt_consumer_persistent_session is not defined }}persistent_session = {{ telegraf_inputs_mqtt_consumer_persistent_session|d()|bool|lower }}
+
+  ## If unset, a random client ID will be generated.
+  {{ '#' if telegraf_inputs_mqtt_consumer_client_id is not defined }}client_id = "{{ telegraf_inputs_mqtt_consumer_client_id|d() }}"
+
+  ## Username and password to connect MQTT server.
+  {{ '#' if telegraf_inputs_mqtt_consumer_username is not defined }}username = "{{ telegraf_inputs_mqtt_consumer_username|d() }}"
+  {{ '#' if telegraf_inputs_mqtt_consumer_password is not defined }}password = "{{ telegraf_inputs_mqtt_consumer_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_mqtt_consumer_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_mqtt_consumer_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_mqtt_consumer_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_mqtt_consumer_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_mqtt_consumer_tls_key is not defined }}tls_key = "{{ telegraf_inputs_mqtt_consumer_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_mqtt_consumer_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_mqtt_consumer_insecure_skip_verify|d()|bool|lower }}
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_mqtt_consumer_data_format|d() }}"

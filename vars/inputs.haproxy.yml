@@ -1,0 +1,9 @@
+telegraf_inputs_haproxy_servers: ["http://myhaproxy.com:1936/haproxy?stats"]
+#telegraf_inputs_haproxy_username: "admin"
+#telegraf_inputs_haproxy_password: "admin"
+#telegraf_inputs_haproxy_servers: ["socket:/run/haproxy/admin.sock", "/run/haproxy/*.sock"]
+#telegraf_inputs_haproxy_keep_field_names: no
+#telegraf_inputs_haproxy_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_haproxy_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_haproxy_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_haproxy_insecure_skip_verify: no

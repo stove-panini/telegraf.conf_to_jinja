@@ -1,0 +1,4 @@
+telegraf_inputs_exec_commands: []
+telegraf_inputs_exec_timeout: "5s"
+telegraf_inputs_exec_name_suffix: "_mycollector"
+telegraf_inputs_exec_data_format: "influx"

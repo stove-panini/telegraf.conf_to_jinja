@@ -1,0 +1,23 @@
+# Read JMX metrics from a Jolokia REST agent endpoint
+[[inputs.jolokia2_agent]]
+  {{ '#' if telegraf_inputs_jolokia2_agent_default_tag_prefix      is not defined }}default_tag_prefix      = "{{ telegraf_inputs_jolokia2_agent_default_tag_prefix     |d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_default_field_prefix    is not defined }}default_field_prefix    = "{{ telegraf_inputs_jolokia2_agent_default_field_prefix   |d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_default_field_separator is not defined }}default_field_separator = "{{ telegraf_inputs_jolokia2_agent_default_field_separator|d() }}"
+
+  # Add agents URLs to query
+  urls = [ {% for i in telegraf_inputs_jolokia2_agent_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_jolokia2_agent_username is not defined }}username = "{{ telegraf_inputs_jolokia2_agent_username|d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_password is not defined }}password = "{{ telegraf_inputs_jolokia2_agent_password|d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_jolokia2_agent_response_timeout|d() }}"
+
+  ## Optional TLS config
+  {{ '#' if telegraf_inputs_jolokia2_agent_tls_ca   is not defined }}tls_ca   = "{{ telegraf_inputs_jolokia2_agent_tls_ca  |d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_jolokia2_agent_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_tls_key  is not defined }}tls_key  = "{{ telegraf_inputs_jolokia2_agent_tls_key |d() }}"
+  {{ '#' if telegraf_inputs_jolokia2_agent_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_jolokia2_agent_insecure_skip_verify|d()|bool|lower }}
+
+  ## Add metrics to read
+  [[inputs.jolokia2_agent.metric]]
+  name  = "{{ telegraf_inputs_jolokia2_agent_name |d() }}"
+  mbean = "{{ telegraf_inputs_jolokia2_agent_mbean|d() }}"
+  paths = [ {% for i in telegraf_inputs_jolokia2_agent_paths|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

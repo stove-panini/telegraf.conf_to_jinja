@@ -1,0 +1,23 @@
+# Aggregates the contents of multiple files into a single point
+[[inputs.multifile]]
+  ## Base directory where telegraf will look for files.
+  ## Omit this option to use absolute paths.
+  base_dir = "{{ telegraf_inputs_multifile_base_dir|d() }}"
+
+  ## If true, Telegraf discard all data when a single file can't be read.
+  ## Else, Telegraf omits the field generated from this file.
+  {{ '#' if telegraf_inputs_multifile_fail_early is not defined }}fail_early = {{ telegraf_inputs_multifile_fail_early|d()|bool|lower }}
+
+  ## Files to parse each interval.
+  [[inputs.multifile.file]]
+  file = "{{ telegraf_inputs_multifile_file|d() }}"
+  dest = "{{ telegraf_inputs_multifile_dest|d() }}"
+  conversion = "{{ telegraf_inputs_multifile_conversion|d() }}"
+  [[inputs.multifile.file]]
+  file = "{{ telegraf_inputs_multifile_file|d() }}"
+  dest = "{{ telegraf_inputs_multifile_dest|d() }}"
+  conversion = "{{ telegraf_inputs_multifile_conversion|d() }}"
+  [[inputs.multifile.file]]
+  file = "{{ telegraf_inputs_multifile_file|d() }}"
+  dest = "{{ telegraf_inputs_multifile_dest|d() }}"
+  conversion = "{{ telegraf_inputs_multifile_conversion|d() }}"

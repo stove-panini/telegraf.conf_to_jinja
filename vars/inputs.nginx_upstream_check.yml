@@ -1,0 +1,11 @@
+telegraf_inputs_nginx_upstream_check_url: "http://127.0.0.1/status?format=json"
+#telegraf_inputs_nginx_upstream_check_method: "GET"
+#telegraf_inputs_nginx_upstream_check_headers: {X-Special-Header: Special-Value}
+#telegraf_inputs_nginx_upstream_check_host_header: "check.example.com"
+telegraf_inputs_nginx_upstream_check_timeout: "5s"
+#telegraf_inputs_nginx_upstream_check_username: "username"
+#telegraf_inputs_nginx_upstream_check_password: "pa$$word"
+#telegraf_inputs_nginx_upstream_check_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_nginx_upstream_check_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_nginx_upstream_check_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_nginx_upstream_check_insecure_skip_verify: no

@@ -1,0 +1,24 @@
+#telegraf_outputs_influxdb_urls: ["unix:///var/run/influxdb.sock"]
+#telegraf_outputs_influxdb_urls: ["udp://127.0.0.1:8089"]
+#telegraf_outputs_influxdb_urls: ["http://127.0.0.1:8086"]
+#telegraf_outputs_influxdb_database: "telegraf"
+#telegraf_outputs_influxdb_database_tag: ""
+#telegraf_outputs_influxdb_exclude_database_tag: no
+#telegraf_outputs_influxdb_skip_database_creation: no
+#telegraf_outputs_influxdb_retention_policy: ""
+#telegraf_outputs_influxdb_retention_policy_tag: ""
+#telegraf_outputs_influxdb_exclude_retention_policy_tag: no
+#telegraf_outputs_influxdb_write_consistency: "any"
+#telegraf_outputs_influxdb_timeout: "5s"
+#telegraf_outputs_influxdb_username: "telegraf"
+#telegraf_outputs_influxdb_password: "metricsmetricsmetricsmetrics"
+#telegraf_outputs_influxdb_user_agent: "telegraf"
+#telegraf_outputs_influxdb_udp_payload: "512B"
+#telegraf_outputs_influxdb_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_influxdb_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_influxdb_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_influxdb_insecure_skip_verify: no
+#telegraf_outputs_influxdb_http_proxy: "http://corporate.proxy:3128"
+#telegraf_outputs_influxdb_http_headers: {X-Special-Header: Special-Value}
+#telegraf_outputs_influxdb_content_encoding: "identity"
+#telegraf_outputs_influxdb_influx_uint_support: no

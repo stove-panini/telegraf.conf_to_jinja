@@ -1,0 +1,63 @@
+# Read metrics from Kafka topics
+[[inputs.kafka_consumer]]
+  ## Kafka brokers.
+  brokers = [ {% for i in telegraf_inputs_kafka_consumer_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Topics to consume.
+  topics = [ {% for i in telegraf_inputs_kafka_consumer_topics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## When set this tag will be added to all metrics with the topic as the value.
+  {{ '#' if telegraf_inputs_kafka_consumer_topic_tag is not defined }}topic_tag = "{{ telegraf_inputs_kafka_consumer_topic_tag|d() }}"
+
+  ## Optional Client id
+  {{ '#' if telegraf_inputs_kafka_consumer_client_id is not defined }}client_id = "{{ telegraf_inputs_kafka_consumer_client_id|d() }}"
+
+  ## Set the minimal supported Kafka version.  Setting this enables the use of new
+  ## Kafka features and APIs.  Must be 0.10.2.0 or greater.
+  ##   ex: version = "1.1.0"
+  {{ '#' if telegraf_inputs_kafka_consumer_version is not defined }}version = "{{ telegraf_inputs_kafka_consumer_version|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_kafka_consumer_enable_tls is not defined }}enable_tls = {{ telegraf_inputs_kafka_consumer_enable_tls|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_kafka_consumer_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_kafka_consumer_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_kafka_consumer_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_kafka_consumer_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_kafka_consumer_tls_key is not defined }}tls_key = "{{ telegraf_inputs_kafka_consumer_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_kafka_consumer_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_kafka_consumer_insecure_skip_verify|d()|bool|lower }}
+
+  ## SASL authentication credentials.  These settings should typically be used
+  ## with TLS encryption enabled using the "enable_tls" option.
+  {{ '#' if telegraf_inputs_kafka_consumer_sasl_username is not defined }}sasl_username = "{{ telegraf_inputs_kafka_consumer_sasl_username|d() }}"
+  {{ '#' if telegraf_inputs_kafka_consumer_sasl_password is not defined }}sasl_password = "{{ telegraf_inputs_kafka_consumer_sasl_password|d() }}"
+
+  ## SASL protocol version.  When connecting to Azure EventHub set to 0.
+  {{ '#' if telegraf_inputs_kafka_consumer_sasl_version is not defined }}sasl_version = {{ telegraf_inputs_kafka_consumer_sasl_version|d() }}
+
+  ## Name of the consumer group.
+  {{ '#' if telegraf_inputs_kafka_consumer_consumer_group is not defined }}consumer_group = "{{ telegraf_inputs_kafka_consumer_consumer_group|d() }}"
+
+  ## Initial offset position; one of "oldest" or "newest".
+  {{ '#' if telegraf_inputs_kafka_consumer_offset is not defined }}offset = "{{ telegraf_inputs_kafka_consumer_offset|d() }}"
+
+  ## Consumer group partition assignment strategy; one of "range", "roundrobin" or "sticky".
+  {{ '#' if telegraf_inputs_kafka_consumer_balance_strategy is not defined }}balance_strategy = "{{ telegraf_inputs_kafka_consumer_balance_strategy|d() }}"
+
+  ## Maximum length of a message to consume, in bytes (default 0/unlimited);
+  ## larger messages are dropped
+  max_message_len = {{ telegraf_inputs_kafka_consumer_max_message_len|d() }}
+
+  ## Maximum messages to read from the broker that have not been written by an
+  ## output.  For best throughput set based on the number of metrics within
+  ## each message and the size of the output's metric_batch_size.
+  ##
+  ## For example, if each message from the queue contains 10 metrics and the
+  ## output metric_batch_size is 1000, setting this to 100 will ensure that a
+  ## full batch is collected and the write is triggered immediately without
+  ## waiting until the next flush_interval.
+  {{ '#' if telegraf_inputs_kafka_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_kafka_consumer_max_undelivered_messages|d() }}
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_kafka_consumer_data_format|d() }}"

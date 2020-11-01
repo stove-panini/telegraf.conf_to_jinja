@@ -1,0 +1,4 @@
+telegraf_processors_parser_parse_fields: []
+telegraf_processors_parser_drop_original: no
+telegraf_processors_parser_merge: "override"
+telegraf_processors_parser_data_format: "influx"

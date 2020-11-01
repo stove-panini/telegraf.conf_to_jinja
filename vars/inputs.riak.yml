@@ -1,0 +1,1 @@
+telegraf_inputs_riak_servers: ["http://localhost:8098"]

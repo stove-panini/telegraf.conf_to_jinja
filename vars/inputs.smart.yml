@@ -1,0 +1,7 @@
+#telegraf_inputs_smart_path: "/usr/bin/smartctl"
+#telegraf_inputs_smart_use_sudo: no
+#telegraf_inputs_smart_nocheck: "standby"
+#telegraf_inputs_smart_attributes: no
+#telegraf_inputs_smart_excludes: [ "/dev/pass6" ]
+#telegraf_inputs_smart_devices: [ "/dev/ada0 -d atacam" ]
+#telegraf_inputs_smart_timeout: "30s"

@@ -1,0 +1,14 @@
+telegraf_outputs_syslog_address: "tcp://127.0.0.1:8094"
+#telegraf_outputs_syslog_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_syslog_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_syslog_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_syslog_insecure_skip_verify: no
+#telegraf_outputs_syslog_keep_alive_period: "5m"
+#telegraf_outputs_syslog_framing: "octet-counting"
+#telegraf_outputs_syslog_trailer: "LF"
+#telegraf_outputs_syslog_sdparam_separator: "_"
+#telegraf_outputs_syslog_default_sdid: "default@32473"
+#telegraf_outputs_syslog_sdids: ["foo@123", "bar@456"]
+#telegraf_outputs_syslog_default_severity_code: 5
+#telegraf_outputs_syslog_default_facility_code: 1
+#telegraf_outputs_syslog_default_appname: "Telegraf"

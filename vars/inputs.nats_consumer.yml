@@ -1,0 +1,15 @@
+telegraf_inputs_nats_consumer_servers: ["nats://localhost:4222"]
+telegraf_inputs_nats_consumer_subjects: ["telegraf"]
+telegraf_inputs_nats_consumer_queue_group: "telegraf_consumers"
+#telegraf_inputs_nats_consumer_username: ""
+#telegraf_inputs_nats_consumer_password: ""
+#telegraf_inputs_nats_consumer_credentials: "/etc/telegraf/nats.creds"
+#telegraf_inputs_nats_consumer_secure: no
+#telegraf_inputs_nats_consumer_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_nats_consumer_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_nats_consumer_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_nats_consumer_insecure_skip_verify: no
+#telegraf_inputs_nats_consumer_pending_message_limit: 65536
+#telegraf_inputs_nats_consumer_pending_bytes_limit: 67108864
+#telegraf_inputs_nats_consumer_max_undelivered_messages: 1000
+telegraf_inputs_nats_consumer_data_format: "influx"

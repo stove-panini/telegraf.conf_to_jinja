@@ -1,0 +1,4 @@
+# Filter metrics with repeating field values
+[[processors.dedup]]
+  ## Maximum time to suppress output
+  dedup_interval = "{{ telegraf_processors_dedup_dedup_interval|d() }}"

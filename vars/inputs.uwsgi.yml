@@ -1,0 +1,2 @@
+telegraf_inputs_uwsgi_  ## scheme://address[:port_servers: ["tcp://127.0.0.1:1717"]
+#telegraf_inputs_uwsgi_  ## scheme://address[:port_timeout: "5s"

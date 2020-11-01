@@ -1,0 +1,6 @@
+telegraf_inputs_nginx_urls: ["http://localhost/server_status"]
+telegraf_inputs_nginx_tls_ca: "/etc/telegraf/ca.pem"
+telegraf_inputs_nginx_tls_cert: "/etc/telegraf/cert.cer"
+telegraf_inputs_nginx_tls_key: "/etc/telegraf/key.key"
+telegraf_inputs_nginx_insecure_skip_verify: no
+telegraf_inputs_nginx_response_timeout: "5s"

@@ -1,0 +1,23 @@
+# A Webhooks Event collector
+[[inputs.webhooks]]
+  ## Address and port to host Webhook listener on
+  service_address = "{{ telegraf_inputs_webhooks_service_address|d() }}"
+
+  [inputs.webhooks.filestack]
+    path = "{{ telegraf_inputs_webhooks_filestack_path|d() }}"
+
+  [inputs.webhooks.github]
+    path = "{{ telegraf_inputs_webhooks_github_path|d() }}"
+    {{ '#' if telegraf_inputs_webhooks_github_secret is not defined }}secret = "{{ telegraf_inputs_webhooks_github_secret|d() }}"
+
+  [inputs.webhooks.mandrill]
+    path = "{{ telegraf_inputs_webhooks_mandrill_path|d() }}"
+
+  [inputs.webhooks.rollbar]
+    path = "{{ telegraf_inputs_webhooks_rollbar_path|d() }}"
+
+  [inputs.webhooks.papertrail]
+    path = "{{ telegraf_inputs_webhooks_papertrail_path|d() }}"
+
+  [inputs.webhooks.particle]
+    path = "{{ telegraf_inputs_webhooks_particle_path|d() }}"

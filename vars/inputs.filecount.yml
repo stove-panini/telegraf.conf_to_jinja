@@ -1,0 +1,8 @@
+#telegraf_inputs_filecount_directory: "/var/cache/apt/archives"
+telegraf_inputs_filecount_directories: ["/var/cache/apt/archives"]
+telegraf_inputs_filecount_name: "*.deb"
+telegraf_inputs_filecount_recursive: no
+telegraf_inputs_filecount_regular_only: yes
+telegraf_inputs_filecount_follow_symlinks: no
+telegraf_inputs_filecount_size: "0B"
+telegraf_inputs_filecount_mtime: "0s"

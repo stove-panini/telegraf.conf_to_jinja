@@ -1,0 +1,8 @@
+telegraf_inputs_influxdb_urls: []
+#telegraf_inputs_influxdb_username: ""
+#telegraf_inputs_influxdb_password: ""
+#telegraf_inputs_influxdb_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_influxdb_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_influxdb_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_influxdb_insecure_skip_verify: no
+telegraf_inputs_influxdb_timeout: "5s"

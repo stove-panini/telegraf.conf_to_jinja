@@ -1,0 +1,5 @@
+# Read real time temps from fireboard.io servers
+[[inputs.fireboard]]
+  ## Specify auth token for your account
+  auth_token = "{{ telegraf_inputs_fireboard_auth_token|d() }}"
+  ## You can override the fireboard server URL if necessary

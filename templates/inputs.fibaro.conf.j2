@@ -1,0 +1,12 @@
+# Read devices value(s) from a Fibaro controller
+[[inputs.fibaro]]
+  ## Required Fibaro controller address/hostname.
+  ## Note: at the time of writing this plugin, Fibaro only implemented http - no https available
+  url = "{{ telegraf_inputs_fibaro_url|d() }}"
+
+  ## Required credentials to access the API (http://<controller/api/<component>)
+  username = "{{ telegraf_inputs_fibaro_username|d() }}"
+  password = "{{ telegraf_inputs_fibaro_password|d() }}"
+
+  ## Amount of time allowed to complete the HTTP request
+  {{ '#' if telegraf_inputs_fibaro_timeout is not defined }}timeout = "{{ telegraf_inputs_fibaro_timeout|d() }}"

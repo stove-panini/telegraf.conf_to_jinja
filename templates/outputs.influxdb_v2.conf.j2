@@ -1,0 +1,51 @@
+# Configuration for sending metrics to InfluxDB
+[[outputs.influxdb_v2]]
+  ## The URLs of the InfluxDB cluster nodes.
+  ##
+  ## Multiple URLs can be specified for a single cluster, only ONE of the
+  ## urls will be written to each interval.
+  ##   ex: urls = ["https://us-west-2-1.aws.cloud2.influxdata.com"]
+  urls = [ {% for i in telegraf_outputs_influxdb_v2_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Token for authentication.
+  token = "{{ telegraf_outputs_influxdb_v2_token|d() }}"
+
+  ## Organization is the name of the organization you wish to write to; must exist.
+  organization = "{{ telegraf_outputs_influxdb_v2_organization|d() }}"
+
+  ## Destination bucket to write into.
+  bucket = "{{ telegraf_outputs_influxdb_v2_bucket|d() }}"
+
+  ## The value of this tag will be used to determine the bucket.  If this
+  ## tag is not set the 'bucket' option is used as the default.
+  {{ '#' if telegraf_outputs_influxdb_v2_bucket_tag is not defined }}bucket_tag = "{{ telegraf_outputs_influxdb_v2_bucket_tag|d() }}"
+
+  ## If true, the bucket tag will not be added to the metric.
+  {{ '#' if telegraf_outputs_influxdb_v2_exclude_bucket_tag is not defined }}exclude_bucket_tag = {{ telegraf_outputs_influxdb_v2_exclude_bucket_tag|d()|bool|lower }}
+
+  ## Timeout for HTTP messages.
+  {{ '#' if telegraf_outputs_influxdb_v2_timeout is not defined }}timeout = "{{ telegraf_outputs_influxdb_v2_timeout|d() }}"
+
+  ## Additional HTTP headers
+  {{ '#' if telegraf_outputs_influxdb_v2_http_headers is not defined }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_v2_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+
+  ## HTTP Proxy override, if unset values the standard proxy environment
+  ## variables are consulted to determine which proxy, if any, should be used.
+  {{ '#' if telegraf_outputs_influxdb_v2_http_proxy is not defined }}http_proxy = "{{ telegraf_outputs_influxdb_v2_http_proxy|d() }}"
+
+  ## HTTP User-Agent
+  {{ '#' if telegraf_outputs_influxdb_v2_user_agent is not defined }}user_agent = "{{ telegraf_outputs_influxdb_v2_user_agent|d() }}"
+
+  ## Content-Encoding for write request body, can be set to "gzip" to
+  ## compress body or "identity" to apply no encoding.
+  {{ '#' if telegraf_outputs_influxdb_v2_content_encoding is not defined }}content_encoding = "{{ telegraf_outputs_influxdb_v2_content_encoding|d() }}"
+
+  ## Enable or disable uint support for writing uints influxdb 2.0.
+  {{ '#' if telegraf_outputs_influxdb_v2_influx_uint_support is not defined }}influx_uint_support = {{ telegraf_outputs_influxdb_v2_influx_uint_support|d()|bool|lower }}
+
+  ## Optional TLS Config for use on HTTP connections.
+  {{ '#' if telegraf_outputs_influxdb_v2_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_influxdb_v2_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_influxdb_v2_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_influxdb_v2_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_influxdb_v2_tls_key is not defined }}tls_key = "{{ telegraf_outputs_influxdb_v2_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_outputs_influxdb_v2_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_influxdb_v2_insecure_skip_verify|d()|bool|lower }}

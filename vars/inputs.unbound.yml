@@ -1,0 +1,6 @@
+telegraf_inputs_unbound_server: "127.0.0.1:8953"
+#telegraf_inputs_unbound_use_sudo: no
+#telegraf_inputs_unbound_binary: "/usr/sbin/unbound-control"
+#telegraf_inputs_unbound_config_file: "/etc/unbound/unbound.conf"
+#telegraf_inputs_unbound_timeout: "1s"
+telegraf_inputs_unbound_thread_as_tag: no

@@ -1,0 +1,11 @@
+telegraf_inputs_syslog_server: "tcp://:6514"
+#telegraf_inputs_syslog_tls_allowed_cacerts: ["/etc/telegraf/ca.pem"]
+#telegraf_inputs_syslog_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_syslog_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_syslog_keep_alive_period: "5m"
+#telegraf_inputs_syslog_max_connections: 1024
+#telegraf_inputs_syslog_read_timeout: "5s"
+#telegraf_inputs_syslog_framing: "octet-counting"
+#telegraf_inputs_syslog_trailer: "LF"
+#telegraf_inputs_syslog_best_effort: no
+#telegraf_inputs_syslog_sdparam_separator: "_"

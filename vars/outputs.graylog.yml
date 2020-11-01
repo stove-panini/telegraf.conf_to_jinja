@@ -1,0 +1,2 @@
+telegraf_outputs_graylog_servers: ["127.0.0.1:12201"]
+#telegraf_outputs_graylog_short_message_field: ""

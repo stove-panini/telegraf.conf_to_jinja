@@ -1,0 +1,2 @@
+telegraf_inputs_suricata_source: "/var/run/suricata-stats.sock"
+telegraf_inputs_suricata_delimiter: "_"

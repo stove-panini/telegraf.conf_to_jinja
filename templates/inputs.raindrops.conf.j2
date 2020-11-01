@@ -1,0 +1,4 @@
+# Read raindrops stats (raindrops - real-time stats for preforking Rack servers)
+[[inputs.raindrops]]
+  ## An array of raindrops middleware URI to gather stats.
+  urls = [ {% for i in telegraf_inputs_raindrops_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

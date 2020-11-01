@@ -1,0 +1,51 @@
+# Read stats from one or more Elasticsearch servers or clusters
+[[inputs.elasticsearch]]
+  ## specify a list of one or more Elasticsearch servers
+  # you can add username and password to your url to use basic authentication:
+  {{ '#' if telegraf_inputs_elasticsearch_servers is not defined }}servers = [ {% for i in telegraf_inputs_elasticsearch_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_elasticsearch_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Timeout for HTTP requests to the elastic search server(s)
+  http_timeout = "{{ telegraf_inputs_elasticsearch_http_timeout|d() }}"
+
+  ## When local is true (the default), the node will read only its own stats.
+  ## Set local to false when you want to read the node stats from all nodes
+  ## of the cluster.
+  local = {{ telegraf_inputs_elasticsearch_local|d()|bool|lower }}
+
+  ## Set cluster_health to true when you want to also obtain cluster health stats
+  cluster_health = {{ telegraf_inputs_elasticsearch_cluster_health|d()|bool|lower }}
+
+  ## Adjust cluster_health_level when you want to also obtain detailed health stats
+  ## The options are
+  ##  - indices (default)
+  ##  - cluster
+  {{ '#' if telegraf_inputs_elasticsearch_cluster_health_level is not defined }}cluster_health_level = "{{ telegraf_inputs_elasticsearch_cluster_health_level|d() }}"
+
+  ## Set cluster_stats to true when you want to also obtain cluster stats.
+  cluster_stats = {{ telegraf_inputs_elasticsearch_cluster_stats|d()|bool|lower }}
+
+  ## Only gather cluster_stats from the master node. To work this require local = true
+  cluster_stats_only_from_master = {{ telegraf_inputs_elasticsearch_cluster_stats_only_from_master|d()|bool|lower }}
+
+  ## Indices to collect; can be one or more indices names or _all
+  indices_include = [ {% for i in telegraf_inputs_elasticsearch_indices_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## One of "shards", "cluster", "indices"
+  indices_level = "{{ telegraf_inputs_elasticsearch_indices_level|d() }}"
+
+  ## node_stats is a list of sub-stats that you want to have gathered. Valid options
+  ## are "indices", "os", "process", "jvm", "thread_pool", "fs", "transport", "http",
+  ## "breaker". Per default, all stats are gathered.
+  {{ '#' if telegraf_inputs_elasticsearch_node_stats is not defined }}node_stats = [ {% for i in telegraf_inputs_elasticsearch_node_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## HTTP Basic Authentication username and password.
+  {{ '#' if telegraf_inputs_elasticsearch_username is not defined }}username = "{{ telegraf_inputs_elasticsearch_username|d() }}"
+  {{ '#' if telegraf_inputs_elasticsearch_password is not defined }}password = "{{ telegraf_inputs_elasticsearch_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_elasticsearch_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_elasticsearch_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_elasticsearch_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_elasticsearch_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_elasticsearch_tls_key is not defined }}tls_key = "{{ telegraf_inputs_elasticsearch_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_elasticsearch_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_elasticsearch_insecure_skip_verify|d()|bool|lower }}

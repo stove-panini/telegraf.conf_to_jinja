@@ -1,0 +1,7 @@
+telegraf_inputs_vsphere_vcenters: [ "https://vcenter.local/sdk" ]
+telegraf_inputs_vsphere_username: "user@corp.local"
+telegraf_inputs_vsphere_password: "secret"
+#telegraf_inputs_vsphere_vm_include: [ "/*/vm/**"] # Inventory path to VMs to collect (by default all are collected)
+#telegraf_inputs_vsphere_vm_exclude: [] # Inventory paths to exclude
+telegraf_inputs_vsphere_vm_metric_include: []
+#telegraf_inputs_vsphere_vm_metric_exclude: [] ## Nothing is excluded by default

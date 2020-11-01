@@ -1,0 +1,42 @@
+# Retrieves SNMP values from remote agents
+[[inputs.snmp]]
+  ## Agent addresses to retrieve values from.
+  ##   example: agents = ["udp://127.0.0.1:161"]
+  ##            agents = ["tcp://127.0.0.1:161"]
+  agents = [ {% for i in telegraf_inputs_snmp_agents|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Timeout for each request.
+  {{ '#' if telegraf_inputs_snmp_timeout is not defined }}timeout = "{{ telegraf_inputs_snmp_timeout|d() }}"
+
+  ## SNMP version; can be 1, 2, or 3.
+  {{ '#' if telegraf_inputs_snmp_version is not defined }}version = {{ telegraf_inputs_snmp_version|d() }}
+
+  ## SNMP community string.
+  {{ '#' if telegraf_inputs_snmp_community is not defined }}community = "{{ telegraf_inputs_snmp_community|d() }}"
+
+  ## Number of retries to attempt.
+  {{ '#' if telegraf_inputs_snmp_retries is not defined }}retries = {{ telegraf_inputs_snmp_retries|d() }}
+
+  ## The GETBULK max-repetitions parameter.
+  {{ '#' if telegraf_inputs_snmp_max_repetitions is not defined }}max_repetitions = {{ telegraf_inputs_snmp_max_repetitions|d() }}
+
+  ## SNMPv3 authentication and encryption options.
+  ##
+  ## Security Name.
+  {{ '#' if telegraf_inputs_snmp_sec_name is not defined }}sec_name = "{{ telegraf_inputs_snmp_sec_name|d() }}"
+  ## Authentication protocol; one of "MD5", "SHA", or "".
+  {{ '#' if telegraf_inputs_snmp_auth_protocol is not defined }}auth_protocol = "{{ telegraf_inputs_snmp_auth_protocol|d() }}"
+  ## Authentication password.
+  {{ '#' if telegraf_inputs_snmp_auth_password is not defined }}auth_password = "{{ telegraf_inputs_snmp_auth_password|d() }}"
+  ## Security Level; one of "noAuthNoPriv", "authNoPriv", or "authPriv".
+  {{ '#' if telegraf_inputs_snmp_sec_level is not defined }}sec_level = "{{ telegraf_inputs_snmp_sec_level|d() }}"
+  ## Context Name.
+  {{ '#' if telegraf_inputs_snmp_context_name is not defined }}context_name = "{{ telegraf_inputs_snmp_context_name|d() }}"
+  ## Privacy protocol used for encrypted messages; one of "DES", "AES" or "".
+  {{ '#' if telegraf_inputs_snmp_priv_protocol is not defined }}priv_protocol = "{{ telegraf_inputs_snmp_priv_protocol|d() }}"
+  ## Privacy password used for encrypted messages.
+  {{ '#' if telegraf_inputs_snmp_priv_password is not defined }}priv_password = "{{ telegraf_inputs_snmp_priv_password|d() }}"
+
+  ## Add fields and tables defining the variables you wish to collect.  This
+  ## example collects the system uptime and interface variables.  Reference the
+  ## full plugin documentation for configuration details.

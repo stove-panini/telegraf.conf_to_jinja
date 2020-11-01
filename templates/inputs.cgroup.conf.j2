@@ -1,0 +1,14 @@
+# Read specific statistics per cgroup
+[[inputs.cgroup]]
+  ## Directories in which to look for files, globs are supported.
+  ## Consider restricting paths to the set of cgroups you really
+  ## want to monitor if you have a large number of cgroups, to avoid
+  ## any cardinality issues.
+  {{ '#' if telegraf_inputs_cgroup_paths is not defined }}paths = [ {% for i in telegraf_inputs_cgroup_paths|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  #   "/sys/fs/cgroup/memory",
+  #   "/sys/fs/cgroup/memory/child1",
+  #   "/sys/fs/cgroup/memory/child2/*",
+  # ]
+  ## cgroup stat fields, as file names, globs are supported.
+  ## these file names are appended to each path from above.
+  {{ '#' if telegraf_inputs_cgroup_files is not defined }}files = [ {% for i in telegraf_inputs_cgroup_files|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

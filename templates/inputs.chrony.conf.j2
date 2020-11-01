@@ -1,0 +1,4 @@
+# Get standard chrony metrics, requires chronyc executable.
+[[inputs.chrony]]
+  ## If true, chronyc tries to perform a DNS lookup for the time server.
+  {{ '#' if telegraf_inputs_chrony_dns_lookup is not defined }}dns_lookup = {{ telegraf_inputs_chrony_dns_lookup|d()|bool|lower }}

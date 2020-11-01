@@ -1,0 +1,11 @@
+#telegraf_inputs_consul_address: "localhost:8500"
+#telegraf_inputs_consul_scheme: "http"
+#telegraf_inputs_consul_token: ""
+#telegraf_inputs_consul_username: ""
+#telegraf_inputs_consul_password: ""
+#telegraf_inputs_consul_datacenter: ""
+#telegraf_inputs_consul_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_consul_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_consul_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_consul_insecure_skip_verify: yes
+#telegraf_inputs_consul_tag_delimiter: ":"

@@ -1,0 +1,14 @@
+telegraf_outputs_mqtt_servers: ["localhost:1883"] # required.
+telegraf_outputs_mqtt_topic_prefix: "telegraf"
+#telegraf_outputs_mqtt_qos: 2
+#telegraf_outputs_mqtt_username: "telegraf"
+#telegraf_outputs_mqtt_password: "metricsmetricsmetricsmetrics"
+#telegraf_outputs_mqtt_client_id: ""
+#telegraf_outputs_mqtt_timeout: "5s"
+#telegraf_outputs_mqtt_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_mqtt_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_mqtt_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_mqtt_insecure_skip_verify: no
+#telegraf_outputs_mqtt_batch: no
+#telegraf_outputs_mqtt_retain: no
+telegraf_outputs_mqtt_data_format: "influx"

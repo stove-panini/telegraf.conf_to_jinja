@@ -1,0 +1,26 @@
+# Gather ActiveMQ metrics
+[[inputs.activemq]]
+  ## ActiveMQ WebConsole URL
+  url = "{{ telegraf_inputs_activemq_url|d() }}"
+
+  ## Required ActiveMQ Endpoint
+  ##   deprecated in 1.11; use the url option
+  {{ '#' if telegraf_inputs_activemq_server is not defined }}server = "{{ telegraf_inputs_activemq_server|d() }}"
+  {{ '#' if telegraf_inputs_activemq_port is not defined }}port = {{ telegraf_inputs_activemq_port|d() }}
+
+  ## Credentials for basic HTTP authentication
+  {{ '#' if telegraf_inputs_activemq_username is not defined }}username = "{{ telegraf_inputs_activemq_username|d() }}"
+  {{ '#' if telegraf_inputs_activemq_password is not defined }}password = "{{ telegraf_inputs_activemq_password|d() }}"
+
+  ## Required ActiveMQ webadmin root path
+  {{ '#' if telegraf_inputs_activemq_webadmin is not defined }}webadmin = "{{ telegraf_inputs_activemq_webadmin|d() }}"
+
+  ## Maximum time to receive response.
+  {{ '#' if telegraf_inputs_activemq_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_activemq_response_timeout|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_activemq_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_activemq_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_activemq_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_activemq_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_activemq_tls_key is not defined }}tls_key = "{{ telegraf_inputs_activemq_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_activemq_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_activemq_insecure_skip_verify|d()|bool|lower }}

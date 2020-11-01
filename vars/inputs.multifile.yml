@@ -1,0 +1,11 @@
+telegraf_inputs_multifile_base_dir: "/sys/bus/i2c/devices/1-0076/iio:device0"
+#telegraf_inputs_multifile_fail_early: yes
+telegraf_inputs_multifile_file: "in_pressure_input"
+telegraf_inputs_multifile_dest: "pressure"
+telegraf_inputs_multifile_conversion: "float"
+telegraf_inputs_multifile_file: "in_temp_input"
+telegraf_inputs_multifile_dest: "temperature"
+telegraf_inputs_multifile_conversion: "float(3)"
+telegraf_inputs_multifile_file: "in_humidityrelative_input"
+telegraf_inputs_multifile_dest: "humidityrelative"
+telegraf_inputs_multifile_conversion: "float(3)"

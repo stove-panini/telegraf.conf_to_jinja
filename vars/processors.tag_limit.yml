@@ -1,0 +1,2 @@
+telegraf_processors_tag_limit_limit: 10
+telegraf_processors_tag_limit_keep: ["foo", "bar", "baz"]

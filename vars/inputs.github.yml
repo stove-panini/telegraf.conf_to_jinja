@@ -1,0 +1,4 @@
+telegraf_inputs_github_repositories: []
+#telegraf_inputs_github_access_token: ""
+#telegraf_inputs_github_enterprise_base_url: ""
+#telegraf_inputs_github_http_timeout: "5s"

@@ -1,0 +1,1 @@
+telegraf_inputs_pgbouncer_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_address: "host=localhost user=pgbouncer sslmode=disable"

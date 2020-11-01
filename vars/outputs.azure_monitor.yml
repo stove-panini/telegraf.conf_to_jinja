@@ -1,0 +1,6 @@
+#telegraf_outputs_azure_monitor_timeout: "20s"
+#telegraf_outputs_azure_monitor_namespace_prefix: "Telegraf/"
+#telegraf_outputs_azure_monitor_strings_as_dimensions: no
+#telegraf_outputs_azure_monitor_region: ""
+#telegraf_outputs_azure_monitor_resource_id: ""
+#telegraf_outputs_azure_monitor_endpoint_url: "https://monitoring.core.usgovcloudapi.net"

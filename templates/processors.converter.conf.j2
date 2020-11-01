@@ -1,0 +1,28 @@
+# Convert values to another metric value type
+[[processors.converter]]
+  ## Tags to convert
+  ##
+  ## The table key determines the target type, and the array of key-values
+  ## select the keys to convert.  The array may contain globs.
+  ##   <target-type> = [<tag-key>...]
+  [processors.converter.tags]
+    measurement = [ {% for i in telegraf_processors_converter_tags_measurement|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    string = [ {% for i in telegraf_processors_converter_tags_string|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    integer = [ {% for i in telegraf_processors_converter_tags_integer|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    unsigned = [ {% for i in telegraf_processors_converter_tags_unsigned|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    boolean = [ {% for i in telegraf_processors_converter_tags_boolean|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    float = [ {% for i in telegraf_processors_converter_tags_float|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Fields to convert
+  ##
+  ## The table key determines the target type, and the array of key-values
+  ## select the keys to convert.  The array may contain globs.
+  ##   <target-type> = [<field-key>...]
+  [processors.converter.fields]
+    measurement = [ {% for i in telegraf_processors_converter_fields_measurement|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    tag = [ {% for i in telegraf_processors_converter_fields_tag|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    string = [ {% for i in telegraf_processors_converter_fields_string|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    integer = [ {% for i in telegraf_processors_converter_fields_integer|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    unsigned = [ {% for i in telegraf_processors_converter_fields_unsigned|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    boolean = [ {% for i in telegraf_processors_converter_fields_boolean|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    float = [ {% for i in telegraf_processors_converter_fields_float|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

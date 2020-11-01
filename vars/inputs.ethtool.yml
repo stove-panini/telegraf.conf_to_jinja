@@ -1,0 +1,2 @@
+#telegraf_inputs_ethtool_interface_include: ["eth0"]
+#telegraf_inputs_ethtool_interface_exclude: ["eth1"]

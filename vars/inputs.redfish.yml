@@ -1,0 +1,8 @@
+telegraf_inputs_redfish_address: "https://127.0.0.1:5000"
+telegraf_inputs_redfish_username: "root"
+telegraf_inputs_redfish_password: "password123456"
+#telegraf_inputs_redfish_timeout: "5s"
+#telegraf_inputs_redfish_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_redfish_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_redfish_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_redfish_insecure_skip_verify: no

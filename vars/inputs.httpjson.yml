@@ -1,0 +1,11 @@
+telegraf_inputs_httpjson_name: "webserver_stats"
+telegraf_inputs_httpjson_servers: []
+telegraf_inputs_httpjson_response_timeout: "5s"
+telegraf_inputs_httpjson_method: "GET"
+#telegraf_inputs_httpjson_tag_keys: []
+#telegraf_inputs_httpjson_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_httpjson_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_httpjson_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_httpjson_insecure_skip_verify: no
+#telegraf_inputs_httpjson_parameters_event_type: "cpu_spike"
+#telegraf_inputs_httpjson_parameters_threshold: "0.75"

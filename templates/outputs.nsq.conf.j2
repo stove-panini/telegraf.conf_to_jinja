@@ -1,0 +1,12 @@
+# Send telegraf measurements to NSQD
+[[outputs.nsq]]
+  ## Location of nsqd instance listening on TCP
+  server = "{{ telegraf_outputs_nsq_server|d() }}"
+  ## NSQ topic for producer messages
+  topic = "{{ telegraf_outputs_nsq_topic|d() }}"
+
+  ## Data format to output.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
+  data_format = "{{ telegraf_outputs_nsq_data_format|d() }}"

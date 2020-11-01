@@ -1,0 +1,21 @@
+# Read metrics from the kubernetes kubelet api
+[[inputs.kubernetes]]
+  ## URL for the kubelet
+  url = "{{ telegraf_inputs_kubernetes_url|d() }}"
+
+  ## Use bearer token for authorization. ('bearer_token' takes priority)
+  ## If both of these are empty, we'll use the default serviceaccount:
+  ## at: /run/secrets/kubernetes.io/serviceaccount/token
+  {{ '#' if telegraf_inputs_kubernetes_bearer_token is not defined }}bearer_token = "{{ telegraf_inputs_kubernetes_bearer_token|d() }}"
+  ## OR
+  {{ '#' if telegraf_inputs_kubernetes_bearer_token_string is not defined }}bearer_token_string = "{{ telegraf_inputs_kubernetes_bearer_token_string|d() }}"
+
+  ## Pod labels to be added as tags.  An empty array for both include and
+  ## exclude will include all labels.
+  {{ '#' if telegraf_inputs_kubernetes_label_include is not defined }}label_include = [ {% for i in telegraf_inputs_kubernetes_label_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_kubernetes_label_exclude is not defined }}label_exclude = [ {% for i in telegraf_inputs_kubernetes_label_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Set response_timeout (default 5 seconds)
+  {{ '#' if telegraf_inputs_kubernetes_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_kubernetes_response_timeout|d() }}"
+
+  ## Optional TLS Config

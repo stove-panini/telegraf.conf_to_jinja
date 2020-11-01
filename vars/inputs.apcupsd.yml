@@ -1,0 +1,2 @@
+telegraf_inputs_apcupsd_servers: ["tcp://127.0.0.1:3551"]
+telegraf_inputs_apcupsd_timeout: "5s"

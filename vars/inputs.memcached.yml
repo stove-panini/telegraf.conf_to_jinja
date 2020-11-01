@@ -1,0 +1,2 @@
+telegraf_inputs_memcached_servers: ["localhost:11211"]
+#telegraf_inputs_memcached_unix_sockets: ["/var/run/memcached.sock"]

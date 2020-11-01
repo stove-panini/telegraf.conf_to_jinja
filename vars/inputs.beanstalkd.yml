@@ -1,0 +1,2 @@
+telegraf_inputs_beanstalkd_server: "localhost:11300"
+telegraf_inputs_beanstalkd_tubes: ["notifications"]

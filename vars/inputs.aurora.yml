@@ -1,0 +1,9 @@
+telegraf_inputs_aurora_schedulers: ["http://127.0.0.1:8081"]
+#telegraf_inputs_aurora_roles: ["leader", "follower"]
+#telegraf_inputs_aurora_timeout: "5s"
+#telegraf_inputs_aurora_username: "username"
+#telegraf_inputs_aurora_password: "pa$$word"
+#telegraf_inputs_aurora_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_aurora_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_aurora_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_aurora_insecure_skip_verify: no

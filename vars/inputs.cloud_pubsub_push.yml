@@ -1,0 +1,12 @@
+telegraf_inputs_cloud_pubsub_push_service_address: ":8080"
+#telegraf_inputs_cloud_pubsub_push_token: ""
+#telegraf_inputs_cloud_pubsub_push_path: "/"
+#telegraf_inputs_cloud_pubsub_push_read_timeout: "10s"
+#telegraf_inputs_cloud_pubsub_push_write_timeout: "10s"
+#telegraf_inputs_cloud_pubsub_push_max_body_size: "500MB"
+#telegraf_inputs_cloud_pubsub_push_add_meta: no
+#telegraf_inputs_cloud_pubsub_push_max_undelivered_messages: 1000
+#telegraf_inputs_cloud_pubsub_push_tls_allowed_cacerts: ["/etc/telegraf/clientca.pem"]
+#telegraf_inputs_cloud_pubsub_push_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_cloud_pubsub_push_tls_key: "/etc/telegraf/key.pem"
+telegraf_inputs_cloud_pubsub_push_data_format: "influx"

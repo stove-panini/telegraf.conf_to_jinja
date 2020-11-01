@@ -1,0 +1,1 @@
+telegraf_inputs_puppetagent_location: "/var/lib/puppet/state/last_run_summary.yaml"

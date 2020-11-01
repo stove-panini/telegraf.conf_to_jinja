@@ -1,0 +1,16 @@
+telegraf_inputs_statsd_protocol: "udp"
+telegraf_inputs_statsd_max_tcp_connections: 250
+telegraf_inputs_statsd_tcp_keep_alive: no
+#telegraf_inputs_statsd_tcp_keep_alive_period: "2h"
+telegraf_inputs_statsd_service_address: ":8125"
+telegraf_inputs_statsd_delete_gauges: yes
+telegraf_inputs_statsd_delete_counters: yes
+telegraf_inputs_statsd_delete_sets: yes
+telegraf_inputs_statsd_delete_timings: yes
+telegraf_inputs_statsd_percentiles: [50.0, 90.0, 99.0, 99.9, 99.95, 100.0]
+telegraf_inputs_statsd_metric_separator: "_"
+telegraf_inputs_statsd_parse_data_dog_tags: no
+telegraf_inputs_statsd_datadog_extensions: no
+#telegraf_inputs_statsd_templates: []
+telegraf_inputs_statsd_allowed_pending_messages: 10000
+telegraf_inputs_statsd_percentile_limit: 1000

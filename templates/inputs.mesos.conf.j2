@@ -1,0 +1,42 @@
+# Telegraf plugin for gathering metrics from N Mesos masters
+[[inputs.mesos]]
+  ## Timeout, in ms.
+  timeout = {{ telegraf_inputs_mesos_timeout|d() }}
+
+  ## A list of Mesos masters.
+  masters = [ {% for i in telegraf_inputs_mesos_masters|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Master metrics groups to be collected, by default, all enabled.
+  master_collections = [ {% for i in telegraf_inputs_mesos_master_collections|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    "resources",
+    "master",
+    "system",
+    "agents",
+    "frameworks",
+    "framework_offers",
+    "tasks",
+    "messages",
+    "evqueue",
+    "registrar",
+    "allocator",
+  ]
+
+  ## A list of Mesos slaves, default is []
+  {{ '#' if telegraf_inputs_mesos_slaves is not defined }}slaves = [ {% for i in telegraf_inputs_mesos_slaves|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Slave metrics groups to be collected, by default, all enabled.
+  {{ '#' if telegraf_inputs_mesos_slave_collections is not defined }}slave_collections = [ {% for i in telegraf_inputs_mesos_slave_collections|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  #   "resources",
+  #   "agent",
+  #   "system",
+  #   "executors",
+  #   "tasks",
+  #   "messages",
+  # ]
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_mesos_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_mesos_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_mesos_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_mesos_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_mesos_tls_key is not defined }}tls_key = "{{ telegraf_inputs_mesos_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_mesos_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_mesos_insecure_skip_verify|d()|bool|lower }}

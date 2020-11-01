@@ -1,0 +1,33 @@
+# Read metrics from one or many postgresql servers
+[[inputs.postgresql]]
+  ## specify address via a url matching:
+  ##   postgres://[pqgotest[:password]]@localhost[/dbname]\
+  ##       ?sslmode=[disable|verify-ca|verify-full]
+  ## or a simple string:
+  ##   host=localhost user=pqgotest password=... sslmode=... dbname=app_production
+  ##
+  ## All connection parameters are optional.
+  ##
+  ## Without the dbname parameter, the driver will default to a database
+  ## with the same name as the user. This dbname is just for instantiating a
+  ## connection with the server and doesn't restrict the databases we are trying
+  ## to grab metrics for.
+  ##
+    address = "{{ telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_address|d() }}"
+  ## A custom name for the database that will be used as the "server" tag in the
+  ## measurement output. If not specified, a default one generated from
+  ## the connection address is used.
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress is not defined }}outputaddress = "{{ telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress|d() }}"
+
+  ## connection configuration.
+  ## maxlifetime - specify the maximum lifetime of a connection.
+  ## default is forever (0s)
+    max_lifetime = "{{ telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_max_lifetime|d() }}"
+
+  ## A  list of databases to explicitly ignore.  If not specified, metrics for all
+  ## databases are gathered.  Do NOT use with the 'databases' option.
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases is not defined }}ignored_databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## A list of databases to pull metrics about. If not specified, metrics for all
+  ## databases are gathered.  Do NOT use with the 'ignored_databases' option.
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases is not defined }}databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

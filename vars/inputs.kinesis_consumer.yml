@@ -1,0 +1,12 @@
+telegraf_inputs_kinesis_consumer_region: "ap-southeast-2"
+#telegraf_inputs_kinesis_consumer_access_key: ""
+#telegraf_inputs_kinesis_consumer_secret_key: ""
+#telegraf_inputs_kinesis_consumer_token: ""
+#telegraf_inputs_kinesis_consumer_role_arn: ""
+#telegraf_inputs_kinesis_consumer_profile: ""
+#telegraf_inputs_kinesis_consumer_shared_credential_file: ""
+#telegraf_inputs_kinesis_consumer_endpoint_url: ""
+telegraf_inputs_kinesis_consumer_streamname: "StreamName"
+#telegraf_inputs_kinesis_consumer_shard_iterator_type: "TRIM_HORIZON"
+#telegraf_inputs_kinesis_consumer_max_undelivered_messages: 1000
+telegraf_inputs_kinesis_consumer_data_format: "influx"

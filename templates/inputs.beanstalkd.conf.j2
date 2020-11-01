@@ -1,0 +1,8 @@
+# Collects Beanstalkd server and tubes stats
+[[inputs.beanstalkd]]
+  ## Server to collect data from
+  server = "{{ telegraf_inputs_beanstalkd_server|d() }}"
+
+  ## List of tubes to gather stats about.
+  ## If no tubes specified then data gathered for each tube on server reported by list-tubes command
+  tubes = [ {% for i in telegraf_inputs_beanstalkd_tubes|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

@@ -1,0 +1,2 @@
+telegraf_processors_pivot_tag_key: "name"
+telegraf_processors_pivot_value_key: "value"

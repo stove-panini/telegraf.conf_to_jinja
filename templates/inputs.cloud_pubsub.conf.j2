@@ -1,0 +1,73 @@
+# Read metrics from Google PubSub
+[[inputs.cloud_pubsub]]
+  ## Required. Name of Google Cloud Platform (GCP) Project that owns
+  ## the given PubSub subscription.
+  project = "{{ telegraf_inputs_cloud_pubsub_project|d() }}"
+
+  ## Required. Name of PubSub subscription to ingest metrics from.
+  subscription = "{{ telegraf_inputs_cloud_pubsub_subscription|d() }}"
+
+  ## Required. Data format to consume.
+  ## Each data format has its own unique set of configuration options.
+  ## Read more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_cloud_pubsub_data_format|d() }}"
+
+  ## Optional. Filepath for GCP credentials JSON file to authorize calls to
+  ## PubSub APIs. If not set explicitly, Telegraf will attempt to use
+  ## Application Default Credentials, which is preferred.
+  {{ '#' if telegraf_inputs_cloud_pubsub_credentials_file is not defined }}credentials_file = "{{ telegraf_inputs_cloud_pubsub_credentials_file|d() }}"
+
+  ## Optional. Number of seconds to wait before attempting to restart the
+  ## PubSub subscription receiver after an unexpected error.
+  ## If the streaming pull for a PubSub Subscription fails (receiver),
+  ## the agent attempts to restart receiving messages after this many seconds.
+  {{ '#' if telegraf_inputs_cloud_pubsub_retry_delay_seconds is not defined }}retry_delay_seconds = {{ telegraf_inputs_cloud_pubsub_retry_delay_seconds|d() }}
+
+  ## Optional. Maximum byte length of a message to consume.
+  ## Larger messages are dropped with an error. If less than 0 or unspecified,
+  ## treated as no limit.
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_message_len is not defined }}max_message_len = {{ telegraf_inputs_cloud_pubsub_max_message_len|d() }}
+
+  ## Optional. Maximum messages to read from PubSub that have not been written
+  ## to an output. Defaults to 1000.
+  ## For best throughput set based on the number of metrics within
+  ## each message and the size of the output's metric_batch_size.
+  ##
+  ## For example, if each message contains 10 metrics and the output
+  ## metric_batch_size is 1000, setting this to 100 will ensure that a
+  ## full batch is collected and the write is triggered immediately without
+  ## waiting until the next flush_interval.
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_cloud_pubsub_max_undelivered_messages|d() }}
+
+  ## The following are optional Subscription ReceiveSettings in PubSub.
+  ## Read more about these values:
+  ## https://godoc.org/cloud.google.com/go/pubsub#ReceiveSettings
+
+  ## Optional. Maximum number of seconds for which a PubSub subscription
+  ## should auto-extend the PubSub ACK deadline for each message. If less than
+  ## 0, auto-extension is disabled.
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_extension is not defined }}max_extension = {{ telegraf_inputs_cloud_pubsub_max_extension|d() }}
+
+  ## Optional. Maximum number of unprocessed messages in PubSub
+  ## (unacknowledged but not yet expired in PubSub).
+  ## A value of 0 is treated as the default PubSub value.
+  ## Negative values will be treated as unlimited.
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_outstanding_messages is not defined }}max_outstanding_messages = {{ telegraf_inputs_cloud_pubsub_max_outstanding_messages|d() }}
+
+  ## Optional. Maximum size in bytes of unprocessed messages in PubSub
+  ## (unacknowledged but not yet expired in PubSub).
+  ## A value of 0 is treated as the default PubSub value.
+  ## Negative values will be treated as unlimited.
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_outstanding_bytes is not defined }}max_outstanding_bytes = {{ telegraf_inputs_cloud_pubsub_max_outstanding_bytes|d() }}
+
+  ## Optional. Max number of goroutines a PubSub Subscription receiver can spawn
+  ## to pull messages from PubSub concurrently. This limit applies to each
+  ## subscription separately and is treated as the PubSub default if less than
+  ## 1. Note this setting does not limit the number of messages that can be
+  ## processed concurrently (use "max_outstanding_messages" instead).
+  {{ '#' if telegraf_inputs_cloud_pubsub_max_receiver_go_routines is not defined }}max_receiver_go_routines = {{ telegraf_inputs_cloud_pubsub_max_receiver_go_routines|d() }}
+
+  ## Optional. If true, Telegraf will attempt to base64 decode the
+  ## PubSub message data before parsing
+  {{ '#' if telegraf_inputs_cloud_pubsub_base64_data is not defined }}base64_data = {{ telegraf_inputs_cloud_pubsub_base64_data|d()|bool|lower }}

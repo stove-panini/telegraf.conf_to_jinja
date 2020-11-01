@@ -1,0 +1,4 @@
+telegraf_inputs_solr_servers: ["http://localhost:8983"]
+#telegraf_inputs_solr_cores: ["main"]
+#telegraf_inputs_solr_username: "username"
+#telegraf_inputs_solr_password: "pa$$word"

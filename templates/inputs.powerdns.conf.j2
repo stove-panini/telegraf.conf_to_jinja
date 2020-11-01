@@ -1,0 +1,5 @@
+# Read metrics from one or many PowerDNS servers
+[[inputs.powerdns]]
+  ## An array of sockets to gather stats about.
+  ## Specify a path to unix socket.
+  unix_sockets = [ {% for i in telegraf_inputs_powerdns_unix_sockets|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

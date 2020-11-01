@@ -1,0 +1,2 @@
+telegraf_inputs_bcache_bcachePath: "/sys/fs/bcache"
+telegraf_inputs_bcache_bcacheDevs: ["bcache0"]

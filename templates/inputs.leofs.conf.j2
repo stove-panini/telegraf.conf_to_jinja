@@ -1,0 +1,5 @@
+# Read metrics from a LeoFS Server via SNMP
+[[inputs.leofs]]
+  ## An array of URLs of the form:
+  ##   host [ ":" port]
+    servers = [ {% for i in telegraf_inputs_leofs_  ##   host [ ":" port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

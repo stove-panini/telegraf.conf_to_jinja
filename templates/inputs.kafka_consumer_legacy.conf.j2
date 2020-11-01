@@ -1,0 +1,26 @@
+# Read metrics from Kafka topic(s)
+[[inputs.kafka_consumer_legacy]]
+  ## topic(s) to consume
+  topics = [ {% for i in telegraf_inputs_kafka_consumer_legacy_topics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## an array of Zookeeper connection strings
+  zookeeper_peers = [ {% for i in telegraf_inputs_kafka_consumer_legacy_zookeeper_peers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Zookeeper Chroot
+  zookeeper_chroot = "{{ telegraf_inputs_kafka_consumer_legacy_zookeeper_chroot|d() }}"
+
+  ## the name of the consumer group
+  consumer_group = "{{ telegraf_inputs_kafka_consumer_legacy_consumer_group|d() }}"
+
+  ## Offset (must be either "oldest" or "newest")
+  offset = "{{ telegraf_inputs_kafka_consumer_legacy_offset|d() }}"
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_kafka_consumer_legacy_data_format|d() }}"
+
+  ## Maximum length of a message to consume, in bytes (default 0/unlimited);
+  ## larger messages are dropped
+  max_message_len = {{ telegraf_inputs_kafka_consumer_legacy_max_message_len|d() }}

@@ -1,0 +1,5 @@
+telegraf_inputs_nsq_endpoints : ["http://localhost:4151"]
+#telegraf_inputs_nsq_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_nsq_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_nsq_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_nsq_insecure_skip_verify: no

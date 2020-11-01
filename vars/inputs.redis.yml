@@ -1,0 +1,6 @@
+telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_servers: ["tcp://localhost:6379"]
+#telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_password: "s#cr@t%"
+#telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_insecure_skip_verify: yes

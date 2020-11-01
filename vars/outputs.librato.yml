@@ -1,0 +1,5 @@
+telegraf_outputs_librato_api_user: "telegraf@influxdb.com" # required.
+telegraf_outputs_librato_api_token: "my-secret-token" # required.
+#telegraf_outputs_librato_debug: no
+#telegraf_outputs_librato_timeout: "5s"
+telegraf_outputs_librato_template: "host"

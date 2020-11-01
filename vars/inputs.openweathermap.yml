@@ -1,0 +1,8 @@
+telegraf_inputs_openweathermap_app_id: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+telegraf_inputs_openweathermap_city_id: ["5391959"]
+#telegraf_inputs_openweathermap_lang: "en"
+telegraf_inputs_openweathermap_fetch: ["weather", "forecast"]
+#telegraf_inputs_openweathermap_base_url: "https://api.openweathermap.org/"
+#telegraf_inputs_openweathermap_response_timeout: "5s"
+#telegraf_inputs_openweathermap_units: "metric"
+telegraf_inputs_openweathermap_interval: "10m"

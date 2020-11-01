@@ -1,0 +1,30 @@
+# HTTP/HTTPS request given an address a method and a timeout
+[[inputs.http_response]]
+  ## Deprecated in 1.12, use 'urls'
+  ## Server address (default http://localhost)
+  {{ '#' if telegraf_inputs_http_response_address is not defined }}address = "{{ telegraf_inputs_http_response_address|d() }}"
+
+  ## List of urls to query.
+  {{ '#' if telegraf_inputs_http_response_urls is not defined }}urls = [ {% for i in telegraf_inputs_http_response_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Set http_proxy (telegraf uses the system wide proxy settings if it's is not set)
+  {{ '#' if telegraf_inputs_http_response_http_proxy is not defined }}http_proxy = "{{ telegraf_inputs_http_response_http_proxy|d() }}"
+
+  ## Set response_timeout (default 5 seconds)
+  {{ '#' if telegraf_inputs_http_response_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_http_response_response_timeout|d() }}"
+
+  ## HTTP Request Method
+  {{ '#' if telegraf_inputs_http_response_method is not defined }}method = "{{ telegraf_inputs_http_response_method|d() }}"
+
+  ## Whether to follow redirects from the server (defaults to false)
+  {{ '#' if telegraf_inputs_http_response_follow_redirects is not defined }}follow_redirects = {{ telegraf_inputs_http_response_follow_redirects|d()|bool|lower }}
+
+  ## Optional file with Bearer token
+  ## file content is added as an Authorization header
+  {{ '#' if telegraf_inputs_http_response_bearer_token is not defined }}bearer_token = "{{ telegraf_inputs_http_response_bearer_token|d() }}"
+
+  ## Optional HTTP Basic Auth Credentials
+  {{ '#' if telegraf_inputs_http_response_username is not defined }}username = "{{ telegraf_inputs_http_response_username|d() }}"
+  {{ '#' if telegraf_inputs_http_response_password is not defined }}password = "{{ telegraf_inputs_http_response_password|d() }}"
+
+  ## Optional HTTP Request Body

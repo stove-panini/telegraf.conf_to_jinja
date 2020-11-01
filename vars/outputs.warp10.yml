@@ -1,0 +1,10 @@
+telegraf_outputs_warp10_prefix: "telegraf."
+telegraf_outputs_warp10_warp_url: "http://localhost:8080"
+telegraf_outputs_warp10_token: "Token"
+#telegraf_outputs_warp10_timeout: "15s"
+#telegraf_outputs_warp10_print_error_body: no
+#telegraf_outputs_warp10_max_string_error_size: 511
+#telegraf_outputs_warp10_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_warp10_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_warp10_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_warp10_insecure_skip_verify: no

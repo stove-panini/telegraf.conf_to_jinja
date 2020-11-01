@@ -1,0 +1,7 @@
+telegraf_outputs_opentsdb_prefix: "my.specific.prefix."
+telegraf_outputs_opentsdb_host: "opentsdb.example.com"
+telegraf_outputs_opentsdb_port: 4242
+telegraf_outputs_opentsdb_http_batch_size: 50
+telegraf_outputs_opentsdb_http_path: "/api/put"
+telegraf_outputs_opentsdb_debug: no
+telegraf_outputs_opentsdb_separator: "_"

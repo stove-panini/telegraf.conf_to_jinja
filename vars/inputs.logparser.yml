@@ -1,0 +1,6 @@
+telegraf_inputs_logparser_files: ["/var/log/apache/access.log"]
+telegraf_inputs_logparser_from_beginning: no
+#telegraf_inputs_logparser_watch_method: "inotify"
+telegraf_inputs_logparser_grok_patterns: ["%{COMBINED_LOG_FORMAT}"]
+telegraf_inputs_logparser_grok_measurement: "apache_access_log"
+telegraf_inputs_logparser_grok_custom_pattern_files: []

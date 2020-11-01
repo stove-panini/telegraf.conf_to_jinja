@@ -1,0 +1,2 @@
+#telegraf_inputs_sensors_remove_numbers: yes
+#telegraf_inputs_sensors_timeout: "5s"

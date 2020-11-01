@@ -1,0 +1,11 @@
+# Keep the aggregate basicstats of each metric passing through.
+[[aggregators.basicstats]]
+  ## The period on which to flush & clear the aggregator.
+  period = "{{ telegraf_aggregators_basicstats_period|d() }}"
+
+  ## If true, the original metric will be dropped by the
+  ## aggregator and will not get sent to the output plugins.
+  drop_original = {{ telegraf_aggregators_basicstats_drop_original|d()|bool|lower }}
+
+  ## Configures which basic stats to push as fields
+  {{ '#' if telegraf_aggregators_basicstats_stats is not defined }}stats = [ {% for i in telegraf_aggregators_basicstats_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

@@ -1,0 +1,66 @@
+# Read JMX metrics through Jolokia
+[[inputs.jolokia]]
+  # DEPRECATED: the jolokia plugin has been deprecated in favor of the
+  # jolokia2 plugin
+  # see https://github.com/influxdata/telegraf/tree/master/plugins/inputs/jolokia2
+
+  ## This is the context root used to compose the jolokia url
+  ## NOTE that Jolokia requires a trailing slash at the end of the context root
+  ## NOTE that your jolokia security policy must allow for POST requests.
+  context = "{{ telegraf_inputs_jolokia_context|d() }}"
+
+  ## This specifies the mode used
+  {{ '#' if telegraf_inputs_jolokia_mode is not defined }}mode = "{{ telegraf_inputs_jolokia_mode|d() }}"
+  #
+  ## When in proxy mode this section is used to specify further
+  ## proxy address configurations.
+  ## Remember to change host address to fit your environment.
+  # [inputs.jolokia.proxy]
+    {{ '#' if telegraf_inputs_jolokia_proxy_host is not defined }}host = "{{ telegraf_inputs_jolokia_proxy_host|d() }}"
+    {{ '#' if telegraf_inputs_jolokia_proxy_port is not defined }}port = "{{ telegraf_inputs_jolokia_proxy_port|d() }}"
+
+  ## Optional http timeouts
+  ##
+  ## response_header_timeout, if non-zero, specifies the amount of time to wait
+  ## for a server's response headers after fully writing the request.
+    {{ '#' if telegraf_inputs_jolokia_proxy_response_header_timeout is not defined }}response_header_timeout = "{{ telegraf_inputs_jolokia_proxy_response_header_timeout|d() }}"
+  ##
+  ## client_timeout specifies a time limit for requests made by this client.
+  ## Includes connection time, any redirects, and reading the response body.
+    {{ '#' if telegraf_inputs_jolokia_proxy_client_timeout is not defined }}client_timeout = "{{ telegraf_inputs_jolokia_proxy_client_timeout|d() }}"
+
+  ## Attribute delimiter
+  ##
+  ## When multiple attributes are returned for a single
+  ## [inputs.jolokia.metrics], the field name is a concatenation of the metric
+  ## name, and the attribute name, separated by the given delimiter.
+    {{ '#' if telegraf_inputs_jolokia_proxy_delimiter is not defined }}delimiter = "{{ telegraf_inputs_jolokia_proxy_delimiter|d() }}"
+
+  ## List of servers exposing jolokia read service
+  [[inputs.jolokia.servers]]
+    name = "{{ telegraf_inputs_jolokia_proxy_name|d() }}"
+    host = "{{ telegraf_inputs_jolokia_proxy_host|d() }}"
+    port = "{{ telegraf_inputs_jolokia_proxy_port|d() }}"
+    {{ '#' if telegraf_inputs_jolokia_proxy_username is not defined }}username = "{{ telegraf_inputs_jolokia_proxy_username|d() }}"
+    {{ '#' if telegraf_inputs_jolokia_proxy_password is not defined }}password = "{{ telegraf_inputs_jolokia_proxy_password|d() }}"
+
+  ## List of metrics collected on above servers
+  ## Each metric consists in a name, a jmx path and either
+  ## a pass or drop slice attribute.
+  ## This collect all heap memory usage metrics.
+  [[inputs.jolokia.metrics]]
+    name = "{{ telegraf_inputs_jolokia_proxy_name|d() }}"
+    mbean  = "{{ telegraf_inputs_jolokia_proxy_mbean |d() }}"
+    attribute = "{{ telegraf_inputs_jolokia_proxy_attribute|d() }}"
+
+  ## This collect thread counts metrics.
+  [[inputs.jolokia.metrics]]
+    name = "{{ telegraf_inputs_jolokia_proxy_name|d() }}"
+    mbean  = "{{ telegraf_inputs_jolokia_proxy_mbean |d() }}"
+    attribute = "{{ telegraf_inputs_jolokia_proxy_attribute|d() }}"
+
+  ## This collect number of class loaded/unloaded counts metrics.
+  [[inputs.jolokia.metrics]]
+    name = "{{ telegraf_inputs_jolokia_proxy_name|d() }}"
+    mbean  = "{{ telegraf_inputs_jolokia_proxy_mbean |d() }}"
+    attribute = "{{ telegraf_inputs_jolokia_proxy_attribute|d() }}"

@@ -1,0 +1,17 @@
+#telegraf_inputs_elasticsearch_servers: ["http://user:pass@localhost:9200"]
+telegraf_inputs_elasticsearch_servers: ["http://localhost:9200"]
+telegraf_inputs_elasticsearch_http_timeout: "5s"
+telegraf_inputs_elasticsearch_local: yes
+telegraf_inputs_elasticsearch_cluster_health: no
+#telegraf_inputs_elasticsearch_cluster_health_level: "indices"
+telegraf_inputs_elasticsearch_cluster_stats: no
+telegraf_inputs_elasticsearch_cluster_stats_only_from_master: yes
+telegraf_inputs_elasticsearch_indices_include: ["_all"]
+telegraf_inputs_elasticsearch_indices_level: "shards"
+#telegraf_inputs_elasticsearch_node_stats: ["jvm", "http"]
+#telegraf_inputs_elasticsearch_username: ""
+#telegraf_inputs_elasticsearch_password: ""
+#telegraf_inputs_elasticsearch_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_elasticsearch_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_elasticsearch_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_elasticsearch_insecure_skip_verify: no

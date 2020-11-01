@@ -1,0 +1,35 @@
+# Read flattened metrics from one or more GrayLog HTTP endpoints
+[[inputs.graylog]]
+  ## API endpoint, currently supported API:
+  ##
+  ##   - multiple  (Ex http://<host>:12900/system/metrics/multiple)
+  ##   - namespace (Ex http://<host>:12900/system/metrics/namespace/{namespace})
+  ##
+  ## For namespace endpoint, the metrics array will be ignored for that call.
+  ## Endpoint can contain namespace and multiple type calls.
+  ##
+  ## Please check http://[graylog-server-ip]:12900/api-browser for full list
+  ## of endpoints
+  servers = [ {% for i in telegraf_inputs_graylog_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    "http://[graylog-server-ip]:12900/system/metrics/multiple",
+  ]
+
+  ## Metrics list
+  ## List of metrics can be found on Graylog webservice documentation.
+  ## Or by hitting the the web service api at:
+  ##   http://[graylog-host]:12900/system/metrics
+  metrics = [ {% for i in telegraf_inputs_graylog_metrics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    "jvm.cl.loaded",
+    "jvm.memory.pools.Metaspace.committed"
+  ]
+
+  ## Username and password
+  username = "{{ telegraf_inputs_graylog_username|d() }}"
+  password = "{{ telegraf_inputs_graylog_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_graylog_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_graylog_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_graylog_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_graylog_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_graylog_tls_key is not defined }}tls_key = "{{ telegraf_inputs_graylog_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_graylog_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_graylog_insecure_skip_verify|d()|bool|lower }}

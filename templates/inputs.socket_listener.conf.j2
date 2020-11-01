@@ -1,0 +1,59 @@
+# Generic socket listener capable of handling multiple socket types.
+[[inputs.socket_listener]]
+  ## URL to listen on
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_service_address is not defined }}service_address = "{{ telegraf_inputs_socket_listener_service_address|d() }}"
+
+  ## Change the file mode bits on unix sockets.  These permissions may not be
+  ## respected by some platforms, to safely restrict write permissions it is best
+  ## to place the socket into a directory that has previously been created
+  ## with the desired permissions.
+  ##   ex: socket_mode = "777"
+  {{ '#' if telegraf_inputs_socket_listener_socket_mode is not defined }}socket_mode = "{{ telegraf_inputs_socket_listener_socket_mode|d() }}"
+
+  ## Maximum number of concurrent connections.
+  ## Only applies to stream sockets (e.g. TCP).
+  ## 0 (default) is unlimited.
+  {{ '#' if telegraf_inputs_socket_listener_max_connections is not defined }}max_connections = {{ telegraf_inputs_socket_listener_max_connections|d() }}
+
+  ## Read timeout.
+  ## Only applies to stream sockets (e.g. TCP).
+  ## 0 (default) is unlimited.
+  {{ '#' if telegraf_inputs_socket_listener_read_timeout is not defined }}read_timeout = "{{ telegraf_inputs_socket_listener_read_timeout|d() }}"
+
+  ## Optional TLS configuration.
+  ## Only applies to stream sockets (e.g. TCP).
+  {{ '#' if telegraf_inputs_socket_listener_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_socket_listener_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_socket_listener_tls_key  is not defined }}tls_key  = "{{ telegraf_inputs_socket_listener_tls_key |d() }}"
+  ## Enables client authentication if set.
+  {{ '#' if telegraf_inputs_socket_listener_tls_allowed_cacerts is not defined }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_socket_listener_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Maximum socket buffer size (in bytes when no unit specified).
+  ## For stream sockets, once the buffer fills up, the sender will start backing up.
+  ## For datagram sockets, once the buffer fills up, metrics will start dropping.
+  ## Defaults to the OS default.
+  {{ '#' if telegraf_inputs_socket_listener_read_buffer_size is not defined }}read_buffer_size = "{{ telegraf_inputs_socket_listener_read_buffer_size|d() }}"
+
+  ## Period between keep alive probes.
+  ## Only applies to TCP sockets.
+  ## 0 disables keep alive probes.
+  ## Defaults to the OS configuration.
+  {{ '#' if telegraf_inputs_socket_listener_keep_alive_period is not defined }}keep_alive_period = "{{ telegraf_inputs_socket_listener_keep_alive_period|d() }}"
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  {{ '#' if telegraf_inputs_socket_listener_data_format is not defined }}data_format = "{{ telegraf_inputs_socket_listener_data_format|d() }}"
+
+  ## Content encoding for message payloads, can be set to "gzip" to or
+  ## "identity" to apply no encoding.
+  {{ '#' if telegraf_inputs_socket_listener_content_encoding is not defined }}content_encoding = "{{ telegraf_inputs_socket_listener_content_encoding|d() }}"

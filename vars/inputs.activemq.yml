@@ -1,0 +1,11 @@
+telegraf_inputs_activemq_url: "http://127.0.0.1:8161"
+#telegraf_inputs_activemq_server: "127.0.0.1"
+#telegraf_inputs_activemq_port: 8161
+#telegraf_inputs_activemq_username: "admin"
+#telegraf_inputs_activemq_password: "admin"
+#telegraf_inputs_activemq_webadmin: "admin"
+#telegraf_inputs_activemq_response_timeout: "5s"
+#telegraf_inputs_activemq_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_activemq_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_activemq_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_activemq_insecure_skip_verify: no

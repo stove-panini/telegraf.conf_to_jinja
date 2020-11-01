@@ -1,0 +1,1 @@
+telegraf_inputs_powerdns_unix_sockets: ["/var/run/pdns.controlsocket"]

@@ -1,0 +1,29 @@
+# Gather health check statuses from services registered in Consul
+[[inputs.consul]]
+  ## Consul server address
+  {{ '#' if telegraf_inputs_consul_address is not defined }}address = "{{ telegraf_inputs_consul_address|d() }}"
+
+  ## URI scheme for the Consul server, one of "http", "https"
+  {{ '#' if telegraf_inputs_consul_scheme is not defined }}scheme = "{{ telegraf_inputs_consul_scheme|d() }}"
+
+  ## ACL token used in every request
+  {{ '#' if telegraf_inputs_consul_token is not defined }}token = "{{ telegraf_inputs_consul_token|d() }}"
+
+  ## HTTP Basic Authentication username and password.
+  {{ '#' if telegraf_inputs_consul_username is not defined }}username = "{{ telegraf_inputs_consul_username|d() }}"
+  {{ '#' if telegraf_inputs_consul_password is not defined }}password = "{{ telegraf_inputs_consul_password|d() }}"
+
+  ## Data center to query the health checks from
+  {{ '#' if telegraf_inputs_consul_datacenter is not defined }}datacenter = "{{ telegraf_inputs_consul_datacenter|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_consul_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_consul_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_consul_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_consul_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_consul_tls_key is not defined }}tls_key = "{{ telegraf_inputs_consul_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_consul_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_consul_insecure_skip_verify|d()|bool|lower }}
+
+  ## Consul checks' tag splitting
+  # When tags are formatted like "key:value" with ":" as a delimiter then
+  # they will be splitted and reported as proper key:value in Telegraf
+  {{ '#' if telegraf_inputs_consul_tag_delimiter is not defined }}tag_delimiter = "{{ telegraf_inputs_consul_tag_delimiter|d() }}"

@@ -1,0 +1,11 @@
+telegraf_inputs_stackdriver_project: "erudite-bloom-151019"
+telegraf_inputs_stackdriver_metric_type_prefix_include: []
+#telegraf_inputs_stackdriver_metric_type_prefix_exclude: []
+telegraf_inputs_stackdriver_interval: "1m"
+#telegraf_inputs_stackdriver_rate_limit: 14
+#telegraf_inputs_stackdriver_delay: "5m"
+#telegraf_inputs_stackdriver_window: "1m"
+#telegraf_inputs_stackdriver_cache_ttl: "1h"
+#telegraf_inputs_stackdriver_gather_raw_distribution_buckets: yes
+#telegraf_inputs_stackdriver_distribution_aggregation_aligners: []
+#telegraf_inputs_stackdriver_key: "instance_name"

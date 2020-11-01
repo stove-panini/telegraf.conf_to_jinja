@@ -1,0 +1,1 @@
+#telegraf_inputs_postfix_queue_directory: "/var/spool/postfix"

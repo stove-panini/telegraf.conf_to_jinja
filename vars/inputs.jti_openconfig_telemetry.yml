@@ -1,0 +1,14 @@
+telegraf_inputs_jti_openconfig_telemetry_servers: ["localhost:1883"]
+telegraf_inputs_jti_openconfig_telemetry_username: "user"
+telegraf_inputs_jti_openconfig_telemetry_password: "pass"
+telegraf_inputs_jti_openconfig_telemetry_client_id: "telegraf"
+telegraf_inputs_jti_openconfig_telemetry_sample_frequency: "1000ms"
+telegraf_inputs_jti_openconfig_telemetry_sensors: []
+telegraf_inputs_jti_openconfig_telemetry_sensors: []
+#telegraf_inputs_jti_openconfig_telemetry_enable_tls: yes
+#telegraf_inputs_jti_openconfig_telemetry_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_jti_openconfig_telemetry_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_jti_openconfig_telemetry_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_jti_openconfig_telemetry_insecure_skip_verify: no
+telegraf_inputs_jti_openconfig_telemetry_retry_delay: "1000ms"
+telegraf_inputs_jti_openconfig_telemetry_str_as_tags: no

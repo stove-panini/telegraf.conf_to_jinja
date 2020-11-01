@@ -1,0 +1,23 @@
+#telegraf_inputs_amqp_consumer_url: "amqp://localhost:5672/influxdb"
+telegraf_inputs_amqp_consumer_brokers: ["amqp://localhost:5672/influxdb"]
+#telegraf_inputs_amqp_consumer_username: ""
+#telegraf_inputs_amqp_consumer_password: ""
+telegraf_inputs_amqp_consumer_exchange: "telegraf"
+#telegraf_inputs_amqp_consumer_exchange_type: "topic"
+#telegraf_inputs_amqp_consumer_exchange_passive: no
+#telegraf_inputs_amqp_consumer_exchange_durability: "durable"
+#telegraf_inputs_amqp_consumer_exchange_arguments: { }
+#telegraf_inputs_amqp_consumer_exchange_arguments: {hash_property: timestamp}
+telegraf_inputs_amqp_consumer_queue: "telegraf"
+telegraf_inputs_amqp_consumer_queue_durability: "durable"
+#telegraf_inputs_amqp_consumer_queue_passive: no
+telegraf_inputs_amqp_consumer_binding_key: "#"
+#telegraf_inputs_amqp_consumer_prefetch_count: 50
+#telegraf_inputs_amqp_consumer_max_undelivered_messages: 1000
+#telegraf_inputs_amqp_consumer_auth_method: "PLAIN"
+#telegraf_inputs_amqp_consumer_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_amqp_consumer_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_amqp_consumer_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_amqp_consumer_insecure_skip_verify: no
+#telegraf_inputs_amqp_consumer_content_encoding: "identity"
+telegraf_inputs_amqp_consumer_data_format: "influx"

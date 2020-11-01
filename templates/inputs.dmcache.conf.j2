@@ -1,0 +1,4 @@
+# Provide a native collection for dmsetup based statistics for dm-cache
+[[inputs.dmcache]]
+  ## Whether to report per-device stats or not
+  per_device = {{ telegraf_inputs_dmcache_per_device|d()|bool|lower }}

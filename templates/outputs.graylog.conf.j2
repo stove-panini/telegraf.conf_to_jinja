@@ -1,0 +1,9 @@
+# Send telegraf metrics to graylog
+[[outputs.graylog]]
+  ## UDP endpoint for your graylog instance.
+  servers = [ {% for i in telegraf_outputs_graylog_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## The field to use as the GELF short_message, if unset the static string
+  ## "telegraf" will be used.
+  ##   example: short_message_field = "message"
+  {{ '#' if telegraf_outputs_graylog_short_message_field is not defined }}short_message_field = "{{ telegraf_outputs_graylog_short_message_field|d() }}"

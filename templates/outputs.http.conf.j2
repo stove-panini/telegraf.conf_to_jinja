@@ -1,0 +1,41 @@
+# A plugin that can transmit metrics over HTTP
+[[outputs.http]]
+  ## URL is the address to send metrics to
+  url = "{{ telegraf_outputs_http_url|d() }}"
+
+  ## Timeout for HTTP message
+  {{ '#' if telegraf_outputs_http_timeout is not defined }}timeout = "{{ telegraf_outputs_http_timeout|d() }}"
+
+  ## HTTP method, one of: "POST" or "PUT"
+  {{ '#' if telegraf_outputs_http_method is not defined }}method = "{{ telegraf_outputs_http_method|d() }}"
+
+  ## HTTP Basic Auth credentials
+  {{ '#' if telegraf_outputs_http_username is not defined }}username = "{{ telegraf_outputs_http_username|d() }}"
+  {{ '#' if telegraf_outputs_http_password is not defined }}password = "{{ telegraf_outputs_http_password|d() }}"
+
+  ## OAuth2 Client Credentials Grant
+  {{ '#' if telegraf_outputs_http_client_id is not defined }}client_id = "{{ telegraf_outputs_http_client_id|d() }}"
+  {{ '#' if telegraf_outputs_http_client_secret is not defined }}client_secret = "{{ telegraf_outputs_http_client_secret|d() }}"
+  {{ '#' if telegraf_outputs_http_token_url is not defined }}token_url = "{{ telegraf_outputs_http_token_url|d() }}"
+  {{ '#' if telegraf_outputs_http_scopes is not defined }}scopes = [ {% for i in telegraf_outputs_http_scopes|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_outputs_http_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_http_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_http_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_http_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_http_tls_key is not defined }}tls_key = "{{ telegraf_outputs_http_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_outputs_http_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_http_insecure_skip_verify|d()|bool|lower }}
+
+  ## Data format to output.
+  ## Each data format has it's own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
+  {{ '#' if telegraf_outputs_http_data_format is not defined }}data_format = "{{ telegraf_outputs_http_data_format|d() }}"
+
+  ## HTTP Content-Encoding for write request body, can be set to "gzip" to
+  ## compress body or "identity" to apply no encoding.
+  {{ '#' if telegraf_outputs_http_content_encoding is not defined }}content_encoding = "{{ telegraf_outputs_http_content_encoding|d() }}"
+
+  ## Additional HTTP headers
+  # [outputs.http.headers]
+  #   # Should be set manually to "application/json" for json data_format

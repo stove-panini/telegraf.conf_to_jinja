@@ -1,0 +1,16 @@
+# A plugin to collect stats from Varnish HTTP Cache
+[[inputs.varnish]]
+  ## If running as a restricted user you can prepend sudo for additional access:
+  use_sudo = {{ telegraf_inputs_varnish_use_sudo|d()|bool|lower }}
+
+  ## The default location of the varnishstat binary can be overridden with:
+  binary = "{{ telegraf_inputs_varnish_binary|d() }}"
+
+  ## By default, telegraf gather stats for 3 metric points.
+  ## Setting stats will override the defaults shown below.
+  ## Glob matching can be used, ie, stats = ["MAIN.*"]
+  ## stats may also be set to ["*"], which will collect all stats
+  stats = [ {% for i in telegraf_inputs_varnish_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional name for the varnish instance (or working directory) to query
+  ## Usually append after -n in varnish cli

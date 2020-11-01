@@ -1,0 +1,2 @@
+telegraf_inputs_sflow_service_address: "udp://:6343"
+#telegraf_inputs_sflow_read_buffer_size: ""

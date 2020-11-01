@@ -1,0 +1,17 @@
+telegraf_inputs_dcos_cluster_url: "https://dcos-ee-master-1"
+telegraf_inputs_dcos_service_account_id: "telegraf"
+telegraf_inputs_dcos_service_account_private_key: "/etc/telegraf/telegraf-sa-key.pem"
+#telegraf_inputs_dcos_token_file: "/home/dcos/.dcos/token"
+#telegraf_inputs_dcos_node_include: []
+#telegraf_inputs_dcos_node_exclude: []
+#telegraf_inputs_dcos_container_include: []
+#telegraf_inputs_dcos_container_exclude: []
+#telegraf_inputs_dcos_app_include: []
+#telegraf_inputs_dcos_app_exclude: []
+#telegraf_inputs_dcos_max_connections: 10
+#telegraf_inputs_dcos_response_timeout: "20s"
+#telegraf_inputs_dcos_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_dcos_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_dcos_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_dcos_insecure_skip_verify: yes
+#telegraf_inputs_dcos_tagdrop_path: ["/var/lib/mesos/slave/slaves/*"]

@@ -1,0 +1,17 @@
+# Configuration for Librato API to send metrics to.
+[[outputs.librato]]
+  ## Librato API Docs
+  ## http://dev.librato.com/v1/metrics-authentication
+  ## Librato API user
+  api_user = "{{ telegraf_outputs_librato_api_user|d() }}"
+  ## Librato API token
+  api_token = "{{ telegraf_outputs_librato_api_token|d() }}"
+  ## Debug
+  {{ '#' if telegraf_outputs_librato_debug is not defined }}debug = {{ telegraf_outputs_librato_debug|d()|bool|lower }}
+  ## Connection timeout.
+  {{ '#' if telegraf_outputs_librato_timeout is not defined }}timeout = "{{ telegraf_outputs_librato_timeout|d() }}"
+  ## Output source Template (same as graphite buckets)
+  ## see https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#graphite
+  ## This template is used in librato's source (not metric's name)
+  template = "{{ telegraf_outputs_librato_template|d() }}"
+

@@ -1,0 +1,1 @@
+telegraf_processors_dedup_dedup_interval: "600s"

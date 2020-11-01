@@ -1,0 +1,4 @@
+# Read metrics about system load & uptime
+[[inputs.system]]
+  ## Uncomment to remove deprecated metrics.
+  {{ '#' if telegraf_inputs_system_fielddrop is not defined }}fielddrop = [ {% for i in telegraf_inputs_system_fielddrop|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

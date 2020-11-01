@@ -1,0 +1,7 @@
+telegraf_inputs_net_response_protocol: "tcp"
+telegraf_inputs_net_response_address: "localhost:80"
+#telegraf_inputs_net_response_timeout: "1s"
+#telegraf_inputs_net_response_read_timeout: "1s"
+#telegraf_inputs_net_response_send: "ssh"
+#telegraf_inputs_net_response_expect: "ssh"
+#telegraf_inputs_net_response_fielddrop: ["result_type", "string_found"]

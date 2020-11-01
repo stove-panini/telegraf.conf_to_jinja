@@ -1,0 +1,7 @@
+# Returns ethtool statistics for given interfaces
+[[inputs.ethtool]]
+  ## List of interfaces to pull metrics for
+  {{ '#' if telegraf_inputs_ethtool_interface_include is not defined }}interface_include = [ {% for i in telegraf_inputs_ethtool_interface_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## List of interfaces to ignore when pulling metrics.
+  {{ '#' if telegraf_inputs_ethtool_interface_exclude is not defined }}interface_exclude = [ {% for i in telegraf_inputs_ethtool_interface_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

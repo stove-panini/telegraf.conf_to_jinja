@@ -1,0 +1,13 @@
+telegraf_outputs_wavefront_url: "https://metrics.wavefront.com"
+telegraf_outputs_wavefront_token: "DUMMY_TOKEN"
+telegraf_outputs_wavefront_host: "wavefront.example.com"
+telegraf_outputs_wavefront_port: 2878
+telegraf_outputs_wavefront_prefix: "my.specific.prefix."
+telegraf_outputs_wavefront_simple_fields: no
+telegraf_outputs_wavefront_metric_separator: "."
+telegraf_outputs_wavefront_convert_paths: yes
+telegraf_outputs_wavefront_use_strict: no
+telegraf_outputs_wavefront_use_regex: no
+telegraf_outputs_wavefront_source_override: ["hostname", "address", "agent_host", "node_host"]
+telegraf_outputs_wavefront_convert_bool: yes
+telegraf_outputs_wavefront_truncate_tags: no

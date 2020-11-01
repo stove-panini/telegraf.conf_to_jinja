@@ -1,0 +1,18 @@
+# Retrieves information on a specific host in a MarkLogic Cluster
+[[inputs.marklogic]]
+  ## Base URL of the MarkLogic HTTP Server.
+  url = "{{ telegraf_inputs_marklogic_url|d() }}"
+
+  ## List of specific hostnames to retrieve information. At least (1) required.
+  {{ '#' if telegraf_inputs_marklogic_hosts is not defined }}hosts = [ {% for i in telegraf_inputs_marklogic_hosts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Using HTTP Basic Authentication. Management API requires 'manage-user' role privileges
+  {{ '#' if telegraf_inputs_marklogic_username is not defined }}username = "{{ telegraf_inputs_marklogic_username|d() }}"
+  {{ '#' if telegraf_inputs_marklogic_password is not defined }}password = "{{ telegraf_inputs_marklogic_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_marklogic_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_marklogic_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_marklogic_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_marklogic_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_marklogic_tls_key is not defined }}tls_key = "{{ telegraf_inputs_marklogic_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_marklogic_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_marklogic_insecure_skip_verify|d()|bool|lower }}

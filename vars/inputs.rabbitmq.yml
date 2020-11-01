@@ -1,0 +1,17 @@
+#telegraf_inputs_rabbitmq_url: "http://localhost:15672"
+#telegraf_inputs_rabbitmq_name: "rmq-server-1"
+#telegraf_inputs_rabbitmq_username: "guest"
+#telegraf_inputs_rabbitmq_password: "guest"
+#telegraf_inputs_rabbitmq_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_rabbitmq_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_rabbitmq_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_rabbitmq_insecure_skip_verify: no
+#telegraf_inputs_rabbitmq_header_timeout: "3s"
+#telegraf_inputs_rabbitmq_client_timeout: "4s"
+#telegraf_inputs_rabbitmq_nodes: ["rabbit@node1", "rabbit@node2"]
+#telegraf_inputs_rabbitmq_queues: ["telegraf"]
+#telegraf_inputs_rabbitmq_exchanges: ["telegraf"]
+telegraf_inputs_rabbitmq_queue_name_include: []
+telegraf_inputs_rabbitmq_queue_name_exclude: []
+#telegraf_inputs_rabbitmq_federation_upstream_include: ["dataCentre-*"]
+#telegraf_inputs_rabbitmq_federation_upstream_exclude: []

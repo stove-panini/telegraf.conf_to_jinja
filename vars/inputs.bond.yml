@@ -1,0 +1,2 @@
+#telegraf_inputs_bond_host_proc: "/proc"
+#telegraf_inputs_bond_bond_interfaces: ["bond0"]

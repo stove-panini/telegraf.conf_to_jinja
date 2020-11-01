@@ -1,0 +1,16 @@
+telegraf_inputs_modbus_name: "Device"
+telegraf_inputs_modbus_slave_id: 1
+telegraf_inputs_modbus_timeout: "1s"
+#telegraf_inputs_modbus_busy_retries: 0
+#telegraf_inputs_modbus_busy_retries_wait: "100ms"
+telegraf_inputs_modbus_controller: "tcp://localhost:502"
+#telegraf_inputs_modbus_controller: "file:///dev/ttyUSB0"
+#telegraf_inputs_modbus_baud_rate: 9600
+#telegraf_inputs_modbus_data_bits: 8
+#telegraf_inputs_modbus_parity: "N"
+#telegraf_inputs_modbus_stop_bits: 1
+#telegraf_inputs_modbus_transmission_mode: "RTU"
+telegraf_inputs_modbus_discrete_inputs: []
+telegraf_inputs_modbus_coils: []
+telegraf_inputs_modbus_holding_registers: []
+telegraf_inputs_modbus_input_registers: []

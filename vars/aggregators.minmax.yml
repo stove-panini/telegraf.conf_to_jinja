@@ -1,0 +1,2 @@
+telegraf_aggregators_minmax_period: "30s"
+telegraf_aggregators_minmax_drop_original: no

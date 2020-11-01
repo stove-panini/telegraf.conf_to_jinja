@@ -1,0 +1,17 @@
+telegraf_inputs_docker_endpoint: "unix:///var/run/docker.sock"
+telegraf_inputs_docker_gather_services: no
+telegraf_inputs_docker_container_names: []
+telegraf_inputs_docker_source_tag: no
+telegraf_inputs_docker_container_name_include: []
+telegraf_inputs_docker_container_name_exclude: []
+#telegraf_inputs_docker_container_state_include: []
+#telegraf_inputs_docker_container_state_exclude: []
+telegraf_inputs_docker_timeout: "5s"
+telegraf_inputs_docker_perdevice: yes
+telegraf_inputs_docker_total: no
+telegraf_inputs_docker_docker_label_include: []
+telegraf_inputs_docker_docker_label_exclude: []
+#telegraf_inputs_docker_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_docker_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_docker_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_docker_insecure_skip_verify: no

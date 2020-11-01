@@ -1,0 +1,9 @@
+telegraf_aggregators_histogram_period: "30s"
+telegraf_aggregators_histogram_drop_original: no
+telegraf_aggregators_histogram_reset: no
+telegraf_aggregators_histogram_cumulative: yes
+#telegraf_aggregators_histogram_buckets: [0.0, 15.6, 34.5, 49.1, 71.5, 80.5, 94.5, 100.0]
+#telegraf_aggregators_histogram_measurement_name: "cpu"
+#telegraf_aggregators_histogram_buckets: [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
+#telegraf_aggregators_histogram_measurement_name: "diskio"
+#telegraf_aggregators_histogram_fields: ["io_time", "read_time", "write_time"]

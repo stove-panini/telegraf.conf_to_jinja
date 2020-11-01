@@ -1,0 +1,22 @@
+# Read metrics from one or many redis servers
+[[inputs.redis]]
+  ## specify servers via a url matching:
+  ##  [protocol://][:password]@address[:port]
+  ##  e.g.
+  ##    tcp://localhost:6379
+  ##    tcp://:password@192.168.99.100
+  ##    unix:///var/run/redis.sock
+  ##
+  ## If no servers are specified, then localhost is used as the host.
+  ## If no port is specified, 6379 is used
+    servers = [ {% for i in telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## specify server password
+    {{ '#' if telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_password is not defined }}password = "{{ telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_password|d() }}"
+
+  ## Optional TLS Config
+    {{ '#' if telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_ca|d() }}"
+    {{ '#' if telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_cert|d() }}"
+    {{ '#' if telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_key is not defined }}tls_key = "{{ telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+    {{ '#' if telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_redis_  ##  [protocol://][:password]@address[:port_insecure_skip_verify|d()|bool|lower }}

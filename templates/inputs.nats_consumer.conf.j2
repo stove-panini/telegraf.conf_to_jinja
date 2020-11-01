@@ -1,0 +1,48 @@
+# Read metrics from NATS subject(s)
+[[inputs.nats_consumer]]
+  ## urls of NATS servers
+  servers = [ {% for i in telegraf_inputs_nats_consumer_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## subject(s) to consume
+  subjects = [ {% for i in telegraf_inputs_nats_consumer_subjects|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## name a queue group
+  queue_group = "{{ telegraf_inputs_nats_consumer_queue_group|d() }}"
+
+  ## Optional credentials
+  {{ '#' if telegraf_inputs_nats_consumer_username is not defined }}username = "{{ telegraf_inputs_nats_consumer_username|d() }}"
+  {{ '#' if telegraf_inputs_nats_consumer_password is not defined }}password = "{{ telegraf_inputs_nats_consumer_password|d() }}"
+
+  ## Optional NATS 2.0 and NATS NGS compatible user credentials
+  {{ '#' if telegraf_inputs_nats_consumer_credentials is not defined }}credentials = "{{ telegraf_inputs_nats_consumer_credentials|d() }}"
+
+  ## Use Transport Layer Security
+  {{ '#' if telegraf_inputs_nats_consumer_secure is not defined }}secure = {{ telegraf_inputs_nats_consumer_secure|d()|bool|lower }}
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_nats_consumer_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_nats_consumer_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_nats_consumer_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_nats_consumer_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_nats_consumer_tls_key is not defined }}tls_key = "{{ telegraf_inputs_nats_consumer_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_nats_consumer_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_nats_consumer_insecure_skip_verify|d()|bool|lower }}
+
+  ## Sets the limits for pending msgs and bytes for each subscription
+  ## These shouldn't need to be adjusted except in very high throughput scenarios
+  {{ '#' if telegraf_inputs_nats_consumer_pending_message_limit is not defined }}pending_message_limit = {{ telegraf_inputs_nats_consumer_pending_message_limit|d() }}
+  {{ '#' if telegraf_inputs_nats_consumer_pending_bytes_limit is not defined }}pending_bytes_limit = {{ telegraf_inputs_nats_consumer_pending_bytes_limit|d() }}
+
+  ## Maximum messages to read from the broker that have not been written by an
+  ## output.  For best throughput set based on the number of metrics within
+  ## each message and the size of the output's metric_batch_size.
+  ##
+  ## For example, if each message from the queue contains 10 metrics and the
+  ## output metric_batch_size is 1000, setting this to 100 will ensure that a
+  ## full batch is collected and the write is triggered immediately without
+  ## waiting until the next flush_interval.
+  {{ '#' if telegraf_inputs_nats_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_nats_consumer_max_undelivered_messages|d() }}
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_nats_consumer_data_format|d() }}"

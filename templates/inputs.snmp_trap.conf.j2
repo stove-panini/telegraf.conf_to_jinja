@@ -1,0 +1,28 @@
+# Receive SNMP traps
+[[inputs.snmp_trap]]
+  ## Transport, local address, and port to listen on.  Transport must
+  ## be "udp://".  Omit local address to listen on all interfaces.
+  ##   example: "udp://127.0.0.1:1234"
+  ##
+  ## Special permissions may be required to listen on a port less than
+  ## 1024.  See README.md for details
+  ##
+  {{ '#' if telegraf_inputs_snmp_trap_service_address is not defined }}service_address = "{{ telegraf_inputs_snmp_trap_service_address|d() }}"
+  ## Timeout running snmptranslate command
+  {{ '#' if telegraf_inputs_snmp_trap_timeout is not defined }}timeout = "{{ telegraf_inputs_snmp_trap_timeout|d() }}"
+  ## Snmp version, defaults to 2c
+  {{ '#' if telegraf_inputs_snmp_trap_version is not defined }}version = "{{ telegraf_inputs_snmp_trap_version|d() }}"
+  ## SNMPv3 authentication and encryption options.
+  ##
+  ## Security Name.
+  {{ '#' if telegraf_inputs_snmp_trap_sec_name is not defined }}sec_name = "{{ telegraf_inputs_snmp_trap_sec_name|d() }}"
+  ## Authentication protocol; one of "MD5", "SHA" or "".
+  {{ '#' if telegraf_inputs_snmp_trap_auth_protocol is not defined }}auth_protocol = "{{ telegraf_inputs_snmp_trap_auth_protocol|d() }}"
+  ## Authentication password.
+  {{ '#' if telegraf_inputs_snmp_trap_auth_password is not defined }}auth_password = "{{ telegraf_inputs_snmp_trap_auth_password|d() }}"
+  ## Security Level; one of "noAuthNoPriv", "authNoPriv", or "authPriv".
+  {{ '#' if telegraf_inputs_snmp_trap_sec_level is not defined }}sec_level = "{{ telegraf_inputs_snmp_trap_sec_level|d() }}"
+  ## Privacy protocol used for encrypted messages; one of "DES", "AES", "AES192", "AES192C", "AES256", "AES256C" or "".
+  {{ '#' if telegraf_inputs_snmp_trap_priv_protocol is not defined }}priv_protocol = "{{ telegraf_inputs_snmp_trap_priv_protocol|d() }}"
+  ## Privacy password used for encrypted messages.
+  {{ '#' if telegraf_inputs_snmp_trap_priv_password is not defined }}priv_password = "{{ telegraf_inputs_snmp_trap_priv_password|d() }}"

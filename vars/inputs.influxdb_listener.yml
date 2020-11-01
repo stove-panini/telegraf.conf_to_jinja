@@ -1,0 +1,11 @@
+telegraf_inputs_influxdb_listener_service_address: ":8186"
+telegraf_inputs_influxdb_listener_read_timeout: "10s"
+telegraf_inputs_influxdb_listener_write_timeout: "10s"
+telegraf_inputs_influxdb_listener_max_body_size: "32MiB"
+#telegraf_inputs_influxdb_listener_database_tag: ""
+#telegraf_inputs_influxdb_listener_retention_policy_tag: ""
+telegraf_inputs_influxdb_listener_tls_allowed_cacerts: ["/etc/telegraf/clientca.pem"]
+telegraf_inputs_influxdb_listener_tls_cert: "/etc/telegraf/cert.pem"
+telegraf_inputs_influxdb_listener_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_influxdb_listener_basic_username: "foobar"
+#telegraf_inputs_influxdb_listener_basic_password: "barfoo"

@@ -1,0 +1,2 @@
+#telegraf_inputs_cgroup_paths: []
+#telegraf_inputs_cgroup_files: ["memory.*usage*", "memory.limit_in_bytes"]

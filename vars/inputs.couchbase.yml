@@ -1,0 +1,1 @@
+telegraf_inputs_couchbase_  ##  [protocol://][:password]@address[:port_servers: ["http://localhost:8091"]

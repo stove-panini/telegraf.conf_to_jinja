@@ -1,0 +1,4 @@
+telegraf_inputs_nstat_proc_net_netstat: "/proc/net/netstat"
+telegraf_inputs_nstat_proc_net_snmp: "/proc/net/snmp"
+telegraf_inputs_nstat_proc_net_snmp6: "/proc/net/snmp6"
+telegraf_inputs_nstat_dump_zeros      : yes

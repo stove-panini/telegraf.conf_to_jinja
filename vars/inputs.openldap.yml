@@ -1,0 +1,8 @@
+telegraf_inputs_openldap_host: "localhost"
+telegraf_inputs_openldap_port: 389
+telegraf_inputs_openldap_tls: ""
+telegraf_inputs_openldap_insecure_skip_verify: no
+telegraf_inputs_openldap_tls_ca: "/etc/ssl/certs.pem"
+telegraf_inputs_openldap_bind_dn: ""
+telegraf_inputs_openldap_bind_password: ""
+telegraf_inputs_openldap_reverse_metric_names: yes

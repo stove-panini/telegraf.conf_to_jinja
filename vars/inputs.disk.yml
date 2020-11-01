@@ -1,0 +1,2 @@
+#telegraf_inputs_disk_mount_points: ["/"]
+telegraf_inputs_disk_ignore_fs: ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]

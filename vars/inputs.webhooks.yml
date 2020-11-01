@@ -1,0 +1,8 @@
+telegraf_inputs_webhooks_service_address: ":1619"
+telegraf_inputs_webhooks_filestack_path: "/filestack"
+telegraf_inputs_webhooks_github_path: "/github"
+#telegraf_inputs_webhooks_github_secret: ""
+telegraf_inputs_webhooks_mandrill_path: "/mandrill"
+telegraf_inputs_webhooks_rollbar_path: "/rollbar"
+telegraf_inputs_webhooks_papertrail_path: "/papertrail"
+telegraf_inputs_webhooks_particle_path: "/particle"

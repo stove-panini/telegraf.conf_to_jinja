@@ -1,0 +1,7 @@
+telegraf_inputs_tail_files: ["/var/mymetrics.out"]
+#telegraf_inputs_tail_from_beginning: no
+#telegraf_inputs_tail_pipe: no
+#telegraf_inputs_tail_watch_method: "inotify"
+#telegraf_inputs_tail_max_undelivered_lines: 1000
+#telegraf_inputs_tail_character_encoding: ""
+telegraf_inputs_tail_data_format: "influx"

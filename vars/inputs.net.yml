@@ -1,0 +1,2 @@
+#telegraf_inputs_net_interfaces: ["eth0"]
+#telegraf_inputs_net_ignore_protocol_stats: no

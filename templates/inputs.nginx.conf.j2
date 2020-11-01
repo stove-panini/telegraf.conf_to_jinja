@@ -1,0 +1,14 @@
+# Read Nginx's basic status information (ngx_http_stub_status_module)
+[[inputs.nginx]]
+  # An array of Nginx stub_status URI to gather stats.
+  urls = [ {% for i in telegraf_inputs_nginx_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Optional TLS Config
+  tls_ca = "{{ telegraf_inputs_nginx_tls_ca|d() }}"
+  tls_cert = "{{ telegraf_inputs_nginx_tls_cert|d() }}"
+  tls_key = "{{ telegraf_inputs_nginx_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  insecure_skip_verify = {{ telegraf_inputs_nginx_insecure_skip_verify|d()|bool|lower }}
+
+  # HTTP response timeout (default: 5s)
+  response_timeout = "{{ telegraf_inputs_nginx_response_timeout|d() }}"

@@ -1,0 +1,26 @@
+# Configuration for OpenTSDB server to send metrics to
+[[outputs.opentsdb]]
+  ## prefix for metrics keys
+  prefix = "{{ telegraf_outputs_opentsdb_prefix|d() }}"
+
+  ## DNS name of the OpenTSDB server
+  ## Using "opentsdb.example.com" or "tcp://opentsdb.example.com" will use the
+  ## telnet API. "http://opentsdb.example.com" will use the Http API.
+  host = "{{ telegraf_outputs_opentsdb_host|d() }}"
+
+  ## Port of the OpenTSDB server
+  port = {{ telegraf_outputs_opentsdb_port|d() }}
+
+  ## Number of data points to send to OpenTSDB in Http requests.
+  ## Not used with telnet API.
+  http_batch_size = {{ telegraf_outputs_opentsdb_http_batch_size|d() }}
+
+  ## URI Path for Http requests to OpenTSDB.
+  ## Used in cases where OpenTSDB is located behind a reverse proxy.
+  http_path = "{{ telegraf_outputs_opentsdb_http_path|d() }}"
+
+  ## Debug true - Prints OpenTSDB communication
+  debug = {{ telegraf_outputs_opentsdb_debug|d()|bool|lower }}
+
+  ## Separator separates measurement name from field
+  separator = "{{ telegraf_outputs_opentsdb_separator|d() }}"

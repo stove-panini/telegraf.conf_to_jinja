@@ -1,0 +1,12 @@
+# Add the S2 Cell ID as a tag based on latitude and longitude fields
+[[processors.s2geo]]
+  ## The name of the lat and lon fields containing WGS-84 latitude and
+  ## longitude in decimal degrees.
+  {{ '#' if telegraf_processors_s2geo_lat_field is not defined }}lat_field = "{{ telegraf_processors_s2geo_lat_field|d() }}"
+  {{ '#' if telegraf_processors_s2geo_lon_field is not defined }}lon_field = "{{ telegraf_processors_s2geo_lon_field|d() }}"
+
+  ## New tag to create
+  {{ '#' if telegraf_processors_s2geo_tag_key is not defined }}tag_key = "{{ telegraf_processors_s2geo_tag_key|d() }}"
+
+  ## Cell level (see https://s2geometry.io/resources/s2cell_statistics.html)
+  {{ '#' if telegraf_processors_s2geo_cell_level is not defined }}cell_level = {{ telegraf_processors_s2geo_cell_level|d() }}

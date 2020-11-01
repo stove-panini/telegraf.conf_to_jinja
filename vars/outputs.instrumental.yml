@@ -1,0 +1,5 @@
+telegraf_outputs_instrumental_api_token: "API Token" # required
+telegraf_outputs_instrumental_prefix: ""
+telegraf_outputs_instrumental_template: "host.tags.measurement.field"
+telegraf_outputs_instrumental_timeout: "2s"
+telegraf_outputs_instrumental_debug: no

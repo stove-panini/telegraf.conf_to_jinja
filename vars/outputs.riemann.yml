@@ -1,0 +1,9 @@
+telegraf_outputs_riemann_url: "tcp://localhost:5555"
+#telegraf_outputs_riemann_ttl: 30.0
+telegraf_outputs_riemann_separator: "/"
+#telegraf_outputs_riemann_measurement_as_attribute: no
+#telegraf_outputs_riemann_string_as_state: no
+#telegraf_outputs_riemann_tag_keys: ["telegraf","custom_tag"]
+#telegraf_outputs_riemann_tags: ["telegraf-output"]
+#telegraf_outputs_riemann_description_text: "metrics collected from telegraf"
+#telegraf_outputs_riemann_timeout: "5s"

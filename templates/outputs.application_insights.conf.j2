@@ -1,0 +1,19 @@
+# Send metrics to Azure Application Insights
+[[outputs.application_insights]]
+  ## Instrumentation key of the Application Insights resource.
+  instrumentation_key = "{{ telegraf_outputs_application_insights_instrumentation_key|d() }}"
+
+  ## Regions that require endpoint modification https://docs.microsoft.com/en-us/azure/azure-monitor/app/custom-endpoints
+  {{ '#' if telegraf_outputs_application_insights_endpoint_url is not defined }}endpoint_url = "{{ telegraf_outputs_application_insights_endpoint_url|d() }}"
+
+  ## Timeout for closing (default: 5s).
+  {{ '#' if telegraf_outputs_application_insights_timeout is not defined }}timeout = "{{ telegraf_outputs_application_insights_timeout|d() }}"
+
+  ## Enable additional diagnostic logging.
+  {{ '#' if telegraf_outputs_application_insights_enable_diagnostic_logging is not defined }}enable_diagnostic_logging = {{ telegraf_outputs_application_insights_enable_diagnostic_logging|d()|bool|lower }}
+
+  ## Context Tag Sources add Application Insights context tags to a tag value.
+  ##
+  ## For list of allowed context tag keys see:
+  ## https://github.com/Microsoft/ApplicationInsights-Go/blob/master/appinsights/contracts/contexttagkeys.go
+  # [outputs.application_insights.context_tag_sources]

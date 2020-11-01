@@ -1,0 +1,10 @@
+# Gathers metrics from the /3.0/reports MailChimp API
+[[inputs.mailchimp]]
+  ## MailChimp API key
+  ## get from https://admin.mailchimp.com/account/api/
+  api_key = "{{ telegraf_inputs_mailchimp_api_key|d() }}"
+  ## Reports for campaigns sent more than days_old ago will not be collected.
+  ## 0 means collect all.
+  days_old = {{ telegraf_inputs_mailchimp_days_old|d() }}
+  ## Campaign ID to get, if empty gets all campaigns, this option overrides days_old
+  {{ '#' if telegraf_inputs_mailchimp_campaign_id is not defined }}campaign_id = "{{ telegraf_inputs_mailchimp_campaign_id|d() }}"

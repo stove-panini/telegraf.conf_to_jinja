@@ -1,0 +1,5 @@
+# Monitor wifi signal strength and quality
+[[inputs.wireless]]
+  ## Sets 'proc' directory path
+  ## If not specified, then default is /proc
+  {{ '#' if telegraf_inputs_wireless_host_proc is not defined }}host_proc = "{{ telegraf_inputs_wireless_host_proc|d() }}"

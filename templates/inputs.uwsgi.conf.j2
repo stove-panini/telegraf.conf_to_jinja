@@ -1,0 +1,11 @@
+# Read uWSGI metrics.
+[[inputs.uwsgi]]
+  ## List with urls of uWSGI Stats servers. URL must match pattern:
+  ## scheme://address[:port]
+  ##
+  ## For example:
+  ## servers = ["tcp://localhost:5050", "http://localhost:1717", "unix:///tmp/statsock"]
+    servers = [ {% for i in telegraf_inputs_uwsgi_  ## scheme://address[:port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## General connection timeout
+    {{ '#' if telegraf_inputs_uwsgi_  ## scheme://address[:port_timeout is not defined }}timeout = "{{ telegraf_inputs_uwsgi_  ## scheme://address[:port_timeout|d() }}"

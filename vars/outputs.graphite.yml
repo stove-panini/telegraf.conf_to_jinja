@@ -1,0 +1,11 @@
+telegraf_outputs_graphite_servers: ["localhost:2003"]
+telegraf_outputs_graphite_prefix: ""
+telegraf_outputs_graphite_template: "host.tags.measurement.field"
+#telegraf_outputs_graphite_graphite_tag_support: no
+#telegraf_outputs_graphite_graphite_separator: "."
+#telegraf_outputs_graphite_templates: []
+telegraf_outputs_graphite_timeout: 2
+#telegraf_outputs_graphite_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_graphite_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_graphite_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_graphite_insecure_skip_verify: no

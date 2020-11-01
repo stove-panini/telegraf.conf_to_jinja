@@ -1,0 +1,2 @@
+telegraf_inputs_fluentd_endpoint: "http://localhost:24220/api/plugins.json"
+telegraf_inputs_fluentd_exclude: []

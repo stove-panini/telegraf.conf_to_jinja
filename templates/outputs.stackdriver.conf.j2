@@ -1,0 +1,16 @@
+# Configuration for Google Cloud Stackdriver to send metrics to
+[[outputs.stackdriver]]
+  ## GCP Project
+  project = "{{ telegraf_outputs_stackdriver_project|d() }}"
+
+  ## The namespace for the metric descriptor
+  namespace = "{{ telegraf_outputs_stackdriver_namespace|d() }}"
+
+  ## Custom resource type
+  {{ '#' if telegraf_outputs_stackdriver_resource_type is not defined }}resource_type = "{{ telegraf_outputs_stackdriver_resource_type|d() }}"
+
+  ## Additional resource labels
+  # [outputs.stackdriver.resource_labels]
+    {{ '#' if telegraf_outputs_stackdriver_resource_labels_node_id is not defined }}node_id = "{{ telegraf_outputs_stackdriver_resource_labels_node_id|d() }}"
+    {{ '#' if telegraf_outputs_stackdriver_resource_labels_namespace is not defined }}namespace = "{{ telegraf_outputs_stackdriver_resource_labels_namespace|d() }}"
+    {{ '#' if telegraf_outputs_stackdriver_resource_labels_location is not defined }}location = "{{ telegraf_outputs_stackdriver_resource_labels_location|d() }}"

@@ -1,0 +1,13 @@
+# Send metrics to command as input over stdin
+[[outputs.exec]]
+  ## Command to ingest metrics via stdin.
+  command = [ {% for i in telegraf_outputs_exec_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Timeout for command to complete.
+  {{ '#' if telegraf_outputs_exec_timeout is not defined }}timeout = "{{ telegraf_outputs_exec_timeout|d() }}"
+
+  ## Data format to output.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
+  {{ '#' if telegraf_outputs_exec_data_format is not defined }}data_format = "{{ telegraf_outputs_exec_data_format|d() }}"

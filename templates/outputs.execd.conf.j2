@@ -1,0 +1,13 @@
+# Run executable as long-running output plugin
+[[outputs.execd]]
+  ## Program to run as daemon
+  command = [ {% for i in telegraf_outputs_execd_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Delay before the process is restarted after an unexpected termination
+  restart_delay = "{{ telegraf_outputs_execd_restart_delay|d() }}"
+
+  ## Data format to export.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
+  data_format = "{{ telegraf_outputs_execd_data_format|d() }}"

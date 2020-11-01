@@ -1,0 +1,10 @@
+# Read metrics from one or many PowerDNS Recursor servers
+[[inputs.powerdns_recursor]]
+  ## Path to the Recursor control socket.
+  unix_sockets = [ {% for i in telegraf_inputs_powerdns_recursor_unix_sockets|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Directory to create receive socket.  This default is likely not writable,
+  ## please reference the full plugin documentation for a recommended setup.
+  {{ '#' if telegraf_inputs_powerdns_recursor_socket_dir is not defined }}socket_dir = "{{ telegraf_inputs_powerdns_recursor_socket_dir|d() }}"
+  ## Socket permissions for the receive socket.
+  {{ '#' if telegraf_inputs_powerdns_recursor_socket_mode is not defined }}socket_mode = "{{ telegraf_inputs_powerdns_recursor_socket_mode|d() }}"

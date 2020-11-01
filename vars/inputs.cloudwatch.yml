@@ -1,0 +1,17 @@
+telegraf_inputs_cloudwatch_region: "us-east-1"
+#telegraf_inputs_cloudwatch_access_key: ""
+#telegraf_inputs_cloudwatch_secret_key: ""
+#telegraf_inputs_cloudwatch_token: ""
+#telegraf_inputs_cloudwatch_role_arn: ""
+#telegraf_inputs_cloudwatch_profile: ""
+#telegraf_inputs_cloudwatch_shared_credential_file: ""
+#telegraf_inputs_cloudwatch_endpoint_url: ""
+telegraf_inputs_cloudwatch_period: "5m"
+telegraf_inputs_cloudwatch_delay: "5m"
+telegraf_inputs_cloudwatch_interval: "5m"
+#telegraf_inputs_cloudwatch_cache_ttl: "1h"
+telegraf_inputs_cloudwatch_namespace: "AWS/ELB"
+#telegraf_inputs_cloudwatch_ratelimit: 25
+#telegraf_inputs_cloudwatch_timeout: "5s"
+#telegraf_inputs_cloudwatch_statistic_include: [ "average", "sum", "minimum", "maximum", sample_count" ]
+#telegraf_inputs_cloudwatch_statistic_exclude: []

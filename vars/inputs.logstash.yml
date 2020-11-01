@@ -1,0 +1,10 @@
+telegraf_inputs_logstash_url: "http://127.0.0.1:9600"
+#telegraf_inputs_logstash_single_pipeline: no
+#telegraf_inputs_logstash_collect: ["pipelines", "process", "jvm"]
+#telegraf_inputs_logstash_timeout: "5s"
+#telegraf_inputs_logstash_username: "username"
+#telegraf_inputs_logstash_password: "pa$$word"
+#telegraf_inputs_logstash_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_logstash_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_logstash_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_logstash_insecure_skip_verify: no

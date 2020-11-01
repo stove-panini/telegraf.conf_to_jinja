@@ -1,0 +1,14 @@
+# Read metrics exposed by fluentd in_monitor plugin
+[[inputs.fluentd]]
+  ## This plugin reads information exposed by fluentd (using /api/plugins.json endpoint).
+  ##
+  ## Endpoint:
+  ## - only one URI is allowed
+  ## - https is not supported
+  endpoint = "{{ telegraf_inputs_fluentd_endpoint|d() }}"
+
+  ## Define which plugins have to be excluded (based on "type" field - e.g. monitor_agent)
+  exclude = [ {% for i in telegraf_inputs_fluentd_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+	  "monitor_agent",
+	  "dummy",
+  ]

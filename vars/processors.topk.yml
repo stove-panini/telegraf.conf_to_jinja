@@ -1,0 +1,9 @@
+#telegraf_processors_topk_period: 10
+#telegraf_processors_topk_k: 10
+#telegraf_processors_topk_group_by: ['*']
+#telegraf_processors_topk_fields: ["value"]
+#telegraf_processors_topk_aggregation: "mean"
+#telegraf_processors_topk_bottomk: no
+#telegraf_processors_topk_add_groupby_tag: ""
+#telegraf_processors_topk_add_rank_fields: []
+#telegraf_processors_topk_add_aggregate_fields: []

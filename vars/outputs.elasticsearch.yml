@@ -1,0 +1,16 @@
+telegraf_outputs_elasticsearch_urls: [ "http://node1.es.example.com:9200" ] # required.
+telegraf_outputs_elasticsearch_timeout: "5s"
+telegraf_outputs_elasticsearch_enable_sniffer: no
+telegraf_outputs_elasticsearch_health_check_interval: "10s"
+#telegraf_outputs_elasticsearch_username: "telegraf"
+#telegraf_outputs_elasticsearch_password: "mypassword"
+#telegraf_outputs_elasticsearch_index_name: "telegraf-{{host}}-%Y.%m.%d"
+#telegraf_outputs_elasticsearch_default_tag_value: "none"
+telegraf_outputs_elasticsearch_index_name: "telegraf-%Y.%m.%d" # required.
+#telegraf_outputs_elasticsearch_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_elasticsearch_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_elasticsearch_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_elasticsearch_insecure_skip_verify: no
+telegraf_outputs_elasticsearch_manage_template: yes
+telegraf_outputs_elasticsearch_template_name: "telegraf"
+telegraf_outputs_elasticsearch_overwrite_template: no

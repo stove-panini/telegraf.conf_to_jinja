@@ -1,0 +1,9 @@
+#telegraf_inputs_http_response_address: "http://localhost"
+#telegraf_inputs_http_response_urls: ["http://localhost"]
+#telegraf_inputs_http_response_http_proxy: "http://localhost:8888"
+#telegraf_inputs_http_response_response_timeout: "5s"
+#telegraf_inputs_http_response_method: "GET"
+#telegraf_inputs_http_response_follow_redirects: no
+#telegraf_inputs_http_response_bearer_token: "/path/to/file"
+#telegraf_inputs_http_response_username: "username"
+#telegraf_inputs_http_response_password: "pa$$word"

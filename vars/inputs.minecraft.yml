@@ -1,0 +1,4 @@
+#telegraf_inputs_minecraft_server: "localhost"
+#telegraf_inputs_minecraft_port: "25575"
+telegraf_inputs_minecraft_password: ""
+#telegraf_inputs_minecraft_tagdrop: ["server"]

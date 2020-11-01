@@ -1,0 +1,50 @@
+# Configuration for Elasticsearch to send metrics to.
+[[outputs.elasticsearch]]
+  ## The full HTTP endpoint URL for your Elasticsearch instance
+  ## Multiple urls can be specified as part of the same cluster,
+  ## this means that only ONE of the urls will be written to each interval.
+  urls = [ {% for i in telegraf_outputs_elasticsearch_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  ## Elasticsearch client timeout, defaults to "5s" if not set.
+  timeout = "{{ telegraf_outputs_elasticsearch_timeout|d() }}"
+  ## Set to true to ask Elasticsearch a list of all cluster nodes,
+  ## thus it is not necessary to list all nodes in the urls config option.
+  enable_sniffer = {{ telegraf_outputs_elasticsearch_enable_sniffer|d()|bool|lower }}
+  ## Set the interval to check if the Elasticsearch nodes are available
+  ## Setting to "0s" will disable the health check (not recommended in production)
+  health_check_interval = "{{ telegraf_outputs_elasticsearch_health_check_interval|d() }}"
+  ## HTTP basic authentication details
+  {{ '#' if telegraf_outputs_elasticsearch_username is not defined }}username = "{{ telegraf_outputs_elasticsearch_username|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_password is not defined }}password = "{{ telegraf_outputs_elasticsearch_password|d() }}"
+
+  ## Index Config
+  ## The target index for metrics (Elasticsearch will create if it not exists).
+  ## You can use the date specifiers below to create indexes per time frame.
+  ## The metric timestamp will be used to decide the destination index name
+  # %Y - year (2016)
+  # %y - last two digits of year (00..99)
+  # %m - month (01..12)
+  # %d - day of month (e.g., 01)
+  # %H - hour (00..23)
+  # %V - week of the year (ISO week) (01..53)
+  ## Additionally, you can specify a tag name using the notation {{tag_name}}
+  ## which will be used as part of the index name. If the tag does not exist,
+  ## the default tag value will be used.
+  {{ '#' if telegraf_outputs_elasticsearch_index_name is not defined }}index_name = "{{ telegraf_outputs_elasticsearch_index_name|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_default_tag_value is not defined }}default_tag_value = "{{ telegraf_outputs_elasticsearch_default_tag_value|d() }}"
+  index_name = "{{ telegraf_outputs_elasticsearch_index_name|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_outputs_elasticsearch_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_elasticsearch_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_elasticsearch_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_tls_key is not defined }}tls_key = "{{ telegraf_outputs_elasticsearch_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_outputs_elasticsearch_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_elasticsearch_insecure_skip_verify|d()|bool|lower }}
+
+  ## Template Config
+  ## Set to true if you want telegraf to manage its index template.
+  ## If enabled it will create a recommended index template for telegraf indexes
+  manage_template = {{ telegraf_outputs_elasticsearch_manage_template|d()|bool|lower }}
+  ## The template name used for telegraf indexes
+  template_name = "{{ telegraf_outputs_elasticsearch_template_name|d() }}"
+  ## Set to true if you want telegraf to overwrite an existing template
+  overwrite_template = {{ telegraf_outputs_elasticsearch_overwrite_template|d()|bool|lower }}

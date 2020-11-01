@@ -1,0 +1,4 @@
+#telegraf_inputs_diskio_devices: ["sda", "sdb", "vd*"]
+#telegraf_inputs_diskio_skip_serial_number: no
+#telegraf_inputs_diskio_device_tags: ["ID_FS_TYPE", "ID_FS_USAGE"]
+#telegraf_inputs_diskio_name_templates: ["$ID_FS_LABEL","$DM_VG_NAME/$DM_LV_NAME"]

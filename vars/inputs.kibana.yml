@@ -1,0 +1,8 @@
+telegraf_inputs_kibana_servers: ["http://localhost:5601"]
+telegraf_inputs_kibana_timeout: "5s"
+#telegraf_inputs_kibana_username: "username"
+#telegraf_inputs_kibana_password: "pa$$word"
+#telegraf_inputs_kibana_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_kibana_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_kibana_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_kibana_insecure_skip_verify: no

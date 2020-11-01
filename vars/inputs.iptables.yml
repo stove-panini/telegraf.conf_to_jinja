@@ -1,0 +1,5 @@
+telegraf_inputs_iptables_use_sudo: no
+telegraf_inputs_iptables_use_lock: no
+#telegraf_inputs_iptables_binary: "ip6tables"
+telegraf_inputs_iptables_table: "filter"
+telegraf_inputs_iptables_chains: [ "INPUT" ]

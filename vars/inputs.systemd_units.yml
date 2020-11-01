@@ -1,0 +1,2 @@
+#telegraf_inputs_systemd_units_timeout: "1s"
+#telegraf_inputs_systemd_units_unittype: "service"

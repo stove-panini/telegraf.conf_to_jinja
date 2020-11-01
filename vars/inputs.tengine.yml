@@ -1,0 +1,6 @@
+telegraf_inputs_tengine_urls: ["http://127.0.0.1/us"]
+#telegraf_inputs_tengine_response_timeout: "5s"
+#telegraf_inputs_tengine_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_tengine_tls_cert: "/etc/telegraf/cert.cer"
+#telegraf_inputs_tengine_tls_key: "/etc/telegraf/key.key"
+#telegraf_inputs_tengine_insecure_skip_verify: no

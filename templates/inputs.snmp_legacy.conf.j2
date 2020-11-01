@@ -1,0 +1,14 @@
+# DEPRECATED! PLEASE USE inputs.snmp INSTEAD.
+[[inputs.snmp_legacy]]
+  ## Use 'oids.txt' file to translate oids to names
+  ## To generate 'oids.txt' you need to run:
+  ##   snmptranslate -m all -Tz -On | sed -e 's/"//g' > /tmp/oids.txt
+  ## Or if you have an other MIB folder with custom MIBs
+  ##   snmptranslate -M /mycustommibfolder -Tz -On -m all | sed -e 's/"//g' > oids.txt
+  snmptranslate_file = "{{ telegraf_inputs_snmp_legacy_snmptranslate_file|d() }}"
+  [[inputs.snmp.host]]
+  address = "{{ telegraf_inputs_snmp_legacy_address|d() }}"
+    # SNMP community
+  community = "{{ telegraf_inputs_snmp_legacy_community|d() }}"
+    # SNMP version (1, 2 or 3)
+    # Version 3 not supported yet

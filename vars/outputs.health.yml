@@ -1,0 +1,8 @@
+#telegraf_outputs_health_service_address: "http://:8080"
+#telegraf_outputs_health_read_timeout: "5s"
+#telegraf_outputs_health_write_timeout: "5s"
+#telegraf_outputs_health_basic_username: "user1"
+#telegraf_outputs_health_basic_password: "secret"
+#telegraf_outputs_health_tls_allowed_cacerts: ["/etc/telegraf/clientca.pem"]
+#telegraf_outputs_health_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_health_tls_key: "/etc/telegraf/key.pem"

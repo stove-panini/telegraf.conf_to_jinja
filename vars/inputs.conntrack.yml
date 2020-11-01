@@ -1,0 +1,1 @@
+telegraf_inputs_conntrack_ dirs: ["/proc/sys/net/ipv4/netfilter","/proc/sys/net/netfilter"]

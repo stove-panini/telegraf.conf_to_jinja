@@ -1,0 +1,1 @@
+telegraf_inputs_raindrops_urls: ["http://localhost:8080/_raindrops"]

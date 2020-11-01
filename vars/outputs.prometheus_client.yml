@@ -1,0 +1,13 @@
+telegraf_outputs_prometheus_client_listen: ":9273"
+#telegraf_outputs_prometheus_client_metric_version: 1
+#telegraf_outputs_prometheus_client_basic_username: "Foo"
+#telegraf_outputs_prometheus_client_basic_password: "Bar"
+#telegraf_outputs_prometheus_client_ip_range: []
+#telegraf_outputs_prometheus_client_path: "/metrics"
+#telegraf_outputs_prometheus_client_expiration_interval: "60s"
+#telegraf_outputs_prometheus_client_collectors_exclude: ["gocollector", "process"]
+#telegraf_outputs_prometheus_client_string_as_label: yes
+#telegraf_outputs_prometheus_client_tls_cert: "/etc/ssl/telegraf.crt"
+#telegraf_outputs_prometheus_client_tls_key: "/etc/ssl/telegraf.key"
+#telegraf_outputs_prometheus_client_tls_allowed_cacerts: ["/etc/telegraf/clientca.pem"]
+#telegraf_outputs_prometheus_client_export_timestamp: no

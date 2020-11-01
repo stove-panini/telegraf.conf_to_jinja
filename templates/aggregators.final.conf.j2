@@ -1,0 +1,10 @@
+# Report the final metric of a series
+[[aggregators.final]]
+  ## The period on which to flush & clear the aggregator.
+  period = "{{ telegraf_aggregators_final_period|d() }}"
+  ## If true, the original metric will be dropped by the
+  ## aggregator and will not get sent to the output plugins.
+  drop_original = {{ telegraf_aggregators_final_drop_original|d()|bool|lower }}
+
+  ## The time that a series is not updated until considering it final.
+  series_timeout = "{{ telegraf_aggregators_final_series_timeout|d() }}"

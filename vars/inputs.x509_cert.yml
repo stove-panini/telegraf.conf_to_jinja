@@ -1,0 +1,6 @@
+telegraf_inputs_x509_cert_sources: ["/etc/ssl/certs/ssl-cert-snakeoil.pem", "tcp://example.org:443"]
+#telegraf_inputs_x509_cert_timeout: "5s"
+#telegraf_inputs_x509_cert_server_name: ""
+#telegraf_inputs_x509_cert_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_x509_cert_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_x509_cert_tls_key: "/etc/telegraf/key.pem"

@@ -1,0 +1,4 @@
+#telegraf_processors_s2geo_lat_field: "lat"
+#telegraf_processors_s2geo_lon_field: "lon"
+#telegraf_processors_s2geo_tag_key: "s2_cell_id"
+#telegraf_processors_s2geo_cell_level: 9

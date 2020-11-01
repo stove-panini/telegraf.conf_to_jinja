@@ -1,0 +1,16 @@
+telegraf_outputs_influxdb_v2_urls: ["http://127.0.0.1:9999"]
+telegraf_outputs_influxdb_v2_token: ""
+telegraf_outputs_influxdb_v2_organization: ""
+telegraf_outputs_influxdb_v2_bucket: ""
+#telegraf_outputs_influxdb_v2_bucket_tag: ""
+#telegraf_outputs_influxdb_v2_exclude_bucket_tag: no
+#telegraf_outputs_influxdb_v2_timeout: "5s"
+#telegraf_outputs_influxdb_v2_http_headers: {X-Special-Header: Special-Value}
+#telegraf_outputs_influxdb_v2_http_proxy: "http://corporate.proxy:3128"
+#telegraf_outputs_influxdb_v2_user_agent: "telegraf"
+#telegraf_outputs_influxdb_v2_content_encoding: "gzip"
+#telegraf_outputs_influxdb_v2_influx_uint_support: no
+#telegraf_outputs_influxdb_v2_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_influxdb_v2_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_influxdb_v2_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_influxdb_v2_insecure_skip_verify: no

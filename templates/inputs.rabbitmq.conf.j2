@@ -1,0 +1,52 @@
+# Reads metrics from RabbitMQ servers via the Management Plugin
+[[inputs.rabbitmq]]
+  ## Management Plugin url. (default: http://localhost:15672)
+  {{ '#' if telegraf_inputs_rabbitmq_url is not defined }}url = "{{ telegraf_inputs_rabbitmq_url|d() }}"
+  ## Tag added to rabbitmq_overview series; deprecated: use tags
+  {{ '#' if telegraf_inputs_rabbitmq_name is not defined }}name = "{{ telegraf_inputs_rabbitmq_name|d() }}"
+  ## Credentials
+  {{ '#' if telegraf_inputs_rabbitmq_username is not defined }}username = "{{ telegraf_inputs_rabbitmq_username|d() }}"
+  {{ '#' if telegraf_inputs_rabbitmq_password is not defined }}password = "{{ telegraf_inputs_rabbitmq_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_rabbitmq_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_rabbitmq_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_rabbitmq_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_rabbitmq_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_rabbitmq_tls_key is not defined }}tls_key = "{{ telegraf_inputs_rabbitmq_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_rabbitmq_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_rabbitmq_insecure_skip_verify|d()|bool|lower }}
+
+  ## Optional request timeouts
+  ##
+  ## ResponseHeaderTimeout, if non-zero, specifies the amount of time to wait
+  ## for a server's response headers after fully writing the request.
+  {{ '#' if telegraf_inputs_rabbitmq_header_timeout is not defined }}header_timeout = "{{ telegraf_inputs_rabbitmq_header_timeout|d() }}"
+  ##
+  ## client_timeout specifies a time limit for requests made by this client.
+  ## Includes connection time, any redirects, and reading the response body.
+  {{ '#' if telegraf_inputs_rabbitmq_client_timeout is not defined }}client_timeout = "{{ telegraf_inputs_rabbitmq_client_timeout|d() }}"
+
+  ## A list of nodes to gather as the rabbitmq_node measurement. If not
+  ## specified, metrics for all nodes are gathered.
+  {{ '#' if telegraf_inputs_rabbitmq_nodes is not defined }}nodes = [ {% for i in telegraf_inputs_rabbitmq_nodes|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## A list of queues to gather as the rabbitmq_queue measurement. If not
+  ## specified, metrics for all queues are gathered.
+  {{ '#' if telegraf_inputs_rabbitmq_queues is not defined }}queues = [ {% for i in telegraf_inputs_rabbitmq_queues|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## A list of exchanges to gather as the rabbitmq_exchange measurement. If not
+  ## specified, metrics for all exchanges are gathered.
+  {{ '#' if telegraf_inputs_rabbitmq_exchanges is not defined }}exchanges = [ {% for i in telegraf_inputs_rabbitmq_exchanges|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Queues to include and exclude. Globs accepted.
+  ## Note that an empty array for both will include all queues
+  queue_name_include = [ {% for i in telegraf_inputs_rabbitmq_queue_name_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  queue_name_exclude = [ {% for i in telegraf_inputs_rabbitmq_queue_name_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Federation upstreams include and exclude when gathering the rabbitmq_federation measurement.
+  ## If neither are specified, metrics for all federation upstreams are gathered.
+  ## Federation link metrics will only be gathered for queues and exchanges
+  ## whose non-federation metrics will be collected (e.g a queue excluded
+  ## by the 'queue_name_exclude' option will also be excluded from federation).
+  ## Globs accepted.
+  {{ '#' if telegraf_inputs_rabbitmq_federation_upstream_include is not defined }}federation_upstream_include = [ {% for i in telegraf_inputs_rabbitmq_federation_upstream_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_rabbitmq_federation_upstream_exclude is not defined }}federation_upstream_exclude = [ {% for i in telegraf_inputs_rabbitmq_federation_upstream_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

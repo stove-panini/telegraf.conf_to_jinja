@@ -1,0 +1,31 @@
+# Read metrics from the bare metal servers via IPMI
+[[inputs.ipmi_sensor]]
+  ## optionally specify the path to the ipmitool executable
+  {{ '#' if telegraf_inputs_ipmi_sensor_path is not defined }}path = "{{ telegraf_inputs_ipmi_sensor_path|d() }}"
+  ##
+  ## Setting 'use_sudo' to true will make use of sudo to run ipmitool.
+  ## Sudo must be configured to allow the telegraf user to run ipmitool
+  ## without a password.
+  {{ '#' if telegraf_inputs_ipmi_sensor_use_sudo is not defined }}use_sudo = {{ telegraf_inputs_ipmi_sensor_use_sudo|d()|bool|lower }}
+  ##
+  ## optionally force session privilege level. Can be CALLBACK, USER, OPERATOR, ADMINISTRATOR
+  {{ '#' if telegraf_inputs_ipmi_sensor_privilege is not defined }}privilege = "{{ telegraf_inputs_ipmi_sensor_privilege|d() }}"
+  ##
+  ## optionally specify one or more servers via a url matching
+  ##  [username[:password]@][protocol[(address)]]
+  ##  e.g.
+  ##    root:passwd@lan(127.0.0.1)
+  ##
+  ## if no servers are specified, local machine sensor stats will be queried
+  ##
+  {{ '#' if telegraf_inputs_ipmi_sensor_servers is not defined }}servers = [ {% for i in telegraf_inputs_ipmi_sensor_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Recommended: use metric 'interval' that is a multiple of 'timeout' to avoid
+  ## gaps or overlap in pulled data
+  interval = "{{ telegraf_inputs_ipmi_sensor_interval|d() }}"
+
+  ## Timeout for the ipmitool command to complete
+  timeout = "{{ telegraf_inputs_ipmi_sensor_timeout|d() }}"
+
+  ## Schema Version: (Optional, defaults to version 1)
+  metric_version = {{ telegraf_inputs_ipmi_sensor_metric_version|d() }}

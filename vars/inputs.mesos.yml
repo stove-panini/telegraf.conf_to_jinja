@@ -1,0 +1,9 @@
+telegraf_inputs_mesos_timeout: 100
+telegraf_inputs_mesos_masters: ["http://localhost:5050"]
+telegraf_inputs_mesos_master_collections: []
+#telegraf_inputs_mesos_slaves: []
+#telegraf_inputs_mesos_slave_collections: []
+#telegraf_inputs_mesos_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_mesos_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_mesos_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_mesos_insecure_skip_verify: no

@@ -1,0 +1,10 @@
+# Collect bond interface status, slaves statuses and failures count
+[[inputs.bond]]
+  ## Sets 'proc' directory path
+  ## If not specified, then default is /proc
+  {{ '#' if telegraf_inputs_bond_host_proc is not defined }}host_proc = "{{ telegraf_inputs_bond_host_proc|d() }}"
+
+  ## By default, telegraf gather stats for all bond interfaces
+  ## Setting interfaces will restrict the stats to the specified
+  ## bond interfaces.
+  {{ '#' if telegraf_inputs_bond_bond_interfaces is not defined }}bond_interfaces = [ {% for i in telegraf_inputs_bond_bond_interfaces|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

@@ -1,0 +1,4 @@
+telegraf_inputs_sysstat_sadc_path: "/usr/lib/sa/sadc" # required
+#telegraf_inputs_sysstat_sadf_path: "/usr/bin/sadf"
+#telegraf_inputs_sysstat_activities: ["DISK"]
+#telegraf_inputs_sysstat_group: yes

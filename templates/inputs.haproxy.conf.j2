@@ -1,0 +1,30 @@
+# Read metrics of haproxy, via socket or csv stats page
+[[inputs.haproxy]]
+  ## An array of address to gather stats about. Specify an ip on hostname
+  ## with optional port. ie localhost, 10.10.3.33:1936, etc.
+  ## Make sure you specify the complete path to the stats endpoint
+  ## including the protocol, ie http://10.10.3.33:1936/haproxy?stats
+
+  ## If no servers are specified, then default to 127.0.0.1:1936/haproxy?stats
+  servers = [ {% for i in telegraf_inputs_haproxy_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Credentials for basic HTTP authentication
+  {{ '#' if telegraf_inputs_haproxy_username is not defined }}username = "{{ telegraf_inputs_haproxy_username|d() }}"
+  {{ '#' if telegraf_inputs_haproxy_password is not defined }}password = "{{ telegraf_inputs_haproxy_password|d() }}"
+
+  ## You can also use local socket with standard wildcard globbing.
+  ## Server address not starting with 'http' will be treated as a possible
+  ## socket, so both examples below are valid.
+  {{ '#' if telegraf_inputs_haproxy_servers is not defined }}servers = [ {% for i in telegraf_inputs_haproxy_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## By default, some of the fields are renamed from what haproxy calls them.
+  ## Setting this option to true results in the plugin keeping the original
+  ## field names.
+  {{ '#' if telegraf_inputs_haproxy_keep_field_names is not defined }}keep_field_names = {{ telegraf_inputs_haproxy_keep_field_names|d()|bool|lower }}
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_haproxy_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_haproxy_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_haproxy_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_haproxy_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_haproxy_tls_key is not defined }}tls_key = "{{ telegraf_inputs_haproxy_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_haproxy_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_haproxy_insecure_skip_verify|d()|bool|lower }}

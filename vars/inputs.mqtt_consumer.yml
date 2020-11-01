@@ -1,0 +1,15 @@
+telegraf_inputs_mqtt_consumer_servers: ["tcp://127.0.0.1:1883"]
+telegraf_inputs_mqtt_consumer_topics: []
+#telegraf_inputs_mqtt_consumer_topic_tag: "topic"
+#telegraf_inputs_mqtt_consumer_qos: 0
+#telegraf_inputs_mqtt_consumer_connection_timeout: "30s"
+#telegraf_inputs_mqtt_consumer_max_undelivered_messages: 1000
+#telegraf_inputs_mqtt_consumer_persistent_session: no
+#telegraf_inputs_mqtt_consumer_client_id: ""
+#telegraf_inputs_mqtt_consumer_username: "telegraf"
+#telegraf_inputs_mqtt_consumer_password: "metricsmetricsmetricsmetrics"
+#telegraf_inputs_mqtt_consumer_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_mqtt_consumer_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_mqtt_consumer_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_mqtt_consumer_insecure_skip_verify: no
+telegraf_inputs_mqtt_consumer_data_format: "influx"

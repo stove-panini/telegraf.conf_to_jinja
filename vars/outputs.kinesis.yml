@@ -1,0 +1,11 @@
+telegraf_outputs_kinesis_region: "ap-southeast-2"
+telegraf_outputs_kinesis_access_key: ""
+telegraf_outputs_kinesis_secret_key: ""
+telegraf_outputs_kinesis_token: ""
+telegraf_outputs_kinesis_role_arn: ""
+telegraf_outputs_kinesis_profile: ""
+telegraf_outputs_kinesis_shared_credential_file: ""
+#telegraf_outputs_kinesis_endpoint_url: ""
+telegraf_outputs_kinesis_streamname: "StreamName"
+telegraf_outputs_kinesis_partitionkey: "PartitionKey"
+telegraf_outputs_kinesis_use_random_partitionkey: no

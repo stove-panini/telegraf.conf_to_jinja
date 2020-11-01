@@ -1,0 +1,4 @@
+#telegraf_inputs_teamspeak_server: "127.0.0.1:10011"
+telegraf_inputs_teamspeak_username: "serverqueryuser"
+telegraf_inputs_teamspeak_password: "secret"
+#telegraf_inputs_teamspeak_virtual_servers: [1]

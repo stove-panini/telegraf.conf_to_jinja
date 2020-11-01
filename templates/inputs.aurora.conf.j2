@@ -1,0 +1,24 @@
+# Gather metrics from Apache Aurora schedulers
+[[inputs.aurora]]
+  ## Schedulers are the base addresses of your Aurora Schedulers
+  schedulers = [ {% for i in telegraf_inputs_aurora_schedulers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Set of role types to collect metrics from.
+  ##
+  ## The scheduler roles are checked each interval by contacting the
+  ## scheduler nodes; zookeeper is not contacted.
+  {{ '#' if telegraf_inputs_aurora_roles is not defined }}roles = [ {% for i in telegraf_inputs_aurora_roles|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Timeout is the max time for total network operations.
+  {{ '#' if telegraf_inputs_aurora_timeout is not defined }}timeout = "{{ telegraf_inputs_aurora_timeout|d() }}"
+
+  ## Username and password are sent using HTTP Basic Auth.
+  {{ '#' if telegraf_inputs_aurora_username is not defined }}username = "{{ telegraf_inputs_aurora_username|d() }}"
+  {{ '#' if telegraf_inputs_aurora_password is not defined }}password = "{{ telegraf_inputs_aurora_password|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_aurora_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_aurora_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_aurora_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_aurora_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_aurora_tls_key is not defined }}tls_key = "{{ telegraf_inputs_aurora_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_aurora_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_aurora_insecure_skip_verify|d()|bool|lower }}

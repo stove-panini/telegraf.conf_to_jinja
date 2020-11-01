@@ -1,0 +1,2 @@
+#telegraf_inputs_hddtemp_address: "127.0.0.1:7634"
+#telegraf_inputs_hddtemp_devices: ["sda", "*"]

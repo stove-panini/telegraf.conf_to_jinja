@@ -1,0 +1,11 @@
+telegraf_outputs_cloud_pubsub_project: "my-project"
+telegraf_outputs_cloud_pubsub_topic: "my-topic"
+telegraf_outputs_cloud_pubsub_data_format: "influx"
+#telegraf_outputs_cloud_pubsub_credentials_file: "path/to/my/creds.json"
+#telegraf_outputs_cloud_pubsub_send_batched: yes
+#telegraf_outputs_cloud_pubsub_publish_count_threshold: 1000
+#telegraf_outputs_cloud_pubsub_publish_byte_threshold: 1000000
+#telegraf_outputs_cloud_pubsub_publish_num_go_routines: 2
+#telegraf_outputs_cloud_pubsub_publish_timeout: "30s"
+#telegraf_outputs_cloud_pubsub_base64_data: no
+#telegraf_outputs_cloud_pubsub_my_attr: "tag_value"

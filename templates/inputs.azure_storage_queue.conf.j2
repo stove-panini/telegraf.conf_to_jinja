@@ -1,0 +1,10 @@
+# Gather Azure Storage Queue metrics
+[[inputs.azure_storage_queue]]
+  ## Required Azure Storage Account name
+  account_name = "{{ telegraf_inputs_azure_storage_queue_account_name|d() }}"
+
+  ## Required Azure Storage Account access key
+  account_key = "{{ telegraf_inputs_azure_storage_queue_account_key|d() }}"
+
+  ## Set to false to disable peeking age of oldest message (executes faster)
+  {{ '#' if telegraf_inputs_azure_storage_queue_peek_oldest_message_age is not defined }}peek_oldest_message_age = {{ telegraf_inputs_azure_storage_queue_peek_oldest_message_age|d()|bool|lower }}

@@ -1,0 +1,8 @@
+telegraf_inputs_graylog_servers: []
+telegraf_inputs_graylog_metrics: []
+telegraf_inputs_graylog_username: ""
+telegraf_inputs_graylog_password: ""
+#telegraf_inputs_graylog_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_graylog_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_graylog_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_graylog_insecure_skip_verify: no

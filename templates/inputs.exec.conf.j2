@@ -1,0 +1,20 @@
+# Read metrics from one or more commands that can output to stdout
+[[inputs.exec]]
+  ## Commands array
+  commands = [ {% for i in telegraf_inputs_exec_commands|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    "/tmp/test.sh",
+    "/usr/bin/mycollector --foo=bar",
+    "/tmp/collect_*.sh"
+  ]
+
+  ## Timeout for each command to complete.
+  timeout = "{{ telegraf_inputs_exec_timeout|d() }}"
+
+  ## measurement name suffix (for separating different commands)
+  name_suffix = "{{ telegraf_inputs_exec_name_suffix|d() }}"
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_exec_data_format|d() }}"

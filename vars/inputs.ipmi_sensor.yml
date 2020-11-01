@@ -1,0 +1,7 @@
+#telegraf_inputs_ipmi_sensor_path: "/usr/bin/ipmitool"
+#telegraf_inputs_ipmi_sensor_use_sudo: no
+#telegraf_inputs_ipmi_sensor_privilege: "ADMINISTRATOR"
+#telegraf_inputs_ipmi_sensor_servers: ["USERID:PASSW0RD@lan(192.168.1.1)"]
+telegraf_inputs_ipmi_sensor_interval: "30s"
+telegraf_inputs_ipmi_sensor_timeout: "20s"
+telegraf_inputs_ipmi_sensor_metric_version: 2

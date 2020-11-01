@@ -1,0 +1,10 @@
+# Configuration for Amon Server to send metrics to.
+[[outputs.amon]]
+  ## Amon Server Key
+  server_key = "{{ telegraf_outputs_amon_server_key|d() }}"
+
+  ## Amon Instance URL
+  amon_instance = "{{ telegraf_outputs_amon_amon_instance|d() }}"
+
+  ## Connection timeout.
+  {{ '#' if telegraf_outputs_amon_timeout is not defined }}timeout = "{{ telegraf_outputs_amon_timeout|d() }}"

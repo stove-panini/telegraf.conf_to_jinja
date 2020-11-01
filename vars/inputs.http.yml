@@ -1,0 +1,15 @@
+telegraf_inputs_http_urls: []
+#telegraf_inputs_http_method: "GET"
+#telegraf_inputs_http_headers: {X-Special-Header: Special-Value}
+#telegraf_inputs_http_bearer_token: "/path/to/file"
+#telegraf_inputs_http_username: "username"
+#telegraf_inputs_http_password: "pa$$word"
+#telegraf_inputs_http_body: ""
+#telegraf_inputs_http_content_encoding: "identity"
+#telegraf_inputs_http_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_http_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_http_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_http_insecure_skip_verify: no
+#telegraf_inputs_http_timeout: "5s"
+#telegraf_inputs_http_success_status_codes: [200]
+#telegraf_inputs_http_data_format: "influx"

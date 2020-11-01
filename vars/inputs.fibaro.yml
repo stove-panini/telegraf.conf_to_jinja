@@ -1,0 +1,4 @@
+telegraf_inputs_fibaro_url: "http://<controller>:80"
+telegraf_inputs_fibaro_username: "<username>"
+telegraf_inputs_fibaro_password: "<password>"
+#telegraf_inputs_fibaro_timeout: "5s"

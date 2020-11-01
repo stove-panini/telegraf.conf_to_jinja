@@ -1,0 +1,10 @@
+# Clone metrics and apply modifications.
+[[processors.clone]]
+  ## All modifications on inputs and aggregators can be overridden:
+  {{ '#' if telegraf_processors_clone_name_override is not defined }}name_override = "{{ telegraf_processors_clone_name_override|d() }}"
+  {{ '#' if telegraf_processors_clone_name_prefix is not defined }}name_prefix = "{{ telegraf_processors_clone_name_prefix|d() }}"
+  {{ '#' if telegraf_processors_clone_name_suffix is not defined }}name_suffix = "{{ telegraf_processors_clone_name_suffix|d() }}"
+
+  ## Tags to be added (all values must be strings)
+  # [processors.clone.tags]
+    {{ '#' if telegraf_processors_clone_tags_additional_tag is not defined }}additional_tag = "{{ telegraf_processors_clone_tags_additional_tag|d() }}"

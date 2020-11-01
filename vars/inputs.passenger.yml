@@ -1,0 +1,1 @@
+telegraf_inputs_passenger_command: "passenger-status -v --show=xml"

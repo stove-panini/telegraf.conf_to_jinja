@@ -1,0 +1,28 @@
+#telegraf_outputs_amqp_url: "amqp://localhost:5672/influxdb"
+telegraf_outputs_amqp_brokers: ["amqp://localhost:5672/influxdb"]
+#telegraf_outputs_amqp_max_messages: 0
+telegraf_outputs_amqp_exchange: "telegraf"
+#telegraf_outputs_amqp_exchange_type: "topic"
+#telegraf_outputs_amqp_exchange_passive: no
+#telegraf_outputs_amqp_exchange_durability: "durable"
+#telegraf_outputs_amqp_exchange_arguments: { }
+#telegraf_outputs_amqp_exchange_arguments: {hash_property: timestamp}
+#telegraf_outputs_amqp_username: ""
+#telegraf_outputs_amqp_password: ""
+#telegraf_outputs_amqp_auth_method: "PLAIN"
+#telegraf_outputs_amqp_routing_tag: "host"
+#telegraf_outputs_amqp_routing_key: ""
+#telegraf_outputs_amqp_routing_key: "telegraf"
+#telegraf_outputs_amqp_delivery_mode: "transient"
+#telegraf_outputs_amqp_database: "telegraf"
+#telegraf_outputs_amqp_retention_policy: "default"
+#telegraf_outputs_amqp_headers: { }
+#telegraf_outputs_amqp_headers: {database: telegraf, retention_policy: default}
+#telegraf_outputs_amqp_timeout: "5s"
+#telegraf_outputs_amqp_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_amqp_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_amqp_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_amqp_insecure_skip_verify: no
+#telegraf_outputs_amqp_use_batch_format: no
+#telegraf_outputs_amqp_content_encoding: "identity"
+#telegraf_outputs_amqp_data_format: "influx"

@@ -1,0 +1,4 @@
+telegraf_inputs_cpu_percpu: yes
+telegraf_inputs_cpu_totalcpu: yes
+telegraf_inputs_cpu_collect_cpu_time: no
+telegraf_inputs_cpu_report_active: no

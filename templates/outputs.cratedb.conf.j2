@@ -1,0 +1,11 @@
+# Configuration for CrateDB to send metrics to.
+[[outputs.cratedb]]
+  # A github.com/jackc/pgx connection string.
+  # See https://godoc.org/github.com/jackc/pgx#ParseDSN
+  url = "{{ telegraf_outputs_cratedb_url|d() }}"
+  # Timeout for all CrateDB queries.
+  timeout = "{{ telegraf_outputs_cratedb_timeout|d() }}"
+  # Name of the table to store metrics in.
+  table = "{{ telegraf_outputs_cratedb_table|d() }}"
+  # If true, and the metrics table does not exist, create it automatically.
+  table_create = {{ telegraf_outputs_cratedb_table_create|d()|bool|lower }}

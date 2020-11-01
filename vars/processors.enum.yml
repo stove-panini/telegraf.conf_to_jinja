@@ -1,0 +1,7 @@
+telegraf_processors_enum_field: "status"
+#telegraf_processors_enum_tag: "status"
+telegraf_processors_enum_dest: "status_code"
+#telegraf_processors_enum_default: 0
+telegraf_processors_enum_value_mappings_green: 1
+telegraf_processors_enum_value_mappings_amber: 2
+telegraf_processors_enum_value_mappings_red: 3

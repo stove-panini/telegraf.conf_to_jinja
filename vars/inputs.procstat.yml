@@ -1,0 +1,12 @@
+telegraf_inputs_procstat_pid_file: "/var/run/nginx.pid"
+#telegraf_inputs_procstat_exe: "nginx"
+#telegraf_inputs_procstat_pattern: "nginx"
+#telegraf_inputs_procstat_user: "nginx"
+#telegraf_inputs_procstat_systemd_unit: "nginx.service"
+#telegraf_inputs_procstat_cgroup: "systemd/system.slice/nginx.service"
+#telegraf_inputs_procstat_win_service: ""
+#telegraf_inputs_procstat_process_name: "bar"
+#telegraf_inputs_procstat_prefix: ""
+#telegraf_inputs_procstat_cmdline_tag: no
+#telegraf_inputs_procstat_pid_tag: no
+#telegraf_inputs_procstat_pid_finder: "pgrep"

@@ -1,0 +1,4 @@
+telegraf_outputs_application_insights_instrumentation_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+#telegraf_outputs_application_insights_endpoint_url: "https://dc.services.visualstudio.com/v2/track"
+#telegraf_outputs_application_insights_timeout: "5s"
+#telegraf_outputs_application_insights_enable_diagnostic_logging: no

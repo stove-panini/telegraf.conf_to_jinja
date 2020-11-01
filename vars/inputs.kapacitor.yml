@@ -1,0 +1,6 @@
+telegraf_inputs_kapacitor_urls: []
+telegraf_inputs_kapacitor_timeout: "5s"
+#telegraf_inputs_kapacitor_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_kapacitor_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_kapacitor_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_kapacitor_insecure_skip_verify: no

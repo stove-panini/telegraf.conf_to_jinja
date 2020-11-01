@@ -1,0 +1,11 @@
+telegraf_outputs_nats_servers: ["nats://localhost:4222"]
+#telegraf_outputs_nats_username: ""
+#telegraf_outputs_nats_password: ""
+#telegraf_outputs_nats_credentials: "/etc/telegraf/nats.creds"
+telegraf_outputs_nats_subject: "telegraf"
+#telegraf_outputs_nats_secure: no
+#telegraf_outputs_nats_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_outputs_nats_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_outputs_nats_tls_key: "/etc/telegraf/key.pem"
+#telegraf_outputs_nats_insecure_skip_verify: no
+telegraf_outputs_nats_data_format: "influx"

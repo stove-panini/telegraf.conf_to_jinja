@@ -1,0 +1,45 @@
+# Configuration for the Prometheus client to spawn
+[[outputs.prometheus_client]]
+  ## Address to listen on
+  listen = "{{ telegraf_outputs_prometheus_client_listen|d() }}"
+
+  ## Metric version controls the mapping from Telegraf metrics into
+  ## Prometheus format.  When using the prometheus input, use the same value in
+  ## both plugins to ensure metrics are round-tripped without modification.
+  ##
+  ##   example: metric_version = 1; deprecated in 1.13
+  ##            metric_version = 2; recommended version
+  {{ '#' if telegraf_outputs_prometheus_client_metric_version is not defined }}metric_version = {{ telegraf_outputs_prometheus_client_metric_version|d() }}
+
+  ## Use HTTP Basic Authentication.
+  {{ '#' if telegraf_outputs_prometheus_client_basic_username is not defined }}basic_username = "{{ telegraf_outputs_prometheus_client_basic_username|d() }}"
+  {{ '#' if telegraf_outputs_prometheus_client_basic_password is not defined }}basic_password = "{{ telegraf_outputs_prometheus_client_basic_password|d() }}"
+
+  ## If set, the IP Ranges which are allowed to access metrics.
+  ##   ex: ip_range = ["192.168.0.0/24", "192.168.1.0/30"]
+  {{ '#' if telegraf_outputs_prometheus_client_ip_range is not defined }}ip_range = [ {% for i in telegraf_outputs_prometheus_client_ip_range|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Path to publish the metrics on.
+  {{ '#' if telegraf_outputs_prometheus_client_path is not defined }}path = "{{ telegraf_outputs_prometheus_client_path|d() }}"
+
+  ## Expiration interval for each metric. 0 == no expiration
+  {{ '#' if telegraf_outputs_prometheus_client_expiration_interval is not defined }}expiration_interval = "{{ telegraf_outputs_prometheus_client_expiration_interval|d() }}"
+
+  ## Collectors to enable, valid entries are "gocollector" and "process".
+  ## If unset, both are enabled.
+  {{ '#' if telegraf_outputs_prometheus_client_collectors_exclude is not defined }}collectors_exclude = [ {% for i in telegraf_outputs_prometheus_client_collectors_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Send string metrics as Prometheus labels.
+  ## Unless set to false all string metrics will be sent as labels.
+  {{ '#' if telegraf_outputs_prometheus_client_string_as_label is not defined }}string_as_label = {{ telegraf_outputs_prometheus_client_string_as_label|d()|bool|lower }}
+
+  ## If set, enable TLS with the given certificate.
+  {{ '#' if telegraf_outputs_prometheus_client_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_prometheus_client_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_prometheus_client_tls_key is not defined }}tls_key = "{{ telegraf_outputs_prometheus_client_tls_key|d() }}"
+
+  ## Set one or more allowed client CA certificate file names to
+  ## enable mutually authenticated TLS connections
+  {{ '#' if telegraf_outputs_prometheus_client_tls_allowed_cacerts is not defined }}tls_allowed_cacerts = [ {% for i in telegraf_outputs_prometheus_client_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Export metric collection time.
+  {{ '#' if telegraf_outputs_prometheus_client_export_timestamp is not defined }}export_timestamp = {{ telegraf_outputs_prometheus_client_export_timestamp|d()|bool|lower }}

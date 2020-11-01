@@ -1,0 +1,6 @@
+telegraf_outputs_file_files: ["stdout", "/tmp/metrics.out"]
+#telegraf_outputs_file_use_batch_format: no
+#telegraf_outputs_file_rotation_interval: "0d"
+#telegraf_outputs_file_rotation_max_size: "0MB"
+#telegraf_outputs_file_rotation_max_archives: 5
+telegraf_outputs_file_data_format: "influx"

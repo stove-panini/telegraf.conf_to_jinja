@@ -1,0 +1,2 @@
+#telegraf_inputs_interrupts_cpu_as_tag: no
+#telegraf_inputs_interrupts_tagdrop_irq: [ "NET_RX", "TASKLET" ]

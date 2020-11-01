@@ -1,0 +1,39 @@
+# Configuration for AWS CloudWatch output.
+[[outputs.cloudwatch]]
+  ## Amazon REGION
+  region = "{{ telegraf_outputs_cloudwatch_region|d() }}"
+
+  ## Amazon Credentials
+  ## Credentials are loaded in the following order
+  ## 1) Assumed credentials via STS if role_arn is specified
+  ## 2) explicit credentials from 'access_key' and 'secret_key'
+  ## 3) shared profile from 'profile'
+  ## 4) environment variables
+  ## 5) shared credentials file
+  ## 6) EC2 Instance Profile
+  access_key = "{{ telegraf_outputs_cloudwatch_access_key|d() }}"
+  secret_key = "{{ telegraf_outputs_cloudwatch_secret_key|d() }}"
+  token = "{{ telegraf_outputs_cloudwatch_token|d() }}"
+  role_arn = "{{ telegraf_outputs_cloudwatch_role_arn|d() }}"
+  profile = "{{ telegraf_outputs_cloudwatch_profile|d() }}"
+  shared_credential_file = "{{ telegraf_outputs_cloudwatch_shared_credential_file|d() }}"
+
+  ## Endpoint to make request against, the correct endpoint is automatically
+  ## determined and this option should only be set if you wish to override the
+  ## default.
+  ##   ex: endpoint_url = "http://localhost:8000"
+  {{ '#' if telegraf_outputs_cloudwatch_endpoint_url is not defined }}endpoint_url = "{{ telegraf_outputs_cloudwatch_endpoint_url|d() }}"
+
+  ## Namespace for the CloudWatch MetricDatums
+  namespace = "{{ telegraf_outputs_cloudwatch_namespace|d() }}"
+
+  ## If you have a large amount of metrics, you should consider to send statistic
+  ## values instead of raw metrics which could not only improve performance but
+  ## also save AWS API cost. If enable this flag, this plugin would parse the required
+  ## CloudWatch statistic fields (count, min, max, and sum) and send them to CloudWatch.
+  ## You could use basicstats aggregator to calculate those fields. If not all statistic
+  ## fields are available, all fields would still be sent as raw metrics.
+  {{ '#' if telegraf_outputs_cloudwatch_write_statistics is not defined }}write_statistics = {{ telegraf_outputs_cloudwatch_write_statistics|d()|bool|lower }}
+
+  ## Enable high resolution metrics of 1 second (if not enabled, standard resolution are of 60 seconds precision)
+  {{ '#' if telegraf_outputs_cloudwatch_high_resolution_metrics is not defined }}high_resolution_metrics = {{ telegraf_outputs_cloudwatch_high_resolution_metrics|d()|bool|lower }}

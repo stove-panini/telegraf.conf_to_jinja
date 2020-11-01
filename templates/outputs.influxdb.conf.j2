@@ -1,0 +1,77 @@
+# Configuration for sending metrics to InfluxDB
+[[outputs.influxdb]]
+  ## The full HTTP or UDP URL for your InfluxDB instance.
+  ##
+  ## Multiple URLs can be specified for a single cluster, only ONE of the
+  ## urls will be written to each interval.
+  {{ '#' if telegraf_outputs_influxdb_urls is not defined }}urls = [ {% for i in telegraf_outputs_influxdb_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_outputs_influxdb_urls is not defined }}urls = [ {% for i in telegraf_outputs_influxdb_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_outputs_influxdb_urls is not defined }}urls = [ {% for i in telegraf_outputs_influxdb_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## The target database for metrics; will be created as needed.
+  ## For UDP url endpoint database needs to be configured on server side.
+  {{ '#' if telegraf_outputs_influxdb_database is not defined }}database = "{{ telegraf_outputs_influxdb_database|d() }}"
+
+  ## The value of this tag will be used to determine the database.  If this
+  ## tag is not set the 'database' option is used as the default.
+  {{ '#' if telegraf_outputs_influxdb_database_tag is not defined }}database_tag = "{{ telegraf_outputs_influxdb_database_tag|d() }}"
+
+  ## If true, the 'database_tag' will not be included in the written metric.
+  {{ '#' if telegraf_outputs_influxdb_exclude_database_tag is not defined }}exclude_database_tag = {{ telegraf_outputs_influxdb_exclude_database_tag|d()|bool|lower }}
+
+  ## If true, no CREATE DATABASE queries will be sent.  Set to true when using
+  ## Telegraf with a user without permissions to create databases or when the
+  ## database already exists.
+  {{ '#' if telegraf_outputs_influxdb_skip_database_creation is not defined }}skip_database_creation = {{ telegraf_outputs_influxdb_skip_database_creation|d()|bool|lower }}
+
+  ## Name of existing retention policy to write to.  Empty string writes to
+  ## the default retention policy.  Only takes effect when using HTTP.
+  {{ '#' if telegraf_outputs_influxdb_retention_policy is not defined }}retention_policy = "{{ telegraf_outputs_influxdb_retention_policy|d() }}"
+
+  ## The value of this tag will be used to determine the retention policy.  If this
+  ## tag is not set the 'retention_policy' option is used as the default.
+  {{ '#' if telegraf_outputs_influxdb_retention_policy_tag is not defined }}retention_policy_tag = "{{ telegraf_outputs_influxdb_retention_policy_tag|d() }}"
+
+  ## If true, the 'retention_policy_tag' will not be included in the written metric.
+  {{ '#' if telegraf_outputs_influxdb_exclude_retention_policy_tag is not defined }}exclude_retention_policy_tag = {{ telegraf_outputs_influxdb_exclude_retention_policy_tag|d()|bool|lower }}
+
+  ## Write consistency (clusters only), can be: "any", "one", "quorum", "all".
+  ## Only takes effect when using HTTP.
+  {{ '#' if telegraf_outputs_influxdb_write_consistency is not defined }}write_consistency = "{{ telegraf_outputs_influxdb_write_consistency|d() }}"
+
+  ## Timeout for HTTP messages.
+  {{ '#' if telegraf_outputs_influxdb_timeout is not defined }}timeout = "{{ telegraf_outputs_influxdb_timeout|d() }}"
+
+  ## HTTP Basic Auth
+  {{ '#' if telegraf_outputs_influxdb_username is not defined }}username = "{{ telegraf_outputs_influxdb_username|d() }}"
+  {{ '#' if telegraf_outputs_influxdb_password is not defined }}password = "{{ telegraf_outputs_influxdb_password|d() }}"
+
+  ## HTTP User-Agent
+  {{ '#' if telegraf_outputs_influxdb_user_agent is not defined }}user_agent = "{{ telegraf_outputs_influxdb_user_agent|d() }}"
+
+  ## UDP payload size is the maximum packet size to send.
+  {{ '#' if telegraf_outputs_influxdb_udp_payload is not defined }}udp_payload = "{{ telegraf_outputs_influxdb_udp_payload|d() }}"
+
+  ## Optional TLS Config for use on HTTP connections.
+  {{ '#' if telegraf_outputs_influxdb_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_influxdb_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_influxdb_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_influxdb_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_influxdb_tls_key is not defined }}tls_key = "{{ telegraf_outputs_influxdb_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_outputs_influxdb_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_influxdb_insecure_skip_verify|d()|bool|lower }}
+
+  ## HTTP Proxy override, if unset values the standard proxy environment
+  ## variables are consulted to determine which proxy, if any, should be used.
+  {{ '#' if telegraf_outputs_influxdb_http_proxy is not defined }}http_proxy = "{{ telegraf_outputs_influxdb_http_proxy|d() }}"
+
+  ## Additional HTTP headers
+  {{ '#' if telegraf_outputs_influxdb_http_headers is not defined }}http_headers = { {% for k, v in (telegraf_outputs_influxdb_http_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+
+  ## HTTP Content-Encoding for write request body, can be set to "gzip" to
+  ## compress body or "identity" to apply no encoding.
+  {{ '#' if telegraf_outputs_influxdb_content_encoding is not defined }}content_encoding = "{{ telegraf_outputs_influxdb_content_encoding|d() }}"
+
+  ## When true, Telegraf will output unsigned integers as unsigned values,
+  ## i.e.: "42u".  You will need a version of InfluxDB supporting unsigned
+  ## integer values.  Enabling this option will result in field type errors if
+  ## existing data has been written.
+  {{ '#' if telegraf_outputs_influxdb_influx_uint_support is not defined }}influx_uint_support = {{ telegraf_outputs_influxdb_influx_uint_support|d()|bool|lower }}

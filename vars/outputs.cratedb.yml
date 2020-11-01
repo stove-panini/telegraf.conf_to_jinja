@@ -1,0 +1,4 @@
+telegraf_outputs_cratedb_url: "postgres://user:password@localhost/schema?sslmode=disable"
+telegraf_outputs_cratedb_timeout: "5s"
+telegraf_outputs_cratedb_table: "metrics"
+telegraf_outputs_cratedb_table_create: yes

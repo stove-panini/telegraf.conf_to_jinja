@@ -1,0 +1,10 @@
+telegraf_inputs_ping_urls: ["example.org"]
+#telegraf_inputs_ping_method: "exec"
+#telegraf_inputs_ping_count: 1
+#telegraf_inputs_ping_ping_interval: 1.0
+#telegraf_inputs_ping_timeout: 1.0
+#telegraf_inputs_ping_deadline: 10
+#telegraf_inputs_ping_interface: ""
+#telegraf_inputs_ping_binary: "ping"
+#telegraf_inputs_ping_arguments: ["-c", "3"]
+#telegraf_inputs_ping_ipv6: no

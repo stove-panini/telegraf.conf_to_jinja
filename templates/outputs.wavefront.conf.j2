@@ -1,0 +1,49 @@
+# Configuration for Wavefront server to send metrics to
+[[outputs.wavefront]]
+  ## Url for Wavefront Direct Ingestion or using HTTP with Wavefront Proxy
+  ## If using Wavefront Proxy, also specify port. example: http://proxyserver:2878
+  url = "{{ telegraf_outputs_wavefront_url|d() }}"
+
+  ## Authentication Token for Wavefront. Only required if using Direct Ingestion
+  token = "{{ telegraf_outputs_wavefront_token|d() }}"
+
+  ## DNS name of the wavefront proxy server. Do not use if url is specified
+  host = "{{ telegraf_outputs_wavefront_host|d() }}"
+
+  ## Port that the Wavefront proxy server listens on. Do not use if url is specified
+  port = {{ telegraf_outputs_wavefront_port|d() }}
+
+  ## prefix for metrics keys
+  prefix = "{{ telegraf_outputs_wavefront_prefix|d() }}"
+
+  ## whether to use "value" for name of simple fields. default is false
+  simple_fields = {{ telegraf_outputs_wavefront_simple_fields|d()|bool|lower }}
+
+  ## character to use between metric and field name.  default is . (dot)
+  metric_separator = "{{ telegraf_outputs_wavefront_metric_separator|d() }}"
+
+  ## Convert metric name paths to use metricSeparator character
+  ## When true will convert all _ (underscore) characters in final metric name. default is true
+  convert_paths = {{ telegraf_outputs_wavefront_convert_paths|d()|bool|lower }}
+
+  ## Use Strict rules to sanitize metric and tag names from invalid characters
+  ## When enabled forward slash (/) and comma (,) will be accepted
+  use_strict = {{ telegraf_outputs_wavefront_use_strict|d()|bool|lower }}
+
+  ## Use Regex to sanitize metric and tag names from invalid characters
+  ## Regex is more thorough, but significantly slower. default is false
+  use_regex = {{ telegraf_outputs_wavefront_use_regex|d()|bool|lower }}
+
+  ## point tags to use as the source name for Wavefront (if none found, host will be used)
+  source_override = [ {% for i in telegraf_outputs_wavefront_source_override|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## whether to convert boolean values to numeric values, with false -> 0.0 and true -> 1.0. default is true
+  convert_bool = {{ telegraf_outputs_wavefront_convert_bool|d()|bool|lower }}
+
+  ## Truncate metric tags to a total of 254 characters for the tag name value. Wavefront will reject any
+  ## data point exceeding this limit if not truncated. Defaults to 'false' to provide backwards compatibility.
+  truncate_tags = {{ telegraf_outputs_wavefront_truncate_tags|d()|bool|lower }}
+
+  ## Define a mapping, namespaced by metric prefix, from string values to numeric values
+  ##   deprecated in 1.9; use the enum processor plugin
+  #[[outputs.wavefront.string_to_number.elasticsearch]]

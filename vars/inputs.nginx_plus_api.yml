@@ -1,0 +1,7 @@
+telegraf_inputs_nginx_plus_api_urls: ["http://localhost/api"]
+#telegraf_inputs_nginx_plus_api_api_version: 3
+telegraf_inputs_nginx_plus_api_response_timeout: "5s"
+#telegraf_inputs_nginx_plus_api_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_nginx_plus_api_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_nginx_plus_api_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_nginx_plus_api_insecure_skip_verify: no

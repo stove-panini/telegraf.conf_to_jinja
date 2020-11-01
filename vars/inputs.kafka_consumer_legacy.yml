@@ -1,0 +1,7 @@
+telegraf_inputs_kafka_consumer_legacy_topics: ["telegraf"]
+telegraf_inputs_kafka_consumer_legacy_zookeeper_peers: ["localhost:2181"]
+telegraf_inputs_kafka_consumer_legacy_zookeeper_chroot: ""
+telegraf_inputs_kafka_consumer_legacy_consumer_group: "telegraf_metrics_consumers"
+telegraf_inputs_kafka_consumer_legacy_offset: "oldest"
+telegraf_inputs_kafka_consumer_legacy_data_format: "influx"
+telegraf_inputs_kafka_consumer_legacy_max_message_len: 65536

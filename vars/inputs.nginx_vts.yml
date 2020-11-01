@@ -1,0 +1,6 @@
+telegraf_inputs_nginx_vts_urls: ["http://localhost/status"]
+telegraf_inputs_nginx_vts_response_timeout: "5s"
+#telegraf_inputs_nginx_vts_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_nginx_vts_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_nginx_vts_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_nginx_vts_insecure_skip_verify: no

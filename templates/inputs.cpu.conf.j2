@@ -1,0 +1,10 @@
+# Read metrics about cpu usage
+[[inputs.cpu]]
+  ## Whether to report per-cpu stats or not
+  percpu = {{ telegraf_inputs_cpu_percpu|d()|bool|lower }}
+  ## Whether to report total system cpu stats or not
+  totalcpu = {{ telegraf_inputs_cpu_totalcpu|d()|bool|lower }}
+  ## If true, collect raw CPU time metrics.
+  collect_cpu_time = {{ telegraf_inputs_cpu_collect_cpu_time|d()|bool|lower }}
+  ## If true, compute and report the sum of all non-idle CPU states.
+  report_active = {{ telegraf_inputs_cpu_report_active|d()|bool|lower }}

@@ -1,0 +1,8 @@
+telegraf_inputs_monit_address: "http://127.0.0.1:2812"
+#telegraf_inputs_monit_username: ""
+#telegraf_inputs_monit_password: ""
+#telegraf_inputs_monit_timeout: "5s"
+#telegraf_inputs_monit_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_monit_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_monit_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_monit_insecure_skip_verify: no

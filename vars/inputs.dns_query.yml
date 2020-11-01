@@ -1,0 +1,6 @@
+telegraf_inputs_dns_query_servers: ["8.8.8.8"]
+#telegraf_inputs_dns_query_network: "udp"
+#telegraf_inputs_dns_query_domains: ["."]
+#telegraf_inputs_dns_query_record_type: "A"
+#telegraf_inputs_dns_query_port: 53
+#telegraf_inputs_dns_query_timeout: 2

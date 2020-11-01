@@ -1,0 +1,21 @@
+# Gather Icinga2 status
+[[inputs.icinga2]]
+  ## Required Icinga2 server address
+  {{ '#' if telegraf_inputs_icinga2_server is not defined }}server = "{{ telegraf_inputs_icinga2_server|d() }}"
+
+  ## Required Icinga2 object type ("services" or "hosts")
+  {{ '#' if telegraf_inputs_icinga2_object_type is not defined }}object_type = "{{ telegraf_inputs_icinga2_object_type|d() }}"
+
+  ## Credentials for basic HTTP authentication
+  {{ '#' if telegraf_inputs_icinga2_username is not defined }}username = "{{ telegraf_inputs_icinga2_username|d() }}"
+  {{ '#' if telegraf_inputs_icinga2_password is not defined }}password = "{{ telegraf_inputs_icinga2_password|d() }}"
+
+  ## Maximum time to receive response.
+  {{ '#' if telegraf_inputs_icinga2_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_icinga2_response_timeout|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_icinga2_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_icinga2_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_icinga2_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_icinga2_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_icinga2_tls_key is not defined }}tls_key = "{{ telegraf_inputs_icinga2_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_icinga2_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_icinga2_insecure_skip_verify|d()|bool|lower }}

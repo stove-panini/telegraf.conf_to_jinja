@@ -1,0 +1,7 @@
+# Read BIND nameserver XML statistics
+[[inputs.bind]]
+  ## An array of BIND XML statistics URI to gather stats.
+  ## Default is "http://localhost:8053/xml/v3".
+  {{ '#' if telegraf_inputs_bind_urls is not defined }}urls = [ {% for i in telegraf_inputs_bind_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_bind_gather_memory_contexts is not defined }}gather_memory_contexts = {{ telegraf_inputs_bind_gather_memory_contexts|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_bind_gather_views is not defined }}gather_views = {{ telegraf_inputs_bind_gather_views|d()|bool|lower }}

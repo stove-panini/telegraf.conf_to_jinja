@@ -1,0 +1,8 @@
+telegraf_inputs_aerospike_servers: ["localhost:3000"]
+#telegraf_inputs_aerospike_username: "telegraf"
+#telegraf_inputs_aerospike_password: "pa$$word"
+#telegraf_inputs_aerospike_enable_tls: no
+#telegraf_inputs_aerospike_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_aerospike_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_aerospike_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_aerospike_insecure_skip_verify: yes

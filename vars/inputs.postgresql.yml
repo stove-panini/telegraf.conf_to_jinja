@@ -1,0 +1,5 @@
+telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_address: "host=localhost user=postgres sslmode=disable"
+#telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress: "db01"
+telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_max_lifetime: "0s"
+#telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases: ["postgres", "template0", "template1"]
+#telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases: ["app_production", "testing"]

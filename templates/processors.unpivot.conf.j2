@@ -1,0 +1,6 @@
+# Rotate multi field metric into several single field metrics
+[[processors.unpivot]]
+  ## Tag to use for the name.
+  tag_key = "{{ telegraf_processors_unpivot_tag_key|d() }}"
+  ## Field to use for the name of the value.
+  value_key = "{{ telegraf_processors_unpivot_value_key|d() }}"

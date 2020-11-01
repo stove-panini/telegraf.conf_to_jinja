@@ -1,0 +1,145 @@
+47 weirdos
+
+inputs.cassandra:
+  manual
+
+inputs.ceph:
+  unquoted string
+
+inputs.cgroup:
+  manual
+
+inputs.cisco_telemetry_mdt:
+  indentation (1)
+
+inputs.clickhouse:
+  unquoted string
+
+inputs.cloudwatch:
+  sub-submetrics
+
+inputs.conntrack:
+  indentation (3)
+
+inputs.exec:
+  manual
+
+inputs.fireboard:
+  unquoted string
+
+inputs.fluentd:
+  manual
+
+inputs.github:
+  manual
+
+inputs.gnmi:
+  indentation (1)
+
+inputs.graylog:
+  manual
+
+inputs.httpjson:
+  manual
+  X-Auth-Token key?
+
+inputs.http_response:
+  value type '''
+
+inputs.influxdb:
+  manual
+
+inputs.jti_openconfig_telemetry:
+  manual
+
+inputs.kapacitor:
+  manual
+
+inputs.kinesis_consumer:
+  key app_name
+
+inputs.kubernetes:
+  value type /path/to/cafile
+
+inputs.lanz:
+  manual
+
+inputs.logparser:
+  value type '''
+
+inputs.logstash:
+  key X-Special-header
+
+inputs.lustre2:
+  manual
+
+inputs.mcrouter:
+  key servers
+
+inputs.mesos:
+  manual
+
+inputs.modbus:
+  manual
+
+inputs.mqtt_consumer:
+  manual
+
+inputs.neptune_apex:
+  manual
+
+inputs.prometheus:
+  value type /path/to/cafile
+
+inputs.snmp_legacy:
+  value type 2 # asdf
+
+inputs.sqlserver:
+  key servers
+
+inputs.stackdriver:
+  manual
+  value type starts_with("localhost")
+
+inputs.statsd:
+  manual
+
+inputs.sysstat:
+  key -C
+
+inputs.varnish:
+  value type instanceName
+
+inputs.vsphere:
+  manual
+  value type true ## true by default
+
+inputs.zipkin:
+  value type 9411 # Port on which
+
+outputs.application_insights:
+  key "ai.cloud.role" ?
+
+outputs.graphite:
+  manual
+
+outputs.http:
+  key Content-Type
+
+outputs.kinesis:
+  key #    method
+
+outputs.wavefront:
+  key #  green
+
+processors.date:
+  key tag_key
+
+processors.execd:
+  key ## eg: command
+
+processors.starlark:
+  value type '''
+
+processors.template:
+  embedded jinja......

@@ -1,0 +1,18 @@
+# Read metrics and status information about processes managed by Monit
+[[inputs.monit]]
+  ## Monit HTTPD address
+  address = "{{ telegraf_inputs_monit_address|d() }}"
+
+  ## Username and Password for Monit
+  {{ '#' if telegraf_inputs_monit_username is not defined }}username = "{{ telegraf_inputs_monit_username|d() }}"
+  {{ '#' if telegraf_inputs_monit_password is not defined }}password = "{{ telegraf_inputs_monit_password|d() }}"
+
+  ## Amount of time allowed to complete the HTTP request
+  {{ '#' if telegraf_inputs_monit_timeout is not defined }}timeout = "{{ telegraf_inputs_monit_timeout|d() }}"
+
+  ## Optional TLS Config
+  {{ '#' if telegraf_inputs_monit_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_monit_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_monit_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_monit_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_monit_tls_key is not defined }}tls_key = "{{ telegraf_inputs_monit_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+  {{ '#' if telegraf_inputs_monit_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_monit_insecure_skip_verify|d()|bool|lower }}

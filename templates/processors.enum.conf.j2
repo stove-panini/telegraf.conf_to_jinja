@@ -1,0 +1,23 @@
+# Map enum values according to given table.
+[[processors.enum]]
+  [[processors.enum.mapping]]
+    ## Name of the field to map
+  field = "{{ telegraf_processors_enum_field|d() }}"
+
+    ## Name of the tag to map
+  {{ '#' if telegraf_processors_enum_tag is not defined }}tag = "{{ telegraf_processors_enum_tag|d() }}"
+
+    ## Destination tag or field to be used for the mapped value.  By default the
+    ## source tag or field is used, overwriting the original value.
+  dest = "{{ telegraf_processors_enum_dest|d() }}"
+
+    ## Default value to be used for all values not contained in the mapping
+    ## table.  When unset, the unmodified value for the field will be used if no
+    ## match is found.
+  {{ '#' if telegraf_processors_enum_default is not defined }}default = {{ telegraf_processors_enum_default|d() }}
+
+    ## Table of mappings
+    [processors.enum.mapping.value_mappings]
+    green = {{ telegraf_processors_enum_value_mappings_green|d() }}
+    amber = {{ telegraf_processors_enum_value_mappings_amber|d() }}
+    red = {{ telegraf_processors_enum_value_mappings_red|d() }}

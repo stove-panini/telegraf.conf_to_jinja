@@ -1,0 +1,6 @@
+telegraf_inputs_kubernetes_url: "http://127.0.0.1:10255"
+#telegraf_inputs_kubernetes_bearer_token: "/path/to/bearer/token"
+#telegraf_inputs_kubernetes_bearer_token_string: "abc_123"
+#telegraf_inputs_kubernetes_label_include: []
+#telegraf_inputs_kubernetes_label_exclude: ["*"]
+#telegraf_inputs_kubernetes_response_timeout: "5s"

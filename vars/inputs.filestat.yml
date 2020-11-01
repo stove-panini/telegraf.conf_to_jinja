@@ -1,0 +1,2 @@
+telegraf_inputs_filestat_files: ["/var/log/**.log"]
+telegraf_inputs_filestat_md5: no

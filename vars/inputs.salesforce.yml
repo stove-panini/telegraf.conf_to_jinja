@@ -1,0 +1,5 @@
+telegraf_inputs_salesforce_username: "your_username"
+telegraf_inputs_salesforce_password: "your_password"
+#telegraf_inputs_salesforce_security_token: "your_security_token"
+#telegraf_inputs_salesforce_environment: "production"
+#telegraf_inputs_salesforce_version: "39.0"

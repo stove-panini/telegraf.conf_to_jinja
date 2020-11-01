@@ -1,0 +1,2 @@
+telegraf_inputs_neptune_apex_servers: []
+telegraf_inputs_neptune_apex_response_timeout: "5s"

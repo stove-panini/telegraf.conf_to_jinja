@@ -1,0 +1,11 @@
+# Monitor disks' temperatures using hddtemp
+[[inputs.hddtemp]]
+  ## By default, telegraf gathers temps data from all disks detected by the
+  ## hddtemp.
+  ##
+  ## Only collect temps from the selected disks.
+  ##
+  ## A * as the device name will return the temperature values of all disks.
+  ##
+  {{ '#' if telegraf_inputs_hddtemp_address is not defined }}address = "{{ telegraf_inputs_hddtemp_address|d() }}"
+  {{ '#' if telegraf_inputs_hddtemp_devices is not defined }}devices = [ {% for i in telegraf_inputs_hddtemp_devices|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]

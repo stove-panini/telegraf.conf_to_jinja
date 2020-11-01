@@ -1,0 +1,16 @@
+telegraf_inputs_burrow_servers: ["http://localhost:8000"]
+#telegraf_inputs_burrow_api_prefix: "/v3/kafka"
+#telegraf_inputs_burrow_response_timeout: "5s"
+#telegraf_inputs_burrow_concurrent_connections: 20
+#telegraf_inputs_burrow_clusters_include: []
+#telegraf_inputs_burrow_clusters_exclude: []
+#telegraf_inputs_burrow_groups_include: []
+#telegraf_inputs_burrow_groups_exclude: []
+#telegraf_inputs_burrow_topics_include: []
+#telegraf_inputs_burrow_topics_exclude: []
+#telegraf_inputs_burrow_username: ""
+#telegraf_inputs_burrow_password: ""
+#telegraf_inputs_burrow_ssl_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_burrow_ssl_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_burrow_ssl_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_burrow_insecure_skip_verify: no

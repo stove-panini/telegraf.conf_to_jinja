@@ -1,0 +1,14 @@
+telegraf_inputs_prometheus_urls: ["http://localhost:9100/metrics"]
+#telegraf_inputs_prometheus_metric_version: 1
+#telegraf_inputs_prometheus_url_tag: "scrapeUrl"
+#telegraf_inputs_prometheus_kubernetes_services: ["http://my-service-dns.my-namespace:9100/metrics"]
+#telegraf_inputs_prometheus_kube_config: "/path/to/kubernetes.config"
+#telegraf_inputs_prometheus_monitor_kubernetes_pods: yes
+#telegraf_inputs_prometheus_monitor_kubernetes_pods_namespace: ""
+#telegraf_inputs_prometheus_kubernetes_label_selector: "env=dev,app=nginx"
+#telegraf_inputs_prometheus_kubernetes_field_selector: "spec.nodeName=$HOSTNAME"
+#telegraf_inputs_prometheus_bearer_token: "/path/to/bearer/token"
+#telegraf_inputs_prometheus_bearer_token_string: "abc_123"
+#telegraf_inputs_prometheus_username: ""
+#telegraf_inputs_prometheus_password: ""
+#telegraf_inputs_prometheus_response_timeout: "3s"

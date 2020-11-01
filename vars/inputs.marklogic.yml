@@ -1,0 +1,8 @@
+telegraf_inputs_marklogic_url: "http://localhost:8002"
+#telegraf_inputs_marklogic_hosts: ["hostname1", "hostname2"]
+#telegraf_inputs_marklogic_username: "myuser"
+#telegraf_inputs_marklogic_password: "mypassword"
+#telegraf_inputs_marklogic_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_marklogic_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_marklogic_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_marklogic_insecure_skip_verify: no

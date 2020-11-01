@@ -1,0 +1,15 @@
+# Defaults sets default value(s) for specified fields that are not set on incoming metrics.
+[[processors.defaults]]
+  ## Ensures a set of fields always exists on your metric(s) with their
+  ## respective default value.
+  ## For any given field pair (key = default), if it's not set, a field
+  ## is set on the metric with the specified default.
+  ##
+  ## A field is considered not set if it is nil on the incoming metric;
+  ## or it is not nil but its value is an empty string or is a string
+  ## of one or more spaces.
+  ##   <target-field> = <value>
+  # [processors.defaults.fields]
+    {{ '#' if telegraf_processors_defaults_fields_field_1 is not defined }}field_1 = "{{ telegraf_processors_defaults_fields_field_1|d() }}"
+    {{ '#' if telegraf_processors_defaults_fields_time_idle is not defined }}time_idle = {{ telegraf_processors_defaults_fields_time_idle|d() }}
+    {{ '#' if telegraf_processors_defaults_fields_is_error is not defined }}is_error = {{ telegraf_processors_defaults_fields_is_error|d()|bool|lower }}

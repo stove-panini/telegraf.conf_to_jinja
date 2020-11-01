@@ -1,0 +1,121 @@
+# Configuration for the Kafka server to send metrics to
+[[outputs.kafka]]
+  ## URLs of kafka brokers
+  brokers = [ {% for i in telegraf_outputs_kafka_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  ## Kafka topic for producer messages
+  topic = "{{ telegraf_outputs_kafka_topic|d() }}"
+
+  ## The value of this tag will be used as the topic.  If not set the 'topic'
+  ## option is used.
+  {{ '#' if telegraf_outputs_kafka_topic_tag is not defined }}topic_tag = "{{ telegraf_outputs_kafka_topic_tag|d() }}"
+
+  ## If true, the 'topic_tag' will be removed from to the metric.
+  {{ '#' if telegraf_outputs_kafka_exclude_topic_tag is not defined }}exclude_topic_tag = {{ telegraf_outputs_kafka_exclude_topic_tag|d()|bool|lower }}
+
+  ## Optional Client id
+  {{ '#' if telegraf_outputs_kafka_client_id is not defined }}client_id = "{{ telegraf_outputs_kafka_client_id|d() }}"
+
+  ## Set the minimal supported Kafka version.  Setting this enables the use of new
+  ## Kafka features and APIs.  Of particular interest, lz4 compression
+  ## requires at least version 0.10.0.0.
+  ##   ex: version = "1.1.0"
+  {{ '#' if telegraf_outputs_kafka_version is not defined }}version = "{{ telegraf_outputs_kafka_version|d() }}"
+
+  ## Optional topic suffix configuration.
+  ## If the section is omitted, no suffix is used.
+  ## Following topic suffix methods are supported:
+  ##   measurement - suffix equals to separator + measurement's name
+  ##   tags        - suffix equals to separator + specified tags' values
+  ##                 interleaved with separator
+
+  ## Suffix equals to "_" + measurement name
+  # [outputs.kafka.topic_suffix]
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_method is not defined }}method = "{{ telegraf_outputs_kafka_topic_suffix_method|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_separator is not defined }}separator = "{{ telegraf_outputs_kafka_topic_suffix_separator|d() }}"
+
+  ## Suffix equals to "__" + measurement's "foo" tag value.
+  ##   If there's no such a tag, suffix equals to an empty string
+  # [outputs.kafka.topic_suffix]
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_method is not defined }}method = "{{ telegraf_outputs_kafka_topic_suffix_method|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_keys is not defined }}keys = [ {% for i in telegraf_outputs_kafka_topic_suffix_keys|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_separator is not defined }}separator = "{{ telegraf_outputs_kafka_topic_suffix_separator|d() }}"
+
+  ## Suffix equals to "_" + measurement's "foo" and "bar"
+  ##   tag values, separated by "_". If there is no such tags,
+  ##   their values treated as empty strings.
+  # [outputs.kafka.topic_suffix]
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_method is not defined }}method = "{{ telegraf_outputs_kafka_topic_suffix_method|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_keys is not defined }}keys = [ {% for i in telegraf_outputs_kafka_topic_suffix_keys|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_separator is not defined }}separator = "{{ telegraf_outputs_kafka_topic_suffix_separator|d() }}"
+
+  ## The routing tag specifies a tagkey on the metric whose value is used as
+  ## the message key.  The message key is used to determine which partition to
+  ## send the message to.  This tag is prefered over the routing_key option.
+    routing_tag = "{{ telegraf_outputs_kafka_topic_suffix_routing_tag|d() }}"
+
+  ## The routing key is set as the message key and used to determine which
+  ## partition to send the message to.  This value is only used when no
+  ## routing_tag is set or as a fallback when the tag specified in routing tag
+  ## is not found.
+  ##
+  ## If set to "random", a random value will be generated for each message.
+  ##
+  ## When unset, no message key is added and each message is routed to a random
+  ## partition.
+  ##
+  ##   ex: routing_key = "random"
+  ##       routing_key = "telegraf"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_routing_key is not defined }}routing_key = "{{ telegraf_outputs_kafka_topic_suffix_routing_key|d() }}"
+
+  ## CompressionCodec represents the various compression codecs recognized by
+  ## Kafka in messages.
+  ##  0 : No compression
+  ##  1 : Gzip compression
+  ##  2 : Snappy compression
+  ##  3 : LZ4 compression
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_compression_codec is not defined }}compression_codec = {{ telegraf_outputs_kafka_topic_suffix_compression_codec|d() }}
+
+  ##  RequiredAcks is used in Produce Requests to tell the broker how many
+  ##  replica acknowledgements it must see before responding
+  ##   0 : the producer never waits for an acknowledgement from the broker.
+  ##       This option provides the lowest latency but the weakest durability
+  ##       guarantees (some data will be lost when a server fails).
+  ##   1 : the producer gets an acknowledgement after the leader replica has
+  ##       received the data. This option provides better durability as the
+  ##       client waits until the server acknowledges the request as successful
+  ##       (only messages that were written to the now-dead leader but not yet
+  ##       replicated will be lost).
+  ##   -1: the producer gets an acknowledgement after all in-sync replicas have
+  ##       received the data. This option provides the best durability, we
+  ##       guarantee that no messages will be lost as long as at least one in
+  ##       sync replica remains.
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_required_acks is not defined }}required_acks = {{ telegraf_outputs_kafka_topic_suffix_required_acks|d() }}
+
+  ## The maximum number of times to retry sending a metric before failing
+  ## until the next flush.
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_max_retry is not defined }}max_retry = {{ telegraf_outputs_kafka_topic_suffix_max_retry|d() }}
+
+  ## The maximum permitted size of a message. Should be set equal to or
+  ## smaller than the broker's 'message.max.bytes'.
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_max_message_bytes is not defined }}max_message_bytes = {{ telegraf_outputs_kafka_topic_suffix_max_message_bytes|d() }}
+
+  ## Optional TLS Config
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_enable_tls is not defined }}enable_tls = {{ telegraf_outputs_kafka_topic_suffix_enable_tls|d()|bool|lower }}
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_kafka_topic_suffix_tls_ca|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_kafka_topic_suffix_tls_cert|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_tls_key is not defined }}tls_key = "{{ telegraf_outputs_kafka_topic_suffix_tls_key|d() }}"
+  ## Use TLS but skip chain & host verification
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_kafka_topic_suffix_insecure_skip_verify|d()|bool|lower }}
+
+  ## Optional SASL Config
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_sasl_username is not defined }}sasl_username = "{{ telegraf_outputs_kafka_topic_suffix_sasl_username|d() }}"
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_sasl_password is not defined }}sasl_password = "{{ telegraf_outputs_kafka_topic_suffix_sasl_password|d() }}"
+
+  ## SASL protocol version.  When connecting to Azure EventHub set to 0.
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_sasl_version is not defined }}sasl_version = {{ telegraf_outputs_kafka_topic_suffix_sasl_version|d() }}
+
+  ## Data format to output.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
+    {{ '#' if telegraf_outputs_kafka_topic_suffix_data_format is not defined }}data_format = "{{ telegraf_outputs_kafka_topic_suffix_data_format|d() }}"

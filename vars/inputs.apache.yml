@@ -1,0 +1,8 @@
+telegraf_inputs_apache_urls: ["http://localhost/server-status?auto"]
+#telegraf_inputs_apache_username: "myuser"
+#telegraf_inputs_apache_password: "mypassword"
+#telegraf_inputs_apache_response_timeout: "5s"
+#telegraf_inputs_apache_tls_ca: "/etc/telegraf/ca.pem"
+#telegraf_inputs_apache_tls_cert: "/etc/telegraf/cert.pem"
+#telegraf_inputs_apache_tls_key: "/etc/telegraf/key.pem"
+#telegraf_inputs_apache_insecure_skip_verify: no

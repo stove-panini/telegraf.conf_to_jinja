@@ -1,0 +1,8 @@
+telegraf_processors_reverse_dns_cache_ttl: "24h"
+telegraf_processors_reverse_dns_lookup_timeout: "3s"
+telegraf_processors_reverse_dns_max_parallel_lookups: 10
+telegraf_processors_reverse_dns_ordered: no
+telegraf_processors_reverse_dns_field: "source_ip"
+telegraf_processors_reverse_dns_dest: "source_name"
+telegraf_processors_reverse_dns_tag: "destination_ip"
+telegraf_processors_reverse_dns_dest: "destination_name"

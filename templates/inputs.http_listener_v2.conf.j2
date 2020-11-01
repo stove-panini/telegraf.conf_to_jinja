@@ -1,0 +1,47 @@
+# Generic HTTP write listener
+[[inputs.http_listener_v2]]
+  ## Address and port to host HTTP listener on
+  service_address = "{{ telegraf_inputs_http_listener_v2_service_address|d() }}"
+
+  ## Path to listen to.
+  {{ '#' if telegraf_inputs_http_listener_v2_path is not defined }}path = "{{ telegraf_inputs_http_listener_v2_path|d() }}"
+
+  ## HTTP methods to accept.
+  {{ '#' if telegraf_inputs_http_listener_v2_methods is not defined }}methods = [ {% for i in telegraf_inputs_http_listener_v2_methods|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## maximum duration before timing out read of the request
+  {{ '#' if telegraf_inputs_http_listener_v2_read_timeout is not defined }}read_timeout = "{{ telegraf_inputs_http_listener_v2_read_timeout|d() }}"
+  ## maximum duration before timing out write of the response
+  {{ '#' if telegraf_inputs_http_listener_v2_write_timeout is not defined }}write_timeout = "{{ telegraf_inputs_http_listener_v2_write_timeout|d() }}"
+
+  ## Maximum allowed http request body size in bytes.
+  ## 0 means to use the default of 524,288,00 bytes (500 mebibytes)
+  {{ '#' if telegraf_inputs_http_listener_v2_max_body_size is not defined }}max_body_size = "{{ telegraf_inputs_http_listener_v2_max_body_size|d() }}"
+
+  ## Part of the request to consume.  Available options are "body" and
+  ## "query".
+  {{ '#' if telegraf_inputs_http_listener_v2_data_source is not defined }}data_source = "{{ telegraf_inputs_http_listener_v2_data_source|d() }}"
+
+  ## Set one or more allowed client CA certificate file names to
+  ## enable mutually authenticated TLS connections
+  {{ '#' if telegraf_inputs_http_listener_v2_tls_allowed_cacerts is not defined }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_http_listener_v2_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+
+  ## Add service certificate and key
+  {{ '#' if telegraf_inputs_http_listener_v2_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_http_listener_v2_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_http_listener_v2_tls_key is not defined }}tls_key = "{{ telegraf_inputs_http_listener_v2_tls_key|d() }}"
+
+  ## Optional username and password to accept for HTTP basic authentication.
+  ## You probably want to make sure you have TLS configured above for this.
+  {{ '#' if telegraf_inputs_http_listener_v2_basic_username is not defined }}basic_username = "{{ telegraf_inputs_http_listener_v2_basic_username|d() }}"
+  {{ '#' if telegraf_inputs_http_listener_v2_basic_password is not defined }}basic_password = "{{ telegraf_inputs_http_listener_v2_basic_password|d() }}"
+
+  ## Optional setting to map http headers into tags
+  ## If the http header is not present on the request, no corresponding tag will be added
+  ## If multiple instances of the http header are present, only the first value will be used
+  {{ '#' if telegraf_inputs_http_listener_v2_http_header_tags is not defined }}http_header_tags = { {% for k, v in (telegraf_inputs_http_listener_v2_http_header_tags|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+
+  ## Data format to consume.
+  ## Each data format has its own unique set of configuration options, read
+  ## more about them here:
+  ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+  data_format = "{{ telegraf_inputs_http_listener_v2_data_format|d() }}"

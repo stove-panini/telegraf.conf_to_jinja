@@ -71,7 +71,7 @@ function getKey(field)
 function getValueType(value)
 {
     switch (value) {
-    case /^"/:
+    case /^\"/:
         return "string"
         break
     case /^\[/:

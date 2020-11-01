@@ -186,7 +186,7 @@ BEGIN {
 
     # Build Jinja elements
     if (Comment) {
-        JinjaComment = "{{ '#' if " YAMLVar " is not defined }}"
+        JinjaComment = "{{ '#' if " YAMLVar " is not defined else '' }}"
     } else {
         JinjaComment = ""
     }
@@ -199,7 +199,7 @@ BEGIN {
         JinjaValue = "{{ " YAMLVar "|d() }}"
         break
     case "array":
-        JinjaValue = "[ {% for i in " YAMLVar "|d([]) %}\"{{ i }}\"{{ ', ' if not loop.last }}{% endfor %} ]"
+        JinjaValue = "[ {% for i in " YAMLVar "|d([]) %}\"{{ i }}\"{{ ', ' if not loop.last else '' }}{% endfor %} ]"
         break
     case "hash":
         JinjaValue = "{ {% for k, v in (" YAMLVar "|d({})).items() %}\"{{ k }}\" = \"{{ v }}\"{{ ', ' if not loop.last }}{% endfor %} }"

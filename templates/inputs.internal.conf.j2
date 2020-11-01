@@ -1,4 +1,4 @@
 # Collect statistics about itself
 [[inputs.internal]]
   ## If true, collect telegraf memory stats.
-  {{ '#' if telegraf_inputs_internal_collect_memstats is not defined }}collect_memstats = {{ telegraf_inputs_internal_collect_memstats|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_internal_collect_memstats is not defined else '' }}collect_memstats = {{ telegraf_inputs_internal_collect_memstats|d()|bool|lower }}

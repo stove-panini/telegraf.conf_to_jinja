@@ -2,83 +2,83 @@
 [[outputs.amqp]]
   ## Broker to publish to.
   ##   deprecated in 1.7; use the brokers option
-  {{ '#' if telegraf_outputs_amqp_url is not defined }}url = "{{ telegraf_outputs_amqp_url|d() }}"
+  {{ '#' if telegraf_outputs_amqp_url is not defined else '' }}url = "{{ telegraf_outputs_amqp_url|d() }}"
 
   ## Brokers to publish to.  If multiple brokers are specified a random broker
   ## will be selected anytime a connection is established.  This can be
   ## helpful for load balancing when not using a dedicated load balancer.
-  brokers = [ {% for i in telegraf_outputs_amqp_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  brokers = [ {% for i in telegraf_outputs_amqp_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Maximum messages to send over a connection.  Once this is reached, the
   ## connection is closed and a new connection is made.  This can be helpful for
   ## load balancing when not using a dedicated load balancer.
-  {{ '#' if telegraf_outputs_amqp_max_messages is not defined }}max_messages = {{ telegraf_outputs_amqp_max_messages|d() }}
+  {{ '#' if telegraf_outputs_amqp_max_messages is not defined else '' }}max_messages = {{ telegraf_outputs_amqp_max_messages|d() }}
 
   ## Exchange to declare and publish to.
   exchange = "{{ telegraf_outputs_amqp_exchange|d() }}"
 
   ## Exchange type; common types are "direct", "fanout", "topic", "header", "x-consistent-hash".
-  {{ '#' if telegraf_outputs_amqp_exchange_type is not defined }}exchange_type = "{{ telegraf_outputs_amqp_exchange_type|d() }}"
+  {{ '#' if telegraf_outputs_amqp_exchange_type is not defined else '' }}exchange_type = "{{ telegraf_outputs_amqp_exchange_type|d() }}"
 
   ## If true, exchange will be passively declared.
-  {{ '#' if telegraf_outputs_amqp_exchange_passive is not defined }}exchange_passive = {{ telegraf_outputs_amqp_exchange_passive|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_amqp_exchange_passive is not defined else '' }}exchange_passive = {{ telegraf_outputs_amqp_exchange_passive|d()|bool|lower }}
 
   ## Exchange durability can be either "transient" or "durable".
-  {{ '#' if telegraf_outputs_amqp_exchange_durability is not defined }}exchange_durability = "{{ telegraf_outputs_amqp_exchange_durability|d() }}"
+  {{ '#' if telegraf_outputs_amqp_exchange_durability is not defined else '' }}exchange_durability = "{{ telegraf_outputs_amqp_exchange_durability|d() }}"
 
   ## Additional exchange arguments.
-  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_outputs_amqp_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
 
   ## Authentication credentials for the PLAIN auth_method.
-  {{ '#' if telegraf_outputs_amqp_username is not defined }}username = "{{ telegraf_outputs_amqp_username|d() }}"
-  {{ '#' if telegraf_outputs_amqp_password is not defined }}password = "{{ telegraf_outputs_amqp_password|d() }}"
+  {{ '#' if telegraf_outputs_amqp_username is not defined else '' }}username = "{{ telegraf_outputs_amqp_username|d() }}"
+  {{ '#' if telegraf_outputs_amqp_password is not defined else '' }}password = "{{ telegraf_outputs_amqp_password|d() }}"
 
   ## Auth method. PLAIN and EXTERNAL are supported
   ## Using EXTERNAL requires enabling the rabbitmq_auth_mechanism_ssl plugin as
   ## described here: https://www.rabbitmq.com/plugins.html
-  {{ '#' if telegraf_outputs_amqp_auth_method is not defined }}auth_method = "{{ telegraf_outputs_amqp_auth_method|d() }}"
+  {{ '#' if telegraf_outputs_amqp_auth_method is not defined else '' }}auth_method = "{{ telegraf_outputs_amqp_auth_method|d() }}"
 
   ## Metric tag to use as a routing key.
   ##   ie, if this tag exists, its value will be used as the routing key
-  {{ '#' if telegraf_outputs_amqp_routing_tag is not defined }}routing_tag = "{{ telegraf_outputs_amqp_routing_tag|d() }}"
+  {{ '#' if telegraf_outputs_amqp_routing_tag is not defined else '' }}routing_tag = "{{ telegraf_outputs_amqp_routing_tag|d() }}"
 
   ## Static routing key.  Used when no routing_tag is set or as a fallback
   ## when the tag specified in routing tag is not found.
-  {{ '#' if telegraf_outputs_amqp_routing_key is not defined }}routing_key = "{{ telegraf_outputs_amqp_routing_key|d() }}"
-  {{ '#' if telegraf_outputs_amqp_routing_key is not defined }}routing_key = "{{ telegraf_outputs_amqp_routing_key|d() }}"
+  {{ '#' if telegraf_outputs_amqp_routing_key is not defined else '' }}routing_key = "{{ telegraf_outputs_amqp_routing_key|d() }}"
+  {{ '#' if telegraf_outputs_amqp_routing_key is not defined else '' }}routing_key = "{{ telegraf_outputs_amqp_routing_key|d() }}"
 
   ## Delivery Mode controls if a published message is persistent.
   ##   One of "transient" or "persistent".
-  {{ '#' if telegraf_outputs_amqp_delivery_mode is not defined }}delivery_mode = "{{ telegraf_outputs_amqp_delivery_mode|d() }}"
+  {{ '#' if telegraf_outputs_amqp_delivery_mode is not defined else '' }}delivery_mode = "{{ telegraf_outputs_amqp_delivery_mode|d() }}"
 
   ## InfluxDB database added as a message header.
   ##   deprecated in 1.7; use the headers option
-  {{ '#' if telegraf_outputs_amqp_database is not defined }}database = "{{ telegraf_outputs_amqp_database|d() }}"
+  {{ '#' if telegraf_outputs_amqp_database is not defined else '' }}database = "{{ telegraf_outputs_amqp_database|d() }}"
 
   ## InfluxDB retention policy added as a message header
   ##   deprecated in 1.7; use the headers option
-  {{ '#' if telegraf_outputs_amqp_retention_policy is not defined }}retention_policy = "{{ telegraf_outputs_amqp_retention_policy|d() }}"
+  {{ '#' if telegraf_outputs_amqp_retention_policy is not defined else '' }}retention_policy = "{{ telegraf_outputs_amqp_retention_policy|d() }}"
 
   ## Static headers added to each published message.
-  {{ '#' if telegraf_outputs_amqp_headers is not defined }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_outputs_amqp_headers is not defined }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_outputs_amqp_headers is not defined else '' }}headers = { {% for k, v in (telegraf_outputs_amqp_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
 
   ## Connection timeout.  If not provided, will default to 5s.  0s means no
   ## timeout (not recommended).
-  {{ '#' if telegraf_outputs_amqp_timeout is not defined }}timeout = "{{ telegraf_outputs_amqp_timeout|d() }}"
+  {{ '#' if telegraf_outputs_amqp_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_amqp_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_amqp_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_amqp_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_amqp_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_amqp_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_amqp_tls_key is not defined }}tls_key = "{{ telegraf_outputs_amqp_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_amqp_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_amqp_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_amqp_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_amqp_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_amqp_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_amqp_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_amqp_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_amqp_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_amqp_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_amqp_insecure_skip_verify|d()|bool|lower }}
 
   ## If true use batch serialization format instead of line based delimiting.
   ## Only applies to data formats which are not line based such as JSON.
   ## Recommended to set to true.
-  {{ '#' if telegraf_outputs_amqp_use_batch_format is not defined }}use_batch_format = {{ telegraf_outputs_amqp_use_batch_format|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_amqp_use_batch_format is not defined else '' }}use_batch_format = {{ telegraf_outputs_amqp_use_batch_format|d()|bool|lower }}
 
   ## Content encoding for message payloads, can be set to "gzip" to or
   ## "identity" to apply no encoding.
@@ -86,10 +86,10 @@
   ## Please note that when use_batch_format = false each amqp message contains only
   ## a single metric, it is recommended to use compression with batch format
   ## for best results.
-  {{ '#' if telegraf_outputs_amqp_content_encoding is not defined }}content_encoding = "{{ telegraf_outputs_amqp_content_encoding|d() }}"
+  {{ '#' if telegraf_outputs_amqp_content_encoding is not defined else '' }}content_encoding = "{{ telegraf_outputs_amqp_content_encoding|d() }}"
 
   ## Data format to output.
   ## Each data format has its own unique set of configuration options, read
   ## more about them here:
   ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md
-  {{ '#' if telegraf_outputs_amqp_data_format is not defined }}data_format = "{{ telegraf_outputs_amqp_data_format|d() }}"
+  {{ '#' if telegraf_outputs_amqp_data_format is not defined else '' }}data_format = "{{ telegraf_outputs_amqp_data_format|d() }}"

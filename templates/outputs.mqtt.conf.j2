@@ -1,6 +1,6 @@
 # Configuration for MQTT server to send metrics to
 [[outputs.mqtt]]
-  servers = [ {% for i in telegraf_outputs_mqtt_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_outputs_mqtt_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## MQTT outputs send metrics to this topic format
   ##    "<topic_prefix>/<hostname>/<pluginname>/"
@@ -11,32 +11,32 @@
   ##   0 = at most once
   ##   1 = at least once
   ##   2 = exactly once
-  {{ '#' if telegraf_outputs_mqtt_qos is not defined }}qos = {{ telegraf_outputs_mqtt_qos|d() }}
+  {{ '#' if telegraf_outputs_mqtt_qos is not defined else '' }}qos = {{ telegraf_outputs_mqtt_qos|d() }}
 
   ## username and password to connect MQTT server.
-  {{ '#' if telegraf_outputs_mqtt_username is not defined }}username = "{{ telegraf_outputs_mqtt_username|d() }}"
-  {{ '#' if telegraf_outputs_mqtt_password is not defined }}password = "{{ telegraf_outputs_mqtt_password|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_username is not defined else '' }}username = "{{ telegraf_outputs_mqtt_username|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_password is not defined else '' }}password = "{{ telegraf_outputs_mqtt_password|d() }}"
 
   ## client ID, if not set a random ID is generated
-  {{ '#' if telegraf_outputs_mqtt_client_id is not defined }}client_id = "{{ telegraf_outputs_mqtt_client_id|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_client_id is not defined else '' }}client_id = "{{ telegraf_outputs_mqtt_client_id|d() }}"
 
   ## Timeout for write operations. default: 5s
-  {{ '#' if telegraf_outputs_mqtt_timeout is not defined }}timeout = "{{ telegraf_outputs_mqtt_timeout|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_mqtt_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_mqtt_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_mqtt_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_mqtt_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_mqtt_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_mqtt_tls_key is not defined }}tls_key = "{{ telegraf_outputs_mqtt_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_mqtt_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_mqtt_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_mqtt_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_mqtt_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_mqtt_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_mqtt_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_mqtt_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_mqtt_insecure_skip_verify|d()|bool|lower }}
 
   ## When true, metrics will be sent in one MQTT message per flush.  Otherwise,
   ## metrics are written one metric per MQTT message.
-  {{ '#' if telegraf_outputs_mqtt_batch is not defined }}batch = {{ telegraf_outputs_mqtt_batch|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_mqtt_batch is not defined else '' }}batch = {{ telegraf_outputs_mqtt_batch|d()|bool|lower }}
 
   ## When true, metric will have RETAIN flag set, making broker cache entries until someone
   ## actually reads it
-  {{ '#' if telegraf_outputs_mqtt_retain is not defined }}retain = {{ telegraf_outputs_mqtt_retain|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_mqtt_retain is not defined else '' }}retain = {{ telegraf_outputs_mqtt_retain|d()|bool|lower }}
 
   ## Data format to output.
   ## Each data format has its own unique set of configuration options, read

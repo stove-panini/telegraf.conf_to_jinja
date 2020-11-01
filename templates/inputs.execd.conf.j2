@@ -1,7 +1,7 @@
 # Run executable as long-running input plugin
 [[inputs.execd]]
   ## Program to run as daemon
-  command = [ {% for i in telegraf_inputs_execd_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  command = [ {% for i in telegraf_inputs_execd_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Define how the process is signaled on each collection interval.
   ## Valid values are:

@@ -1,11 +1,11 @@
 # Read stats from one or more Solr servers or cores
 [[inputs.solr]]
   ## specify a list of one or more Solr servers
-  servers = [ {% for i in telegraf_inputs_solr_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_solr_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## specify a list of one or more Solr cores (default - all)
-  {{ '#' if telegraf_inputs_solr_cores is not defined }}cores = [ {% for i in telegraf_inputs_solr_cores|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_solr_cores is not defined else '' }}cores = [ {% for i in telegraf_inputs_solr_cores|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional HTTP Basic Auth Credentials
-  {{ '#' if telegraf_inputs_solr_username is not defined }}username = "{{ telegraf_inputs_solr_username|d() }}"
-  {{ '#' if telegraf_inputs_solr_password is not defined }}password = "{{ telegraf_inputs_solr_password|d() }}"
+  {{ '#' if telegraf_inputs_solr_username is not defined else '' }}username = "{{ telegraf_inputs_solr_username|d() }}"
+  {{ '#' if telegraf_inputs_solr_password is not defined else '' }}password = "{{ telegraf_inputs_solr_password|d() }}"

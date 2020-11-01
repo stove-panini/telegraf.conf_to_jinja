@@ -1,4 +1,4 @@
 # Read metrics one or many Riak servers
 [[inputs.riak]]
   # Specify a list of one or more riak http servers
-  servers = [ {% for i in telegraf_inputs_riak_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_riak_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

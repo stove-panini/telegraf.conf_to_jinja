@@ -4,4 +4,4 @@
   limit = {{ telegraf_processors_tag_limit_limit|d() }}
 
   ## List of tags to preferentially preserve
-  keep = [ {% for i in telegraf_processors_tag_limit_keep|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  keep = [ {% for i in telegraf_processors_tag_limit_keep|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

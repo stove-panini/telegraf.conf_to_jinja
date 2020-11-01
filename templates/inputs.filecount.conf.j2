@@ -2,7 +2,7 @@
 [[inputs.filecount]]
   ## Directory to gather stats about.
   ##   deprecated in 1.9; use the directories option
-  {{ '#' if telegraf_inputs_filecount_directory is not defined }}directory = "{{ telegraf_inputs_filecount_directory|d() }}"
+  {{ '#' if telegraf_inputs_filecount_directory is not defined else '' }}directory = "{{ telegraf_inputs_filecount_directory|d() }}"
 
   ## Directories to gather stats about.
   ## This accept standard unit glob matching rules, but with the addition of
@@ -10,7 +10,7 @@
   ##   /var/log/**    -> recursively find all directories in /var/log and count files in each directories
   ##   /var/log/*/*   -> find all directories with a parent dir in /var/log and count files in each directories
   ##   /var/log       -> count all files in /var/log and all of its subdirectories
-  directories = [ {% for i in telegraf_inputs_filecount_directories|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  directories = [ {% for i in telegraf_inputs_filecount_directories|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Only count files that match the name pattern. Defaults to "*".
   name = "{{ telegraf_inputs_filecount_name|d() }}"

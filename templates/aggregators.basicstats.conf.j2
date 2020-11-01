@@ -8,4 +8,4 @@
   drop_original = {{ telegraf_aggregators_basicstats_drop_original|d()|bool|lower }}
 
   ## Configures which basic stats to push as fields
-  {{ '#' if telegraf_aggregators_basicstats_stats is not defined }}stats = [ {% for i in telegraf_aggregators_basicstats_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_aggregators_basicstats_stats is not defined else '' }}stats = [ {% for i in telegraf_aggregators_basicstats_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

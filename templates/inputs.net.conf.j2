@@ -4,10 +4,10 @@
   ## Setting interfaces will tell it to gather these explicit interfaces,
   ## regardless of status.
   ##
-  {{ '#' if telegraf_inputs_net_interfaces is not defined }}interfaces = [ {% for i in telegraf_inputs_net_interfaces|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_net_interfaces is not defined else '' }}interfaces = [ {% for i in telegraf_inputs_net_interfaces|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ##
   ## On linux systems telegraf also collects protocol stats.
   ## Setting ignore_protocol_stats to true will skip reporting of protocol metrics.
   ##
-  {{ '#' if telegraf_inputs_net_ignore_protocol_stats is not defined }}ignore_protocol_stats = {{ telegraf_inputs_net_ignore_protocol_stats|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_net_ignore_protocol_stats is not defined else '' }}ignore_protocol_stats = {{ telegraf_inputs_net_ignore_protocol_stats|d()|bool|lower }}
   ##

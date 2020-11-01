@@ -2,4 +2,4 @@
 [[inputs.wireguard]]
   ## Optional list of Wireguard device/interface names to query.
   ## If omitted, all Wireguard interfaces are queried.
-  {{ '#' if telegraf_inputs_wireguard_devices is not defined }}devices = [ {% for i in telegraf_inputs_wireguard_devices|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_wireguard_devices is not defined else '' }}devices = [ {% for i in telegraf_inputs_wireguard_devices|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

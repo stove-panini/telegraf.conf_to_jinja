@@ -6,8 +6,8 @@
   ## The default is false for backwards compatibility, and will be changed to
   ## true in a future version.  It is recommended to set to true on new
   ## deployments.
-  {{ '#' if telegraf_inputs_interrupts_cpu_as_tag is not defined }}cpu_as_tag = {{ telegraf_inputs_interrupts_cpu_as_tag|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_interrupts_cpu_as_tag is not defined else '' }}cpu_as_tag = {{ telegraf_inputs_interrupts_cpu_as_tag|d()|bool|lower }}
 
   ## To filter which IRQs to collect, make use of tagpass / tagdrop, i.e.
   # [inputs.interrupts.tagdrop]
-    {{ '#' if telegraf_inputs_interrupts_tagdrop_irq is not defined }}irq = [ {% for i in telegraf_inputs_interrupts_tagdrop_irq|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_inputs_interrupts_tagdrop_irq is not defined else '' }}irq = [ {% for i in telegraf_inputs_interrupts_tagdrop_irq|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

@@ -1,14 +1,14 @@
 # Read Nginx virtual host traffic status module information (nginx-module-sts)
 [[inputs.nginx_sts]]
   ## An array of ngx_http_status_module or status URI to gather stats.
-  urls = [ {% for i in telegraf_inputs_nginx_sts_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_inputs_nginx_sts_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## HTTP response timeout (default: 5s)
   response_timeout = "{{ telegraf_inputs_nginx_sts_response_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_nginx_sts_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_nginx_sts_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_nginx_sts_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_nginx_sts_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_nginx_sts_tls_key is not defined }}tls_key = "{{ telegraf_inputs_nginx_sts_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_nginx_sts_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_nginx_sts_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_nginx_sts_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_nginx_sts_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_nginx_sts_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_nginx_sts_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_nginx_sts_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_nginx_sts_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_nginx_sts_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_nginx_sts_insecure_skip_verify|d()|bool|lower }}

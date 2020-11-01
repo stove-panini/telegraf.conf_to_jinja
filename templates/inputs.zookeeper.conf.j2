@@ -5,15 +5,15 @@
 
   ## If no servers are specified, then localhost is used as the host.
   ## If no port is specified, 2181 is used
-  servers = [ {% for i in telegraf_inputs_zookeeper_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_zookeeper_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for metric collections from all servers.  Minimum timeout is "1s".
-  {{ '#' if telegraf_inputs_zookeeper_timeout is not defined }}timeout = "{{ telegraf_inputs_zookeeper_timeout|d() }}"
+  {{ '#' if telegraf_inputs_zookeeper_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_zookeeper_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_zookeeper_enable_tls is not defined }}enable_tls = {{ telegraf_inputs_zookeeper_enable_tls|d()|bool|lower }}
-  {{ '#' if telegraf_inputs_zookeeper_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_zookeeper_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_zookeeper_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_zookeeper_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_zookeeper_tls_key is not defined }}tls_key = "{{ telegraf_inputs_zookeeper_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_zookeeper_enable_tls is not defined else '' }}enable_tls = {{ telegraf_inputs_zookeeper_enable_tls|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_zookeeper_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_zookeeper_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_zookeeper_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_zookeeper_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_zookeeper_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_zookeeper_tls_key|d() }}"
   ## If false, skip chain & host verification
-  {{ '#' if telegraf_inputs_zookeeper_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_zookeeper_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_zookeeper_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_zookeeper_insecure_skip_verify|d()|bool|lower }}

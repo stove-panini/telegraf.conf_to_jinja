@@ -1,13 +1,13 @@
 # Read NSQ topic for metrics.
 [[inputs.nsq_consumer]]
   ## Server option still works but is deprecated, we just prepend it to the nsqd array.
-  {{ '#' if telegraf_inputs_nsq_consumer_server is not defined }}server = "{{ telegraf_inputs_nsq_consumer_server|d() }}"
+  {{ '#' if telegraf_inputs_nsq_consumer_server is not defined else '' }}server = "{{ telegraf_inputs_nsq_consumer_server|d() }}"
 
   ## An array representing the NSQD TCP HTTP Endpoints
-  nsqd = [ {% for i in telegraf_inputs_nsq_consumer_nsqd|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  nsqd = [ {% for i in telegraf_inputs_nsq_consumer_nsqd|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## An array representing the NSQLookupd HTTP Endpoints
-  nsqlookupd = [ {% for i in telegraf_inputs_nsq_consumer_nsqlookupd|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  nsqlookupd = [ {% for i in telegraf_inputs_nsq_consumer_nsqlookupd|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   topic = "{{ telegraf_inputs_nsq_consumer_topic|d() }}"
   channel = "{{ telegraf_inputs_nsq_consumer_channel|d() }}"
   max_in_flight = {{ telegraf_inputs_nsq_consumer_max_in_flight|d() }}
@@ -20,7 +20,7 @@
   ## output metric_batch_size is 1000, setting this to 100 will ensure that a
   ## full batch is collected and the write is triggered immediately without
   ## waiting until the next flush_interval.
-  {{ '#' if telegraf_inputs_nsq_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_nsq_consumer_max_undelivered_messages|d() }}
+  {{ '#' if telegraf_inputs_nsq_consumer_max_undelivered_messages is not defined else '' }}max_undelivered_messages = {{ telegraf_inputs_nsq_consumer_max_undelivered_messages|d() }}
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

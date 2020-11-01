@@ -3,36 +3,36 @@
   ## Docker Endpoint
   ##   To use TCP, set endpoint = "tcp://[ip]:[port]"
   ##   To use environment variables (ie, docker-machine), set endpoint = "ENV"
-  {{ '#' if telegraf_inputs_docker_log_endpoint is not defined }}endpoint = "{{ telegraf_inputs_docker_log_endpoint|d() }}"
+  {{ '#' if telegraf_inputs_docker_log_endpoint is not defined else '' }}endpoint = "{{ telegraf_inputs_docker_log_endpoint|d() }}"
 
   ## When true, container logs are read from the beginning; otherwise
   ## reading begins at the end of the log.
-  {{ '#' if telegraf_inputs_docker_log_from_beginning is not defined }}from_beginning = {{ telegraf_inputs_docker_log_from_beginning|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_docker_log_from_beginning is not defined else '' }}from_beginning = {{ telegraf_inputs_docker_log_from_beginning|d()|bool|lower }}
 
   ## Timeout for Docker API calls.
-  {{ '#' if telegraf_inputs_docker_log_timeout is not defined }}timeout = "{{ telegraf_inputs_docker_log_timeout|d() }}"
+  {{ '#' if telegraf_inputs_docker_log_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_docker_log_timeout|d() }}"
 
   ## Containers to include and exclude. Globs accepted.
   ## Note that an empty array for both will include all containers
-  {{ '#' if telegraf_inputs_docker_log_container_name_include is not defined }}container_name_include = [ {% for i in telegraf_inputs_docker_log_container_name_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_docker_log_container_name_exclude is not defined }}container_name_exclude = [ {% for i in telegraf_inputs_docker_log_container_name_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_container_name_include is not defined else '' }}container_name_include = [ {% for i in telegraf_inputs_docker_log_container_name_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_container_name_exclude is not defined else '' }}container_name_exclude = [ {% for i in telegraf_inputs_docker_log_container_name_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Container states to include and exclude. Globs accepted.
   ## When empty only containers in the "running" state will be captured.
-  {{ '#' if telegraf_inputs_docker_log_container_state_include is not defined }}container_state_include = [ {% for i in telegraf_inputs_docker_log_container_state_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_docker_log_container_state_exclude is not defined }}container_state_exclude = [ {% for i in telegraf_inputs_docker_log_container_state_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_container_state_include is not defined else '' }}container_state_include = [ {% for i in telegraf_inputs_docker_log_container_state_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_container_state_exclude is not defined else '' }}container_state_exclude = [ {% for i in telegraf_inputs_docker_log_container_state_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## docker labels to include and exclude as tags.  Globs accepted.
   ## Note that an empty array for both will include all labels as tags
-  {{ '#' if telegraf_inputs_docker_log_docker_label_include is not defined }}docker_label_include = [ {% for i in telegraf_inputs_docker_log_docker_label_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_docker_log_docker_label_exclude is not defined }}docker_label_exclude = [ {% for i in telegraf_inputs_docker_log_docker_label_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_docker_label_include is not defined else '' }}docker_label_include = [ {% for i in telegraf_inputs_docker_log_docker_label_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_log_docker_label_exclude is not defined else '' }}docker_label_exclude = [ {% for i in telegraf_inputs_docker_log_docker_label_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Set the source tag for the metrics to the container ID hostname, eg first 12 chars
   source_tag = {{ telegraf_inputs_docker_log_source_tag|d()|bool|lower }}
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_docker_log_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_docker_log_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_docker_log_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_docker_log_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_docker_log_tls_key is not defined }}tls_key = "{{ telegraf_inputs_docker_log_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_docker_log_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_docker_log_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_docker_log_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_docker_log_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_docker_log_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_docker_log_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_docker_log_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_docker_log_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_docker_log_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_docker_log_insecure_skip_verify|d()|bool|lower }}

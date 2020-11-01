@@ -5,26 +5,26 @@
   ## For example:
   ##   mongodb://user:auth_key@10.10.3.30:27017,
   ##   mongodb://10.10.3.33:18832,
-    servers = [ {% for i in telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    servers = [ {% for i in telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## When true, collect cluster status
   ## Note that the query that counts jumbo chunks triggers a COLLSCAN, which
   ## may have an impact on performance.
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_cluster_status is not defined }}gather_cluster_status = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_cluster_status|d()|bool|lower }}
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_cluster_status is not defined else '' }}gather_cluster_status = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_cluster_status|d()|bool|lower }}
 
   ## When true, collect per database stats
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_perdb_stats is not defined }}gather_perdb_stats = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_perdb_stats|d()|bool|lower }}
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_perdb_stats is not defined else '' }}gather_perdb_stats = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_perdb_stats|d()|bool|lower }}
 
   ## When true, collect per collection stats
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_col_stats is not defined }}gather_col_stats = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_col_stats|d()|bool|lower }}
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_col_stats is not defined else '' }}gather_col_stats = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_gather_col_stats|d()|bool|lower }}
 
   ## List of db where collections stats are collected
   ## If empty, all db are concerned
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_col_stats_dbs is not defined }}col_stats_dbs = [ {% for i in telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_col_stats_dbs|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_col_stats_dbs is not defined else '' }}col_stats_dbs = [ {% for i in telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_col_stats_dbs|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional TLS Config
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_ca|d() }}"
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_cert|d() }}"
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_key is not defined }}tls_key = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_key|d() }}"
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_ca|d() }}"
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_cert|d() }}"
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_insecure_skip_verify|d()|bool|lower }}
+    {{ '#' if telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_mongodb_  ##   "mongodb://" [user ":" pass "@"] host [ ":" port_insecure_skip_verify|d()|bool|lower }}

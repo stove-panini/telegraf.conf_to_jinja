@@ -16,10 +16,10 @@
   ## Optional. Filepath for GCP credentials JSON file to authorize calls to
   ## PubSub APIs. If not set explicitly, Telegraf will attempt to use
   ## Application Default Credentials, which is preferred.
-  {{ '#' if telegraf_outputs_cloud_pubsub_credentials_file is not defined }}credentials_file = "{{ telegraf_outputs_cloud_pubsub_credentials_file|d() }}"
+  {{ '#' if telegraf_outputs_cloud_pubsub_credentials_file is not defined else '' }}credentials_file = "{{ telegraf_outputs_cloud_pubsub_credentials_file|d() }}"
 
   ## Optional. If true, will send all metrics per write in one PubSub message.
-  {{ '#' if telegraf_outputs_cloud_pubsub_send_batched is not defined }}send_batched = {{ telegraf_outputs_cloud_pubsub_send_batched|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_cloud_pubsub_send_batched is not defined else '' }}send_batched = {{ telegraf_outputs_cloud_pubsub_send_batched|d()|bool|lower }}
 
   ## The following publish_* parameters specifically configures batching
   ## requests made to the GCP Cloud PubSub API via the PubSub Golang library. Read
@@ -28,22 +28,22 @@
   ## Optional. Send a request to PubSub (i.e. actually publish a batch)
   ## when it has this many PubSub messages. If send_batched is true,
   ## this is ignored and treated as if it were 1.
-  {{ '#' if telegraf_outputs_cloud_pubsub_publish_count_threshold is not defined }}publish_count_threshold = {{ telegraf_outputs_cloud_pubsub_publish_count_threshold|d() }}
+  {{ '#' if telegraf_outputs_cloud_pubsub_publish_count_threshold is not defined else '' }}publish_count_threshold = {{ telegraf_outputs_cloud_pubsub_publish_count_threshold|d() }}
 
   ## Optional. Send a request to PubSub (i.e. actually publish a batch)
   ## when it has this many PubSub messages. If send_batched is true,
   ## this is ignored and treated as if it were 1
-  {{ '#' if telegraf_outputs_cloud_pubsub_publish_byte_threshold is not defined }}publish_byte_threshold = {{ telegraf_outputs_cloud_pubsub_publish_byte_threshold|d() }}
+  {{ '#' if telegraf_outputs_cloud_pubsub_publish_byte_threshold is not defined else '' }}publish_byte_threshold = {{ telegraf_outputs_cloud_pubsub_publish_byte_threshold|d() }}
 
   ## Optional. Specifically configures requests made to the PubSub API.
-  {{ '#' if telegraf_outputs_cloud_pubsub_publish_num_go_routines is not defined }}publish_num_go_routines = {{ telegraf_outputs_cloud_pubsub_publish_num_go_routines|d() }}
+  {{ '#' if telegraf_outputs_cloud_pubsub_publish_num_go_routines is not defined else '' }}publish_num_go_routines = {{ telegraf_outputs_cloud_pubsub_publish_num_go_routines|d() }}
 
   ## Optional. Specifies a timeout for requests to the PubSub API.
-  {{ '#' if telegraf_outputs_cloud_pubsub_publish_timeout is not defined }}publish_timeout = "{{ telegraf_outputs_cloud_pubsub_publish_timeout|d() }}"
+  {{ '#' if telegraf_outputs_cloud_pubsub_publish_timeout is not defined else '' }}publish_timeout = "{{ telegraf_outputs_cloud_pubsub_publish_timeout|d() }}"
 
   ## Optional. If true, published PubSub message data will be base64-encoded.
-  {{ '#' if telegraf_outputs_cloud_pubsub_base64_data is not defined }}base64_data = {{ telegraf_outputs_cloud_pubsub_base64_data|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_cloud_pubsub_base64_data is not defined else '' }}base64_data = {{ telegraf_outputs_cloud_pubsub_base64_data|d()|bool|lower }}
 
   ## Optional. PubSub attributes to add to metrics.
   # [[inputs.pubsub.attributes]]
-  {{ '#' if telegraf_outputs_cloud_pubsub_my_attr is not defined }}my_attr = "{{ telegraf_outputs_cloud_pubsub_my_attr|d() }}"
+  {{ '#' if telegraf_outputs_cloud_pubsub_my_attr is not defined else '' }}my_attr = "{{ telegraf_outputs_cloud_pubsub_my_attr|d() }}"

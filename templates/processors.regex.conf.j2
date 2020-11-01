@@ -3,28 +3,28 @@
   ## Tag and field conversions defined in a separate sub-tables
   # [[processors.regex.tags]]
   #   ## Tag to change
-  {{ '#' if telegraf_processors_regex_key is not defined }}key = "{{ telegraf_processors_regex_key|d() }}"
+  {{ '#' if telegraf_processors_regex_key is not defined else '' }}key = "{{ telegraf_processors_regex_key|d() }}"
   #   ## Regular expression to match on a tag value
-  {{ '#' if telegraf_processors_regex_pattern is not defined }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
+  {{ '#' if telegraf_processors_regex_pattern is not defined else '' }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
   #   ## Matches of the pattern will be replaced with this string.  Use ${1}
   #   ## notation to use the text of the first submatch.
-  {{ '#' if telegraf_processors_regex_replacement is not defined }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
+  {{ '#' if telegraf_processors_regex_replacement is not defined else '' }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
 
   # [[processors.regex.fields]]
   #   ## Field to change
-  {{ '#' if telegraf_processors_regex_key is not defined }}key = "{{ telegraf_processors_regex_key|d() }}"
+  {{ '#' if telegraf_processors_regex_key is not defined else '' }}key = "{{ telegraf_processors_regex_key|d() }}"
   #   ## All the power of the Go regular expressions available here
   #   ## For example, named subgroups
-  {{ '#' if telegraf_processors_regex_pattern is not defined }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
-  {{ '#' if telegraf_processors_regex_replacement is not defined }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
+  {{ '#' if telegraf_processors_regex_pattern is not defined else '' }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
+  {{ '#' if telegraf_processors_regex_replacement is not defined else '' }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
   #   ## If result_key is present, a new field will be created
   #   ## instead of changing existing field
-  {{ '#' if telegraf_processors_regex_result_key is not defined }}result_key = "{{ telegraf_processors_regex_result_key|d() }}"
+  {{ '#' if telegraf_processors_regex_result_key is not defined else '' }}result_key = "{{ telegraf_processors_regex_result_key|d() }}"
 
   ## Multiple conversions may be applied for one field sequentially
   ## Let's extract one more value
   # [[processors.regex.fields]]
-  {{ '#' if telegraf_processors_regex_key is not defined }}key = "{{ telegraf_processors_regex_key|d() }}"
-  {{ '#' if telegraf_processors_regex_pattern is not defined }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
-  {{ '#' if telegraf_processors_regex_replacement is not defined }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
-  {{ '#' if telegraf_processors_regex_result_key is not defined }}result_key = "{{ telegraf_processors_regex_result_key|d() }}"
+  {{ '#' if telegraf_processors_regex_key is not defined else '' }}key = "{{ telegraf_processors_regex_key|d() }}"
+  {{ '#' if telegraf_processors_regex_pattern is not defined else '' }}pattern = "{{ telegraf_processors_regex_pattern|d() }}"
+  {{ '#' if telegraf_processors_regex_replacement is not defined else '' }}replacement = "{{ telegraf_processors_regex_replacement|d() }}"
+  {{ '#' if telegraf_processors_regex_result_key is not defined else '' }}result_key = "{{ telegraf_processors_regex_result_key|d() }}"

@@ -2,29 +2,29 @@
 [[processors.filepath]]
   ## Treat the tag value as a path and convert it to its last element, storing the result in a new tag
   # [[processors.filepath.basename]]
-  {{ '#' if telegraf_processors_filepath_tag is not defined }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
-  {{ '#' if telegraf_processors_filepath_dest is not defined }}dest = "{{ telegraf_processors_filepath_dest|d() }}"
+  {{ '#' if telegraf_processors_filepath_tag is not defined else '' }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
+  {{ '#' if telegraf_processors_filepath_dest is not defined else '' }}dest = "{{ telegraf_processors_filepath_dest|d() }}"
 
   ## Treat the field value as a path and keep all but the last element of path, typically the path's directory
   # [[processors.filepath.dirname]]
-  {{ '#' if telegraf_processors_filepath_field is not defined }}field = "{{ telegraf_processors_filepath_field|d() }}"
+  {{ '#' if telegraf_processors_filepath_field is not defined else '' }}field = "{{ telegraf_processors_filepath_field|d() }}"
 
   ## Treat the tag value as a path, converting it to its the last element without its suffix
   # [[processors.filepath.stem]]
-  {{ '#' if telegraf_processors_filepath_tag is not defined }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
+  {{ '#' if telegraf_processors_filepath_tag is not defined else '' }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
 
   ## Treat the tag value as a path, converting it to the shortest path name equivalent
   ## to path by purely lexical processing
   # [[processors.filepath.clean]]
-  {{ '#' if telegraf_processors_filepath_tag is not defined }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
+  {{ '#' if telegraf_processors_filepath_tag is not defined else '' }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
 
   ## Treat the tag value as a path, converting it to a relative path that is lexically
   ## equivalent to the source path when joined to 'base_path'
   # [[processors.filepath.rel]]
-  {{ '#' if telegraf_processors_filepath_tag is not defined }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
-  {{ '#' if telegraf_processors_filepath_base_path is not defined }}base_path = "{{ telegraf_processors_filepath_base_path|d() }}"
+  {{ '#' if telegraf_processors_filepath_tag is not defined else '' }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
+  {{ '#' if telegraf_processors_filepath_base_path is not defined else '' }}base_path = "{{ telegraf_processors_filepath_base_path|d() }}"
 
   ## Treat the tag value as a path, replacing each separator character in path with a '/' character. Has only
   ## effect on Windows
   # [[processors.filepath.toslash]]
-  {{ '#' if telegraf_processors_filepath_tag is not defined }}tag = "{{ telegraf_processors_filepath_tag|d() }}"
+  {{ '#' if telegraf_processors_filepath_tag is not defined else '' }}tag = "{{ telegraf_processors_filepath_tag|d() }}"

@@ -8,18 +8,18 @@
   address = "{{ telegraf_inputs_net_response_address|d() }}"
 
   ## Set timeout
-  {{ '#' if telegraf_inputs_net_response_timeout is not defined }}timeout = "{{ telegraf_inputs_net_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_net_response_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_net_response_timeout|d() }}"
 
   ## Set read timeout (only used if expecting a response)
-  {{ '#' if telegraf_inputs_net_response_read_timeout is not defined }}read_timeout = "{{ telegraf_inputs_net_response_read_timeout|d() }}"
+  {{ '#' if telegraf_inputs_net_response_read_timeout is not defined else '' }}read_timeout = "{{ telegraf_inputs_net_response_read_timeout|d() }}"
 
   ## The following options are required for UDP checks. For TCP, they are
   ## optional. The plugin will send the given string to the server and then
   ## expect to receive the given 'expect' string back.
   ## string sent to the server
-  {{ '#' if telegraf_inputs_net_response_send is not defined }}send = "{{ telegraf_inputs_net_response_send|d() }}"
+  {{ '#' if telegraf_inputs_net_response_send is not defined else '' }}send = "{{ telegraf_inputs_net_response_send|d() }}"
   ## expected string in answer
-  {{ '#' if telegraf_inputs_net_response_expect is not defined }}expect = "{{ telegraf_inputs_net_response_expect|d() }}"
+  {{ '#' if telegraf_inputs_net_response_expect is not defined else '' }}expect = "{{ telegraf_inputs_net_response_expect|d() }}"
 
   ## Uncomment to remove deprecated fields
-  {{ '#' if telegraf_inputs_net_response_fielddrop is not defined }}fielddrop = [ {% for i in telegraf_inputs_net_response_fielddrop|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_net_response_fielddrop is not defined else '' }}fielddrop = [ {% for i in telegraf_inputs_net_response_fielddrop|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

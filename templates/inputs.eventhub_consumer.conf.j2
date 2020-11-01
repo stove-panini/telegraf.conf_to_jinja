@@ -16,59 +16,59 @@
 
   ## Uncommenting the option below will create an Event Hub client based solely on the connection string.
   ## This can either be the associated environment variable or hard coded directly.
-  {{ '#' if telegraf_inputs_eventhub_consumer_connection_string is not defined }}connection_string = "{{ telegraf_inputs_eventhub_consumer_connection_string|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_connection_string is not defined else '' }}connection_string = "{{ telegraf_inputs_eventhub_consumer_connection_string|d() }}"
 
   ## Set persistence directory to a valid folder to use a file persister instead of an in-memory persister
-  {{ '#' if telegraf_inputs_eventhub_consumer_persistence_dir is not defined }}persistence_dir = "{{ telegraf_inputs_eventhub_consumer_persistence_dir|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_persistence_dir is not defined else '' }}persistence_dir = "{{ telegraf_inputs_eventhub_consumer_persistence_dir|d() }}"
 
   ## Change the default consumer group
-  {{ '#' if telegraf_inputs_eventhub_consumer_consumer_group is not defined }}consumer_group = "{{ telegraf_inputs_eventhub_consumer_consumer_group|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_consumer_group is not defined else '' }}consumer_group = "{{ telegraf_inputs_eventhub_consumer_consumer_group|d() }}"
 
   ## By default the event hub receives all messages present on the broker, alternative modes can be set below.
   ## The timestamp should be in https://github.com/toml-lang/toml#offset-date-time format (RFC 3339).
   ## The 3 options below only apply if no valid persister is read from memory or file (e.g. first run).
   # from_timestamp =
-  {{ '#' if telegraf_inputs_eventhub_consumer_latest is not defined }}latest = {{ telegraf_inputs_eventhub_consumer_latest|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_latest is not defined else '' }}latest = {{ telegraf_inputs_eventhub_consumer_latest|d()|bool|lower }}
 
   ## Set a custom prefetch count for the receiver(s)
-  {{ '#' if telegraf_inputs_eventhub_consumer_prefetch_count is not defined }}prefetch_count = {{ telegraf_inputs_eventhub_consumer_prefetch_count|d() }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_prefetch_count is not defined else '' }}prefetch_count = {{ telegraf_inputs_eventhub_consumer_prefetch_count|d() }}
 
   ## Add an epoch to the receiver(s)
-  {{ '#' if telegraf_inputs_eventhub_consumer_epoch is not defined }}epoch = {{ telegraf_inputs_eventhub_consumer_epoch|d() }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_epoch is not defined else '' }}epoch = {{ telegraf_inputs_eventhub_consumer_epoch|d() }}
 
   ## Change to set a custom user agent, "telegraf" is used by default
-  {{ '#' if telegraf_inputs_eventhub_consumer_user_agent is not defined }}user_agent = "{{ telegraf_inputs_eventhub_consumer_user_agent|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_user_agent is not defined else '' }}user_agent = "{{ telegraf_inputs_eventhub_consumer_user_agent|d() }}"
 
   ## To consume from a specific partition, set the partition_ids option.
   ## An empty array will result in receiving from all partitions.
-  {{ '#' if telegraf_inputs_eventhub_consumer_partition_ids is not defined }}partition_ids = [ {% for i in telegraf_inputs_eventhub_consumer_partition_ids|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_eventhub_consumer_partition_ids is not defined else '' }}partition_ids = [ {% for i in telegraf_inputs_eventhub_consumer_partition_ids|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Max undelivered messages
-  {{ '#' if telegraf_inputs_eventhub_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_eventhub_consumer_max_undelivered_messages|d() }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_max_undelivered_messages is not defined else '' }}max_undelivered_messages = {{ telegraf_inputs_eventhub_consumer_max_undelivered_messages|d() }}
 
   ## Set either option below to true to use a system property as timestamp.
   ## You have the choice between EnqueuedTime and IoTHubEnqueuedTime.
   ## It is recommended to use this setting when the data itself has no timestamp.
-  {{ '#' if telegraf_inputs_eventhub_consumer_enqueued_time_as_ts is not defined }}enqueued_time_as_ts = {{ telegraf_inputs_eventhub_consumer_enqueued_time_as_ts|d()|bool|lower }}
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_as_ts is not defined }}iot_hub_enqueued_time_as_ts = {{ telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_as_ts|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_enqueued_time_as_ts is not defined else '' }}enqueued_time_as_ts = {{ telegraf_inputs_eventhub_consumer_enqueued_time_as_ts|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_as_ts is not defined else '' }}iot_hub_enqueued_time_as_ts = {{ telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_as_ts|d()|bool|lower }}
 
   ## Tags or fields to create from keys present in the application property bag.
   ## These could for example be set by message enrichments in Azure IoT Hub.
-  {{ '#' if telegraf_inputs_eventhub_consumer_application_property_tags is not defined }}application_property_tags = [ {% for i in telegraf_inputs_eventhub_consumer_application_property_tags|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_eventhub_consumer_application_property_fields is not defined }}application_property_fields = [ {% for i in telegraf_inputs_eventhub_consumer_application_property_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_eventhub_consumer_application_property_tags is not defined else '' }}application_property_tags = [ {% for i in telegraf_inputs_eventhub_consumer_application_property_tags|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_eventhub_consumer_application_property_fields is not defined else '' }}application_property_fields = [ {% for i in telegraf_inputs_eventhub_consumer_application_property_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Tag or field name to use for metadata
   ## By default all metadata is disabled
-  {{ '#' if telegraf_inputs_eventhub_consumer_sequence_number_field is not defined }}sequence_number_field = "{{ telegraf_inputs_eventhub_consumer_sequence_number_field|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_enqueued_time_field is not defined }}enqueued_time_field = "{{ telegraf_inputs_eventhub_consumer_enqueued_time_field|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_offset_field is not defined }}offset_field = "{{ telegraf_inputs_eventhub_consumer_offset_field|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_partition_id_tag is not defined }}partition_id_tag = "{{ telegraf_inputs_eventhub_consumer_partition_id_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_partition_key_tag is not defined }}partition_key_tag = "{{ telegraf_inputs_eventhub_consumer_partition_key_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_device_connection_id_tag is not defined }}iot_hub_device_connection_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_device_connection_id_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_auth_generation_id_tag is not defined }}iot_hub_auth_generation_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_auth_generation_id_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_connection_auth_method_tag is not defined }}iot_hub_connection_auth_method_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_connection_auth_method_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_connection_module_id_tag is not defined }}iot_hub_connection_module_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_connection_module_id_tag|d() }}"
-  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_field is not defined }}iot_hub_enqueued_time_field = "{{ telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_field|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_sequence_number_field is not defined else '' }}sequence_number_field = "{{ telegraf_inputs_eventhub_consumer_sequence_number_field|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_enqueued_time_field is not defined else '' }}enqueued_time_field = "{{ telegraf_inputs_eventhub_consumer_enqueued_time_field|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_offset_field is not defined else '' }}offset_field = "{{ telegraf_inputs_eventhub_consumer_offset_field|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_partition_id_tag is not defined else '' }}partition_id_tag = "{{ telegraf_inputs_eventhub_consumer_partition_id_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_partition_key_tag is not defined else '' }}partition_key_tag = "{{ telegraf_inputs_eventhub_consumer_partition_key_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_device_connection_id_tag is not defined else '' }}iot_hub_device_connection_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_device_connection_id_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_auth_generation_id_tag is not defined else '' }}iot_hub_auth_generation_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_auth_generation_id_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_connection_auth_method_tag is not defined else '' }}iot_hub_connection_auth_method_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_connection_auth_method_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_connection_module_id_tag is not defined else '' }}iot_hub_connection_module_id_tag = "{{ telegraf_inputs_eventhub_consumer_iot_hub_connection_module_id_tag|d() }}"
+  {{ '#' if telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_field is not defined else '' }}iot_hub_enqueued_time_field = "{{ telegraf_inputs_eventhub_consumer_iot_hub_enqueued_time_field|d() }}"
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

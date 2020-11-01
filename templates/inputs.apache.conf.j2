@@ -3,18 +3,18 @@
   ## An array of URLs to gather from, must be directed at the machine
   ## readable version of the mod_status page including the auto query string.
   ## Default is "http://localhost/server-status?auto".
-  urls = [ {% for i in telegraf_inputs_apache_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_inputs_apache_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Credentials for basic HTTP authentication.
-  {{ '#' if telegraf_inputs_apache_username is not defined }}username = "{{ telegraf_inputs_apache_username|d() }}"
-  {{ '#' if telegraf_inputs_apache_password is not defined }}password = "{{ telegraf_inputs_apache_password|d() }}"
+  {{ '#' if telegraf_inputs_apache_username is not defined else '' }}username = "{{ telegraf_inputs_apache_username|d() }}"
+  {{ '#' if telegraf_inputs_apache_password is not defined else '' }}password = "{{ telegraf_inputs_apache_password|d() }}"
 
   ## Maximum time to receive response.
-  {{ '#' if telegraf_inputs_apache_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_apache_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_apache_response_timeout is not defined else '' }}response_timeout = "{{ telegraf_inputs_apache_response_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_apache_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_apache_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_apache_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_apache_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_apache_tls_key is not defined }}tls_key = "{{ telegraf_inputs_apache_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_apache_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_apache_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_apache_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_apache_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_apache_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_apache_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_apache_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_apache_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_apache_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_apache_insecure_skip_verify|d()|bool|lower }}

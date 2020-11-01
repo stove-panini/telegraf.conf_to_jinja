@@ -11,28 +11,28 @@
   address = "{{ telegraf_outputs_syslog_address|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_syslog_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_syslog_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_syslog_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_syslog_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_syslog_tls_key is not defined }}tls_key = "{{ telegraf_outputs_syslog_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_syslog_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_syslog_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_syslog_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_syslog_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_syslog_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_syslog_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_syslog_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_syslog_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_syslog_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_syslog_insecure_skip_verify|d()|bool|lower }}
 
   ## Period between keep alive probes.
   ## Only applies to TCP sockets.
   ## 0 disables keep alive probes.
   ## Defaults to the OS configuration.
-  {{ '#' if telegraf_outputs_syslog_keep_alive_period is not defined }}keep_alive_period = "{{ telegraf_outputs_syslog_keep_alive_period|d() }}"
+  {{ '#' if telegraf_outputs_syslog_keep_alive_period is not defined else '' }}keep_alive_period = "{{ telegraf_outputs_syslog_keep_alive_period|d() }}"
 
   ## The framing technique with which it is expected that messages are
   ## transported (default = "octet-counting").  Whether the messages come
   ## using the octect-counting (RFC5425#section-4.3.1, RFC6587#section-3.4.1),
   ## or the non-transparent framing technique (RFC6587#section-3.4.2).  Must
   ## be one of "octet-counting", "non-transparent".
-  {{ '#' if telegraf_outputs_syslog_framing is not defined }}framing = "{{ telegraf_outputs_syslog_framing|d() }}"
+  {{ '#' if telegraf_outputs_syslog_framing is not defined else '' }}framing = "{{ telegraf_outputs_syslog_framing|d() }}"
 
   ## The trailer to be expected in case of non-transparent framing (default = "LF").
   ## Must be one of "LF", or "NUL".
-  {{ '#' if telegraf_outputs_syslog_trailer is not defined }}trailer = "{{ telegraf_outputs_syslog_trailer|d() }}"
+  {{ '#' if telegraf_outputs_syslog_trailer is not defined else '' }}trailer = "{{ telegraf_outputs_syslog_trailer|d() }}"
 
   ## SD-PARAMs settings
   ## Syslog messages can contain key/value pairs within zero or more
@@ -49,28 +49,28 @@
   ##   output (structured data only) => [foo@123 value=42][bar@456 value2=84][default@32473 something_else=1 x=y]
 
   ## SD-PARAMs separator between the sdid and tag/field key (default = "_")
-  {{ '#' if telegraf_outputs_syslog_sdparam_separator is not defined }}sdparam_separator = "{{ telegraf_outputs_syslog_sdparam_separator|d() }}"
+  {{ '#' if telegraf_outputs_syslog_sdparam_separator is not defined else '' }}sdparam_separator = "{{ telegraf_outputs_syslog_sdparam_separator|d() }}"
 
   ## Default sdid used for tags/fields that don't contain a prefix defined in
   ## the explicit sdids setting below If no default is specified, no SD-PARAMs
   ## will be used for unrecognized field.
-  {{ '#' if telegraf_outputs_syslog_default_sdid is not defined }}default_sdid = "{{ telegraf_outputs_syslog_default_sdid|d() }}"
+  {{ '#' if telegraf_outputs_syslog_default_sdid is not defined else '' }}default_sdid = "{{ telegraf_outputs_syslog_default_sdid|d() }}"
 
   ## List of explicit prefixes to extract from tag/field keys and use as the
   ## SDID, if they match (see above example for more details):
-  {{ '#' if telegraf_outputs_syslog_sdids is not defined }}sdids = [ {% for i in telegraf_outputs_syslog_sdids|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_outputs_syslog_sdids is not defined else '' }}sdids = [ {% for i in telegraf_outputs_syslog_sdids|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Default severity value. Severity and Facility are used to calculate the
   ## message PRI value (RFC5424#section-6.2.1).  Used when no metric field
   ## with key "severity_code" is defined.  If unset, 5 (notice) is the default
-  {{ '#' if telegraf_outputs_syslog_default_severity_code is not defined }}default_severity_code = {{ telegraf_outputs_syslog_default_severity_code|d() }}
+  {{ '#' if telegraf_outputs_syslog_default_severity_code is not defined else '' }}default_severity_code = {{ telegraf_outputs_syslog_default_severity_code|d() }}
 
   ## Default facility value. Facility and Severity are used to calculate the
   ## message PRI value (RFC5424#section-6.2.1).  Used when no metric field with
   ## key "facility_code" is defined.  If unset, 1 (user-level) is the default
-  {{ '#' if telegraf_outputs_syslog_default_facility_code is not defined }}default_facility_code = {{ telegraf_outputs_syslog_default_facility_code|d() }}
+  {{ '#' if telegraf_outputs_syslog_default_facility_code is not defined else '' }}default_facility_code = {{ telegraf_outputs_syslog_default_facility_code|d() }}
 
   ## Default APP-NAME value (RFC5424#section-6.2.5)
   ## Used when no metric tag with key "appname" is defined.
   ## If unset, "Telegraf" is the default
-  {{ '#' if telegraf_outputs_syslog_default_appname is not defined }}default_appname = "{{ telegraf_outputs_syslog_default_appname|d() }}"
+  {{ '#' if telegraf_outputs_syslog_default_appname is not defined else '' }}default_appname = "{{ telegraf_outputs_syslog_default_appname|d() }}"

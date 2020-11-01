@@ -1,15 +1,15 @@
 # Read metrics from the bare metal servers via IPMI
 [[inputs.ipmi_sensor]]
   ## optionally specify the path to the ipmitool executable
-  {{ '#' if telegraf_inputs_ipmi_sensor_path is not defined }}path = "{{ telegraf_inputs_ipmi_sensor_path|d() }}"
+  {{ '#' if telegraf_inputs_ipmi_sensor_path is not defined else '' }}path = "{{ telegraf_inputs_ipmi_sensor_path|d() }}"
   ##
   ## Setting 'use_sudo' to true will make use of sudo to run ipmitool.
   ## Sudo must be configured to allow the telegraf user to run ipmitool
   ## without a password.
-  {{ '#' if telegraf_inputs_ipmi_sensor_use_sudo is not defined }}use_sudo = {{ telegraf_inputs_ipmi_sensor_use_sudo|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_ipmi_sensor_use_sudo is not defined else '' }}use_sudo = {{ telegraf_inputs_ipmi_sensor_use_sudo|d()|bool|lower }}
   ##
   ## optionally force session privilege level. Can be CALLBACK, USER, OPERATOR, ADMINISTRATOR
-  {{ '#' if telegraf_inputs_ipmi_sensor_privilege is not defined }}privilege = "{{ telegraf_inputs_ipmi_sensor_privilege|d() }}"
+  {{ '#' if telegraf_inputs_ipmi_sensor_privilege is not defined else '' }}privilege = "{{ telegraf_inputs_ipmi_sensor_privilege|d() }}"
   ##
   ## optionally specify one or more servers via a url matching
   ##  [username[:password]@][protocol[(address)]]
@@ -18,7 +18,7 @@
   ##
   ## if no servers are specified, local machine sensor stats will be queried
   ##
-  {{ '#' if telegraf_inputs_ipmi_sensor_servers is not defined }}servers = [ {% for i in telegraf_inputs_ipmi_sensor_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_ipmi_sensor_servers is not defined else '' }}servers = [ {% for i in telegraf_inputs_ipmi_sensor_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Recommended: use metric 'interval' that is a multiple of 'timeout' to avoid
   ## gaps or overlap in pulled data

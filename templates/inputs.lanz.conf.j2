@@ -1,6 +1,6 @@
 # Read metrics off Arista LANZ, via socket
 [[inputs.lanz]]
   ## URL to Arista LANZ endpoint
-  servers = [ {% for i in telegraf_inputs_lanz_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_lanz_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "tcp://127.0.0.1:50001"
   ]

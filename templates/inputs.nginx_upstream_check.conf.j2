@@ -5,24 +5,24 @@
   url = "{{ telegraf_inputs_nginx_upstream_check_url|d() }}"
 
   ## HTTP method
-  {{ '#' if telegraf_inputs_nginx_upstream_check_method is not defined }}method = "{{ telegraf_inputs_nginx_upstream_check_method|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_method is not defined else '' }}method = "{{ telegraf_inputs_nginx_upstream_check_method|d() }}"
 
   ## Optional HTTP headers
-  {{ '#' if telegraf_inputs_nginx_upstream_check_headers is not defined }}headers = { {% for k, v in (telegraf_inputs_nginx_upstream_check_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_nginx_upstream_check_headers is not defined else '' }}headers = { {% for k, v in (telegraf_inputs_nginx_upstream_check_headers|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
 
   ## Override HTTP "Host" header
-  {{ '#' if telegraf_inputs_nginx_upstream_check_host_header is not defined }}host_header = "{{ telegraf_inputs_nginx_upstream_check_host_header|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_host_header is not defined else '' }}host_header = "{{ telegraf_inputs_nginx_upstream_check_host_header|d() }}"
 
   ## Timeout for HTTP requests
   timeout = "{{ telegraf_inputs_nginx_upstream_check_timeout|d() }}"
 
   ## Optional HTTP Basic Auth credentials
-  {{ '#' if telegraf_inputs_nginx_upstream_check_username is not defined }}username = "{{ telegraf_inputs_nginx_upstream_check_username|d() }}"
-  {{ '#' if telegraf_inputs_nginx_upstream_check_password is not defined }}password = "{{ telegraf_inputs_nginx_upstream_check_password|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_username is not defined else '' }}username = "{{ telegraf_inputs_nginx_upstream_check_username|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_password is not defined else '' }}password = "{{ telegraf_inputs_nginx_upstream_check_password|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_nginx_upstream_check_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_nginx_upstream_check_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_key is not defined }}tls_key = "{{ telegraf_inputs_nginx_upstream_check_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_nginx_upstream_check_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_nginx_upstream_check_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_nginx_upstream_check_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_nginx_upstream_check_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_nginx_upstream_check_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_nginx_upstream_check_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_nginx_upstream_check_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_nginx_upstream_check_insecure_skip_verify|d()|bool|lower }}

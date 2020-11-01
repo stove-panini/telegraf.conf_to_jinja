@@ -5,26 +5,26 @@
 
   ## Use Logstash 5 single pipeline API, set to true when monitoring
   ## Logstash 5.
-  {{ '#' if telegraf_inputs_logstash_single_pipeline is not defined }}single_pipeline = {{ telegraf_inputs_logstash_single_pipeline|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_logstash_single_pipeline is not defined else '' }}single_pipeline = {{ telegraf_inputs_logstash_single_pipeline|d()|bool|lower }}
 
   ## Enable optional collection components.  Can contain
   ## "pipelines", "process", and "jvm".
-  {{ '#' if telegraf_inputs_logstash_collect is not defined }}collect = [ {% for i in telegraf_inputs_logstash_collect|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_logstash_collect is not defined else '' }}collect = [ {% for i in telegraf_inputs_logstash_collect|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for HTTP requests.
-  {{ '#' if telegraf_inputs_logstash_timeout is not defined }}timeout = "{{ telegraf_inputs_logstash_timeout|d() }}"
+  {{ '#' if telegraf_inputs_logstash_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_logstash_timeout|d() }}"
 
   ## Optional HTTP Basic Auth credentials.
-  {{ '#' if telegraf_inputs_logstash_username is not defined }}username = "{{ telegraf_inputs_logstash_username|d() }}"
-  {{ '#' if telegraf_inputs_logstash_password is not defined }}password = "{{ telegraf_inputs_logstash_password|d() }}"
+  {{ '#' if telegraf_inputs_logstash_username is not defined else '' }}username = "{{ telegraf_inputs_logstash_username|d() }}"
+  {{ '#' if telegraf_inputs_logstash_password is not defined else '' }}password = "{{ telegraf_inputs_logstash_password|d() }}"
 
   ## Optional TLS Config.
-  {{ '#' if telegraf_inputs_logstash_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_logstash_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_logstash_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_logstash_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_logstash_tls_key is not defined }}tls_key = "{{ telegraf_inputs_logstash_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_logstash_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_logstash_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_logstash_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_logstash_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_logstash_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_logstash_tls_key|d() }}"
 
   ## Use TLS but skip chain & host verification.
-  {{ '#' if telegraf_inputs_logstash_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_logstash_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_logstash_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_logstash_insecure_skip_verify|d()|bool|lower }}
 
   ## Optional HTTP headers.
   # [inputs.logstash.headers]

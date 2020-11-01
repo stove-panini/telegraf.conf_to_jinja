@@ -4,7 +4,7 @@
   insights_key = "{{ telegraf_outputs_newrelic_insights_key|d() }}"
 
   ## Prefix to add to add to metric name for easy identification.
-  {{ '#' if telegraf_outputs_newrelic_metric_prefix is not defined }}metric_prefix = "{{ telegraf_outputs_newrelic_metric_prefix|d() }}"
+  {{ '#' if telegraf_outputs_newrelic_metric_prefix is not defined else '' }}metric_prefix = "{{ telegraf_outputs_newrelic_metric_prefix|d() }}"
 
   ## Timeout for writes to the New Relic API.
-  {{ '#' if telegraf_outputs_newrelic_timeout is not defined }}timeout = "{{ telegraf_outputs_newrelic_timeout|d() }}"
+  {{ '#' if telegraf_outputs_newrelic_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_newrelic_timeout|d() }}"

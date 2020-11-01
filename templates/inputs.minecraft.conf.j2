@@ -1,13 +1,13 @@
 # Collects scores from a Minecraft server's scoreboard using the RCON protocol
 [[inputs.minecraft]]
   ## Address of the Minecraft server.
-  {{ '#' if telegraf_inputs_minecraft_server is not defined }}server = "{{ telegraf_inputs_minecraft_server|d() }}"
+  {{ '#' if telegraf_inputs_minecraft_server is not defined else '' }}server = "{{ telegraf_inputs_minecraft_server|d() }}"
 
   ## Server RCON Port.
-  {{ '#' if telegraf_inputs_minecraft_port is not defined }}port = "{{ telegraf_inputs_minecraft_port|d() }}"
+  {{ '#' if telegraf_inputs_minecraft_port is not defined else '' }}port = "{{ telegraf_inputs_minecraft_port|d() }}"
 
   ## Server RCON Password.
   password = "{{ telegraf_inputs_minecraft_password|d() }}"
 
   ## Uncomment to remove deprecated metric components.
-  {{ '#' if telegraf_inputs_minecraft_tagdrop is not defined }}tagdrop = [ {% for i in telegraf_inputs_minecraft_tagdrop|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_minecraft_tagdrop is not defined else '' }}tagdrop = [ {% for i in telegraf_inputs_minecraft_tagdrop|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

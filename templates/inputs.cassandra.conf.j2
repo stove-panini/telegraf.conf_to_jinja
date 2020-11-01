@@ -7,14 +7,14 @@
 
   context = "{{ telegraf_inputs_cassandra_context|d() }}"
   ## List of cassandra servers exposing jolokia read service
-  servers = [ {% for i in telegraf_inputs_cassandra_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_cassandra_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## List of metrics collected on above servers
   ## Each metric consists of a jmx path.
   ## This will collect all heap memory usage metrics from the jvm and
   ## ReadLatency metrics for all keyspaces and tables.
   ## "type=Table" in the query works with Cassandra3.0. Older versions might
   ## need to use "type=ColumnFamily"
-  metrics  = [ {% for i in telegraf_inputs_cassandra_metrics |d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  metrics  = [ {% for i in telegraf_inputs_cassandra_metrics |d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "/java.lang:type=Memory/HeapMemoryUsage",
     "/org.apache.cassandra.metrics:type=Table,keyspace=*,scope=*,name=ReadLatency"
   ]

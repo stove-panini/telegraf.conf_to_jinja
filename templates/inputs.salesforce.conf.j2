@@ -6,13 +6,13 @@
   password = "{{ telegraf_inputs_salesforce_password|d() }}"
   ##
   ## (optional) security token
-  {{ '#' if telegraf_inputs_salesforce_security_token is not defined }}security_token = "{{ telegraf_inputs_salesforce_security_token|d() }}"
+  {{ '#' if telegraf_inputs_salesforce_security_token is not defined else '' }}security_token = "{{ telegraf_inputs_salesforce_security_token|d() }}"
   ##
   ## (optional) environment type (sandbox or production)
   ## default is: production
   ##
-  {{ '#' if telegraf_inputs_salesforce_environment is not defined }}environment = "{{ telegraf_inputs_salesforce_environment|d() }}"
+  {{ '#' if telegraf_inputs_salesforce_environment is not defined else '' }}environment = "{{ telegraf_inputs_salesforce_environment|d() }}"
   ##
   ## (optional) API version (default: "39.0")
   ##
-  {{ '#' if telegraf_inputs_salesforce_version is not defined }}version = "{{ telegraf_inputs_salesforce_version|d() }}"
+  {{ '#' if telegraf_inputs_salesforce_version is not defined else '' }}version = "{{ telegraf_inputs_salesforce_version|d() }}"

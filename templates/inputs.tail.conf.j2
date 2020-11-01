@@ -9,21 +9,21 @@
   ##
   ## See https://github.com/gobwas/glob for more examples
   ##
-  files = [ {% for i in telegraf_inputs_tail_files|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  files = [ {% for i in telegraf_inputs_tail_files|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Read file from beginning.
-  {{ '#' if telegraf_inputs_tail_from_beginning is not defined }}from_beginning = {{ telegraf_inputs_tail_from_beginning|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_tail_from_beginning is not defined else '' }}from_beginning = {{ telegraf_inputs_tail_from_beginning|d()|bool|lower }}
 
   ## Whether file is a named pipe
-  {{ '#' if telegraf_inputs_tail_pipe is not defined }}pipe = {{ telegraf_inputs_tail_pipe|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_tail_pipe is not defined else '' }}pipe = {{ telegraf_inputs_tail_pipe|d()|bool|lower }}
 
   ## Method used to watch for file updates.  Can be either "inotify" or "poll".
-  {{ '#' if telegraf_inputs_tail_watch_method is not defined }}watch_method = "{{ telegraf_inputs_tail_watch_method|d() }}"
+  {{ '#' if telegraf_inputs_tail_watch_method is not defined else '' }}watch_method = "{{ telegraf_inputs_tail_watch_method|d() }}"
 
   ## Maximum lines of the file to process that have not yet be written by the
   ## output.  For best throughput set based on the number of metrics on each
   ## line and the size of the output's metric_batch_size.
-  {{ '#' if telegraf_inputs_tail_max_undelivered_lines is not defined }}max_undelivered_lines = {{ telegraf_inputs_tail_max_undelivered_lines|d() }}
+  {{ '#' if telegraf_inputs_tail_max_undelivered_lines is not defined else '' }}max_undelivered_lines = {{ telegraf_inputs_tail_max_undelivered_lines|d() }}
 
   ## Character encoding to use when interpreting the file contents.  Invalid
   ## characters are replaced using the unicode replacement character.  When set
@@ -32,7 +32,7 @@
   ##       character_encoding = "utf-16le"
   ##       character_encoding = "utf-16be"
   ##       character_encoding = ""
-  {{ '#' if telegraf_inputs_tail_character_encoding is not defined }}character_encoding = "{{ telegraf_inputs_tail_character_encoding|d() }}"
+  {{ '#' if telegraf_inputs_tail_character_encoding is not defined else '' }}character_encoding = "{{ telegraf_inputs_tail_character_encoding|d() }}"
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

@@ -1,10 +1,10 @@
 # Read metrics from Kafka topic(s)
 [[inputs.kafka_consumer_legacy]]
   ## topic(s) to consume
-  topics = [ {% for i in telegraf_inputs_kafka_consumer_legacy_topics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  topics = [ {% for i in telegraf_inputs_kafka_consumer_legacy_topics|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## an array of Zookeeper connection strings
-  zookeeper_peers = [ {% for i in telegraf_inputs_kafka_consumer_legacy_zookeeper_peers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  zookeeper_peers = [ {% for i in telegraf_inputs_kafka_consumer_legacy_zookeeper_peers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Zookeeper Chroot
   zookeeper_chroot = "{{ telegraf_inputs_kafka_consumer_legacy_zookeeper_chroot|d() }}"

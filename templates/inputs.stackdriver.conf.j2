@@ -4,12 +4,12 @@
   project = "{{ telegraf_inputs_stackdriver_project|d() }}"
 
   ## Include timeseries that start with the given metric type.
-  metric_type_prefix_include = [ {% for i in telegraf_inputs_stackdriver_metric_type_prefix_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  metric_type_prefix_include = [ {% for i in telegraf_inputs_stackdriver_metric_type_prefix_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "compute.googleapis.com/",
   ]
 
   ## Exclude timeseries that start with the given metric type.
-  {{ '#' if telegraf_inputs_stackdriver_metric_type_prefix_exclude is not defined }}metric_type_prefix_exclude = [ {% for i in telegraf_inputs_stackdriver_metric_type_prefix_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_stackdriver_metric_type_prefix_exclude is not defined else '' }}metric_type_prefix_exclude = [ {% for i in telegraf_inputs_stackdriver_metric_type_prefix_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Many metrics are updated once per minute; it is recommended to override
   ## the agent level interval with a value of 1m or greater.
@@ -18,7 +18,7 @@
   ## Maximum number of API calls to make per second.  The quota for accounts
   ## varies, it can be viewed on the API dashboard:
   ##   https://cloud.google.com/monitoring/quotas#quotas_and_limits
-  {{ '#' if telegraf_inputs_stackdriver_rate_limit is not defined }}rate_limit = {{ telegraf_inputs_stackdriver_rate_limit|d() }}
+  {{ '#' if telegraf_inputs_stackdriver_rate_limit is not defined else '' }}rate_limit = {{ telegraf_inputs_stackdriver_rate_limit|d() }}
 
   ## The delay and window options control the number of points selected on
   ## each gather.  When set, metrics are gathered between:
@@ -26,20 +26,20 @@
   ##   end:   now() - delay
   #
   ## Collection delay; if set too low metrics may not yet be available.
-  {{ '#' if telegraf_inputs_stackdriver_delay is not defined }}delay = "{{ telegraf_inputs_stackdriver_delay|d() }}"
+  {{ '#' if telegraf_inputs_stackdriver_delay is not defined else '' }}delay = "{{ telegraf_inputs_stackdriver_delay|d() }}"
   #
   ## If unset, the window will start at 1m and be updated dynamically to span
   ## the time between calls (approximately the length of the plugin interval).
-  {{ '#' if telegraf_inputs_stackdriver_window is not defined }}window = "{{ telegraf_inputs_stackdriver_window|d() }}"
+  {{ '#' if telegraf_inputs_stackdriver_window is not defined else '' }}window = "{{ telegraf_inputs_stackdriver_window|d() }}"
 
   ## TTL for cached list of metric types.  This is the maximum amount of time
   ## it may take to discover new metrics.
-  {{ '#' if telegraf_inputs_stackdriver_cache_ttl is not defined }}cache_ttl = "{{ telegraf_inputs_stackdriver_cache_ttl|d() }}"
+  {{ '#' if telegraf_inputs_stackdriver_cache_ttl is not defined else '' }}cache_ttl = "{{ telegraf_inputs_stackdriver_cache_ttl|d() }}"
 
   ## If true, raw bucket counts are collected for distribution value types.
   ## For a more lightweight collection, you may wish to disable and use
   ## distribution_aggregation_aligners instead.
-  {{ '#' if telegraf_inputs_stackdriver_gather_raw_distribution_buckets is not defined }}gather_raw_distribution_buckets = {{ telegraf_inputs_stackdriver_gather_raw_distribution_buckets|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_stackdriver_gather_raw_distribution_buckets is not defined else '' }}gather_raw_distribution_buckets = {{ telegraf_inputs_stackdriver_gather_raw_distribution_buckets|d()|bool|lower }}
 
   ## Aggregate functions to be used for metrics whose value type is
   ## distribution.  These aggregate values are recorded in in addition to raw
@@ -47,7 +47,7 @@
   ##
   ## For a list of aligner strings see:
   ##   https://cloud.google.com/monitoring/api/ref_v3/rpc/google.monitoring.v3#aligner
-  {{ '#' if telegraf_inputs_stackdriver_distribution_aggregation_aligners is not defined }}distribution_aggregation_aligners = [ {% for i in telegraf_inputs_stackdriver_distribution_aggregation_aligners|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_stackdriver_distribution_aggregation_aligners is not defined else '' }}distribution_aggregation_aligners = [ {% for i in telegraf_inputs_stackdriver_distribution_aggregation_aligners|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   # 	"ALIGN_PERCENTILE_99",
   # 	"ALIGN_PERCENTILE_95",
   # 	"ALIGN_PERCENTILE_50",
@@ -68,4 +68,4 @@
   ## Resource labels refine the time series selection with the following expression:
   ##   resource.labels.<key> = <value>
   # [[inputs.stackdriver.filter.resource_labels]]
-  {{ '#' if telegraf_inputs_stackdriver_key is not defined }}key = "{{ telegraf_inputs_stackdriver_key|d() }}"
+  {{ '#' if telegraf_inputs_stackdriver_key is not defined else '' }}key = "{{ telegraf_inputs_stackdriver_key|d() }}"

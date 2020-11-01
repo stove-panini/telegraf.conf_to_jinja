@@ -10,7 +10,7 @@
   name = "{{ telegraf_inputs_httpjson_name|d() }}"
 
   ## URL of each server in the service's cluster
-  servers = [ {% for i in telegraf_inputs_httpjson_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_httpjson_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "http://localhost:9999/stats/",
     "http://localhost:9998/stats/",
   ]
@@ -21,24 +21,24 @@
   method = "{{ telegraf_inputs_httpjson_method|d() }}"
 
   ## List of tag names to extract from top-level of JSON server response
-  {{ '#' if telegraf_inputs_httpjson_tag_keys is not defined }}tag_keys = [ {% for i in telegraf_inputs_httpjson_tag_keys|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_httpjson_tag_keys is not defined else '' }}tag_keys = [ {% for i in telegraf_inputs_httpjson_tag_keys|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   #   "my_tag_1",
   #   "my_tag_2"
   # ]
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_httpjson_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_httpjson_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_httpjson_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_httpjson_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_httpjson_tls_key is not defined }}tls_key = "{{ telegraf_inputs_httpjson_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_httpjson_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_httpjson_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_httpjson_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_httpjson_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_httpjson_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_httpjson_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_httpjson_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_httpjson_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_httpjson_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_httpjson_insecure_skip_verify|d()|bool|lower }}
 
   ## HTTP parameters (all values must be strings).  For "GET" requests, data
   ## will be included in the query.  For "POST" requests, data will be included
   ## in the request body as "x-www-form-urlencoded".
   # [inputs.httpjson.parameters]
-    {{ '#' if telegraf_inputs_httpjson_parameters_event_type is not defined }}event_type = "{{ telegraf_inputs_httpjson_parameters_event_type|d() }}"
-    {{ '#' if telegraf_inputs_httpjson_parameters_threshold is not defined }}threshold = "{{ telegraf_inputs_httpjson_parameters_threshold|d() }}"
+    {{ '#' if telegraf_inputs_httpjson_parameters_event_type is not defined else '' }}event_type = "{{ telegraf_inputs_httpjson_parameters_event_type|d() }}"
+    {{ '#' if telegraf_inputs_httpjson_parameters_threshold is not defined else '' }}threshold = "{{ telegraf_inputs_httpjson_parameters_threshold|d() }}"
 
   ## HTTP Headers (all values must be strings)
   # [inputs.httpjson.headers]

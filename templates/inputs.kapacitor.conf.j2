@@ -2,7 +2,7 @@
 [[inputs.kapacitor]]
   ## Multiple URLs from which to read Kapacitor-formatted JSON
   ## Default is "http://localhost:9092/kapacitor/v1/debug/vars".
-  urls = [ {% for i in telegraf_inputs_kapacitor_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_inputs_kapacitor_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "http://localhost:9092/kapacitor/v1/debug/vars"
   ]
 
@@ -10,8 +10,8 @@
   timeout = "{{ telegraf_inputs_kapacitor_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_kapacitor_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_kapacitor_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_kapacitor_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_kapacitor_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_kapacitor_tls_key is not defined }}tls_key = "{{ telegraf_inputs_kapacitor_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_kapacitor_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_kapacitor_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_kapacitor_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_kapacitor_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_kapacitor_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_kapacitor_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_kapacitor_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_kapacitor_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_kapacitor_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_kapacitor_insecure_skip_verify|d()|bool|lower }}

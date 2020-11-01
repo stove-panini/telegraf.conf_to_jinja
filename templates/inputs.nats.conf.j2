@@ -4,4 +4,4 @@
   server = "{{ telegraf_inputs_nats_server|d() }}"
 
   ## Maximum time to receive response
-  {{ '#' if telegraf_inputs_nats_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_nats_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_nats_response_timeout is not defined else '' }}response_timeout = "{{ telegraf_inputs_nats_response_timeout|d() }}"

@@ -5,7 +5,7 @@
 
   ## The base URL of the local Apex(es). If you specify more than one server, they will
   ## be differentiated by the "source" tag.
-  servers = [ {% for i in telegraf_inputs_neptune_apex_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_neptune_apex_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "http://apex.local",
   ]
 

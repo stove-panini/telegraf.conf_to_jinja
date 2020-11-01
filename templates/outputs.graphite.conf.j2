@@ -3,7 +3,7 @@
   ## TCP endpoint for your graphite instance.
   ## If multiple endpoints are configured, output will be load balanced.
   ## Only one of the endpoints will be written to with each iteration.
-  servers = [ {% for i in telegraf_outputs_graphite_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_outputs_graphite_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## Prefix metrics name
   prefix = "{{ telegraf_outputs_graphite_prefix|d() }}"
   ## Graphite output template
@@ -11,16 +11,16 @@
   template = "{{ telegraf_outputs_graphite_template|d() }}"
 
   ## Enable Graphite tags support
-  {{ '#' if telegraf_outputs_graphite_graphite_tag_support is not defined }}graphite_tag_support = {{ telegraf_outputs_graphite_graphite_tag_support|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_graphite_graphite_tag_support is not defined else '' }}graphite_tag_support = {{ telegraf_outputs_graphite_graphite_tag_support|d()|bool|lower }}
 
   ## Character for separating metric name and field for Graphite tags
-  {{ '#' if telegraf_outputs_graphite_graphite_separator is not defined }}graphite_separator = "{{ telegraf_outputs_graphite_graphite_separator|d() }}"
+  {{ '#' if telegraf_outputs_graphite_graphite_separator is not defined else '' }}graphite_separator = "{{ telegraf_outputs_graphite_graphite_separator|d() }}"
 
   ## Graphite templates patterns
   ## 1. Template for cpu
   ## 2. Template for disk*
   ## 3. Default template
-  {{ '#' if telegraf_outputs_graphite_templates is not defined }}templates = [ {% for i in telegraf_outputs_graphite_templates|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_outputs_graphite_templates is not defined else '' }}templates = [ {% for i in telegraf_outputs_graphite_templates|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   #  "cpu tags.measurement.host.field",
   #  "disk* measurement.field",
   #  "host.measurement.tags.field"
@@ -30,8 +30,8 @@
   timeout = {{ telegraf_outputs_graphite_timeout|d() }}
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_graphite_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_graphite_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_graphite_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_graphite_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_graphite_tls_key is not defined }}tls_key = "{{ telegraf_outputs_graphite_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_graphite_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_graphite_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_graphite_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_graphite_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_graphite_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_graphite_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_graphite_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_graphite_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_graphite_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_graphite_insecure_skip_verify|d()|bool|lower }}

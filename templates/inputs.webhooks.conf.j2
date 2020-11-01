@@ -8,7 +8,7 @@
 
   [inputs.webhooks.github]
     path = "{{ telegraf_inputs_webhooks_github_path|d() }}"
-    {{ '#' if telegraf_inputs_webhooks_github_secret is not defined }}secret = "{{ telegraf_inputs_webhooks_github_secret|d() }}"
+    {{ '#' if telegraf_inputs_webhooks_github_secret is not defined else '' }}secret = "{{ telegraf_inputs_webhooks_github_secret|d() }}"
 
   [inputs.webhooks.mandrill]
     path = "{{ telegraf_inputs_webhooks_mandrill_path|d() }}"

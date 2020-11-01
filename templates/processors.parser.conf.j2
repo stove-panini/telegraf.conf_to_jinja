@@ -1,7 +1,7 @@
 # Parse a value in a specified field/tag(s) and add the result in a new metric
 [[processors.parser]]
   ## The name of the fields whose value will be parsed.
-  parse_fields = [ {% for i in telegraf_processors_parser_parse_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  parse_fields = [ {% for i in telegraf_processors_parser_parse_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## If true, incoming metrics are not emitted.
   drop_original = {{ telegraf_processors_parser_drop_original|d()|bool|lower }}

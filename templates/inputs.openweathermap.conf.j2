@@ -4,26 +4,26 @@
   app_id = "{{ telegraf_inputs_openweathermap_app_id|d() }}"
 
   ## City ID's to collect weather data from.
-  city_id = [ {% for i in telegraf_inputs_openweathermap_city_id|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  city_id = [ {% for i in telegraf_inputs_openweathermap_city_id|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Language of the description field. Can be one of "ar", "bg",
   ## "ca", "cz", "de", "el", "en", "fa", "fi", "fr", "gl", "hr", "hu",
   ## "it", "ja", "kr", "la", "lt", "mk", "nl", "pl", "pt", "ro", "ru",
   ## "se", "sk", "sl", "es", "tr", "ua", "vi", "zh_cn", "zh_tw"
-  {{ '#' if telegraf_inputs_openweathermap_lang is not defined }}lang = "{{ telegraf_inputs_openweathermap_lang|d() }}"
+  {{ '#' if telegraf_inputs_openweathermap_lang is not defined else '' }}lang = "{{ telegraf_inputs_openweathermap_lang|d() }}"
 
   ## APIs to fetch; can contain "weather" or "forecast".
-  fetch = [ {% for i in telegraf_inputs_openweathermap_fetch|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  fetch = [ {% for i in telegraf_inputs_openweathermap_fetch|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## OpenWeatherMap base URL
-  {{ '#' if telegraf_inputs_openweathermap_base_url is not defined }}base_url = "{{ telegraf_inputs_openweathermap_base_url|d() }}"
+  {{ '#' if telegraf_inputs_openweathermap_base_url is not defined else '' }}base_url = "{{ telegraf_inputs_openweathermap_base_url|d() }}"
 
   ## Timeout for HTTP response.
-  {{ '#' if telegraf_inputs_openweathermap_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_openweathermap_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_openweathermap_response_timeout is not defined else '' }}response_timeout = "{{ telegraf_inputs_openweathermap_response_timeout|d() }}"
 
   ## Preferred unit system for temperature and wind speed. Can be one of
   ## "metric", "imperial", or "standard".
-  {{ '#' if telegraf_inputs_openweathermap_units is not defined }}units = "{{ telegraf_inputs_openweathermap_units|d() }}"
+  {{ '#' if telegraf_inputs_openweathermap_units is not defined else '' }}units = "{{ telegraf_inputs_openweathermap_units|d() }}"
 
   ## Query interval; OpenWeatherMap updates their weather data every 10
   ## minutes.

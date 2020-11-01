@@ -16,15 +16,15 @@
   ## If the write has a database in the query string then it will be kept in this tag name.
   ## This tag can be used in downstream outputs.
   ## The default value of nothing means it will be off and the database will not be recorded.
-  {{ '#' if telegraf_inputs_influxdb_listener_database_tag is not defined }}database_tag = "{{ telegraf_inputs_influxdb_listener_database_tag|d() }}"
+  {{ '#' if telegraf_inputs_influxdb_listener_database_tag is not defined else '' }}database_tag = "{{ telegraf_inputs_influxdb_listener_database_tag|d() }}"
 
   ## If set the retention policy specified in the write query will be added as
   ## the value of this tag name.
-  {{ '#' if telegraf_inputs_influxdb_listener_retention_policy_tag is not defined }}retention_policy_tag = "{{ telegraf_inputs_influxdb_listener_retention_policy_tag|d() }}"
+  {{ '#' if telegraf_inputs_influxdb_listener_retention_policy_tag is not defined else '' }}retention_policy_tag = "{{ telegraf_inputs_influxdb_listener_retention_policy_tag|d() }}"
 
   ## Set one or more allowed client CA certificate file names to
   ## enable mutually authenticated TLS connections
-  tls_allowed_cacerts = [ {% for i in telegraf_inputs_influxdb_listener_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  tls_allowed_cacerts = [ {% for i in telegraf_inputs_influxdb_listener_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Add service certificate and key
   tls_cert = "{{ telegraf_inputs_influxdb_listener_tls_cert|d() }}"
@@ -32,5 +32,5 @@
 
   ## Optional username and password to accept for HTTP basic authentication.
   ## You probably want to make sure you have TLS configured above for this.
-  {{ '#' if telegraf_inputs_influxdb_listener_basic_username is not defined }}basic_username = "{{ telegraf_inputs_influxdb_listener_basic_username|d() }}"
-  {{ '#' if telegraf_inputs_influxdb_listener_basic_password is not defined }}basic_password = "{{ telegraf_inputs_influxdb_listener_basic_password|d() }}"
+  {{ '#' if telegraf_inputs_influxdb_listener_basic_username is not defined else '' }}basic_username = "{{ telegraf_inputs_influxdb_listener_basic_username|d() }}"
+  {{ '#' if telegraf_inputs_influxdb_listener_basic_password is not defined else '' }}basic_password = "{{ telegraf_inputs_influxdb_listener_basic_password|d() }}"

@@ -5,16 +5,16 @@
   server = "{{ telegraf_inputs_unbound_server|d() }}"
 
   ## If running as a restricted user you can prepend sudo for additional access:
-  {{ '#' if telegraf_inputs_unbound_use_sudo is not defined }}use_sudo = {{ telegraf_inputs_unbound_use_sudo|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_unbound_use_sudo is not defined else '' }}use_sudo = {{ telegraf_inputs_unbound_use_sudo|d()|bool|lower }}
 
   ## The default location of the unbound-control binary can be overridden with:
-  {{ '#' if telegraf_inputs_unbound_binary is not defined }}binary = "{{ telegraf_inputs_unbound_binary|d() }}"
+  {{ '#' if telegraf_inputs_unbound_binary is not defined else '' }}binary = "{{ telegraf_inputs_unbound_binary|d() }}"
 
   ## The default location of the unbound config file can be overridden with:
-  {{ '#' if telegraf_inputs_unbound_config_file is not defined }}config_file = "{{ telegraf_inputs_unbound_config_file|d() }}"
+  {{ '#' if telegraf_inputs_unbound_config_file is not defined else '' }}config_file = "{{ telegraf_inputs_unbound_config_file|d() }}"
 
   ## The default timeout of 1s can be overridden with:
-  {{ '#' if telegraf_inputs_unbound_timeout is not defined }}timeout = "{{ telegraf_inputs_unbound_timeout|d() }}"
+  {{ '#' if telegraf_inputs_unbound_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_unbound_timeout|d() }}"
 
   ## When set to true, thread metrics are tagged with the thread id.
   ##

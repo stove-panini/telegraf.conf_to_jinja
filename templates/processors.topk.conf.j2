@@ -1,30 +1,30 @@
 # Print all metrics that pass through this filter.
 [[processors.topk]]
   ## How many seconds between aggregations
-  {{ '#' if telegraf_processors_topk_period is not defined }}period = {{ telegraf_processors_topk_period|d() }}
+  {{ '#' if telegraf_processors_topk_period is not defined else '' }}period = {{ telegraf_processors_topk_period|d() }}
 
   ## How many top metrics to return
-  {{ '#' if telegraf_processors_topk_k is not defined }}k = {{ telegraf_processors_topk_k|d() }}
+  {{ '#' if telegraf_processors_topk_k is not defined else '' }}k = {{ telegraf_processors_topk_k|d() }}
 
   ## Over which tags should the aggregation be done. Globs can be specified, in
   ## which case any tag matching the glob will aggregated over. If set to an
   ## empty list is no aggregation over tags is done
-  {{ '#' if telegraf_processors_topk_group_by is not defined }}group_by = [ {% for i in telegraf_processors_topk_group_by|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_processors_topk_group_by is not defined else '' }}group_by = [ {% for i in telegraf_processors_topk_group_by|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Over which fields are the top k are calculated
-  {{ '#' if telegraf_processors_topk_fields is not defined }}fields = [ {% for i in telegraf_processors_topk_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_processors_topk_fields is not defined else '' }}fields = [ {% for i in telegraf_processors_topk_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## What aggregation to use. Options: sum, mean, min, max
-  {{ '#' if telegraf_processors_topk_aggregation is not defined }}aggregation = "{{ telegraf_processors_topk_aggregation|d() }}"
+  {{ '#' if telegraf_processors_topk_aggregation is not defined else '' }}aggregation = "{{ telegraf_processors_topk_aggregation|d() }}"
 
   ## Instead of the top k largest metrics, return the bottom k lowest metrics
-  {{ '#' if telegraf_processors_topk_bottomk is not defined }}bottomk = {{ telegraf_processors_topk_bottomk|d()|bool|lower }}
+  {{ '#' if telegraf_processors_topk_bottomk is not defined else '' }}bottomk = {{ telegraf_processors_topk_bottomk|d()|bool|lower }}
 
   ## The plugin assigns each metric a GroupBy tag generated from its name and
   ## tags. If this setting is different than "" the plugin will add a
   ## tag (which name will be the value of this setting) to each metric with
   ## the value of the calculated GroupBy tag. Useful for debugging
-  {{ '#' if telegraf_processors_topk_add_groupby_tag is not defined }}add_groupby_tag = "{{ telegraf_processors_topk_add_groupby_tag|d() }}"
+  {{ '#' if telegraf_processors_topk_add_groupby_tag is not defined else '' }}add_groupby_tag = "{{ telegraf_processors_topk_add_groupby_tag|d() }}"
 
   ## These settings provide a way to know the position of each metric in
   ## the top k. The 'add_rank_field' setting allows to specify for which
@@ -34,7 +34,7 @@
   ## the metric belonged to when aggregated over that field.
   ## The name of the field will be set to the name of the aggregation field,
   ## suffixed with the string '_topk_rank'
-  {{ '#' if telegraf_processors_topk_add_rank_fields is not defined }}add_rank_fields = [ {% for i in telegraf_processors_topk_add_rank_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_processors_topk_add_rank_fields is not defined else '' }}add_rank_fields = [ {% for i in telegraf_processors_topk_add_rank_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## These settings provide a way to know what values the plugin is generating
   ## when aggregating metrics. The 'add_aggregate_field' setting allows to
@@ -45,4 +45,4 @@
   ## aggregated over that field.
   ## The name of the field will be set to the name of the aggregation field,
   ## suffixed with the string '_topk_aggregate'
-  {{ '#' if telegraf_processors_topk_add_aggregate_fields is not defined }}add_aggregate_fields = [ {% for i in telegraf_processors_topk_add_aggregate_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_processors_topk_add_aggregate_fields is not defined else '' }}add_aggregate_fields = [ {% for i in telegraf_processors_topk_add_aggregate_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

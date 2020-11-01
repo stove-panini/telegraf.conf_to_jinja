@@ -7,4 +7,4 @@
   ## By default, telegraf gather stats for all bcache devices
   ## Setting devices will restrict the stats to the specified
   ## bcache devices.
-  bcacheDevs = [ {% for i in telegraf_inputs_bcache_bcacheDevs|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  bcacheDevs = [ {% for i in telegraf_inputs_bcache_bcacheDevs|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

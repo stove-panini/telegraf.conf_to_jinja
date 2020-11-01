@@ -1,7 +1,7 @@
 # Read Nginx's basic status information (ngx_http_stub_status_module)
 [[inputs.nginx]]
   # An array of Nginx stub_status URI to gather stats.
-  urls = [ {% for i in telegraf_inputs_nginx_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_inputs_nginx_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional TLS Config
   tls_ca = "{{ telegraf_inputs_nginx_tls_ca|d() }}"

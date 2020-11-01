@@ -2,15 +2,15 @@
 [[inputs.vsphere]]
   ## List of vCenter URLs to be monitored. These three lines must be uncommented
   ## and edited for the plugin to work.
-  vcenters = [ {% for i in telegraf_inputs_vsphere_vcenters|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  vcenters = [ {% for i in telegraf_inputs_vsphere_vcenters|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   username = "{{ telegraf_inputs_vsphere_username|d() }}"
   password = "{{ telegraf_inputs_vsphere_password|d() }}"
 
   ## VMs
   ## Typical VM metrics (if omitted or empty, all metrics are collected)
-  {{ '#' if telegraf_inputs_vsphere_vm_include is not defined }}vm_include = [ {% for i in telegraf_inputs_vsphere_vm_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_vsphere_vm_exclude is not defined }}vm_exclude = [ {% for i in telegraf_inputs_vsphere_vm_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  vm_metric_include = [ {% for i in telegraf_inputs_vsphere_vm_metric_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_vsphere_vm_include is not defined else '' }}vm_include = [ {% for i in telegraf_inputs_vsphere_vm_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_vsphere_vm_exclude is not defined else '' }}vm_exclude = [ {% for i in telegraf_inputs_vsphere_vm_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  vm_metric_include = [ {% for i in telegraf_inputs_vsphere_vm_metric_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "cpu.demand.average",
     "cpu.idle.summation",
     "cpu.latency.average",
@@ -46,4 +46,4 @@
     "virtualDisk.writeOIO.latest",
     "sys.uptime.latest",
   ]
-  {{ '#' if telegraf_inputs_vsphere_vm_metric_exclude is not defined }}vm_metric_exclude = [ {% for i in telegraf_inputs_vsphere_vm_metric_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_vsphere_vm_metric_exclude is not defined else '' }}vm_metric_exclude = [ {% for i in telegraf_inputs_vsphere_vm_metric_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

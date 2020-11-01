@@ -11,18 +11,18 @@
   ## 4) environment variables
   ## 5) shared credentials file
   ## 6) EC2 Instance Profile
-  {{ '#' if telegraf_inputs_cloudwatch_access_key is not defined }}access_key = "{{ telegraf_inputs_cloudwatch_access_key|d() }}"
-  {{ '#' if telegraf_inputs_cloudwatch_secret_key is not defined }}secret_key = "{{ telegraf_inputs_cloudwatch_secret_key|d() }}"
-  {{ '#' if telegraf_inputs_cloudwatch_token is not defined }}token = "{{ telegraf_inputs_cloudwatch_token|d() }}"
-  {{ '#' if telegraf_inputs_cloudwatch_role_arn is not defined }}role_arn = "{{ telegraf_inputs_cloudwatch_role_arn|d() }}"
-  {{ '#' if telegraf_inputs_cloudwatch_profile is not defined }}profile = "{{ telegraf_inputs_cloudwatch_profile|d() }}"
-  {{ '#' if telegraf_inputs_cloudwatch_shared_credential_file is not defined }}shared_credential_file = "{{ telegraf_inputs_cloudwatch_shared_credential_file|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_access_key is not defined else '' }}access_key = "{{ telegraf_inputs_cloudwatch_access_key|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_secret_key is not defined else '' }}secret_key = "{{ telegraf_inputs_cloudwatch_secret_key|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_token is not defined else '' }}token = "{{ telegraf_inputs_cloudwatch_token|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_role_arn is not defined else '' }}role_arn = "{{ telegraf_inputs_cloudwatch_role_arn|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_profile is not defined else '' }}profile = "{{ telegraf_inputs_cloudwatch_profile|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_shared_credential_file is not defined else '' }}shared_credential_file = "{{ telegraf_inputs_cloudwatch_shared_credential_file|d() }}"
 
   ## Endpoint to make request against, the correct endpoint is automatically
   ## determined and this option should only be set if you wish to override the
   ## default.
   ##   ex: endpoint_url = "http://localhost:8000"
-  {{ '#' if telegraf_inputs_cloudwatch_endpoint_url is not defined }}endpoint_url = "{{ telegraf_inputs_cloudwatch_endpoint_url|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_endpoint_url is not defined else '' }}endpoint_url = "{{ telegraf_inputs_cloudwatch_endpoint_url|d() }}"
 
   # The minimum period for Cloudwatch metrics is 1 minute (60s). However not all
   # metrics are made available to the 1 minute period. Some are collected at
@@ -42,7 +42,7 @@
   interval = "{{ telegraf_inputs_cloudwatch_interval|d() }}"
 
   ## Configure the TTL for the internal cache of metrics.
-  {{ '#' if telegraf_inputs_cloudwatch_cache_ttl is not defined }}cache_ttl = "{{ telegraf_inputs_cloudwatch_cache_ttl|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_cache_ttl is not defined else '' }}cache_ttl = "{{ telegraf_inputs_cloudwatch_cache_ttl|d() }}"
 
   ## Metric Statistic Namespace (required)
   namespace = "{{ telegraf_inputs_cloudwatch_namespace|d() }}"
@@ -51,15 +51,15 @@
   ## 50 reqs/sec, so if you define multiple namespaces, these should add up to a
   ## maximum of 50.
   ## See http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
-  {{ '#' if telegraf_inputs_cloudwatch_ratelimit is not defined }}ratelimit = {{ telegraf_inputs_cloudwatch_ratelimit|d() }}
+  {{ '#' if telegraf_inputs_cloudwatch_ratelimit is not defined else '' }}ratelimit = {{ telegraf_inputs_cloudwatch_ratelimit|d() }}
 
   ## Timeout for http requests made by the cloudwatch client.
-  {{ '#' if telegraf_inputs_cloudwatch_timeout is not defined }}timeout = "{{ telegraf_inputs_cloudwatch_timeout|d() }}"
+  {{ '#' if telegraf_inputs_cloudwatch_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_cloudwatch_timeout|d() }}"
 
   ## Namespace-wide statistic filters. These allow fewer queries to be made to
   ## cloudwatch.
-  {{ '#' if telegraf_inputs_cloudwatch_statistic_include is not defined }}statistic_include = [ {% for i in telegraf_inputs_cloudwatch_statistic_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_cloudwatch_statistic_exclude is not defined }}statistic_exclude = [ {% for i in telegraf_inputs_cloudwatch_statistic_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_cloudwatch_statistic_include is not defined else '' }}statistic_include = [ {% for i in telegraf_inputs_cloudwatch_statistic_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_cloudwatch_statistic_exclude is not defined else '' }}statistic_exclude = [ {% for i in telegraf_inputs_cloudwatch_statistic_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Metrics to Pull
   ## Defaults to all Metrics in Namespace if nothing is provided

@@ -1,20 +1,20 @@
 # Query given DNS server and gives statistics
 [[inputs.dns_query]]
   ## servers to query
-  servers = [ {% for i in telegraf_inputs_dns_query_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_dns_query_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Network is the network protocol name.
-  {{ '#' if telegraf_inputs_dns_query_network is not defined }}network = "{{ telegraf_inputs_dns_query_network|d() }}"
+  {{ '#' if telegraf_inputs_dns_query_network is not defined else '' }}network = "{{ telegraf_inputs_dns_query_network|d() }}"
 
   ## Domains or subdomains to query.
-  {{ '#' if telegraf_inputs_dns_query_domains is not defined }}domains = [ {% for i in telegraf_inputs_dns_query_domains|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dns_query_domains is not defined else '' }}domains = [ {% for i in telegraf_inputs_dns_query_domains|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Query record type.
   ## Possible values: A, AAAA, CNAME, MX, NS, PTR, TXT, SOA, SPF, SRV.
-  {{ '#' if telegraf_inputs_dns_query_record_type is not defined }}record_type = "{{ telegraf_inputs_dns_query_record_type|d() }}"
+  {{ '#' if telegraf_inputs_dns_query_record_type is not defined else '' }}record_type = "{{ telegraf_inputs_dns_query_record_type|d() }}"
 
   ## Dns server port.
-  {{ '#' if telegraf_inputs_dns_query_port is not defined }}port = {{ telegraf_inputs_dns_query_port|d() }}
+  {{ '#' if telegraf_inputs_dns_query_port is not defined else '' }}port = {{ telegraf_inputs_dns_query_port|d() }}
 
   ## Query timeout in seconds.
-  {{ '#' if telegraf_inputs_dns_query_timeout is not defined }}timeout = {{ telegraf_inputs_dns_query_timeout|d() }}
+  {{ '#' if telegraf_inputs_dns_query_timeout is not defined else '' }}timeout = {{ telegraf_inputs_dns_query_timeout|d() }}

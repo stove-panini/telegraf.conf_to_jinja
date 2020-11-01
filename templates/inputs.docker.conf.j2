@@ -9,22 +9,22 @@
   gather_services = {{ telegraf_inputs_docker_gather_services|d()|bool|lower }}
 
   ## Only collect metrics for these containers, collect all if empty
-  container_names = [ {% for i in telegraf_inputs_docker_container_names|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  container_names = [ {% for i in telegraf_inputs_docker_container_names|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Set the source tag for the metrics to the container ID hostname, eg first 12 chars
   source_tag = {{ telegraf_inputs_docker_source_tag|d()|bool|lower }}
 
   ## Containers to include and exclude. Globs accepted.
   ## Note that an empty array for both will include all containers
-  container_name_include = [ {% for i in telegraf_inputs_docker_container_name_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  container_name_exclude = [ {% for i in telegraf_inputs_docker_container_name_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  container_name_include = [ {% for i in telegraf_inputs_docker_container_name_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  container_name_exclude = [ {% for i in telegraf_inputs_docker_container_name_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Container states to include and exclude. Globs accepted.
   ## When empty only containers in the "running" state will be captured.
   ## example: container_state_include = ["created", "restarting", "running", "removing", "paused", "exited", "dead"]
   ## example: container_state_exclude = ["created", "restarting", "running", "removing", "paused", "exited", "dead"]
-  {{ '#' if telegraf_inputs_docker_container_state_include is not defined }}container_state_include = [ {% for i in telegraf_inputs_docker_container_state_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_docker_container_state_exclude is not defined }}container_state_exclude = [ {% for i in telegraf_inputs_docker_container_state_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_container_state_include is not defined else '' }}container_state_include = [ {% for i in telegraf_inputs_docker_container_state_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_docker_container_state_exclude is not defined else '' }}container_state_exclude = [ {% for i in telegraf_inputs_docker_container_state_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for docker list, info, and stats commands
   timeout = "{{ telegraf_inputs_docker_timeout|d() }}"
@@ -41,12 +41,12 @@
 
   ## docker labels to include and exclude as tags.  Globs accepted.
   ## Note that an empty array for both will include all labels as tags
-  docker_label_include = [ {% for i in telegraf_inputs_docker_docker_label_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  docker_label_exclude = [ {% for i in telegraf_inputs_docker_docker_label_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  docker_label_include = [ {% for i in telegraf_inputs_docker_docker_label_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  docker_label_exclude = [ {% for i in telegraf_inputs_docker_docker_label_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_docker_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_docker_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_docker_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_docker_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_docker_tls_key is not defined }}tls_key = "{{ telegraf_inputs_docker_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_docker_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_docker_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_docker_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_docker_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_docker_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_docker_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_docker_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_docker_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_docker_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_docker_insecure_skip_verify|d()|bool|lower }}

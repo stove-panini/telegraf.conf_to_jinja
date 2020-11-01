@@ -10,6 +10,6 @@
   ## of one or more spaces.
   ##   <target-field> = <value>
   # [processors.defaults.fields]
-    {{ '#' if telegraf_processors_defaults_fields_field_1 is not defined }}field_1 = "{{ telegraf_processors_defaults_fields_field_1|d() }}"
-    {{ '#' if telegraf_processors_defaults_fields_time_idle is not defined }}time_idle = {{ telegraf_processors_defaults_fields_time_idle|d() }}
-    {{ '#' if telegraf_processors_defaults_fields_is_error is not defined }}is_error = {{ telegraf_processors_defaults_fields_is_error|d()|bool|lower }}
+    {{ '#' if telegraf_processors_defaults_fields_field_1 is not defined else '' }}field_1 = "{{ telegraf_processors_defaults_fields_field_1|d() }}"
+    {{ '#' if telegraf_processors_defaults_fields_time_idle is not defined else '' }}time_idle = {{ telegraf_processors_defaults_fields_time_idle|d() }}
+    {{ '#' if telegraf_processors_defaults_fields_is_error is not defined else '' }}is_error = {{ telegraf_processors_defaults_fields_is_error|d()|bool|lower }}

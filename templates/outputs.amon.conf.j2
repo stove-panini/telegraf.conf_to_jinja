@@ -7,4 +7,4 @@
   amon_instance = "{{ telegraf_outputs_amon_amon_instance|d() }}"
 
   ## Connection timeout.
-  {{ '#' if telegraf_outputs_amon_timeout is not defined }}timeout = "{{ telegraf_outputs_amon_timeout|d() }}"
+  {{ '#' if telegraf_outputs_amon_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_amon_timeout|d() }}"

@@ -1,16 +1,16 @@
 # Reads metrics from a SSL certificate
 [[inputs.x509_cert]]
   ## List certificate sources
-  sources = [ {% for i in telegraf_inputs_x509_cert_sources|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  sources = [ {% for i in telegraf_inputs_x509_cert_sources|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for SSL connection
-  {{ '#' if telegraf_inputs_x509_cert_timeout is not defined }}timeout = "{{ telegraf_inputs_x509_cert_timeout|d() }}"
+  {{ '#' if telegraf_inputs_x509_cert_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_x509_cert_timeout|d() }}"
 
   ## Pass a different name into the TLS request (Server Name Indication)
   ##   example: server_name = "myhost.example.org"
-  {{ '#' if telegraf_inputs_x509_cert_server_name is not defined }}server_name = "{{ telegraf_inputs_x509_cert_server_name|d() }}"
+  {{ '#' if telegraf_inputs_x509_cert_server_name is not defined else '' }}server_name = "{{ telegraf_inputs_x509_cert_server_name|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_x509_cert_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_x509_cert_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_x509_cert_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_x509_cert_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_x509_cert_tls_key is not defined }}tls_key = "{{ telegraf_inputs_x509_cert_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_x509_cert_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_x509_cert_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_x509_cert_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_x509_cert_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_x509_cert_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_x509_cert_tls_key|d() }}"

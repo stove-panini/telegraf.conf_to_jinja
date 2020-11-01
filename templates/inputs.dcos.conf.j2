@@ -9,34 +9,34 @@
   service_account_private_key = "{{ telegraf_inputs_dcos_service_account_private_key|d() }}"
 
   ## Path containing login token.  If set, will read on every gather.
-  {{ '#' if telegraf_inputs_dcos_token_file is not defined }}token_file = "{{ telegraf_inputs_dcos_token_file|d() }}"
+  {{ '#' if telegraf_inputs_dcos_token_file is not defined else '' }}token_file = "{{ telegraf_inputs_dcos_token_file|d() }}"
 
   ## In all filter options if both include and exclude are empty all items
   ## will be collected.  Arrays may contain glob patterns.
   ##
   ## Node IDs to collect metrics from.  If a node is excluded, no metrics will
   ## be collected for its containers or apps.
-  {{ '#' if telegraf_inputs_dcos_node_include is not defined }}node_include = [ {% for i in telegraf_inputs_dcos_node_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_dcos_node_exclude is not defined }}node_exclude = [ {% for i in telegraf_inputs_dcos_node_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_node_include is not defined else '' }}node_include = [ {% for i in telegraf_inputs_dcos_node_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_node_exclude is not defined else '' }}node_exclude = [ {% for i in telegraf_inputs_dcos_node_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## Container IDs to collect container metrics from.
-  {{ '#' if telegraf_inputs_dcos_container_include is not defined }}container_include = [ {% for i in telegraf_inputs_dcos_container_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_dcos_container_exclude is not defined }}container_exclude = [ {% for i in telegraf_inputs_dcos_container_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_container_include is not defined else '' }}container_include = [ {% for i in telegraf_inputs_dcos_container_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_container_exclude is not defined else '' }}container_exclude = [ {% for i in telegraf_inputs_dcos_container_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## Container IDs to collect app metrics from.
-  {{ '#' if telegraf_inputs_dcos_app_include is not defined }}app_include = [ {% for i in telegraf_inputs_dcos_app_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_dcos_app_exclude is not defined }}app_exclude = [ {% for i in telegraf_inputs_dcos_app_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_app_include is not defined else '' }}app_include = [ {% for i in telegraf_inputs_dcos_app_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_dcos_app_exclude is not defined else '' }}app_exclude = [ {% for i in telegraf_inputs_dcos_app_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Maximum concurrent connections to the cluster.
-  {{ '#' if telegraf_inputs_dcos_max_connections is not defined }}max_connections = {{ telegraf_inputs_dcos_max_connections|d() }}
+  {{ '#' if telegraf_inputs_dcos_max_connections is not defined else '' }}max_connections = {{ telegraf_inputs_dcos_max_connections|d() }}
   ## Maximum time to receive a response from cluster.
-  {{ '#' if telegraf_inputs_dcos_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_dcos_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_dcos_response_timeout is not defined else '' }}response_timeout = "{{ telegraf_inputs_dcos_response_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_dcos_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_dcos_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_dcos_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_dcos_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_dcos_tls_key is not defined }}tls_key = "{{ telegraf_inputs_dcos_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_dcos_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_dcos_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_dcos_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_dcos_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_dcos_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_dcos_tls_key|d() }}"
   ## If false, skip chain & host verification
-  {{ '#' if telegraf_inputs_dcos_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_dcos_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_dcos_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_dcos_insecure_skip_verify|d()|bool|lower }}
 
   ## Recommended filtering to reduce series cardinality.
   # [inputs.dcos.tagdrop]
-    {{ '#' if telegraf_inputs_dcos_tagdrop_path is not defined }}path = [ {% for i in telegraf_inputs_dcos_tagdrop_path|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_inputs_dcos_tagdrop_path is not defined else '' }}path = [ {% for i in telegraf_inputs_dcos_tagdrop_path|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

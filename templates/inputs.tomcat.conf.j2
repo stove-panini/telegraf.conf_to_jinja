@@ -1,18 +1,18 @@
 # Gather metrics from the Tomcat server status page.
 [[inputs.tomcat]]
   ## URL of the Tomcat server status
-  {{ '#' if telegraf_inputs_tomcat_url is not defined }}url = "{{ telegraf_inputs_tomcat_url|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_url is not defined else '' }}url = "{{ telegraf_inputs_tomcat_url|d() }}"
 
   ## HTTP Basic Auth Credentials
-  {{ '#' if telegraf_inputs_tomcat_username is not defined }}username = "{{ telegraf_inputs_tomcat_username|d() }}"
-  {{ '#' if telegraf_inputs_tomcat_password is not defined }}password = "{{ telegraf_inputs_tomcat_password|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_username is not defined else '' }}username = "{{ telegraf_inputs_tomcat_username|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_password is not defined else '' }}password = "{{ telegraf_inputs_tomcat_password|d() }}"
 
   ## Request timeout
-  {{ '#' if telegraf_inputs_tomcat_timeout is not defined }}timeout = "{{ telegraf_inputs_tomcat_timeout|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_tomcat_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_tomcat_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_tomcat_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_tomcat_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_tomcat_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_tomcat_tls_key is not defined }}tls_key = "{{ telegraf_inputs_tomcat_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_tomcat_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_tomcat_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_tomcat_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_tomcat_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_tomcat_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_tomcat_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_tomcat_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_tomcat_insecure_skip_verify|d()|bool|lower }}

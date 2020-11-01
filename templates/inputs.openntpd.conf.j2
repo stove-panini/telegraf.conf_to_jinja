@@ -1,10 +1,10 @@
 # Get standard NTP query metrics from OpenNTPD.
 [[inputs.openntpd]]
   ## Run ntpctl binary with sudo.
-  {{ '#' if telegraf_inputs_openntpd_use_sudo is not defined }}use_sudo = {{ telegraf_inputs_openntpd_use_sudo|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_openntpd_use_sudo is not defined else '' }}use_sudo = {{ telegraf_inputs_openntpd_use_sudo|d()|bool|lower }}
 
   ## Location of the ntpctl binary.
-  {{ '#' if telegraf_inputs_openntpd_binary is not defined }}binary = "{{ telegraf_inputs_openntpd_binary|d() }}"
+  {{ '#' if telegraf_inputs_openntpd_binary is not defined else '' }}binary = "{{ telegraf_inputs_openntpd_binary|d() }}"
 
   ## Maximum time the ntpctl binary is allowed to run.
-  {{ '#' if telegraf_inputs_openntpd_timeout is not defined }}timeout = "{{ telegraf_inputs_openntpd_timeout|d() }}"
+  {{ '#' if telegraf_inputs_openntpd_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_openntpd_timeout|d() }}"

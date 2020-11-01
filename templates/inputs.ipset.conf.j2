@@ -6,4 +6,4 @@
   ## Adjust your sudo settings appropriately if using this option ("sudo ipset save")
   use_sudo = {{ telegraf_inputs_ipset_use_sudo|d()|bool|lower }}
   ## The default timeout of 1s for ipset execution can be overridden here:
-  {{ '#' if telegraf_inputs_ipset_timeout is not defined }}timeout = "{{ telegraf_inputs_ipset_timeout|d() }}"
+  {{ '#' if telegraf_inputs_ipset_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_ipset_timeout|d() }}"

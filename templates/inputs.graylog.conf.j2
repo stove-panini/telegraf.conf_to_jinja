@@ -10,7 +10,7 @@
   ##
   ## Please check http://[graylog-server-ip]:12900/api-browser for full list
   ## of endpoints
-  servers = [ {% for i in telegraf_inputs_graylog_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_graylog_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "http://[graylog-server-ip]:12900/system/metrics/multiple",
   ]
 
@@ -18,7 +18,7 @@
   ## List of metrics can be found on Graylog webservice documentation.
   ## Or by hitting the the web service api at:
   ##   http://[graylog-host]:12900/system/metrics
-  metrics = [ {% for i in telegraf_inputs_graylog_metrics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  metrics = [ {% for i in telegraf_inputs_graylog_metrics|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "jvm.cl.loaded",
     "jvm.memory.pools.Metaspace.committed"
   ]
@@ -28,8 +28,8 @@
   password = "{{ telegraf_inputs_graylog_password|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_graylog_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_graylog_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_graylog_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_graylog_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_graylog_tls_key is not defined }}tls_key = "{{ telegraf_inputs_graylog_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_graylog_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_graylog_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_graylog_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_graylog_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_graylog_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_graylog_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_graylog_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_graylog_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_graylog_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_graylog_insecure_skip_verify|d()|bool|lower }}

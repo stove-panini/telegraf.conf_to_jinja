@@ -19,14 +19,14 @@
   ##
   ## Example of multiple gathering from local socket and remote host
   ## urls = ["http://192.168.1.20/status", "/tmp/fpm.sock"]
-  urls = [ {% for i in telegraf_inputs_phpfpm_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_inputs_phpfpm_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Duration allowed to complete HTTP requests.
-  {{ '#' if telegraf_inputs_phpfpm_timeout is not defined }}timeout = "{{ telegraf_inputs_phpfpm_timeout|d() }}"
+  {{ '#' if telegraf_inputs_phpfpm_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_phpfpm_timeout|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_phpfpm_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_phpfpm_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_phpfpm_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_phpfpm_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_phpfpm_tls_key is not defined }}tls_key = "{{ telegraf_inputs_phpfpm_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_phpfpm_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_phpfpm_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_phpfpm_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_phpfpm_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_phpfpm_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_phpfpm_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_phpfpm_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_phpfpm_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_phpfpm_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_phpfpm_insecure_skip_verify|d()|bool|lower }}

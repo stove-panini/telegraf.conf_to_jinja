@@ -5,11 +5,11 @@
   ##    localhost:24242
   ##
   ## If no servers are specified, then localhost is used as the host.
-  servers = [ {% for i in telegraf_inputs_dovecot_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_dovecot_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Type is one of "user", "domain", "ip", or "global"
   type = "{{ telegraf_inputs_dovecot_type|d() }}"
 
   ## Wildcard matches like "*.com". An empty string "" is same as "*"
   ## If type = "ip" filters should be <IP/network>
-  filters = [ {% for i in telegraf_inputs_dovecot_filters|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  filters = [ {% for i in telegraf_inputs_dovecot_filters|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

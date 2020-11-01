@@ -7,4 +7,4 @@
   ## 0 means collect all.
   days_old = {{ telegraf_inputs_mailchimp_days_old|d() }}
   ## Campaign ID to get, if empty gets all campaigns, this option overrides days_old
-  {{ '#' if telegraf_inputs_mailchimp_campaign_id is not defined }}campaign_id = "{{ telegraf_inputs_mailchimp_campaign_id|d() }}"
+  {{ '#' if telegraf_inputs_mailchimp_campaign_id is not defined else '' }}campaign_id = "{{ telegraf_inputs_mailchimp_campaign_id|d() }}"

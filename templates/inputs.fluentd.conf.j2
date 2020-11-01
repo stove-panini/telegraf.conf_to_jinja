@@ -8,7 +8,7 @@
   endpoint = "{{ telegraf_inputs_fluentd_endpoint|d() }}"
 
   ## Define which plugins have to be excluded (based on "type" field - e.g. monitor_agent)
-  exclude = [ {% for i in telegraf_inputs_fluentd_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  exclude = [ {% for i in telegraf_inputs_fluentd_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 	  "monitor_agent",
 	  "dummy",
   ]

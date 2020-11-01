@@ -7,4 +7,4 @@
   ## aggregator and will not get sent to the output plugins.
   drop_original = {{ telegraf_aggregators_valuecounter_drop_original|d()|bool|lower }}
   ## The fields for which the values will be counted
-  fields = [ {% for i in telegraf_aggregators_valuecounter_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  fields = [ {% for i in telegraf_aggregators_valuecounter_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

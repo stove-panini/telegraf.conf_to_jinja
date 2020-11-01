@@ -9,4 +9,4 @@
   ## If no servers are specified, then localhost is used as the host.
   ## If no protocol is specified, HTTP is used.
   ## If no port is specified, 8091 is used.
-    servers = [ {% for i in telegraf_inputs_couchbase_  ##  [protocol://][:password]@address[:port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    servers = [ {% for i in telegraf_inputs_couchbase_  ##  [protocol://][:password]@address[:port_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

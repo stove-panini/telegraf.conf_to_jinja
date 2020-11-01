@@ -1,16 +1,16 @@
 # Gather repository information from GitHub hosted repositories.
 [[inputs.github]]
   ## List of repositories to monitor.
-  repositories = [ {% for i in telegraf_inputs_github_repositories|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  repositories = [ {% for i in telegraf_inputs_github_repositories|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 	  "influxdata/telegraf",
 	  "influxdata/influxdb"
   ]
 
   ## Github API access token.  Unauthenticated requests are limited to 60 per hour.
-  {{ '#' if telegraf_inputs_github_access_token is not defined }}access_token = "{{ telegraf_inputs_github_access_token|d() }}"
+  {{ '#' if telegraf_inputs_github_access_token is not defined else '' }}access_token = "{{ telegraf_inputs_github_access_token|d() }}"
 
   ## Github API enterprise url. Github Enterprise accounts must specify their base url.
-  {{ '#' if telegraf_inputs_github_enterprise_base_url is not defined }}enterprise_base_url = "{{ telegraf_inputs_github_enterprise_base_url|d() }}"
+  {{ '#' if telegraf_inputs_github_enterprise_base_url is not defined else '' }}enterprise_base_url = "{{ telegraf_inputs_github_enterprise_base_url|d() }}"
 
   ## Timeout for HTTP requests.
-  {{ '#' if telegraf_inputs_github_http_timeout is not defined }}http_timeout = "{{ telegraf_inputs_github_http_timeout|d() }}"
+  {{ '#' if telegraf_inputs_github_http_timeout is not defined else '' }}http_timeout = "{{ telegraf_inputs_github_http_timeout|d() }}"

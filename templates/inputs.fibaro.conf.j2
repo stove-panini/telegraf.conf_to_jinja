@@ -9,4 +9,4 @@
   password = "{{ telegraf_inputs_fibaro_password|d() }}"
 
   ## Amount of time allowed to complete the HTTP request
-  {{ '#' if telegraf_inputs_fibaro_timeout is not defined }}timeout = "{{ telegraf_inputs_fibaro_timeout|d() }}"
+  {{ '#' if telegraf_inputs_fibaro_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_fibaro_timeout|d() }}"

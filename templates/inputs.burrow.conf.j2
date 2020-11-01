@@ -2,40 +2,40 @@
 [[inputs.burrow]]
   ## Burrow API endpoints in format "schema://host:port".
   ## Default is "http://localhost:8000".
-  servers = [ {% for i in telegraf_inputs_burrow_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_burrow_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Override Burrow API prefix.
   ## Useful when Burrow is behind reverse-proxy.
-  {{ '#' if telegraf_inputs_burrow_api_prefix is not defined }}api_prefix = "{{ telegraf_inputs_burrow_api_prefix|d() }}"
+  {{ '#' if telegraf_inputs_burrow_api_prefix is not defined else '' }}api_prefix = "{{ telegraf_inputs_burrow_api_prefix|d() }}"
 
   ## Maximum time to receive response.
-  {{ '#' if telegraf_inputs_burrow_response_timeout is not defined }}response_timeout = "{{ telegraf_inputs_burrow_response_timeout|d() }}"
+  {{ '#' if telegraf_inputs_burrow_response_timeout is not defined else '' }}response_timeout = "{{ telegraf_inputs_burrow_response_timeout|d() }}"
 
   ## Limit per-server concurrent connections.
   ## Useful in case of large number of topics or consumer groups.
-  {{ '#' if telegraf_inputs_burrow_concurrent_connections is not defined }}concurrent_connections = {{ telegraf_inputs_burrow_concurrent_connections|d() }}
+  {{ '#' if telegraf_inputs_burrow_concurrent_connections is not defined else '' }}concurrent_connections = {{ telegraf_inputs_burrow_concurrent_connections|d() }}
 
   ## Filter clusters, default is no filtering.
   ## Values can be specified as glob patterns.
-  {{ '#' if telegraf_inputs_burrow_clusters_include is not defined }}clusters_include = [ {% for i in telegraf_inputs_burrow_clusters_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_burrow_clusters_exclude is not defined }}clusters_exclude = [ {% for i in telegraf_inputs_burrow_clusters_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_clusters_include is not defined else '' }}clusters_include = [ {% for i in telegraf_inputs_burrow_clusters_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_clusters_exclude is not defined else '' }}clusters_exclude = [ {% for i in telegraf_inputs_burrow_clusters_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Filter consumer groups, default is no filtering.
   ## Values can be specified as glob patterns.
-  {{ '#' if telegraf_inputs_burrow_groups_include is not defined }}groups_include = [ {% for i in telegraf_inputs_burrow_groups_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_burrow_groups_exclude is not defined }}groups_exclude = [ {% for i in telegraf_inputs_burrow_groups_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_groups_include is not defined else '' }}groups_include = [ {% for i in telegraf_inputs_burrow_groups_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_groups_exclude is not defined else '' }}groups_exclude = [ {% for i in telegraf_inputs_burrow_groups_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Filter topics, default is no filtering.
   ## Values can be specified as glob patterns.
-  {{ '#' if telegraf_inputs_burrow_topics_include is not defined }}topics_include = [ {% for i in telegraf_inputs_burrow_topics_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_burrow_topics_exclude is not defined }}topics_exclude = [ {% for i in telegraf_inputs_burrow_topics_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_topics_include is not defined else '' }}topics_include = [ {% for i in telegraf_inputs_burrow_topics_include|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_burrow_topics_exclude is not defined else '' }}topics_exclude = [ {% for i in telegraf_inputs_burrow_topics_exclude|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Credentials for basic HTTP authentication.
-  {{ '#' if telegraf_inputs_burrow_username is not defined }}username = "{{ telegraf_inputs_burrow_username|d() }}"
-  {{ '#' if telegraf_inputs_burrow_password is not defined }}password = "{{ telegraf_inputs_burrow_password|d() }}"
+  {{ '#' if telegraf_inputs_burrow_username is not defined else '' }}username = "{{ telegraf_inputs_burrow_username|d() }}"
+  {{ '#' if telegraf_inputs_burrow_password is not defined else '' }}password = "{{ telegraf_inputs_burrow_password|d() }}"
 
   ## Optional SSL config
-  {{ '#' if telegraf_inputs_burrow_ssl_ca is not defined }}ssl_ca = "{{ telegraf_inputs_burrow_ssl_ca|d() }}"
-  {{ '#' if telegraf_inputs_burrow_ssl_cert is not defined }}ssl_cert = "{{ telegraf_inputs_burrow_ssl_cert|d() }}"
-  {{ '#' if telegraf_inputs_burrow_ssl_key is not defined }}ssl_key = "{{ telegraf_inputs_burrow_ssl_key|d() }}"
-  {{ '#' if telegraf_inputs_burrow_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_burrow_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_burrow_ssl_ca is not defined else '' }}ssl_ca = "{{ telegraf_inputs_burrow_ssl_ca|d() }}"
+  {{ '#' if telegraf_inputs_burrow_ssl_cert is not defined else '' }}ssl_cert = "{{ telegraf_inputs_burrow_ssl_cert|d() }}"
+  {{ '#' if telegraf_inputs_burrow_ssl_key is not defined else '' }}ssl_key = "{{ telegraf_inputs_burrow_ssl_key|d() }}"
+  {{ '#' if telegraf_inputs_burrow_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_burrow_insecure_skip_verify|d()|bool|lower }}

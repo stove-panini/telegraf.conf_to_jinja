@@ -7,9 +7,9 @@
   ## Librato API token
   api_token = "{{ telegraf_outputs_librato_api_token|d() }}"
   ## Debug
-  {{ '#' if telegraf_outputs_librato_debug is not defined }}debug = {{ telegraf_outputs_librato_debug|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_librato_debug is not defined else '' }}debug = {{ telegraf_outputs_librato_debug|d()|bool|lower }}
   ## Connection timeout.
-  {{ '#' if telegraf_outputs_librato_timeout is not defined }}timeout = "{{ telegraf_outputs_librato_timeout|d() }}"
+  {{ '#' if telegraf_outputs_librato_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_librato_timeout|d() }}"
   ## Output source Template (same as graphite buckets)
   ## see https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_OUTPUT.md#graphite
   ## This template is used in librato's source (not metric's name)

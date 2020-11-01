@@ -1,13 +1,13 @@
 # Read metrics from storage devices supporting S.M.A.R.T.
 [[inputs.smart]]
   ## Optionally specify the path to the smartctl executable
-  {{ '#' if telegraf_inputs_smart_path is not defined }}path = "{{ telegraf_inputs_smart_path|d() }}"
+  {{ '#' if telegraf_inputs_smart_path is not defined else '' }}path = "{{ telegraf_inputs_smart_path|d() }}"
 
   ## On most platforms smartctl requires root access.
   ## Setting 'use_sudo' to true will make use of sudo to run smartctl.
   ## Sudo must be configured to to allow the telegraf user to run smartctl
   ## without a password.
-  {{ '#' if telegraf_inputs_smart_use_sudo is not defined }}use_sudo = {{ telegraf_inputs_smart_use_sudo|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_smart_use_sudo is not defined else '' }}use_sudo = {{ telegraf_inputs_smart_use_sudo|d()|bool|lower }}
 
   ## Skip checking disks in this power mode. Defaults to
   ## "standby" to not wake up disks that have stoped rotating.
@@ -15,20 +15,20 @@
   ## smartctl version 5.41 and 5.42 have faulty detection of
   ## power mode and might require changing this value to
   ## "never" depending on your disks.
-  {{ '#' if telegraf_inputs_smart_nocheck is not defined }}nocheck = "{{ telegraf_inputs_smart_nocheck|d() }}"
+  {{ '#' if telegraf_inputs_smart_nocheck is not defined else '' }}nocheck = "{{ telegraf_inputs_smart_nocheck|d() }}"
 
   ## Gather all returned S.M.A.R.T. attribute metrics and the detailed
   ## information from each drive into the 'smart_attribute' measurement.
-  {{ '#' if telegraf_inputs_smart_attributes is not defined }}attributes = {{ telegraf_inputs_smart_attributes|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_smart_attributes is not defined else '' }}attributes = {{ telegraf_inputs_smart_attributes|d()|bool|lower }}
 
   ## Optionally specify devices to exclude from reporting.
-  {{ '#' if telegraf_inputs_smart_excludes is not defined }}excludes = [ {% for i in telegraf_inputs_smart_excludes|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_smart_excludes is not defined else '' }}excludes = [ {% for i in telegraf_inputs_smart_excludes|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optionally specify devices and device type, if unset
   ## a scan (smartctl --scan) for S.M.A.R.T. devices will
   ## done and all found will be included except for the
   ## excluded in excludes.
-  {{ '#' if telegraf_inputs_smart_devices is not defined }}devices = [ {% for i in telegraf_inputs_smart_devices|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_smart_devices is not defined else '' }}devices = [ {% for i in telegraf_inputs_smart_devices|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for the smartctl command to complete.
-  {{ '#' if telegraf_inputs_smart_timeout is not defined }}timeout = "{{ telegraf_inputs_smart_timeout|d() }}"
+  {{ '#' if telegraf_inputs_smart_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_smart_timeout|d() }}"

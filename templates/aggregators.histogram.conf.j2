@@ -18,15 +18,15 @@
   ## Example config that aggregates all fields of the metric.
   # [[aggregators.histogram.config]]
   #   ## Right borders of buckets (with +Inf implicitly added).
-  {{ '#' if telegraf_aggregators_histogram_buckets is not defined }}buckets = [ {% for i in telegraf_aggregators_histogram_buckets|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_aggregators_histogram_buckets is not defined else '' }}buckets = [ {% for i in telegraf_aggregators_histogram_buckets|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   #   ## The name of metric.
-  {{ '#' if telegraf_aggregators_histogram_measurement_name is not defined }}measurement_name = "{{ telegraf_aggregators_histogram_measurement_name|d() }}"
+  {{ '#' if telegraf_aggregators_histogram_measurement_name is not defined else '' }}measurement_name = "{{ telegraf_aggregators_histogram_measurement_name|d() }}"
 
   ## Example config that aggregates only specific fields of the metric.
   # [[aggregators.histogram.config]]
   #   ## Right borders of buckets (with +Inf implicitly added).
-  {{ '#' if telegraf_aggregators_histogram_buckets is not defined }}buckets = [ {% for i in telegraf_aggregators_histogram_buckets|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_aggregators_histogram_buckets is not defined else '' }}buckets = [ {% for i in telegraf_aggregators_histogram_buckets|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   #   ## The name of metric.
-  {{ '#' if telegraf_aggregators_histogram_measurement_name is not defined }}measurement_name = "{{ telegraf_aggregators_histogram_measurement_name|d() }}"
+  {{ '#' if telegraf_aggregators_histogram_measurement_name is not defined else '' }}measurement_name = "{{ telegraf_aggregators_histogram_measurement_name|d() }}"
   #   ## The concrete fields of metric
-  {{ '#' if telegraf_aggregators_histogram_fields is not defined }}fields = [ {% for i in telegraf_aggregators_histogram_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_aggregators_histogram_fields is not defined else '' }}fields = [ {% for i in telegraf_aggregators_histogram_fields|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

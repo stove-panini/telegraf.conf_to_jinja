@@ -17,7 +17,7 @@
   ## A custom name for the database that will be used as the "server" tag in the
   ## measurement output. If not specified, a default one generated from
   ## the connection address is used.
-    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress is not defined }}outputaddress = "{{ telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress|d() }}"
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress is not defined else '' }}outputaddress = "{{ telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress|d() }}"
 
   ## connection configuration.
   ## maxlifetime - specify the maximum lifetime of a connection.
@@ -26,8 +26,8 @@
 
   ## A  list of databases to explicitly ignore.  If not specified, metrics for all
   ## databases are gathered.  Do NOT use with the 'databases' option.
-    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases is not defined }}ignored_databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases is not defined else '' }}ignored_databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_ignored_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## A list of databases to pull metrics about. If not specified, metrics for all
   ## databases are gathered.  Do NOT use with the 'ignored_databases' option.
-    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases is not defined }}databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+    {{ '#' if telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases is not defined else '' }}databases = [ {% for i in telegraf_inputs_postgresql_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_databases|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

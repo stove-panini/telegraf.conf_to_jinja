@@ -9,12 +9,12 @@
   sadc_path = "{{ telegraf_inputs_sysstat_sadc_path|d() }}"
 
   ## Path to the sadf command, if it is not in PATH
-  {{ '#' if telegraf_inputs_sysstat_sadf_path is not defined }}sadf_path = "{{ telegraf_inputs_sysstat_sadf_path|d() }}"
+  {{ '#' if telegraf_inputs_sysstat_sadf_path is not defined else '' }}sadf_path = "{{ telegraf_inputs_sysstat_sadf_path|d() }}"
 
   ## Activities is a list of activities, that are passed as argument to the
   ## sadc collector utility (e.g: DISK, SNMP etc...)
   ## The more activities that are added, the more data is collected.
-  {{ '#' if telegraf_inputs_sysstat_activities is not defined }}activities = [ {% for i in telegraf_inputs_sysstat_activities|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_sysstat_activities is not defined else '' }}activities = [ {% for i in telegraf_inputs_sysstat_activities|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Group metrics to measurements.
   ##
@@ -22,7 +22,7 @@
   ## and represents itself a measurement.
   ##
   ## If Group is true, corresponding metrics are grouped to a single measurement.
-  {{ '#' if telegraf_inputs_sysstat_group is not defined }}group = {{ telegraf_inputs_sysstat_group|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_sysstat_group is not defined else '' }}group = {{ telegraf_inputs_sysstat_group|d()|bool|lower }}
 
   ## Options for the sadf command. The values on the left represent the sadf
   ## options and the values on the right their description (which are used for

@@ -5,7 +5,7 @@
   field = "{{ telegraf_processors_enum_field|d() }}"
 
     ## Name of the tag to map
-  {{ '#' if telegraf_processors_enum_tag is not defined }}tag = "{{ telegraf_processors_enum_tag|d() }}"
+  {{ '#' if telegraf_processors_enum_tag is not defined else '' }}tag = "{{ telegraf_processors_enum_tag|d() }}"
 
     ## Destination tag or field to be used for the mapped value.  By default the
     ## source tag or field is used, overwriting the original value.
@@ -14,7 +14,7 @@
     ## Default value to be used for all values not contained in the mapping
     ## table.  When unset, the unmodified value for the field will be used if no
     ## match is found.
-  {{ '#' if telegraf_processors_enum_default is not defined }}default = {{ telegraf_processors_enum_default|d() }}
+  {{ '#' if telegraf_processors_enum_default is not defined else '' }}default = {{ telegraf_processors_enum_default|d() }}
 
     ## Table of mappings
     [processors.enum.mapping.value_mappings]

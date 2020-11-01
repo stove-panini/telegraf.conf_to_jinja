@@ -11,24 +11,24 @@
   ## 4) environment variables
   ## 5) shared credentials file
   ## 6) EC2 Instance Profile
-  {{ '#' if telegraf_inputs_kinesis_consumer_access_key is not defined }}access_key = "{{ telegraf_inputs_kinesis_consumer_access_key|d() }}"
-  {{ '#' if telegraf_inputs_kinesis_consumer_secret_key is not defined }}secret_key = "{{ telegraf_inputs_kinesis_consumer_secret_key|d() }}"
-  {{ '#' if telegraf_inputs_kinesis_consumer_token is not defined }}token = "{{ telegraf_inputs_kinesis_consumer_token|d() }}"
-  {{ '#' if telegraf_inputs_kinesis_consumer_role_arn is not defined }}role_arn = "{{ telegraf_inputs_kinesis_consumer_role_arn|d() }}"
-  {{ '#' if telegraf_inputs_kinesis_consumer_profile is not defined }}profile = "{{ telegraf_inputs_kinesis_consumer_profile|d() }}"
-  {{ '#' if telegraf_inputs_kinesis_consumer_shared_credential_file is not defined }}shared_credential_file = "{{ telegraf_inputs_kinesis_consumer_shared_credential_file|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_access_key is not defined else '' }}access_key = "{{ telegraf_inputs_kinesis_consumer_access_key|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_secret_key is not defined else '' }}secret_key = "{{ telegraf_inputs_kinesis_consumer_secret_key|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_token is not defined else '' }}token = "{{ telegraf_inputs_kinesis_consumer_token|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_role_arn is not defined else '' }}role_arn = "{{ telegraf_inputs_kinesis_consumer_role_arn|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_profile is not defined else '' }}profile = "{{ telegraf_inputs_kinesis_consumer_profile|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_shared_credential_file is not defined else '' }}shared_credential_file = "{{ telegraf_inputs_kinesis_consumer_shared_credential_file|d() }}"
 
   ## Endpoint to make request against, the correct endpoint is automatically
   ## determined and this option should only be set if you wish to override the
   ## default.
   ##   ex: endpoint_url = "http://localhost:8000"
-  {{ '#' if telegraf_inputs_kinesis_consumer_endpoint_url is not defined }}endpoint_url = "{{ telegraf_inputs_kinesis_consumer_endpoint_url|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_endpoint_url is not defined else '' }}endpoint_url = "{{ telegraf_inputs_kinesis_consumer_endpoint_url|d() }}"
 
   ## Kinesis StreamName must exist prior to starting telegraf.
   streamname = "{{ telegraf_inputs_kinesis_consumer_streamname|d() }}"
 
   ## Shard iterator type (only 'TRIM_HORIZON' and 'LATEST' currently supported)
-  {{ '#' if telegraf_inputs_kinesis_consumer_shard_iterator_type is not defined }}shard_iterator_type = "{{ telegraf_inputs_kinesis_consumer_shard_iterator_type|d() }}"
+  {{ '#' if telegraf_inputs_kinesis_consumer_shard_iterator_type is not defined else '' }}shard_iterator_type = "{{ telegraf_inputs_kinesis_consumer_shard_iterator_type|d() }}"
 
   ## Maximum messages to read from the broker that have not been written by an
   ## output.  For best throughput set based on the number of metrics within
@@ -38,7 +38,7 @@
   ## output metric_batch_size is 1000, setting this to 100 will ensure that a
   ## full batch is collected and the write is triggered immediately without
   ## waiting until the next flush_interval.
-  {{ '#' if telegraf_inputs_kinesis_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_kinesis_consumer_max_undelivered_messages|d() }}
+  {{ '#' if telegraf_inputs_kinesis_consumer_max_undelivered_messages is not defined else '' }}max_undelivered_messages = {{ telegraf_inputs_kinesis_consumer_max_undelivered_messages|d() }}
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

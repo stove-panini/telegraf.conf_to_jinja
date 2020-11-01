@@ -2,7 +2,7 @@
 [[inputs.apcupsd]]
   # A list of running apcupsd server to connect to.
   # If not provided will default to tcp://127.0.0.1:3551
-  servers = [ {% for i in telegraf_inputs_apcupsd_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_apcupsd_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for dialing server.
   timeout = "{{ telegraf_inputs_apcupsd_timeout|d() }}"

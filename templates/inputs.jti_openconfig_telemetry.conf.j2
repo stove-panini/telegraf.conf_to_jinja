@@ -1,7 +1,7 @@
 # Read JTI OpenConfig Telemetry from listed sensors
 [[inputs.jti_openconfig_telemetry]]
   ## List of device addresses to collect telemetry from
-  servers = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Authentication details. Username and password are must if device expects
   ## authentication. Client ID must be unique when connecting from multiple instances
@@ -19,7 +19,7 @@
   ## When identifier is used, we can provide a list of space separated sensors.
   ## A single subscription will be created with all these sensors and data will
   ## be saved to measurement with this identifier name
-  sensors = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_sensors|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  sensors = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_sensors|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
    "/interfaces/",
    "collection /components/ /lldp",
   ]
@@ -27,19 +27,19 @@
   ## We allow specifying sensor group level reporting rate. To do this, specify the
   ## reporting rate in Duration at the beginning of sensor paths / collection
   ## name. For entries without reporting rate, we use configured sample frequency
-  sensors = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_sensors|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  sensors = [ {% for i in telegraf_inputs_jti_openconfig_telemetry_sensors|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
    "1000ms customReporting /interfaces /lldp",
    "2000ms collection /components",
    "/interfaces",
   ]
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_enable_tls is not defined }}enable_tls = {{ telegraf_inputs_jti_openconfig_telemetry_enable_tls|d()|bool|lower }}
-  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_key is not defined }}tls_key = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_enable_tls is not defined else '' }}enable_tls = {{ telegraf_inputs_jti_openconfig_telemetry_enable_tls|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_jti_openconfig_telemetry_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_jti_openconfig_telemetry_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_jti_openconfig_telemetry_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_jti_openconfig_telemetry_insecure_skip_verify|d()|bool|lower }}
 
   ## Delay between retry attempts of failed RPC calls or streams. Defaults to 1000ms.
   ## Failed streams/calls will not be retried if 0 is provided

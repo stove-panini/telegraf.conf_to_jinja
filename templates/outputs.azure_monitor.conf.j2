@@ -1,29 +1,29 @@
 # Send aggregate metrics to Azure Monitor
 [[outputs.azure_monitor]]
   ## Timeout for HTTP writes.
-  {{ '#' if telegraf_outputs_azure_monitor_timeout is not defined }}timeout = "{{ telegraf_outputs_azure_monitor_timeout|d() }}"
+  {{ '#' if telegraf_outputs_azure_monitor_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_azure_monitor_timeout|d() }}"
 
   ## Set the namespace prefix, defaults to "Telegraf/<input-name>".
-  {{ '#' if telegraf_outputs_azure_monitor_namespace_prefix is not defined }}namespace_prefix = "{{ telegraf_outputs_azure_monitor_namespace_prefix|d() }}"
+  {{ '#' if telegraf_outputs_azure_monitor_namespace_prefix is not defined else '' }}namespace_prefix = "{{ telegraf_outputs_azure_monitor_namespace_prefix|d() }}"
 
   ## Azure Monitor doesn't have a string value type, so convert string
   ## fields to dimensions (a.k.a. tags) if enabled. Azure Monitor allows
   ## a maximum of 10 dimensions so Telegraf will only send the first 10
   ## alphanumeric dimensions.
-  {{ '#' if telegraf_outputs_azure_monitor_strings_as_dimensions is not defined }}strings_as_dimensions = {{ telegraf_outputs_azure_monitor_strings_as_dimensions|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_azure_monitor_strings_as_dimensions is not defined else '' }}strings_as_dimensions = {{ telegraf_outputs_azure_monitor_strings_as_dimensions|d()|bool|lower }}
 
   ## Both region and resource_id must be set or be available via the
   ## Instance Metadata service on Azure Virtual Machines.
   #
   ## Azure Region to publish metrics against.
   ##   ex: region = "southcentralus"
-  {{ '#' if telegraf_outputs_azure_monitor_region is not defined }}region = "{{ telegraf_outputs_azure_monitor_region|d() }}"
+  {{ '#' if telegraf_outputs_azure_monitor_region is not defined else '' }}region = "{{ telegraf_outputs_azure_monitor_region|d() }}"
   #
   ## The Azure Resource ID against which metric will be logged, e.g.
   ##   ex: resource_id = "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>"
-  {{ '#' if telegraf_outputs_azure_monitor_resource_id is not defined }}resource_id = "{{ telegraf_outputs_azure_monitor_resource_id|d() }}"
+  {{ '#' if telegraf_outputs_azure_monitor_resource_id is not defined else '' }}resource_id = "{{ telegraf_outputs_azure_monitor_resource_id|d() }}"
 
   ## Optionally, if in Azure US Government, China or other sovereign
   ## cloud environment, set appropriate REST endpoint for receiving
   ## metrics. (Note: region may be unused in this context)
-  {{ '#' if telegraf_outputs_azure_monitor_endpoint_url is not defined }}endpoint_url = "{{ telegraf_outputs_azure_monitor_endpoint_url|d() }}"
+  {{ '#' if telegraf_outputs_azure_monitor_endpoint_url is not defined else '' }}endpoint_url = "{{ telegraf_outputs_azure_monitor_endpoint_url|d() }}"

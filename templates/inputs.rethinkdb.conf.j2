@@ -5,12 +5,12 @@
   ##   rethinkdb://user:auth_key@10.10.3.30:28105,
   ##   rethinkdb://10.10.3.33:18832,
   ##   10.0.0.1:10000, etc.
-  servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ##
   ## If you use actual rethinkdb of > 2.3.0 with username/password authorization,
   ## protocol have to be named "rethinkdb2" - it will use 1_0 H.
-  {{ '#' if telegraf_inputs_rethinkdb_servers is not defined }}servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_rethinkdb_servers is not defined else '' }}servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ##
   ## If you use older versions of rethinkdb (<2.2) with auth_key, protocol
   ## have to be named "rethinkdb".
-  {{ '#' if telegraf_inputs_rethinkdb_servers is not defined }}servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_rethinkdb_servers is not defined else '' }}servers = [ {% for i in telegraf_inputs_rethinkdb_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]

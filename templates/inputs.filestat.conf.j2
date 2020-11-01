@@ -9,7 +9,7 @@
   ##
   ## See https://github.com/gobwas/glob for more examples
   ##
-  files = [ {% for i in telegraf_inputs_filestat_files|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  files = [ {% for i in telegraf_inputs_filestat_files|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## If true, read the entire file and calculate an md5 checksum.
   md5 = {{ telegraf_inputs_filestat_md5|d()|bool|lower }}

@@ -7,4 +7,4 @@
   account_key = "{{ telegraf_inputs_azure_storage_queue_account_key|d() }}"
 
   ## Set to false to disable peeking age of oldest message (executes faster)
-  {{ '#' if telegraf_inputs_azure_storage_queue_peek_oldest_message_age is not defined }}peek_oldest_message_age = {{ telegraf_inputs_azure_storage_queue_peek_oldest_message_age|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_azure_storage_queue_peek_oldest_message_age is not defined else '' }}peek_oldest_message_age = {{ telegraf_inputs_azure_storage_queue_peek_oldest_message_age|d()|bool|lower }}

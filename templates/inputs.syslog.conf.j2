@@ -7,42 +7,42 @@
   server = "{{ telegraf_inputs_syslog_server|d() }}"
 
   ## TLS Config
-  {{ '#' if telegraf_inputs_syslog_tls_allowed_cacerts is not defined }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_syslog_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
-  {{ '#' if telegraf_inputs_syslog_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_syslog_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_syslog_tls_key is not defined }}tls_key = "{{ telegraf_inputs_syslog_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_syslog_tls_allowed_cacerts is not defined else '' }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_syslog_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_syslog_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_syslog_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_syslog_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_syslog_tls_key|d() }}"
 
   ## Period between keep alive probes.
   ## 0 disables keep alive probes.
   ## Defaults to the OS configuration.
   ## Only applies to stream sockets (e.g. TCP).
-  {{ '#' if telegraf_inputs_syslog_keep_alive_period is not defined }}keep_alive_period = "{{ telegraf_inputs_syslog_keep_alive_period|d() }}"
+  {{ '#' if telegraf_inputs_syslog_keep_alive_period is not defined else '' }}keep_alive_period = "{{ telegraf_inputs_syslog_keep_alive_period|d() }}"
 
   ## Maximum number of concurrent connections (default = 0).
   ## 0 means unlimited.
   ## Only applies to stream sockets (e.g. TCP).
-  {{ '#' if telegraf_inputs_syslog_max_connections is not defined }}max_connections = {{ telegraf_inputs_syslog_max_connections|d() }}
+  {{ '#' if telegraf_inputs_syslog_max_connections is not defined else '' }}max_connections = {{ telegraf_inputs_syslog_max_connections|d() }}
 
   ## Read timeout is the maximum time allowed for reading a single message (default = 5s).
   ## 0 means unlimited.
-  {{ '#' if telegraf_inputs_syslog_read_timeout is not defined }}read_timeout = "{{ telegraf_inputs_syslog_read_timeout|d() }}"
+  {{ '#' if telegraf_inputs_syslog_read_timeout is not defined else '' }}read_timeout = "{{ telegraf_inputs_syslog_read_timeout|d() }}"
 
   ## The framing technique with which it is expected that messages are transported (default = "octet-counting").
   ## Whether the messages come using the octect-counting (RFC5425#section-4.3.1, RFC6587#section-3.4.1),
   ## or the non-transparent framing technique (RFC6587#section-3.4.2).
   ## Must be one of "octet-counting", "non-transparent".
-  {{ '#' if telegraf_inputs_syslog_framing is not defined }}framing = "{{ telegraf_inputs_syslog_framing|d() }}"
+  {{ '#' if telegraf_inputs_syslog_framing is not defined else '' }}framing = "{{ telegraf_inputs_syslog_framing|d() }}"
 
   ## The trailer to be expected in case of non-transparent framing (default = "LF").
   ## Must be one of "LF", or "NUL".
-  {{ '#' if telegraf_inputs_syslog_trailer is not defined }}trailer = "{{ telegraf_inputs_syslog_trailer|d() }}"
+  {{ '#' if telegraf_inputs_syslog_trailer is not defined else '' }}trailer = "{{ telegraf_inputs_syslog_trailer|d() }}"
 
   ## Whether to parse in best effort mode or not (default = false).
   ## By default best effort parsing is off.
-  {{ '#' if telegraf_inputs_syslog_best_effort is not defined }}best_effort = {{ telegraf_inputs_syslog_best_effort|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_syslog_best_effort is not defined else '' }}best_effort = {{ telegraf_inputs_syslog_best_effort|d()|bool|lower }}
 
   ## Character to prepend to SD-PARAMs (default = "_").
   ## A syslog message can contain multiple parameters and multiple identifiers within structured data section.
   ## Eg., [id1 name1="val1" name2="val2"][id2 name1="val1" nameA="valA"]
   ## For each combination a field is created.
   ## Its name is created concatenating identifier, sdparam_separator, and parameter name.
-  {{ '#' if telegraf_inputs_syslog_sdparam_separator is not defined }}sdparam_separator = "{{ telegraf_inputs_syslog_sdparam_separator|d() }}"
+  {{ '#' if telegraf_inputs_syslog_sdparam_separator is not defined else '' }}sdparam_separator = "{{ telegraf_inputs_syslog_sdparam_separator|d() }}"

@@ -3,7 +3,7 @@
   ## The full HTTP endpoint URL for your Elasticsearch instance
   ## Multiple urls can be specified as part of the same cluster,
   ## this means that only ONE of the urls will be written to each interval.
-  urls = [ {% for i in telegraf_outputs_elasticsearch_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  urls = [ {% for i in telegraf_outputs_elasticsearch_urls|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## Elasticsearch client timeout, defaults to "5s" if not set.
   timeout = "{{ telegraf_outputs_elasticsearch_timeout|d() }}"
   ## Set to true to ask Elasticsearch a list of all cluster nodes,
@@ -13,8 +13,8 @@
   ## Setting to "0s" will disable the health check (not recommended in production)
   health_check_interval = "{{ telegraf_outputs_elasticsearch_health_check_interval|d() }}"
   ## HTTP basic authentication details
-  {{ '#' if telegraf_outputs_elasticsearch_username is not defined }}username = "{{ telegraf_outputs_elasticsearch_username|d() }}"
-  {{ '#' if telegraf_outputs_elasticsearch_password is not defined }}password = "{{ telegraf_outputs_elasticsearch_password|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_username is not defined else '' }}username = "{{ telegraf_outputs_elasticsearch_username|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_password is not defined else '' }}password = "{{ telegraf_outputs_elasticsearch_password|d() }}"
 
   ## Index Config
   ## The target index for metrics (Elasticsearch will create if it not exists).
@@ -29,16 +29,16 @@
   ## Additionally, you can specify a tag name using the notation {{tag_name}}
   ## which will be used as part of the index name. If the tag does not exist,
   ## the default tag value will be used.
-  {{ '#' if telegraf_outputs_elasticsearch_index_name is not defined }}index_name = "{{ telegraf_outputs_elasticsearch_index_name|d() }}"
-  {{ '#' if telegraf_outputs_elasticsearch_default_tag_value is not defined }}default_tag_value = "{{ telegraf_outputs_elasticsearch_default_tag_value|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_index_name is not defined else '' }}index_name = "{{ telegraf_outputs_elasticsearch_index_name|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_default_tag_value is not defined else '' }}default_tag_value = "{{ telegraf_outputs_elasticsearch_default_tag_value|d() }}"
   index_name = "{{ telegraf_outputs_elasticsearch_index_name|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_elasticsearch_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_elasticsearch_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_elasticsearch_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_elasticsearch_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_elasticsearch_tls_key is not defined }}tls_key = "{{ telegraf_outputs_elasticsearch_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_elasticsearch_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_elasticsearch_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_elasticsearch_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_elasticsearch_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_elasticsearch_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_elasticsearch_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_elasticsearch_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_elasticsearch_insecure_skip_verify|d()|bool|lower }}
 
   ## Template Config
   ## Set to true if you want telegraf to manage its index template.

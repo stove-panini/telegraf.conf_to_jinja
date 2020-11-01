@@ -6,7 +6,7 @@
 
   ## If true, Telegraf discard all data when a single file can't be read.
   ## Else, Telegraf omits the field generated from this file.
-  {{ '#' if telegraf_inputs_multifile_fail_early is not defined }}fail_early = {{ telegraf_inputs_multifile_fail_early|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_multifile_fail_early is not defined else '' }}fail_early = {{ telegraf_inputs_multifile_fail_early|d()|bool|lower }}
 
   ## Files to parse each interval.
   [[inputs.multifile.file]]

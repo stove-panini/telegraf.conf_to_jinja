@@ -1,27 +1,27 @@
 # Send telegraf measurements to NATS
 [[outputs.nats]]
   ## URLs of NATS servers
-  servers = [ {% for i in telegraf_outputs_nats_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_outputs_nats_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional credentials
-  {{ '#' if telegraf_outputs_nats_username is not defined }}username = "{{ telegraf_outputs_nats_username|d() }}"
-  {{ '#' if telegraf_outputs_nats_password is not defined }}password = "{{ telegraf_outputs_nats_password|d() }}"
+  {{ '#' if telegraf_outputs_nats_username is not defined else '' }}username = "{{ telegraf_outputs_nats_username|d() }}"
+  {{ '#' if telegraf_outputs_nats_password is not defined else '' }}password = "{{ telegraf_outputs_nats_password|d() }}"
 
   ## Optional NATS 2.0 and NATS NGS compatible user credentials
-  {{ '#' if telegraf_outputs_nats_credentials is not defined }}credentials = "{{ telegraf_outputs_nats_credentials|d() }}"
+  {{ '#' if telegraf_outputs_nats_credentials is not defined else '' }}credentials = "{{ telegraf_outputs_nats_credentials|d() }}"
 
   ## NATS subject for producer messages
   subject = "{{ telegraf_outputs_nats_subject|d() }}"
 
   ## Use Transport Layer Security
-  {{ '#' if telegraf_outputs_nats_secure is not defined }}secure = {{ telegraf_outputs_nats_secure|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_nats_secure is not defined else '' }}secure = {{ telegraf_outputs_nats_secure|d()|bool|lower }}
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_nats_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_nats_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_nats_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_nats_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_nats_tls_key is not defined }}tls_key = "{{ telegraf_outputs_nats_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_nats_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_nats_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_nats_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_nats_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_nats_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_nats_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_nats_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_nats_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_nats_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_nats_insecure_skip_verify|d()|bool|lower }}
 
   ## Data format to output.
   ## Each data format has its own unique set of configuration options, read

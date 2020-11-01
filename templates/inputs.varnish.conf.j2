@@ -10,7 +10,7 @@
   ## Setting stats will override the defaults shown below.
   ## Glob matching can be used, ie, stats = ["MAIN.*"]
   ## stats may also be set to ["*"], which will collect all stats
-  stats = [ {% for i in telegraf_inputs_varnish_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  stats = [ {% for i in telegraf_inputs_varnish_stats|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Optional name for the varnish instance (or working directory) to query
   ## Usually append after -n in varnish cli

@@ -26,7 +26,7 @@
   ## A custom name for the database that will be used as the "server" tag in the
   ## measurement output. If not specified, a default one generated from
   ## the connection address is used.
-    {{ '#' if telegraf_inputs_postgresql_extensible_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress is not defined }}outputaddress = "{{ telegraf_inputs_postgresql_extensible_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress|d() }}"
+    {{ '#' if telegraf_inputs_postgresql_extensible_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress is not defined else '' }}outputaddress = "{{ telegraf_inputs_postgresql_extensible_  ##   postgres://[pqgotest[:password]]@localhost[/dbname]_outputaddress|d() }}"
   #
   ## Define the toml config where the sql queries are stored
   ## New queries can be added, if the withdbname is set to true and there is no

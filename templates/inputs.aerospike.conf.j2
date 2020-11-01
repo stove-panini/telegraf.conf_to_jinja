@@ -3,15 +3,15 @@
   ## Aerospike servers to connect to (with port)
   ## This plugin will query all namespaces the aerospike
   ## server has configured and get stats for them.
-  servers = [ {% for i in telegraf_inputs_aerospike_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_aerospike_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
-  {{ '#' if telegraf_inputs_aerospike_username is not defined }}username = "{{ telegraf_inputs_aerospike_username|d() }}"
-  {{ '#' if telegraf_inputs_aerospike_password is not defined }}password = "{{ telegraf_inputs_aerospike_password|d() }}"
+  {{ '#' if telegraf_inputs_aerospike_username is not defined else '' }}username = "{{ telegraf_inputs_aerospike_username|d() }}"
+  {{ '#' if telegraf_inputs_aerospike_password is not defined else '' }}password = "{{ telegraf_inputs_aerospike_password|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_aerospike_enable_tls is not defined }}enable_tls = {{ telegraf_inputs_aerospike_enable_tls|d()|bool|lower }}
-  {{ '#' if telegraf_inputs_aerospike_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_aerospike_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_aerospike_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_aerospike_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_aerospike_tls_key is not defined }}tls_key = "{{ telegraf_inputs_aerospike_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_aerospike_enable_tls is not defined else '' }}enable_tls = {{ telegraf_inputs_aerospike_enable_tls|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_aerospike_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_aerospike_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_aerospike_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_aerospike_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_aerospike_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_aerospike_tls_key|d() }}"
   ## If false, skip chain & host verification
-  {{ '#' if telegraf_inputs_aerospike_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_aerospike_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_aerospike_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_aerospike_insecure_skip_verify|d()|bool|lower }}

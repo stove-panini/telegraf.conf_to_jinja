@@ -1,7 +1,7 @@
 # Read metrics from one or more commands that can output to stdout
 [[inputs.exec]]
   ## Commands array
-  commands = [ {% for i in telegraf_inputs_exec_commands|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  commands = [ {% for i in telegraf_inputs_exec_commands|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
     "/tmp/test.sh",
     "/usr/bin/mycollector --foo=bar",
     "/tmp/collect_*.sh"

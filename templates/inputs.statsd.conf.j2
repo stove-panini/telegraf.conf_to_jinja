@@ -12,7 +12,7 @@
   ## Specifies the keep-alive period for an active network connection.
   ## Only applies to TCP sockets and will be ignored if tcp_keep_alive is false.
   ## Defaults to the OS configuration.
-  {{ '#' if telegraf_inputs_statsd_tcp_keep_alive_period is not defined }}tcp_keep_alive_period = "{{ telegraf_inputs_statsd_tcp_keep_alive_period|d() }}"
+  {{ '#' if telegraf_inputs_statsd_tcp_keep_alive_period is not defined else '' }}tcp_keep_alive_period = "{{ telegraf_inputs_statsd_tcp_keep_alive_period|d() }}"
 
   ## Address and port to host UDP listener on
   service_address = "{{ telegraf_inputs_statsd_service_address|d() }}"
@@ -30,7 +30,7 @@
   delete_timings = {{ telegraf_inputs_statsd_delete_timings|d()|bool|lower }}
 
   ## Percentiles to calculate for timing & histogram stats
-  percentiles = [ {% for i in telegraf_inputs_statsd_percentiles|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  percentiles = [ {% for i in telegraf_inputs_statsd_percentiles|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## separator to use between elements of a statsd metric
   metric_separator = "{{ telegraf_inputs_statsd_metric_separator|d() }}"
@@ -44,7 +44,7 @@
 
   ## Statsd data translation templates, more info can be read here:
   ## https://github.com/influxdata/telegraf/blob/master/docs/TEMPLATE_PATTERN.md
-  {{ '#' if telegraf_inputs_statsd_templates is not defined }}templates = [ {% for i in telegraf_inputs_statsd_templates|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_statsd_templates is not defined else '' }}templates = [ {% for i in telegraf_inputs_statsd_templates|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   #     "cpu.* measurement*"
   # ]
 

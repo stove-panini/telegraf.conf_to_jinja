@@ -35,7 +35,7 @@
   use_regex = {{ telegraf_outputs_wavefront_use_regex|d()|bool|lower }}
 
   ## point tags to use as the source name for Wavefront (if none found, host will be used)
-  source_override = [ {% for i in telegraf_outputs_wavefront_source_override|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  source_override = [ {% for i in telegraf_outputs_wavefront_source_override|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## whether to convert boolean values to numeric values, with false -> 0.0 and true -> 1.0. default is true
   convert_bool = {{ telegraf_outputs_wavefront_convert_bool|d()|bool|lower }}

@@ -3,28 +3,28 @@
   ## PID file to monitor process
   pid_file = "{{ telegraf_inputs_procstat_pid_file|d() }}"
   ## executable name (ie, pgrep <exe>)
-  {{ '#' if telegraf_inputs_procstat_exe is not defined }}exe = "{{ telegraf_inputs_procstat_exe|d() }}"
+  {{ '#' if telegraf_inputs_procstat_exe is not defined else '' }}exe = "{{ telegraf_inputs_procstat_exe|d() }}"
   ## pattern as argument for pgrep (ie, pgrep -f <pattern>)
-  {{ '#' if telegraf_inputs_procstat_pattern is not defined }}pattern = "{{ telegraf_inputs_procstat_pattern|d() }}"
+  {{ '#' if telegraf_inputs_procstat_pattern is not defined else '' }}pattern = "{{ telegraf_inputs_procstat_pattern|d() }}"
   ## user as argument for pgrep (ie, pgrep -u <user>)
-  {{ '#' if telegraf_inputs_procstat_user is not defined }}user = "{{ telegraf_inputs_procstat_user|d() }}"
+  {{ '#' if telegraf_inputs_procstat_user is not defined else '' }}user = "{{ telegraf_inputs_procstat_user|d() }}"
   ## Systemd unit name
-  {{ '#' if telegraf_inputs_procstat_systemd_unit is not defined }}systemd_unit = "{{ telegraf_inputs_procstat_systemd_unit|d() }}"
+  {{ '#' if telegraf_inputs_procstat_systemd_unit is not defined else '' }}systemd_unit = "{{ telegraf_inputs_procstat_systemd_unit|d() }}"
   ## CGroup name or path
-  {{ '#' if telegraf_inputs_procstat_cgroup is not defined }}cgroup = "{{ telegraf_inputs_procstat_cgroup|d() }}"
+  {{ '#' if telegraf_inputs_procstat_cgroup is not defined else '' }}cgroup = "{{ telegraf_inputs_procstat_cgroup|d() }}"
 
   ## Windows service name
-  {{ '#' if telegraf_inputs_procstat_win_service is not defined }}win_service = "{{ telegraf_inputs_procstat_win_service|d() }}"
+  {{ '#' if telegraf_inputs_procstat_win_service is not defined else '' }}win_service = "{{ telegraf_inputs_procstat_win_service|d() }}"
 
   ## override for process_name
   ## This is optional; default is sourced from /proc/<pid>/status
-  {{ '#' if telegraf_inputs_procstat_process_name is not defined }}process_name = "{{ telegraf_inputs_procstat_process_name|d() }}"
+  {{ '#' if telegraf_inputs_procstat_process_name is not defined else '' }}process_name = "{{ telegraf_inputs_procstat_process_name|d() }}"
 
   ## Field name prefix
-  {{ '#' if telegraf_inputs_procstat_prefix is not defined }}prefix = "{{ telegraf_inputs_procstat_prefix|d() }}"
+  {{ '#' if telegraf_inputs_procstat_prefix is not defined else '' }}prefix = "{{ telegraf_inputs_procstat_prefix|d() }}"
 
   ## When true add the full cmdline as a tag.
-  {{ '#' if telegraf_inputs_procstat_cmdline_tag is not defined }}cmdline_tag = {{ telegraf_inputs_procstat_cmdline_tag|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_procstat_cmdline_tag is not defined else '' }}cmdline_tag = {{ telegraf_inputs_procstat_cmdline_tag|d()|bool|lower }}
 
   ## Add the PID as a tag instead of as a field.  When collecting multiple
   ## processes with otherwise matching tags this setting should be enabled to
@@ -32,10 +32,10 @@
   ##
   ## Enabling this option may result in a large number of series, especially
   ## when processes have a short lifetime.
-  {{ '#' if telegraf_inputs_procstat_pid_tag is not defined }}pid_tag = {{ telegraf_inputs_procstat_pid_tag|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_procstat_pid_tag is not defined else '' }}pid_tag = {{ telegraf_inputs_procstat_pid_tag|d()|bool|lower }}
 
   ## Method to use when finding process IDs.  Can be one of 'pgrep', or
   ## 'native'.  The pgrep finder calls the pgrep executable in the PATH while
   ## the native finder performs the search directly in a manor dependent on the
   ## platform.  Default is 'pgrep'
-  {{ '#' if telegraf_inputs_procstat_pid_finder is not defined }}pid_finder = "{{ telegraf_inputs_procstat_pid_finder|d() }}"
+  {{ '#' if telegraf_inputs_procstat_pid_finder is not defined else '' }}pid_finder = "{{ telegraf_inputs_procstat_pid_finder|d() }}"

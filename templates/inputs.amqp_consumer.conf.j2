@@ -2,32 +2,32 @@
 [[inputs.amqp_consumer]]
   ## Broker to consume from.
   ##   deprecated in 1.7; use the brokers option
-  {{ '#' if telegraf_inputs_amqp_consumer_url is not defined }}url = "{{ telegraf_inputs_amqp_consumer_url|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_url is not defined else '' }}url = "{{ telegraf_inputs_amqp_consumer_url|d() }}"
 
   ## Brokers to consume from.  If multiple brokers are specified a random broker
   ## will be selected anytime a connection is established.  This can be
   ## helpful for load balancing when not using a dedicated load balancer.
-  brokers = [ {% for i in telegraf_inputs_amqp_consumer_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  brokers = [ {% for i in telegraf_inputs_amqp_consumer_brokers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Authentication credentials for the PLAIN auth_method.
-  {{ '#' if telegraf_inputs_amqp_consumer_username is not defined }}username = "{{ telegraf_inputs_amqp_consumer_username|d() }}"
-  {{ '#' if telegraf_inputs_amqp_consumer_password is not defined }}password = "{{ telegraf_inputs_amqp_consumer_password|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_username is not defined else '' }}username = "{{ telegraf_inputs_amqp_consumer_username|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_password is not defined else '' }}password = "{{ telegraf_inputs_amqp_consumer_password|d() }}"
 
   ## Name of the exchange to declare.  If unset, no exchange will be declared.
   exchange = "{{ telegraf_inputs_amqp_consumer_exchange|d() }}"
 
   ## Exchange type; common types are "direct", "fanout", "topic", "header", "x-consistent-hash".
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_type is not defined }}exchange_type = "{{ telegraf_inputs_amqp_consumer_exchange_type|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_type is not defined else '' }}exchange_type = "{{ telegraf_inputs_amqp_consumer_exchange_type|d() }}"
 
   ## If true, exchange will be passively declared.
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_passive is not defined }}exchange_passive = {{ telegraf_inputs_amqp_consumer_exchange_passive|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_passive is not defined else '' }}exchange_passive = {{ telegraf_inputs_amqp_consumer_exchange_passive|d()|bool|lower }}
 
   ## Exchange durability can be either "transient" or "durable".
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_durability is not defined }}exchange_durability = "{{ telegraf_inputs_amqp_consumer_exchange_durability|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_durability is not defined else '' }}exchange_durability = "{{ telegraf_inputs_amqp_consumer_exchange_durability|d() }}"
 
   ## Additional exchange arguments.
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
-  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
+  {{ '#' if telegraf_inputs_amqp_consumer_exchange_arguments is not defined else '' }}exchange_arguments = { {% for k, v in (telegraf_inputs_amqp_consumer_exchange_arguments|d({})).items() %}"{{ k }}" = "{{ v }}"{{ ', ' if not loop.last }}{% endfor %} }
 
   ## AMQP queue name.
   queue = "{{ telegraf_inputs_amqp_consumer_queue|d() }}"
@@ -36,14 +36,14 @@
   queue_durability = "{{ telegraf_inputs_amqp_consumer_queue_durability|d() }}"
 
   ## If true, queue will be passively declared.
-  {{ '#' if telegraf_inputs_amqp_consumer_queue_passive is not defined }}queue_passive = {{ telegraf_inputs_amqp_consumer_queue_passive|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_amqp_consumer_queue_passive is not defined else '' }}queue_passive = {{ telegraf_inputs_amqp_consumer_queue_passive|d()|bool|lower }}
 
   ## A binding between the exchange and queue using this binding key is
   ## created.  If unset, no binding is created.
   binding_key = "{{ telegraf_inputs_amqp_consumer_binding_key|d() }}"
 
   ## Maximum number of messages server should give to the worker.
-  {{ '#' if telegraf_inputs_amqp_consumer_prefetch_count is not defined }}prefetch_count = {{ telegraf_inputs_amqp_consumer_prefetch_count|d() }}
+  {{ '#' if telegraf_inputs_amqp_consumer_prefetch_count is not defined else '' }}prefetch_count = {{ telegraf_inputs_amqp_consumer_prefetch_count|d() }}
 
   ## Maximum messages to read from the broker that have not been written by an
   ## output.  For best throughput set based on the number of metrics within
@@ -53,23 +53,23 @@
   ## output metric_batch_size is 1000, setting this to 100 will ensure that a
   ## full batch is collected and the write is triggered immediately without
   ## waiting until the next flush_interval.
-  {{ '#' if telegraf_inputs_amqp_consumer_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_amqp_consumer_max_undelivered_messages|d() }}
+  {{ '#' if telegraf_inputs_amqp_consumer_max_undelivered_messages is not defined else '' }}max_undelivered_messages = {{ telegraf_inputs_amqp_consumer_max_undelivered_messages|d() }}
 
   ## Auth method. PLAIN and EXTERNAL are supported
   ## Using EXTERNAL requires enabling the rabbitmq_auth_mechanism_ssl plugin as
   ## described here: https://www.rabbitmq.com/plugins.html
-  {{ '#' if telegraf_inputs_amqp_consumer_auth_method is not defined }}auth_method = "{{ telegraf_inputs_amqp_consumer_auth_method|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_auth_method is not defined else '' }}auth_method = "{{ telegraf_inputs_amqp_consumer_auth_method|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_amqp_consumer_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_amqp_consumer_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_amqp_consumer_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_amqp_consumer_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_amqp_consumer_tls_key is not defined }}tls_key = "{{ telegraf_inputs_amqp_consumer_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_amqp_consumer_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_amqp_consumer_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_amqp_consumer_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_amqp_consumer_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_amqp_consumer_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_amqp_consumer_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_amqp_consumer_insecure_skip_verify|d()|bool|lower }}
 
   ## Content encoding for message payloads, can be set to "gzip" to or
   ## "identity" to apply no encoding.
-  {{ '#' if telegraf_inputs_amqp_consumer_content_encoding is not defined }}content_encoding = "{{ telegraf_inputs_amqp_consumer_content_encoding|d() }}"
+  {{ '#' if telegraf_inputs_amqp_consumer_content_encoding is not defined else '' }}content_encoding = "{{ telegraf_inputs_amqp_consumer_content_encoding|d() }}"
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

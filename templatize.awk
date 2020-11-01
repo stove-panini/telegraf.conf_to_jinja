@@ -202,7 +202,7 @@ BEGIN {
         JinjaValue = "[ {% for i in " YAMLVar "|d([]) %}\"{{ i }}\"{{ ', ' if not loop.last else '' }}{% endfor %} ]"
         break
     case "hash":
-        JinjaValue = "{ {% for k, v in (" YAMLVar "|d({})).items() %}\"{{ k }}\" = \"{{ v }}\"{{ ', ' if not loop.last }}{% endfor %} }"
+        JinjaValue = "{ {% for k, v in (" YAMLVar "|d({})).items() %}\"{{ k }}\" = \"{{ v }}\"{{ ', ' if not loop.last else '' }}{% endfor %} }"
         break
     case "boolean":
         JinjaValue = "{{ " YAMLVar "|d()|bool|lower }}"

@@ -4,24 +4,24 @@
   service_address = "{{ telegraf_inputs_cloud_pubsub_push_service_address|d() }}"
 
   ## Application secret to verify messages originate from Cloud Pub/Sub
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_token is not defined }}token = "{{ telegraf_inputs_cloud_pubsub_push_token|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_token is not defined else '' }}token = "{{ telegraf_inputs_cloud_pubsub_push_token|d() }}"
 
   ## Path to listen to.
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_path is not defined }}path = "{{ telegraf_inputs_cloud_pubsub_push_path|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_path is not defined else '' }}path = "{{ telegraf_inputs_cloud_pubsub_push_path|d() }}"
 
   ## Maximum duration before timing out read of the request
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_read_timeout is not defined }}read_timeout = "{{ telegraf_inputs_cloud_pubsub_push_read_timeout|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_read_timeout is not defined else '' }}read_timeout = "{{ telegraf_inputs_cloud_pubsub_push_read_timeout|d() }}"
   ## Maximum duration before timing out write of the response. This should be set to a value
   ## large enough that you can send at least 'metric_batch_size' number of messages within the
   ## duration.
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_write_timeout is not defined }}write_timeout = "{{ telegraf_inputs_cloud_pubsub_push_write_timeout|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_write_timeout is not defined else '' }}write_timeout = "{{ telegraf_inputs_cloud_pubsub_push_write_timeout|d() }}"
 
   ## Maximum allowed http request body size in bytes.
   ## 0 means to use the default of 524,288,00 bytes (500 mebibytes)
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_max_body_size is not defined }}max_body_size = "{{ telegraf_inputs_cloud_pubsub_push_max_body_size|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_max_body_size is not defined else '' }}max_body_size = "{{ telegraf_inputs_cloud_pubsub_push_max_body_size|d() }}"
 
   ## Whether to add the pubsub metadata, such as message attributes and subscription as a tag.
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_add_meta is not defined }}add_meta = {{ telegraf_inputs_cloud_pubsub_push_add_meta|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_add_meta is not defined else '' }}add_meta = {{ telegraf_inputs_cloud_pubsub_push_add_meta|d()|bool|lower }}
 
   ## Optional. Maximum messages to read from PubSub that have not been written
   ## to an output. Defaults to 1000.
@@ -32,15 +32,15 @@
   ## metric_batch_size is 1000, setting this to 100 will ensure that a
   ## full batch is collected and the write is triggered immediately without
   ## waiting until the next flush_interval.
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_max_undelivered_messages is not defined }}max_undelivered_messages = {{ telegraf_inputs_cloud_pubsub_push_max_undelivered_messages|d() }}
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_max_undelivered_messages is not defined else '' }}max_undelivered_messages = {{ telegraf_inputs_cloud_pubsub_push_max_undelivered_messages|d() }}
 
   ## Set one or more allowed client CA certificate file names to
   ## enable mutually authenticated TLS connections
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_allowed_cacerts is not defined }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_cloud_pubsub_push_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_allowed_cacerts is not defined else '' }}tls_allowed_cacerts = [ {% for i in telegraf_inputs_cloud_pubsub_push_tls_allowed_cacerts|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Add service certificate and key
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_cloud_pubsub_push_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_key is not defined }}tls_key = "{{ telegraf_inputs_cloud_pubsub_push_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_cloud_pubsub_push_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_cloud_pubsub_push_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_cloud_pubsub_push_tls_key|d() }}"
 
   ## Data format to consume.
   ## Each data format has its own unique set of configuration options, read

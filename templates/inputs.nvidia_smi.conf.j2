@@ -1,7 +1,7 @@
 # Pulls statistics from nvidia GPUs attached to the host
 [[inputs.nvidia_smi]]
   ## Optional: path to nvidia-smi binary, defaults to $PATH via exec.LookPath
-  {{ '#' if telegraf_inputs_nvidia_smi_bin_path is not defined }}bin_path = "{{ telegraf_inputs_nvidia_smi_bin_path|d() }}"
+  {{ '#' if telegraf_inputs_nvidia_smi_bin_path is not defined else '' }}bin_path = "{{ telegraf_inputs_nvidia_smi_bin_path|d() }}"
 
   ## Optional: timeout for GPU polling
-  {{ '#' if telegraf_inputs_nvidia_smi_timeout is not defined }}timeout = "{{ telegraf_inputs_nvidia_smi_timeout|d() }}"
+  {{ '#' if telegraf_inputs_nvidia_smi_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_nvidia_smi_timeout|d() }}"

@@ -1,7 +1,7 @@
 # Run executable as long-running output plugin
 [[outputs.execd]]
   ## Program to run as daemon
-  command = [ {% for i in telegraf_outputs_execd_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  command = [ {% for i in telegraf_outputs_execd_command|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Delay before the process is restarted after an unexpected termination
   restart_delay = "{{ telegraf_outputs_execd_restart_delay|d() }}"

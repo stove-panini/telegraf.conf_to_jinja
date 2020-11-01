@@ -2,13 +2,13 @@
 [[inputs.zfs]]
   ## ZFS kstat path. Ignored on FreeBSD
   ## If not specified, then default is:
-  {{ '#' if telegraf_inputs_zfs_kstatPath is not defined }}kstatPath = "{{ telegraf_inputs_zfs_kstatPath|d() }}"
+  {{ '#' if telegraf_inputs_zfs_kstatPath is not defined else '' }}kstatPath = "{{ telegraf_inputs_zfs_kstatPath|d() }}"
 
   ## By default, telegraf gather all zfs stats
   ## If not specified, then default is:
-  {{ '#' if telegraf_inputs_zfs_kstatMetrics is not defined }}kstatMetrics = [ {% for i in telegraf_inputs_zfs_kstatMetrics|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  {{ '#' if telegraf_inputs_zfs_kstatMetrics is not defined else '' }}kstatMetrics = [ {% for i in telegraf_inputs_zfs_kstatMetrics|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
   ## For Linux, the default is:
   # kstatMetrics = ["abdstats", "arcstats", "dnodestats", "dbufcachestats",
   #   "dmu_tx", "fm", "vdev_mirror_stats", "zfetchstats", "zil"]
   ## By default, don't gather zpool stats
-  {{ '#' if telegraf_inputs_zfs_poolMetrics is not defined }}poolMetrics = {{ telegraf_inputs_zfs_poolMetrics|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_zfs_poolMetrics is not defined else '' }}poolMetrics = {{ telegraf_inputs_zfs_poolMetrics|d()|bool|lower }}

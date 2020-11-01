@@ -10,17 +10,17 @@
   token = "{{ telegraf_outputs_warp10_token|d() }}"
 
   # Warp 10 query timeout
-  {{ '#' if telegraf_outputs_warp10_timeout is not defined }}timeout = "{{ telegraf_outputs_warp10_timeout|d() }}"
+  {{ '#' if telegraf_outputs_warp10_timeout is not defined else '' }}timeout = "{{ telegraf_outputs_warp10_timeout|d() }}"
 
   ## Print Warp 10 error body
-  {{ '#' if telegraf_outputs_warp10_print_error_body is not defined }}print_error_body = {{ telegraf_outputs_warp10_print_error_body|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_warp10_print_error_body is not defined else '' }}print_error_body = {{ telegraf_outputs_warp10_print_error_body|d()|bool|lower }}
 
   ## Max string error size
-  {{ '#' if telegraf_outputs_warp10_max_string_error_size is not defined }}max_string_error_size = {{ telegraf_outputs_warp10_max_string_error_size|d() }}
+  {{ '#' if telegraf_outputs_warp10_max_string_error_size is not defined else '' }}max_string_error_size = {{ telegraf_outputs_warp10_max_string_error_size|d() }}
 
   ## Optional TLS Config
-  {{ '#' if telegraf_outputs_warp10_tls_ca is not defined }}tls_ca = "{{ telegraf_outputs_warp10_tls_ca|d() }}"
-  {{ '#' if telegraf_outputs_warp10_tls_cert is not defined }}tls_cert = "{{ telegraf_outputs_warp10_tls_cert|d() }}"
-  {{ '#' if telegraf_outputs_warp10_tls_key is not defined }}tls_key = "{{ telegraf_outputs_warp10_tls_key|d() }}"
+  {{ '#' if telegraf_outputs_warp10_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_outputs_warp10_tls_ca|d() }}"
+  {{ '#' if telegraf_outputs_warp10_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_outputs_warp10_tls_cert|d() }}"
+  {{ '#' if telegraf_outputs_warp10_tls_key is not defined else '' }}tls_key = "{{ telegraf_outputs_warp10_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_outputs_warp10_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_outputs_warp10_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_outputs_warp10_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_outputs_warp10_insecure_skip_verify|d()|bool|lower }}

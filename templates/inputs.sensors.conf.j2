@@ -2,7 +2,7 @@
 [[inputs.sensors]]
   ## Remove numbers from field names.
   ## If true, a field name like 'temp1_input' will be changed to 'temp_input'.
-  {{ '#' if telegraf_inputs_sensors_remove_numbers is not defined }}remove_numbers = {{ telegraf_inputs_sensors_remove_numbers|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_sensors_remove_numbers is not defined else '' }}remove_numbers = {{ telegraf_inputs_sensors_remove_numbers|d()|bool|lower }}
 
   ## Timeout is the maximum amount of time that the sensors command can run.
-  {{ '#' if telegraf_inputs_sensors_timeout is not defined }}timeout = "{{ telegraf_inputs_sensors_timeout|d() }}"
+  {{ '#' if telegraf_inputs_sensors_timeout is not defined else '' }}timeout = "{{ telegraf_inputs_sensors_timeout|d() }}"

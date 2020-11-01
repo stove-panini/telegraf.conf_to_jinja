@@ -1,18 +1,18 @@
 # Read status information from one or more Kibana servers
 [[inputs.kibana]]
   ## Specify a list of one or more Kibana servers
-  servers = [ {% for i in telegraf_inputs_kibana_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last }}{% endfor %} ]
+  servers = [ {% for i in telegraf_inputs_kibana_servers|d([]) %}"{{ i }}"{{ ', ' if not loop.last else '' }}{% endfor %} ]
 
   ## Timeout for HTTP requests
   timeout = "{{ telegraf_inputs_kibana_timeout|d() }}"
 
   ## HTTP Basic Auth credentials
-  {{ '#' if telegraf_inputs_kibana_username is not defined }}username = "{{ telegraf_inputs_kibana_username|d() }}"
-  {{ '#' if telegraf_inputs_kibana_password is not defined }}password = "{{ telegraf_inputs_kibana_password|d() }}"
+  {{ '#' if telegraf_inputs_kibana_username is not defined else '' }}username = "{{ telegraf_inputs_kibana_username|d() }}"
+  {{ '#' if telegraf_inputs_kibana_password is not defined else '' }}password = "{{ telegraf_inputs_kibana_password|d() }}"
 
   ## Optional TLS Config
-  {{ '#' if telegraf_inputs_kibana_tls_ca is not defined }}tls_ca = "{{ telegraf_inputs_kibana_tls_ca|d() }}"
-  {{ '#' if telegraf_inputs_kibana_tls_cert is not defined }}tls_cert = "{{ telegraf_inputs_kibana_tls_cert|d() }}"
-  {{ '#' if telegraf_inputs_kibana_tls_key is not defined }}tls_key = "{{ telegraf_inputs_kibana_tls_key|d() }}"
+  {{ '#' if telegraf_inputs_kibana_tls_ca is not defined else '' }}tls_ca = "{{ telegraf_inputs_kibana_tls_ca|d() }}"
+  {{ '#' if telegraf_inputs_kibana_tls_cert is not defined else '' }}tls_cert = "{{ telegraf_inputs_kibana_tls_cert|d() }}"
+  {{ '#' if telegraf_inputs_kibana_tls_key is not defined else '' }}tls_key = "{{ telegraf_inputs_kibana_tls_key|d() }}"
   ## Use TLS but skip chain & host verification
-  {{ '#' if telegraf_inputs_kibana_insecure_skip_verify is not defined }}insecure_skip_verify = {{ telegraf_inputs_kibana_insecure_skip_verify|d()|bool|lower }}
+  {{ '#' if telegraf_inputs_kibana_insecure_skip_verify is not defined else '' }}insecure_skip_verify = {{ telegraf_inputs_kibana_insecure_skip_verify|d()|bool|lower }}
